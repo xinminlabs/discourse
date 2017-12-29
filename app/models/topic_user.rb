@@ -195,7 +195,7 @@ SQL
         end
       end
 
-      TopicUser.create(attrs.merge!(user_id: user_id, topic_id: topic_id, first_visited_at: now , last_visited_at: now))
+      TopicUser.create(attrs.merge!(user_id: user_id, topic_id: topic_id, first_visited_at: now, last_visited_at: now))
     end
 
     def track_visit!(topic_id, user_id)

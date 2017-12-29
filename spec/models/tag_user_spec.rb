@@ -81,7 +81,7 @@ describe TagUser do
       end
 
       let :muted_post do
-        TagUser.create!(user: user, tag: muted_tag,   notification_level: TagUser.notification_levels[:muted])
+        TagUser.create!(user: user, tag: muted_tag, notification_level: TagUser.notification_levels[:muted])
         create_post(tags: [muted_tag.name])
       end
 

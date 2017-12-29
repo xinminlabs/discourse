@@ -185,7 +185,7 @@ describe NewPostManager do
         result
       end
 
-      @queue_handler = -> (manager) { manager.args[:raw] =~ /queue me/ ? manager.enqueue('default') : nil }
+      @queue_handler = ->(manager) { manager.args[:raw] =~ /queue me/ ? manager.enqueue('default') : nil }
 
       NewPostManager.add_handler(&@counter_handler)
       NewPostManager.add_handler(&@queue_handler)

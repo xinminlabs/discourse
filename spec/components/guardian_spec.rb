@@ -10,7 +10,7 @@ describe Guardian do
   let(:admin) { Fabricate(:admin) }
   let(:trust_level_2) { build(:user, trust_level: 2) }
   let(:trust_level_3) { build(:user, trust_level: 3) }
-  let(:trust_level_4)  { build(:user, trust_level: 4) }
+  let(:trust_level_4) { build(:user, trust_level: 4) }
   let(:another_admin) { build(:admin) }
   let(:coding_horror) { build(:coding_horror) }
 
@@ -405,7 +405,7 @@ describe Guardian do
       let(:user) { topic.user }
       let(:moderator) { Fabricate(:moderator) }
       let(:admin) { Fabricate(:admin) }
-      let(:private_category)  { Fabricate(:private_category, group: group) }
+      let(:private_category) { Fabricate(:private_category, group: group) }
       let(:group_private_topic) { Fabricate(:topic, category: private_category) }
       let(:group_owner) { group_private_topic.user.tap { |u| group.add_owner(u) } }
       let(:pm) { Fabricate(:topic) }

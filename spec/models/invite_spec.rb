@@ -136,7 +136,7 @@ describe Invite do
 
   context 'to a group-private topic' do
     let(:group) { Fabricate(:group) }
-    let(:private_category)  { Fabricate(:private_category, group: group) }
+    let(:private_category) { Fabricate(:private_category, group: group) }
     let(:group_private_topic) { Fabricate(:topic, category: private_category) }
     let(:inviter) { group_private_topic.user }
 

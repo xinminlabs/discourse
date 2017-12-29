@@ -83,7 +83,7 @@ describe JsLocaleHelper do
     end
 
     it 'handles message format special keys' do
-      JsLocaleHelper.set_translations('en',         "en" => {
+      JsLocaleHelper.set_translations('en', "en" => {
           "js" => {
             "hello" => "world",
             "test_MF" => "{HELLO} {COUNT, plural, one {1 duck} other {# ducks}}",

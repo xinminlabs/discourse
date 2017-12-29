@@ -515,7 +515,7 @@ describe TopicQuery do
     end
 
     context 'preload api' do
-      let(:topics) {}
+      let(:topics){}
 
       it "preloads data correctly" do
         TopicList.preloaded_custom_fields << "tag"
