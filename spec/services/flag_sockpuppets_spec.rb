@@ -78,26 +78,26 @@ describe SpamRule::FlagSockpuppets do
     end
 
     it 'is true if first post user was created over 24 hours ago and has trust level higher than 0' do
-      old_user = Fabricate(:user, ip_address: '182.189.119.174', created_at: 25.hours.ago, trust_level:  TrustLevel[1])
+      old_user = Fabricate(:user, ip_address: '182.189.119.174', created_at: 25.hours.ago, trust_level: TrustLevel[1])
       first_post = Fabricate(:post, user: old_user, topic: Fabricate(:topic, user: old_user))
       post2 = Fabricate(:post, user: Fabricate(:user, ip_address: old_user.ip_address), topic: first_post.topic)
       expect(described_class.new(post2).reply_is_from_sockpuppet?).to eq(true)
     end
 
     it 'is false if second post user was created over 24 hours ago and has trust level higher than 0' do
-      post2 = Fabricate(:post, user: Fabricate(:user, ip_address: user1.ip_address, created_at: 25.hours.ago, trust_level:  TrustLevel[1]), topic: post1.topic)
+      post2 = Fabricate(:post, user: Fabricate(:user, ip_address: user1.ip_address, created_at: 25.hours.ago, trust_level: TrustLevel[1]), topic: post1.topic)
       expect(described_class.new(post2).reply_is_from_sockpuppet?).to eq(false)
     end
 
     it 'is true if first post user was created less that 24 hours ago and has trust level higher than 0' do
-      new_user = Fabricate(:user, ip_address: '182.189.119.174', created_at: 1.hour.ago, trust_level:  TrustLevel[1])
+      new_user = Fabricate(:user, ip_address: '182.189.119.174', created_at: 1.hour.ago, trust_level: TrustLevel[1])
       first_post = Fabricate(:post, user: new_user, topic: Fabricate(:topic, user: new_user))
       post2 = Fabricate(:post, user: Fabricate(:user, ip_address: new_user.ip_address), topic: first_post.topic)
       expect(described_class.new(post2).reply_is_from_sockpuppet?).to eq(true)
     end
 
     it 'is true if second user was created less that 24 hours ago and has trust level higher than 0' do
-      post2 = Fabricate(:post, user: Fabricate(:user, ip_address: user1.ip_address, created_at: 23.hours.ago, trust_level:  TrustLevel[1]), topic: post1.topic)
+      post2 = Fabricate(:post, user: Fabricate(:user, ip_address: user1.ip_address, created_at: 23.hours.ago, trust_level: TrustLevel[1]), topic: post1.topic)
       expect(described_class.new(post2).reply_is_from_sockpuppet?).to eq(true)
     end
 
@@ -125,7 +125,7 @@ describe SpamRule::FlagSockpuppets do
     end
 
     it "doesn't flag the first post if the user is not new" do
-      old_user = Fabricate(:user, ip_address: '182.189.119.174', created_at: 25.hours.ago, trust_level:  TrustLevel[1])
+      old_user = Fabricate(:user, ip_address: '182.189.119.174', created_at: 25.hours.ago, trust_level: TrustLevel[1])
       first_post = Fabricate(:post, user: old_user, topic: Fabricate(:topic, user: old_user))
       post2 = Fabricate(:post, user: Fabricate(:user, ip_address: old_user.ip_address), topic: first_post.topic)
       PostAction.expects(:act).with(anything, post2, anything, anything).once

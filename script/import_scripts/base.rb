@@ -804,7 +804,7 @@ class ImportScripts::Base
   end
 
   def print_spinner
-    @spinner_chars ||= %w{ | / - \\ }
+    @spinner_chars ||= %w{| / - \\ }
     @spinner_chars.push @spinner_chars.shift
     print "\b#{@spinner_chars[0]}"
   end

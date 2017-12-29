@@ -121,7 +121,7 @@ describe PostCreator do
         end
 
         # 2 for topic, one to notify of new topic another for tracking state
-        expect(messages.map { |m| m.channel }.sort).to eq([ "/new",
+        expect(messages.map { |m| m.channel }.sort).to eq(["/new",
                                                      "/u/#{admin.username}",
                                                      "/u/#{admin.username}",
                                                      "/unread/#{admin.id}",
@@ -130,7 +130,7 @@ describe PostCreator do
                                                      "/latest",
                                                      "/topic/#{created_post.topic_id}",
                                                      "/topic/#{created_post.topic_id}"
-                                                   ].sort)
+].sort)
         admin_ids = [Group[:admins].id]
 
         expect(messages.any? { |m| m.group_ids != admin_ids && m.user_ids != [admin.id] }).to eq(false)
@@ -883,8 +883,8 @@ describe PostCreator do
       @posts_created = 0
       @topics_created = 0
 
-      @increase_posts = -> (post, opts, user) { @posts_created += 1 }
-      @increase_topics = -> (topic, opts, user) { @topics_created += 1 }
+      @increase_posts = ->(post, opts, user) { @posts_created += 1 }
+      @increase_topics = ->(topic, opts, user) { @topics_created += 1 }
       DiscourseEvent.on(:post_created, &@increase_posts)
       DiscourseEvent.on(:topic_created, &@increase_topics)
     end

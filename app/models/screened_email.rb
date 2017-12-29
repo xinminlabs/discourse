@@ -29,7 +29,7 @@ class ScreenedEmail < ActiveRecord::Base
 
     max_distance = SiteSetting.levenshtein_distance_spammer_emails
     screened_email = screened_emails.select { |se| distances[se.email] <= max_distance }
-      .sort   { |se| distances[se.email] }
+      .sort { |se| distances[se.email] }
       .first
 
     screened_email.record_match! if screened_email

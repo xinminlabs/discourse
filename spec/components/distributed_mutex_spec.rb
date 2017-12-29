@@ -40,7 +40,7 @@ describe DistributedMutex do
 
     expect {
       m.synchronize do
-        m.synchronize {}
+        m.synchronize{}
       end
     }.to raise_error(ThreadError)
   end

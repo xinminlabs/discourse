@@ -43,11 +43,11 @@ describe TextSentinel do
   end
 
   context 'body_sentinel' do
-    [ 'evil trout is evil',
+    ['evil trout is evil',
       "去年十社會警告",
       "P.S. Пробирочка очень толковая и весьма умная, так что не обнимайтесь.",
       "Look: 去年十社會警告"
-    ].each do |valid_body|
+].each do |valid_body|
       it "handles a valid body in a private message" do
         expect(TextSentinel.body_sentinel(valid_body, private_message: true)).to be_valid
       end

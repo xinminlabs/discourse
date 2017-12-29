@@ -13,7 +13,7 @@ module Middleware
         path = "#{Rails.root}/public#{env['REQUEST_PATH']}"
         unless File.exist?(path)
           default_image = "#{Rails.root}/public/images/d-logo-sketch-small.png"
-          return [ 200, { 'Content-Type' => 'image/png' }, [ File.read(default_image)] ]
+          return [200, { 'Content-Type' => 'image/png' }, [File.read(default_image)]]
         end
       end
 

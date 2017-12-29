@@ -43,7 +43,7 @@ describe TopicStatusUpdater do
     topic = create_topic
 
     called = false
-    updater = -> (topic) { called = true }
+    updater = ->(topic) { called = true }
 
     DiscourseEvent.on(:topic_closed, &updater)
     TopicStatusUpdater.new(topic, admin).update!("closed", true)

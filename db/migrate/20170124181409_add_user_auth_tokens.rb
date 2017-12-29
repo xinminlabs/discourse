@@ -27,7 +27,7 @@ SQL
     add_index :user_auth_tokens, [:auth_token]
     add_index :user_auth_tokens, [:prev_auth_token]
 
-    execute <<~SQL
+    execute << ~SQL
     INSERT INTO user_auth_tokens(user_id, auth_token, prev_auth_token, legacy, updated_at, created_at, rotated_at)
     SELECT id, auth_token, auth_token, true, auth_token_updated_at, auth_token_updated_at, auth_token_updated_at
     FROM users

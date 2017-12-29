@@ -10,7 +10,7 @@ class Barber::Precompiler
     if !@precompiler
 
       source = File.read("#{Rails.root}/app/assets/javascripts/discourse-common/lib/raw-handlebars.js.es6")
-      template = Tilt::ES6ModuleTranspilerTemplate.new {}
+      template = Tilt::ES6ModuleTranspilerTemplate.new{}
       transpiled = template.babel_transpile(source)
 
       # very hacky but lets us use ES6. I'm ashamed of this code -RW

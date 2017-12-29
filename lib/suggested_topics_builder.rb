@@ -34,7 +34,7 @@ class SuggestedTopicsBuilder
   end
 
   def splice_results(results, priority)
-    if  @category_id && priority == :high
+    if @category_id && priority == :high
 
       # Topics from category @category_id need to be first in the list, all others after.
 

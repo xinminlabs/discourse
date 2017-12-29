@@ -15,7 +15,7 @@ class ImportScripts::MyAskBot < ImportScripts::Base
 
   # A list of categories to create. Any post with one of these tags will be
   # assigned to that category. Ties are broken by list orer.
-  CATEGORIES = [ 'Nonconvex', 'TFOCS', 'MIDCP', 'FAQ' ]
+  CATEGORIES = ['Nonconvex', 'TFOCS', 'MIDCP', 'FAQ']
 
   def initialize
     super
@@ -81,7 +81,7 @@ class ImportScripts::MyAskBot < ImportScripts::Base
         if @tagmap[tid]
           @tagmap[tid].push(tnm)
         else
-          @tagmap[tid] = [ tnm ]
+          @tagmap[tid] = [tnm]
         end
         tags_done += 1
         print_status tags_done, tag_count
