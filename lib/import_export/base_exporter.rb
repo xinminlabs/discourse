@@ -7,7 +7,7 @@ module ImportExport
                       :auto_close_hours, :parent_category_id, :auto_close_based_on_last_post,
                       :topic_template, :suppress_from_homepage, :all_topics_wiki, :permissions_params]
 
-    GROUP_ATTRS = [ :id, :name, :created_at, :mentionable_level, :messageable_level, :visibility_level,
+    GROUP_ATTRS = [:id, :name, :created_at, :mentionable_level, :messageable_level, :visibility_level,
                     :automatic_membership_email_domains, :automatic_membership_retroactive,
                     :primary_group, :title, :grant_trust_level, :incoming_email]
 

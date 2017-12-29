@@ -101,7 +101,7 @@ class ImportScripts::Smf2 < ImportScripts::Base
       FROM {prefix}members AS a
       LEFT JOIN {prefix}attachments AS b ON a.id_member = b.id_member
     SQL
-      group_ids = [ member[:id_group], *member[:additional_groups].split(',').map(&:to_i) ]
+      group_ids = [member[:id_group], *member[:additional_groups].split(',').map(&:to_i)]
       create_time = Time.zone.at(member[:date_registered]) rescue Time.now
       last_seen_time = Time.zone.at(member[:last_login]) rescue nil
       ip_addr = IPAddr.new(member[:member_ip]) rescue nil
@@ -229,7 +229,7 @@ class ImportScripts::Smf2 < ImportScripts::Base
         WHERE attachment_type = 0 AND id_msg = #{message[:id_msg]}
         ORDER BY id_attach ASC
       SQL
-      attachments.map! { |a| import_attachment(post, a) rescue (puts $! ; nil) }
+      attachments.map! { |a| import_attachment(post, a) rescue (puts $!; nil) }
       post[:raw] = convert_message_body(message[:body], attachments, ignore_quotes: ignore_quotes)
       next post
     end
@@ -297,7 +297,7 @@ class ImportScripts::Smf2 < ImportScripts::Base
     cleaned_name.gsub!(/[^\w_\.\-]/, '')
     legacy_name = "#{attachment_id}_#{cleaned_name.gsub('.', '_')}#{Digest::MD5.hexdigest(cleaned_name)}"
 
-    [ filename, "#{attachment_id}_#{file_hash}", legacy_name ]
+    [filename, "#{attachment_id}_#{file_hash}", legacy_name]
       .map { |name| File.join(options.smfroot, 'attachments', name) }
       .detect { |file| File.exists?(file) }
   end
@@ -432,8 +432,8 @@ class ImportScripts::Smf2 < ImportScripts::Base
   # Provides command line options and parses the SMF settings file.
   class Options
 
-    class Error < StandardError ; end
-    class SettingsError < Error ; end
+    class Error < StandardError; end
+    class SettingsError < Error; end
 
     def parse!(args = ARGV)
       raise Error, 'not enough arguments' if ARGV.empty?

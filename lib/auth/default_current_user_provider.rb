@@ -46,7 +46,7 @@ class Auth::DefaultCurrentUserProvider
     current_user = nil
 
     if auth_token && auth_token.length == 32
-      limiter = RateLimiter.new(nil, "cookie_auth_#{request.ip}", COOKIE_ATTEMPTS_PER_MIN , 60)
+      limiter = RateLimiter.new(nil, "cookie_auth_#{request.ip}", COOKIE_ATTEMPTS_PER_MIN, 60)
 
       if limiter.can_perform?
         @user_token = UserAuthToken.lookup(auth_token,
@@ -96,7 +96,7 @@ class Auth::DefaultCurrentUserProvider
         limiter_day.performed!
       end
 
-      unless  limiter_min.can_perform?
+      unless limiter_min.can_perform?
         limiter_min.performed!
       end
 

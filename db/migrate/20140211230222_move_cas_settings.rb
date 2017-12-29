@@ -4,7 +4,7 @@ class MoveCasSettings < ActiveRecord::Migration[4.2]
     #convert the data over to be used by the plugin.
     cas_hostname = SiteSetting.find_by(name: "cas_hostname")
     cas_sso_hostname = SiteSetting.find_by(name: "cas_sso_hostname")
-    if cas_hostname && ! cas_sso_hostname
+    if cas_hostname && !cas_sso_hostname
       #convert the setting over for use by the plugin
       cas_hostname.update_attribute(:name, 'cas_sso_hostname')
     elsif cas_hostname && cas_sso_hostname
@@ -15,7 +15,7 @@ class MoveCasSettings < ActiveRecord::Migration[4.2]
 
     cas_domainname = SiteSetting.find_by(name: "cas_domainname")
     cas_sso_email_domain = SiteSetting.find_by(name: "cas_sso_email_domain")
-    if cas_domainname && ! cas_sso_email_domain
+    if cas_domainname && !cas_sso_email_domain
       #convert the setting over for use by the plugin
       cas_domainname.update_attribute(:name, 'cas_sso_email_domain')
     elsif cas_domainname && cas_sso_email_domain

@@ -19,7 +19,7 @@ def reindex_search(db = RailsMultisite::ConnectionManagement.current_db)
     topic_id = p["topic_id"].to_i
 
     SearchIndexer.update_posts_index(post_id, cooked, title, category)
-    SearchIndexer.update_topics_index(topic_id, title , cooked) if post_number == 1
+    SearchIndexer.update_topics_index(topic_id, title, cooked) if post_number == 1
 
     putc "."
   end
