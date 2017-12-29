@@ -106,7 +106,6 @@ describe SiteSettings::TypeSupervisor do
         subject.parse_value_type(Object.new)
       }.to raise_error ArgumentError
     end
-
   end
 
   context 'with different data types' do
@@ -114,9 +113,11 @@ describe SiteSettings::TypeSupervisor do
       def self.valid_value?(v)
         self.values.include?(v)
       end
+
       def self.values
         ['en']
       end
+
       def self.translate_names?
         false
       end
@@ -125,9 +126,11 @@ describe SiteSettings::TypeSupervisor do
     class TestSmallThanTenValidator
       def initialize(opts)
       end
+
       def valid_value?(v)
         v < 10
       end
+
       def error_message
         ''
       end
@@ -277,9 +280,11 @@ describe SiteSettings::TypeSupervisor do
       def self.valid_value?(v)
         self.values.include?(v)
       end
+
       def self.values
         ['a', 'b']
       end
+
       def self.translate_names?
         false
       end
@@ -335,7 +340,5 @@ describe SiteSettings::TypeSupervisor do
       expect(hash[:valid_values]).to eq ['a', 'b']
       expect(hash[:translate_names]).to eq false
     end
-
   end
-
 end

@@ -1,5 +1,4 @@
 class DirectoryItemSerializer < ApplicationSerializer
-
   attributes :id,
              :time_read
 
@@ -17,5 +16,4 @@ class DirectoryItemSerializer < ApplicationSerializer
   def include_time_read?
     object.period_type == DirectoryItem.period_types[:all]
   end
-
 end

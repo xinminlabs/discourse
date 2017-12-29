@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe WatchedWord do
-
   it "can't have duplicate words" do
     Fabricate(:watched_word, word: "darn", action: described_class.actions[:block])
     w = Fabricate.build(:watched_word, word: "darn", action: described_class.actions[:block])

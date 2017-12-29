@@ -1,5 +1,4 @@
 class UserStat < ActiveRecord::Base
-
   belongs_to :user
   after_save :trigger_badges
 
@@ -16,7 +15,6 @@ class UserStat < ActiveRecord::Base
 
   # Updates the denormalized view counts for all users
   def self.update_view_counts(last_seen = 1.hour.ago)
-
     # NOTE: we only update the counts for users we have seen in the last hour
     #  this avoids a very expensive query that may run on the entire user base
     #  we also ensure we only touch the table if data changes
@@ -103,7 +101,6 @@ class UserStat < ActiveRecord::Base
   def cache_last_seen(val)
     $redis.set(last_seen_key, val)
   end
-
 end
 
 # == Schema Information

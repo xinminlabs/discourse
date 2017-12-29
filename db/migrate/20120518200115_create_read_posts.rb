@@ -13,5 +13,4 @@ class CreateReadPosts < ActiveRecord::Migration[4.2]
   def down
     drop_table :read_posts
   end
-
 end

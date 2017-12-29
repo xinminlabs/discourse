@@ -3,7 +3,6 @@ require "ipaddr"
 module Onebox
   module Engine
     class WhitelistedGenericOnebox
-
       # overwrite the whitelist
       def self.===(other)
         other.is_a?(URI) ? (IPAddr.new(other.hostname) rescue nil).nil? : true
@@ -31,7 +30,6 @@ module Onebox
 
           false
         end
-
     end
   end
 end

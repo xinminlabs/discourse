@@ -51,5 +51,4 @@ class Admin::DiagnosticsController < Admin::AdminController
       render plain: "HEAP DUMP:\nnot supported"
     end
   end
-
 end

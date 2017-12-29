@@ -1,7 +1,6 @@
 require_dependency 'topic_subtype'
 
 class Report
-
   attr_accessor :type, :data, :total, :prev30Days, :start_date, :end_date, :category_id, :group_id
 
   def self.default_days

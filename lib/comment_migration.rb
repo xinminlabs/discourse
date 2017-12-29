@@ -46,6 +46,7 @@ class CommentMigration < ActiveRecord::Migration[4.2]
   end
 
   private
+
   def replace_nils(hash)
     hash.each do |key, value|
       if Hash === value

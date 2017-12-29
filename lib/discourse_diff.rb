@@ -1,7 +1,6 @@
 require_dependency "onpdiff"
 
 class DiscourseDiff
-
   MAX_DIFFERENCE = 200
 
   def initialize(before, after)
@@ -233,7 +232,6 @@ class DiscourseDiff
   end
 
   class HtmlTokenizer < Nokogiri::XML::SAX::Document
-
     attr_accessor :tokens
 
     def initialize
@@ -263,7 +261,5 @@ class DiscourseDiff
     def characters(string)
       @tokens.concat string.scan(/\W|\w+[ \t]*/).map { |x| CGI::escapeHTML(x) }
     end
-
   end
-
 end

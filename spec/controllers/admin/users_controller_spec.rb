@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'single_sign_on'
 
 describe Admin::UsersController do
-
   it 'is a subclass of AdminController' do
     expect(Admin::UsersController < Admin::AdminController).to eq(true)
   end
@@ -24,7 +23,6 @@ describe Admin::UsersController do
       end
 
       context 'when showing emails' do
-
         it "returns email for all the users" do
           get :index, params: { show_emails: "true" }, format: :json
           data = ::JSON.parse(response.body)
@@ -40,7 +38,6 @@ describe Admin::UsersController do
 
           expect(UserHistory.where(action: UserHistory.actions[:check_email], acting_user_id: @user.id).count).to eq(1)
         end
-
       end
     end
 
@@ -61,7 +58,6 @@ describe Admin::UsersController do
     end
 
     context '.approve_bulk' do
-
       let(:evil_trout) { Fabricate(:evil_trout) }
 
       it "does nothing without uesrs" do
@@ -80,7 +76,6 @@ describe Admin::UsersController do
         User.any_instance.expects(:approve).once
         put :approve_bulk, params: { users: [evil_trout.id] }, format: :json
       end
-
     end
 
     context '.generate_api_key' do
@@ -93,18 +88,15 @@ describe Admin::UsersController do
     end
 
     context '.revoke_api_key' do
-
       let(:evil_trout) { Fabricate(:evil_trout) }
 
       it 'calls revoke_api_key' do
         User.any_instance.expects(:revoke_api_key)
         delete :revoke_api_key, params: { user_id: evil_trout.id }, format: :json
       end
-
     end
 
     context '.approve' do
-
       let(:evil_trout) { Fabricate(:evil_trout) }
 
       it "raises an error when the user doesn't have permission" do
@@ -117,7 +109,6 @@ describe Admin::UsersController do
         User.any_instance.expects(:approve).with(@user)
         put :approve, params: { user_id: evil_trout.id }, format: :json
       end
-
     end
 
     context '.suspend' do
@@ -199,7 +190,6 @@ describe Admin::UsersController do
         User.any_instance.expects(:revoke_api_key)
         put :suspend, params: { user_id: user.id }, format: :json
       end
-
     end
 
     context '.revoke_admin' do
@@ -655,16 +645,13 @@ describe Admin::UsersController do
     end
 
     context 'ip-info' do
-
       it "uses ipinfo.io webservice to retrieve the info" do
         Excon.expects(:get).with("https://ipinfo.io/123.123.123.123/json", read_timeout: 10, connect_timeout: 10)
         get :ip_info, params: { ip: "123.123.123.123" }, format: :json
       end
-
     end
 
     context "delete_other_accounts_with_same_ip" do
-
       it "works" do
         Fabricate(:user, ip_address: "42.42.42.42")
         Fabricate(:user, ip_address: "42.42.42.42")
@@ -675,7 +662,6 @@ describe Admin::UsersController do
           ip: "42.42.42.42", exclude: -1, order: "trust_level DESC"
         }, format: :json
       end
-
     end
 
     context ".invite_admin" do

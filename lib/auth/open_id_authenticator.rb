@@ -1,5 +1,4 @@
 class Auth::OpenIdAuthenticator < Auth::Authenticator
-
   attr_reader :name, :identifier
 
   def initialize(name, identifier, opts = {})

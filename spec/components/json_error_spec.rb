@@ -14,7 +14,6 @@ shared_examples "a generic error" do
 end
 
 describe JsonError do
-
   let(:creator) { Object.new.extend(JsonError) }
 
   describe "with a nil argument" do
@@ -50,5 +49,4 @@ describe JsonError do
       expect(result[:errors]).not_to be_blank
     end
   end
-
 end

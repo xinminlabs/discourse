@@ -3,7 +3,6 @@ require 'rails_helper'
 require 'scheduler/scheduler'
 
 describe Scheduler::Manager do
-
   module Testing
     class RandomJob
       extend ::Scheduler::Schedule
@@ -121,7 +120,6 @@ describe Scheduler::Manager do
       hosts = ['a', 'b', 'c']
 
       hosts.map do |host|
-
         manager = Scheduler::Manager.new(DiscourseRedis.new, hostname: host, enable_stats: false)
         manager.ensure_schedule!(Testing::PerHostJob)
 
@@ -130,26 +128,22 @@ describe Scheduler::Manager do
         info.write!
 
         manager
-
       end.each do |manager|
 
         manager.blocking_tick
         manager.stop!
-
       end
       expect(Testing::PerHostJob.runs).to eq(3)
     end
   end
 
   describe '#sync' do
-
     it 'increases' do
       expect(Scheduler::Manager.seq).to eq(Scheduler::Manager.seq - 1)
     end
   end
 
   describe '#tick' do
-
     it 'should nuke missing jobs' do
       $redis.zadd Scheduler::Manager.queue_key, Time.now.to_i - 1000, "BLABLA"
       manager.tick
@@ -157,7 +151,6 @@ describe Scheduler::Manager do
     end
 
     it 'should recover from crashed manager' do
-
       info = manager.schedule_info(Testing::SuperLongJob)
       info.next_run = Time.now.to_i - 1
       info.write!
@@ -177,7 +170,6 @@ describe Scheduler::Manager do
     end
 
     it 'should log when job finishes running' do
-
       Testing::RandomJob.runs = 0
 
       info = manager.schedule_info(Testing::RandomJob)
@@ -197,7 +189,6 @@ describe Scheduler::Manager do
     end
 
     it 'should only run pending job once' do
-
       Testing::RandomJob.runs = 0
 
       info = manager.schedule_info(Testing::RandomJob)
@@ -219,7 +210,6 @@ describe Scheduler::Manager do
       expect(info.prev_duration).to be > 0
       expect(info.prev_result).to eq("OK")
     end
-
   end
 
   describe '#discover_schedules' do
@@ -230,7 +220,6 @@ describe Scheduler::Manager do
 
   describe '#next_run' do
     it 'should be within the next 5 mins if it never ran' do
-
       manager.remove(Testing::RandomJob)
       manager.ensure_schedule!(Testing::RandomJob)
 

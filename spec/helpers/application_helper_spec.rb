@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ApplicationHelper do
-
   describe "preload_script" do
     it "provides brotli links to brotli cdn" do
       set_cdn_url "https://awesome.com"
@@ -24,7 +23,6 @@ describe ApplicationHelper do
       end
 
       it "returns magic brotli mangling for brotli requests" do
-
         helper.request.env["HTTP_ACCEPT_ENCODING"] = 'br'
         link = helper.preload_script('application')
 
@@ -155,5 +153,4 @@ describe ApplicationHelper do
       expect(helper.gsub_emoji_to_unicode('Boat Talk: my :sailboat: boat: why is it so slow? :snail:')).to eq("Boat Talk: my ⛵ boat: why is it so slow? 🐌")
     end
   end
-
 end

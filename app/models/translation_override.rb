@@ -73,7 +73,6 @@ class TranslationOverride < ActiveRecord::Base
         end
       end
     end
-
 end
 
 # == Schema Information

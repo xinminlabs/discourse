@@ -1,5 +1,4 @@
 class Auth::TwitterAuthenticator < Auth::Authenticator
-
   def name
     "twitter"
   end
@@ -92,5 +91,4 @@ class Auth::TwitterAuthenticator < Auth::Authenticator
         profile.save
       end
     end
-
 end

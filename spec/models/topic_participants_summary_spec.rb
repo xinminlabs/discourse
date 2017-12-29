@@ -22,6 +22,5 @@ describe TopicParticipantsSummary do
       topic.allowed_user_ids = [user1.id, user2.id, user3.id, user4.id]
       expect(summary.map(&:user)).to eq([user1, user2, user3])
     end
-
   end
 end

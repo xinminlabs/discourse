@@ -3,7 +3,6 @@ require 'cgi'
 require 'time'
 
 class SocialcastUser
-
   def initialize(user_json)
     @parsed_json = JSON.parse user_json
   end
@@ -20,5 +19,4 @@ class SocialcastUser
      user[:staged] = true
      user
    end
-
 end

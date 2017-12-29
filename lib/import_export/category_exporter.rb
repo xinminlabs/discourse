@@ -3,7 +3,6 @@ require "import_export/topic_exporter"
 
 module ImportExport
   class CategoryExporter < BaseExporter
-
     def initialize(category_ids)
       @categories = Category.where(id: category_ids).or(Category.where(parent_category_id: category_ids)).to_a
       @export_data = {
@@ -34,6 +33,5 @@ module ImportExport
     def default_filename_prefix
       "category-export"
     end
-
   end
 end

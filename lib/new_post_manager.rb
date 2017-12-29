@@ -9,7 +9,6 @@ require_dependency 'word_watcher'
 # with `NewPostManager.add_handler` to take other approaches depending
 # on the user or input.
 class NewPostManager
-
   attr_reader :user, :args
 
   def self.sorted_handlers
@@ -64,7 +63,6 @@ class NewPostManager
     end
 
     "#{args[:title]} #{args[:raw]}" =~ regex
-
   end
 
   def self.exempt_user?(user)
@@ -191,5 +189,4 @@ class NewPostManager
 
     result
   end
-
 end

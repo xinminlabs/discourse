@@ -1,6 +1,5 @@
 class AddUniqueIndexToForumThreadLinks < ActiveRecord::Migration[4.2]
   def change
-
     execute "DELETE FROM forum_thread_links USING forum_thread_links ftl2
               WHERE ftl2.forum_thread_id = forum_thread_links.forum_thread_id
                               AND ftl2.post_id = forum_thread_links.post_id

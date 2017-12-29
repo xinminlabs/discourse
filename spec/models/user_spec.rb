@@ -181,7 +181,6 @@ describe User do
   end
 
   describe 'new' do
-
     subject { Fabricate.build(:user) }
 
     it { is_expected.to be_valid }
@@ -241,7 +240,6 @@ describe User do
   end
 
   describe "trust levels" do
-
     # NOTE be sure to use build to avoid db calls
     let(:user) { Fabricate.build(:user, trust_level: TrustLevel[0]) }
 
@@ -251,7 +249,6 @@ describe User do
     end
 
     describe 'has_trust_level?' do
-
       it "raises an error with an invalid level" do
         expect { user.has_trust_level?(:wat) }.to raise_error(InvalidTrustLevel)
       end
@@ -274,7 +271,6 @@ describe User do
         user.admin = true
         expect(user.has_trust_level?(TrustLevel[1])).to eq(true)
       end
-
     end
 
     describe 'moderator' do
@@ -291,9 +287,7 @@ describe User do
         user.admin = true
         expect(user.staff?).to eq(true)
       end
-
     end
-
   end
 
   describe 'staff and regular users' do
@@ -375,7 +369,6 @@ describe User do
 
       user.reload
       expect(user.associated_accounts).to eq("Twitter(sam), Facebook(sam), Google(sam@sam.com), Github(sam), linkedin(sam@sam.com)")
-
     end
   end
 
@@ -638,7 +631,6 @@ describe User do
   end
 
   describe 'passwords' do
-
     it "should not have an active account with a good password" do
       @user = Fabricate.build(:user, active: false)
       @user.password = "ilovepasta"
@@ -663,7 +655,6 @@ describe User do
   end
 
   describe "previous_visit_at" do
-
     let(:user) { Fabricate(:user) }
     let!(:first_visit_date) { Time.zone.now }
     let!(:second_visit_date) { 2.hours.from_now }
@@ -696,7 +687,6 @@ describe User do
       user.reload
       expect(user.previous_visit_at).to be_within_one_second_of(second_visit_date)
     end
-
   end
 
   describe "update_last_seen!" do
@@ -759,7 +749,6 @@ describe User do
       end
 
       context "called twice" do
-
         before do
           freeze_time date
           user.update_last_seen!
@@ -770,7 +759,6 @@ describe User do
         it "doesn't increase days_visited twice" do
           expect(user.user_stat.days_visited).to eq(1)
         end
-
       end
 
       describe "after 3 days" do
@@ -785,7 +773,6 @@ describe User do
           expect(user.user_visits.count).to eq(2)
         end
       end
-
     end
   end
 
@@ -850,7 +837,6 @@ describe User do
       post.reload
       expect(post.spam_count).to eq(0)
     end
-
   end
 
   describe '#readable_name' do
@@ -898,11 +884,9 @@ describe User do
       found_user = User.find_by_username('bOb')
       expect(found_user).to eq bob
     end
-
   end
 
   describe "#new_user_posting_on_first_day?" do
-
     def test_user?(opts = {})
       Fabricate.build(:user, { created_at: Time.zone.now }.merge(opts)).new_user_posting_on_first_day?
     end
@@ -933,7 +917,6 @@ describe User do
     let(:user) { Fabricate(:user) }
 
     describe '.generate_api_key' do
-
       it "generates an api key when none exists, and regenerates when it does" do
         expect(user.api_key).to be_blank
 
@@ -952,11 +935,9 @@ describe User do
         expect(new_key.key).to_not eq(api_key.key)
         expect(new_key.created_by).to eq(other_admin)
       end
-
     end
 
     describe '.revoke_api_key' do
-
       it "revokes an api key when exists" do
         expect(user.api_key).to be_blank
 
@@ -972,9 +953,7 @@ describe User do
         user.reload
         expect(user.api_key).to be_blank
       end
-
     end
-
   end
 
   describe "posted too much in topic" do
@@ -1018,11 +997,9 @@ describe User do
       topic_user.trust_level = TrustLevel[0]
       expect(topic.user.posted_too_much_in_topic?(topic.id)).to eq(false)
     end
-
   end
 
   describe "#find_email" do
-
     let(:user) { Fabricate(:user, email: "bob@example.com") }
 
     context "when email is exists in the email logs" do
@@ -1043,15 +1020,12 @@ describe User do
   end
 
   describe "#gravatar_template" do
-
     it "returns a gravatar based template" do
       expect(User.gravatar_template("em@il.com")).to eq("//www.gravatar.com/avatar/6dc2fde946483a1d8a84b89345a1b638.png?s={size}&r=pg&d=identicon")
     end
-
   end
 
   describe ".small_avatar_url" do
-
     let(:user) { build(:user, username: 'Sam') }
 
     it "returns a 45-pixel-wide avatar" do
@@ -1061,11 +1035,9 @@ describe User do
       SiteSetting.external_system_avatars_enabled = true
       expect(user.small_avatar_url).to eq("//test.localhost/letter_avatar_proxy/v2/letter/s/5f9b8f/45.png")
     end
-
   end
 
   describe ".avatar_template_url" do
-
     let(:user) { build(:user, uploaded_avatar_id: 99, username: 'Sam') }
 
     it "returns a schemaless avatar template with correct id" do
@@ -1076,7 +1048,6 @@ describe User do
       Rails.configuration.action_controller.stubs(:asset_host).returns("http://my.cdn.com")
       expect(user.avatar_template_url).to eq("//my.cdn.com/user_avatar/test.localhost/sam/{size}/99_#{OptimizedImage::VERSION}.png")
     end
-
   end
 
   describe "update_posts_read!" do
@@ -1206,7 +1177,6 @@ describe User do
   end
 
   describe "hash_passwords" do
-
     let(:too_long) { "x" * (User.max_password_length + 1) }
 
     def hash(password, salt)
@@ -1228,11 +1198,9 @@ describe User do
     it "raises an error when passwords are too long" do
       expect { hash(too_long, 'gravy') }.to raise_error(StandardError)
     end
-
   end
 
   describe "automatic group membership" do
-
     let!(:group) {
       Fabricate(:group,
         automatic_membership_email_domains: "bar.com|wat.com",
@@ -1283,7 +1251,6 @@ describe User do
   end
 
   describe "number_of_flags_given" do
-
     let(:user) { Fabricate(:user) }
     let(:moderator) { Fabricate(:moderator) }
 
@@ -1302,11 +1269,9 @@ describe User do
 
       expect(user.number_of_flags_given).to eq(2)
     end
-
   end
 
   describe "number_of_deleted_posts" do
-
     let(:user) { Fabricate(:user, id: 2) }
     let(:moderator) { Fabricate(:moderator) }
 
@@ -1326,7 +1291,6 @@ describe User do
 
       expect(user.number_of_deleted_posts).to eq(2)
     end
-
   end
 
   describe "new_user?" do
@@ -1351,7 +1315,6 @@ describe User do
   end
 
   context "when user preferences are overriden" do
-
     before do
       SiteSetting.default_email_digest_frequency = 1440 # daily
       SiteSetting.default_email_private_messages = false
@@ -1408,7 +1371,6 @@ describe User do
   end
 
   context UserOption do
-
     it "Creates a UserOption row when a user record is created and destroys once done" do
       user = Fabricate(:user)
       expect(user.user_option.email_always).to eq(false)
@@ -1416,9 +1378,7 @@ describe User do
       user_id = user.id
       user.destroy!
       expect(UserOption.find_by(user_id: user_id)).to eq(nil)
-
     end
-
   end
 
   describe "#logged_out" do
@@ -1488,7 +1448,6 @@ describe User do
   end
 
   describe ".clear_global_notice_if_needed" do
-
     let(:user) { Fabricate(:user) }
     let(:admin) { Fabricate(:admin) }
 
@@ -1514,7 +1473,6 @@ describe User do
       expect(SiteSetting.has_login_hint).to eq(false)
       expect(SiteSetting.global_notice).to eq("")
     end
-
   end
 
   describe '.human_users' do
@@ -1542,7 +1500,6 @@ describe User do
   end
 
   describe "silenced?" do
-
     it "is not silenced by default" do
       expect(Fabricate(:user)).not_to be_silenced
     end
@@ -1567,5 +1524,4 @@ describe User do
       end
     end
   end
-
 end

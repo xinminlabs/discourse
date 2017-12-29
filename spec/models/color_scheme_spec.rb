@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ColorScheme do
-
   let(:valid_params) { { name: "Best Colors Evar", colors: valid_colors } }
   let(:valid_colors) { [
     { name: '$primary_background_color', hex: 'FFBB00' },

@@ -2,7 +2,6 @@
 # Most work is delegated to a registry.
 
 class DiscoursePlugin
-
   attr_reader :registry
 
   def initialize(registry)
@@ -46,5 +45,4 @@ class DiscoursePlugin
     return unless self.respond_to?(event_name)
     DiscourseEvent.on(event_name, &self.method(event_name))
   end
-
 end

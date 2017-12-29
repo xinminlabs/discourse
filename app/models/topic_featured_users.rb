@@ -23,7 +23,6 @@ class TopicFeaturedUsers
   end
 
   def self.ensure_consistency!(topic_id = nil)
-
     filter = "#{"AND t.id = #{topic_id.to_i}" if topic_id}"
     filter2 = "#{"AND tt.id = #{topic_id.to_i}" if topic_id}"
 

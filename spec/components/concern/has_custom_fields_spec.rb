@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe HasCustomFields do
-
   context "custom_fields" do
     before do
       Topic.exec_sql("create temporary table custom_fields_test_items(id SERIAL primary key)")

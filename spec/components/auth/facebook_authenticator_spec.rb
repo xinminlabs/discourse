@@ -7,7 +7,6 @@ Auth.send(:remove_const, :FacebookAuthenticator)
 load 'auth/facebook_authenticator.rb'
 
 describe Auth::FacebookAuthenticator do
-
   context 'after_authenticate' do
     it 'can authenticate and create a user record for already existing users' do
       authenticator = Auth::FacebookAuthenticator.new
@@ -39,7 +38,6 @@ describe Auth::FacebookAuthenticator do
     end
 
     it 'can create a proper result for non existing users' do
-
       hash = {
         "extra" => {
             "raw_info" => {
@@ -61,5 +59,4 @@ describe Auth::FacebookAuthenticator do
       expect(result.extra_data[:name]).to eq("bob bob")
     end
   end
-
 end

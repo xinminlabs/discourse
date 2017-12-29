@@ -52,5 +52,4 @@ describe TranslationOverride do
     expect(ovr).to be_present
     expect(ovr.compiled_js).to match(/function/)
   end
-
 end

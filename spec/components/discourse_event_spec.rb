@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'discourse_event'
 
 describe DiscourseEvent do
-
   describe "#events" do
     it "defaults to {}" do
       begin
@@ -22,7 +21,6 @@ describe DiscourseEvent do
   end
 
   context 'when calling events' do
-
     let(:harvey) {
       OpenStruct.new(
         name: 'Harvey Dent',
@@ -37,15 +35,12 @@ describe DiscourseEvent do
     end
 
     context 'when event does not exist' do
-
       it "does not raise an error" do
         DiscourseEvent.trigger(:missing_event)
       end
-
     end
 
     context 'when single event exists' do
-
       it "doesn't raise an error" do
         DiscourseEvent.trigger(:acid_face, harvey)
       end
@@ -54,11 +49,9 @@ describe DiscourseEvent do
         DiscourseEvent.trigger(:acid_face, harvey)
         expect(harvey.name).to eq('Two Face')
       end
-
     end
 
     context 'when multiple events exist' do
-
       before do
         DiscourseEvent.on(:acid_face) do |user|
           user.job = 'Supervillian'
@@ -71,9 +64,6 @@ describe DiscourseEvent do
         expect(harvey.job).to eq('Supervillian')
         expect(harvey.name).to eq('Two Face')
       end
-
     end
-
   end
-
 end

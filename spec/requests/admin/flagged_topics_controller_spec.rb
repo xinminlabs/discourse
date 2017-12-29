@@ -29,5 +29,4 @@ RSpec.describe Admin::FlaggedTopicsController do
 
     include_examples "successfully retrieve list of flagged topics"
   end
-
 end

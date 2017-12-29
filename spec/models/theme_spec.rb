@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Theme do
-
   before do
     Theme.clear_cache!
   end
@@ -69,7 +68,6 @@ describe Theme do
     parent.add_child_theme!(child)
 
     expect(Theme.lookup_field(parent.key, :mobile, "header")).to eq("Common Parent\nMobile Parent\nWorldie\nMobile")
-
   end
 
   it 'can correctly find parent themes' do
@@ -111,7 +109,6 @@ HTML
   end
 
   it 'should create body_tag_baked on demand if needed' do
-
     theme = Theme.new(user_id: -1, name: "test")
     theme.set_field(target: :common, name: :body_tag, value: "<b>test")
     theme.save
@@ -155,9 +152,7 @@ HTML
   end
 
   context 'theme vars' do
-
     it 'works in parent theme' do
-
       theme = Theme.new(name: 'theme', user_id: -1)
       theme.set_field(target: :common, name: :scss, value: 'body {color: $magic; }')
       theme.set_field(target: :common, name: :magic, value: 'red', type: :theme_var)
@@ -265,5 +260,4 @@ HTML
     user_themes = JSON.parse(json)["user_themes"]
     expect(user_themes).to eq([])
   end
-
 end

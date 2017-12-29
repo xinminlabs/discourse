@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ColorSchemeRevisor do
-
   let(:color)        { Fabricate.build(:color_scheme_color, hex: 'FFFFFF', color_scheme: nil) }
   let(:color_scheme) { Fabricate(:color_scheme, created_at: 1.day.ago, updated_at: 1.day.ago, color_scheme_colors: [color]) }
   let(:valid_params) { { name: color_scheme.name, colors: nil } }
@@ -47,5 +46,4 @@ describe ColorSchemeRevisor do
       expect(color_scheme.colors.first.hex).to eq(color.hex)
     end
   end
-
 end

@@ -3,7 +3,6 @@ require 'cgi'
 require 'time'
 
 class QuandoraQuestion
-
   def initialize(question_json)
     @question = JSON.parse question_json
   end

@@ -9,5 +9,4 @@ describe CurrentUser do
     env = Rack::MockRequest.env_for("/test", "HTTP_COOKIE" => "_t=#{token.unhashed_auth_token};")
     expect(CurrentUser.lookup_from_env(env)).to eq(user)
   end
-
 end

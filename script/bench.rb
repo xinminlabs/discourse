@@ -273,7 +273,6 @@ begin
       f.write(results)
     end
   end
-
 ensure
   Process.kill "KILL", pid
 end

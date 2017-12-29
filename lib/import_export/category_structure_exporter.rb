@@ -2,7 +2,6 @@ require "import_export/base_exporter"
 
 module ImportExport
   class CategoryStructureExporter < ImportExport::BaseExporter
-
     def initialize(include_group_users = false)
       @include_group_users = include_group_users
 
@@ -25,6 +24,5 @@ module ImportExport
     def default_filename_prefix
       "category-structure-export"
     end
-
   end
 end

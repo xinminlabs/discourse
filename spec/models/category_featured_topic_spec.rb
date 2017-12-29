@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe CategoryFeaturedTopic do
-
   it { is_expected.to belong_to :category }
   it { is_expected.to belong_to :topic }
 
@@ -30,7 +29,6 @@ describe CategoryFeaturedTopic do
     end
 
     it "should feature topics for a secure category" do
-
       # so much dancing, I am thinking fixures make sense here.
       user.change_trust_level!(TrustLevel[1])
 
@@ -41,7 +39,6 @@ describe CategoryFeaturedTopic do
 
       CategoryFeaturedTopic.feature_topics_for(category)
       expect(CategoryFeaturedTopic.count).to be(1)
-
     end
 
     it 'should not include invisible topics' do
@@ -66,8 +63,6 @@ describe CategoryFeaturedTopic do
       expect(
         CategoryFeaturedTopic.where(category_id: category.id).order('rank asc').pluck(:topic_id)
       ).to eq([pinned.id, t2.id, t1.id, t3.id, t4.id])
-
     end
   end
-
 end

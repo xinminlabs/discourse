@@ -57,7 +57,6 @@ class ImportScripts::Disqus < ImportScripts::Base
     puts "", "importing topics..."
 
     @parser.threads.each do |id, t|
-
       title = t[:title]
       title.gsub!(/&#8220;/, '"')
       title.gsub!(/&#8221;/, '"')
@@ -123,7 +122,6 @@ class DisqusSAX < Nokogiri::XML::SAX::Document
   end
 
   def start_element(name, attrs = [])
-
     hashed = Hash[attrs]
     case name
     when 'post'

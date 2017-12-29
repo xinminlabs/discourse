@@ -1,11 +1,8 @@
 require "rails_helper"
 
 describe InviteMailer do
-
   describe "send_invite" do
-
     context "invite to site" do
-
       context "default invite message" do
         let(:invite) { Fabricate(:invite) }
         let(:invite_mail) { InviteMailer.send_invite(invite) }
@@ -68,7 +65,6 @@ describe InviteMailer do
           it 'renders invite link' do
             expect(custom_invite_mail.body.encoded).to match("#{Discourse.base_url}/invites/#{invite.invite_key}")
           end
-
         end
       end
     end
@@ -136,5 +132,4 @@ describe InviteMailer do
       end
     end
   end
-
 end

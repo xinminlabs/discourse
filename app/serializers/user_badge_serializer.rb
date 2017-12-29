@@ -1,5 +1,4 @@
 class UserBadgeSerializer < ApplicationSerializer
-
   class UserSerializer < BasicUserSerializer
     attributes :name, :moderator, :admin
   end

@@ -1,5 +1,4 @@
 class GroupActionLogger
-
   def initialize(acting_user, group)
     @acting_user = acting_user
     @group = group
@@ -74,5 +73,4 @@ class GroupActionLogger
     def can_edit?
       raise Discourse::InvalidParameters.new unless Guardian.new(@acting_user).can_log_group_changes?(@group)
     end
-
 end

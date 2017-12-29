@@ -33,6 +33,5 @@ module Jobs
       end
       true
     end
-
   end
 end

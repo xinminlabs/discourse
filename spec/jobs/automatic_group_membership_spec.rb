@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'jobs/regular/automatic_group_membership'
 
 describe Jobs::AutomaticGroupMembership do
-
   it "raises an error when the group id is missing" do
     expect { Jobs::AutomaticGroupMembership.new.execute({}) }.to raise_error(Discourse::InvalidParameters)
   end
@@ -24,5 +23,4 @@ describe Jobs::AutomaticGroupMembership do
     expect(group.users.include?(user3)).to eq(false)
     expect(group.users.include?(user4)).to eq(true)
   end
-
 end

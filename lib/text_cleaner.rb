@@ -6,7 +6,6 @@
 require 'active_support/core_ext/string/multibyte'
 
 class TextCleaner
-
   def self.title_options
     # cf. http://meta.discourse.org/t/should-we-have-auto-replace-rules-in-titles/5687
     {
@@ -56,5 +55,4 @@ class TextCleaner
   def self.normalize_whitespaces(text)
     text.gsub(@@whitespaces_regexp, ' ')
   end
-
 end

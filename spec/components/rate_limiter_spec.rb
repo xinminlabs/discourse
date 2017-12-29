@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'rate_limiter'
 
 describe RateLimiter do
-
   let(:user) { Fabricate(:user) }
   let(:rate_limiter) { RateLimiter.new(user, "peppermint-butler", 2, 60) }
 
@@ -23,7 +22,6 @@ describe RateLimiter do
     it "doesn't raise an error on performed!" do
       expect { rate_limiter.performed! }.not_to raise_error
     end
-
   end
 
   context 'enabled' do
@@ -37,7 +35,6 @@ describe RateLimiter do
     end
 
     context 'global rate limiter' do
-
       it 'can operate in global mode' do
         limiter = RateLimiter.new(nil, "test", 2, 30, global: true)
         limiter.clear!
@@ -56,7 +53,6 @@ describe RateLimiter do
         end
         expect(thrown).to be(true)
       end
-
     end
 
     context 'handles readonly' do
@@ -144,8 +140,6 @@ describe RateLimiter do
           expect { rate_limiter.performed! }.not_to raise_error
         end
       end
-
     end
   end
-
 end

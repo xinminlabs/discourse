@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe AllowedIpAddressValidator do
-
   let(:record) { Fabricate.build(:user, trust_level: TrustLevel[0], ip_address: '99.232.23.123') }
   let(:validator) { described_class.new(attributes: :ip_address) }
   subject(:validate) { validator.validate_each(record, :ip_address, record.ip_address) }
@@ -40,5 +39,4 @@ describe AllowedIpAddressValidator do
       expect(record.errors[:ip_address]).not_to be_present
     end
   end
-
 end

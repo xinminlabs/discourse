@@ -6,7 +6,6 @@ class GlobalPathInstance
 end
 
 describe GlobalPath do
-
   context 'cdn_relative_path' do
     def cdn_relative_path(p)
       GlobalPathInstance.cdn_relative_path(p)
@@ -25,6 +24,5 @@ describe GlobalPath do
       GlobalSetting.expects(:cdn_url).returns("https://something.com:221/foo")
       expect(cdn_relative_path("/test")).to eq("/foo/test")
     end
-
   end
 end

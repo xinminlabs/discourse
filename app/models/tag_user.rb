@@ -115,11 +115,9 @@ SQL
                  tracking: notification_levels[:tracking],
                  regular: notification_levels[:regular],
                  auto_watch_tag:  TopicUser.notification_reasons[:auto_watch_tag])
-
   end
 
   def self.auto_track(opts)
-
     builder = SqlBuilder.new <<SQL
   UPDATE topic_users
   SET notification_level = :tracking, notifications_reason_id = :auto_track_tag
@@ -150,7 +148,6 @@ SQL
                  regular: notification_levels[:regular],
                  auto_track_tag:  TopicUser.notification_reasons[:auto_track_tag])
   end
-
 end
 
 # == Schema Information

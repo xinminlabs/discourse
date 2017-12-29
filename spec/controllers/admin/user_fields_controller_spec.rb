@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Admin::UserFieldsController do
-
   it "is a subclass of AdminController" do
     expect(Admin::UserFieldsController < Admin::AdminController).to eq(true)
   end
@@ -125,5 +124,4 @@ describe Admin::UserFieldsController do
       end
     end
   end
-
 end

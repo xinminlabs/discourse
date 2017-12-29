@@ -5,7 +5,6 @@ require_relative '../quandora_question.rb'
 require_relative './test_data.rb'
 
 class TestQuandoraQuestion < Minitest::Test
-
   def setup
     @data = JSON.parse(QUESTION)['data']
     @question = QuandoraQuestion.new @data.to_json

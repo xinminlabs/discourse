@@ -3,7 +3,6 @@ require_dependency 'jobs/base'
 require_dependency 'jobs/regular/process_post'
 
 describe Jobs::NotifyMovedPosts do
-
   it "raises an error without post_ids" do
     expect { Jobs::NotifyMovedPosts.new.execute(moved_by_id: 1234) }.to raise_error(Discourse::InvalidParameters)
   end
@@ -29,7 +28,5 @@ describe Jobs::NotifyMovedPosts do
         expect { Jobs::NotifyMovedPosts.new.execute(post_ids: [p1.id, p2.id, p3.id], moved_by_id: p1.user_id) }.to change(moved_post_notifications, :count).by(1)
       end
     end
-
   end
-
 end

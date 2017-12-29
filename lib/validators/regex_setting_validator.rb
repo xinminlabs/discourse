@@ -1,5 +1,4 @@
 class RegexSettingValidator
-
   LOREM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget sem non elit tincidunt rhoncus.'.freeze
 
   def initialize(opts = {})

@@ -10,7 +10,6 @@
 #   $redis.without_namespace.del CommonPasswords::LIST_KEY
 
 class CommonPasswords
-
   PASSWORD_FILE = File.join(Rails.root, 'lib', 'common_passwords', '10-char-common-passwords.txt')
   LIST_KEY = 'discourse-common-passwords'
 
@@ -50,5 +49,4 @@ class CommonPasswords
       # tolerate this so we don't block signups
       Rails.logger.error "Common passwords file #{PASSWORD_FILE} is not found! Common password checking is skipped."
     end
-
 end

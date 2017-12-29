@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe RandomTopicSelector do
-
   it 'can correctly use cache' do
     key = RandomTopicSelector.cache_key
 

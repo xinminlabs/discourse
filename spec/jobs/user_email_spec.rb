@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'jobs/base'
 
 describe Jobs::UserEmail do
-
   before do
     SiteSetting.email_time_window_mins = 10
   end
@@ -36,7 +35,6 @@ describe Jobs::UserEmail do
   end
 
   context "bounce score" do
-
     it "always sends critical emails when bounce score threshold has been reached" do
       email_token = Fabricate(:email_token)
       user.user_stat.update(bounce_score: SiteSetting.bounce_score_threshold + 1)
@@ -47,7 +45,6 @@ describe Jobs::UserEmail do
       expect(email_log.email_type).to eq("signup")
       expect(email_log.skipped).to eq(false)
     end
-
   end
 
   context 'to_address' do
@@ -79,7 +76,6 @@ describe Jobs::UserEmail do
   end
 
   context "email_log" do
-
     before do
       SiteSetting.editing_grace_period = 0
       Fabricate(:post)
@@ -112,11 +108,9 @@ describe Jobs::UserEmail do
       # last_emailed_at doesn't change
       expect(email_log.user.last_emailed_at).to eq(last_emailed_at)
     end
-
   end
 
   context 'args' do
-
     it 'passes a token as an argument when a token is present' do
       UserNotifications.expects(:forgot_password).with(user, email_token: 'asdfasdf').returns(mailer)
       Email::Sender.any_instance.expects(:send)
@@ -354,7 +348,5 @@ describe Jobs::UserEmail do
         end
       end
     end
-
   end
-
 end

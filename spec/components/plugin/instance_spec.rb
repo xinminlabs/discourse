@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'plugin/instance'
 
 describe Plugin::Instance do
-
   after do
     DiscoursePluginRegistry.reset!
   end
@@ -24,13 +23,11 @@ describe Plugin::Instance do
   end
 
   context "enabling/disabling" do
-
     it "is enabled by default" do
       expect(Plugin::Instance.new.enabled?).to eq(true)
     end
 
     context "with a plugin that extends things" do
-
       class Trout; end
       class TroutSerializer < ApplicationSerializer; end
 
@@ -61,7 +58,6 @@ describe Plugin::Instance do
       end
 
       it "checks enabled/disabled functionality for extensions" do
-
         # with an enabled plugin
         @plugin.enabled = true
         expect(@trout.status?).to eq("evil")
@@ -77,7 +73,6 @@ describe Plugin::Instance do
         expect(@hello_count).to eq(1)
         expect(@serializer.scales).to eq(1024)
         expect(@serializer.include_scales?).to eq(false)
-
       end
     end
   end

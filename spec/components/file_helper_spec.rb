@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'file_helper'
 
 describe FileHelper do
-
   let(:url) { "https://eviltrout.com/trout.png" }
   let(:png) { Base64.decode64("R0lGODlhAQABALMAAAAAAIAAAACAAICAAAAAgIAAgACAgMDAwICAgP8AAAD/AP//AAAA//8A/wD//wBiZCH5BAEAAA8ALAAAAAABAAEAAAQC8EUAOw==") }
 
@@ -12,7 +11,6 @@ describe FileHelper do
   end
 
   describe "download" do
-
     it "correctly raises an OpenURI HTTP error if it gets a 404 even with redirect" do
       url = "http://fourohfour.com/404"
       stub_request(:head, url).to_return(status: 404, body: "404")
@@ -72,5 +70,4 @@ describe FileHelper do
       expect(tmpfile.read[0..5]).to eq("GIF89a")
     end
   end
-
 end

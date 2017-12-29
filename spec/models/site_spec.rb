@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'site'
 
 describe Site do
-
   def expect_correct_themes(guardian)
     json = Site.json_for(guardian)
     parsed = JSON.parse(json)
@@ -37,7 +36,6 @@ describe Site do
 
     expect_correct_themes(anon_guardian)
     expect_correct_themes(user_guardian)
-
   end
 
   it "omits categories users can not write to from the category list" do
@@ -65,5 +63,4 @@ describe Site do
     sub_category = Fabricate(:category, parent_category_id: category.id)
     expect(Site.new(guardian).categories).not_to include(sub_category)
   end
-
 end

@@ -1,7 +1,6 @@
 # ViewModel used on Summary tab on User page
 
 class UserSummary
-
   MAX_SUMMARY_RESULTS = 6
   MAX_BADGES = 6
 
@@ -164,5 +163,4 @@ class UserSummary
            :post_count,
            :time_read,
            to: :user_stat
-
 end

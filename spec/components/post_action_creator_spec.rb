@@ -16,5 +16,4 @@ describe PostActionCreator do
       expect { PostActionCreator.new(user, nil).perform(like_type_id) }.to raise_error(Discourse::InvalidAccess)
     end
   end
-
 end

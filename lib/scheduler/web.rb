@@ -4,7 +4,6 @@ module Scheduler
     VIEWS = File.expand_path('views', File.dirname(__FILE__)) unless defined? VIEWS
 
     def self.registered(app)
-
       app.helpers do
         def sane_time(time)
           return unless time
@@ -56,7 +55,6 @@ module Scheduler
           redirect "#{root_path}scheduler"
         end
       end
-
     end
   end
 end

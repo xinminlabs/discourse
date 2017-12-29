@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe SpamRulesEnforcer do
-
   let(:ip_address)  { '182.189.119.174' }
   let!(:spammer1)   { Fabricate(:user, ip_address: ip_address) }
   let!(:spammer2)   { Fabricate(:user, ip_address: ip_address) }
@@ -68,5 +67,4 @@ describe SpamRulesEnforcer do
       end
     end
   end
-
 end

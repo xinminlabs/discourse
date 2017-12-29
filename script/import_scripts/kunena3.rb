@@ -17,7 +17,6 @@ export PARENT_FIELD="parent_id" # "parent" in some versions
 =end
 
 class ImportScripts::Kunena < ImportScripts::Base
-
   DB_HOST ||= ENV['DB_HOST'] || "localhost"
   DB_NAME ||= ENV['DB_NAME'] || "kunena"
   DB_USER ||= ENV['DB_USER'] || "kunena"
@@ -27,7 +26,6 @@ class ImportScripts::Kunena < ImportScripts::Base
   PARENT_FIELD ||= ENV['PARENT_FIELD'] || "parent_id" # "parent" in some versions
 
   def initialize
-
     super
 
     @users = {}

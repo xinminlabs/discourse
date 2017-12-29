@@ -13,7 +13,6 @@ require 'mysql2'
 require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 
 class ImportScripts::DiscuzX < ImportScripts::Base
-
   DISCUZX_DB = "ultrax"
   DB_TABLE_PREFIX = 'pre_'
   BATCH_SIZE = 1000
@@ -48,7 +47,6 @@ class ImportScripts::DiscuzX < ImportScripts::Base
       /http(?:s)?:\/\/#{ORIGINAL_SITE_PREFIX.gsub('.', '\.')}\/(?<action>stats)\.php(?:[^\[\]\s]*)/,
       /http(?:s)?:\/\/#{ORIGINAL_SITE_PREFIX.gsub('.', '\.')}\/misc.php\?mod=(?<mod>stat|ranklist)(?:[^\[\]\s]*)/
     ]
-
   end
 
   def execute
@@ -517,7 +515,6 @@ class ImportScripts::DiscuzX < ImportScripts::Base
 
         skip ? nil : mapped
       end
-
     end
   end
 
@@ -543,7 +540,6 @@ class ImportScripts::DiscuzX < ImportScripts::Base
       upload, filename = upload_inline_image data
       upload ? html_for_upload(upload, filename) : nil
     end
-
   end
 
   def process_discuzx_post(raw, import_id)

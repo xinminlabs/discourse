@@ -4,7 +4,6 @@
 # For cases where we are making remote calls like onebox or proxying files and so on this helps
 # free up a unicorn worker while the remote IO is happening
 module Hijack
-
   def hijack(&blk)
     controller_class = self.class
 
@@ -22,7 +21,6 @@ module Hijack
       io = hijack.call
 
       Scheduler::Defer.later("hijack #{params["controller"]} #{params["action"]}") do
-
         MethodProfiler.start(transfer_timings) if defined? MethodProfiler
 
         begin
@@ -77,7 +75,6 @@ module Hijack
           # happens if client terminated before we responded, ignore
           io = nil
         ensure
-
           Thread.current[Logster::Logger::LOGSTER_ENV] = nil
 
           io.close if io rescue nil

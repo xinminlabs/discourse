@@ -2,9 +2,7 @@ require 'rails_helper'
 require_dependency 'jobs/base'
 
 describe Jobs do
-
   describe 'enqueue' do
-
     describe 'when queue_jobs is true' do
       before do
         SiteSetting.expects(:queue_jobs?).at_least_once.returns(true)
@@ -72,11 +70,9 @@ describe Jobs do
         end
       end
     end
-
   end
 
   describe 'cancel_scheduled_job' do
-
     it 'deletes the matching job' do
       SiteSetting.queue_jobs = true
 
@@ -101,7 +97,6 @@ describe Jobs do
         expect(scheduled_jobs.size).to eq(1)
       end
     end
-
   end
 
   describe 'enqueue_at' do
@@ -117,5 +112,4 @@ describe Jobs do
       Jobs.enqueue_at(3.hours.ago, :eat_lunch, {})
     end
   end
-
 end

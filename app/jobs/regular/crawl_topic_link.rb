@@ -6,7 +6,6 @@ require_dependency 'topic_link'
 
 module Jobs
   class CrawlTopicLink < Jobs::Base
-
     def execute(args)
       raise Discourse::InvalidParameters.new(:topic_link_id) unless args[:topic_link_id].present?
 
@@ -45,6 +44,5 @@ module Jobs
         TopicLink.where(id: topic_link.id).update_all('crawled_at = CURRENT_TIMESTAMP') if !crawled && topic_link.present?
       end
     end
-
   end
 end

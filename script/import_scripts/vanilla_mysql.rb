@@ -3,7 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 require 'htmlentities'
 
 class ImportScripts::VanillaSQL < ImportScripts::Base
-
   VANILLA_DB = "vanilla_mysql"
   TABLE_PREFIX = "GDN_"
   ATTACHMENTS_BASE_DIR = nil # "/absolute/path/to/attachments" set the absolute path if you have attachments
@@ -386,7 +385,6 @@ class ImportScripts::VanillaSQL < ImportScripts::Base
       end
     end
   end
-
 end
 
 ImportScripts::VanillaSQL.new.perform

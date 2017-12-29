@@ -53,7 +53,6 @@ describe Admin::GroupsController do
             allow_membership_requests: "true"
           }
         }, format: :json
-
       end.to change { GroupHistory.count }.by(2)
 
       expect(response).to be_success
@@ -93,11 +92,9 @@ describe Admin::GroupsController do
 
       expect(response).to be_success
     end
-
   end
 
   context ".destroy" do
-
     it "returns a 422 if the group is automatic" do
       group = Fabricate(:group, automatic: true)
       delete :destroy, params: { id: group.id }, format: :json
@@ -111,18 +108,14 @@ describe Admin::GroupsController do
       expect(response.status).to eq(200)
       expect(Group.where(id: group.id).count).to eq(0)
     end
-
   end
 
   context ".refresh_automatic_groups" do
-
     it "is able to refresh automatic groups" do
       Group.expects(:refresh_automatic_groups!).returns(true)
 
       post :refresh_automatic_groups, format: :json
       expect(response.status).to eq(200)
     end
-
   end
-
 end

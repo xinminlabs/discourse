@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Jobs::PendingUsersReminder do
-
   context 'must_approve_users is true' do
     before do
       SiteSetting.must_approve_users = true

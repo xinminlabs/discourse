@@ -2,7 +2,6 @@
 module Plugin; end
 
 class Plugin::Metadata
-
   OFFICIAL_PLUGINS ||= Set.new([
     "customer-flair",
     "discourse-adplugin",

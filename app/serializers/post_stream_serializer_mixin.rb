@@ -3,7 +3,6 @@ require_dependency 'post_serializer'
 require_dependency 'timeline_lookup'
 
 module PostStreamSerializerMixin
-
   def self.included(klass)
     klass.attributes :post_stream
     klass.attributes :timeline_lookup
@@ -32,5 +31,4 @@ module PostStreamSerializerMixin
       end
     end
   end
-
 end

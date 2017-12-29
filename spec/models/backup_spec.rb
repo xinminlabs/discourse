@@ -4,7 +4,6 @@ require "s3_helper"
 require_dependency 'backup'
 
 describe Backup do
-
   let(:b1) { Backup.new('backup1') }
   let(:b2) { Backup.new('backup2') }
   let(:b3) { Backup.new('backup3') }
@@ -131,5 +130,4 @@ describe Backup do
       b1.after_remove_hook
     end
   end
-
 end

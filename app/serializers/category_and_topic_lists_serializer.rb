@@ -12,5 +12,4 @@ class CategoryAndTopicListsSerializer < ApplicationSerializer
     users.uniq!(&:id)
     users
   end
-
 end

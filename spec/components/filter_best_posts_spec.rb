@@ -3,7 +3,6 @@ require 'filter_best_posts'
 require 'topic_view'
 
 describe FilterBestPosts do
-
   let(:topic) { Fabricate(:topic) }
   let(:coding_horror) { Fabricate(:coding_horror) }
   let(:first_poster) { topic.user }
@@ -18,7 +17,6 @@ describe FilterBestPosts do
   let(:admin) { Fabricate(:admin) }
 
   it "can find the best responses" do
-
     filtered_posts = TopicView.new(topic.id, coding_horror, best: 2).filtered_posts
     best2 = FilterBestPosts.new(topic, filtered_posts, 2)
     expect(best2.posts.count).to eq(2)
@@ -33,21 +31,17 @@ describe FilterBestPosts do
     before { @filtered_posts = TopicView.new(topic.id, nil, best: 99).filtered_posts }
 
     it "should not get the status post" do
-
       best = FilterBestPosts.new(topic, @filtered_posts, 99)
       expect(best.filtered_posts.size).to eq(3)
       expect(best.posts.map(&:id)).to match_array([p2.id, p3.id])
-
     end
 
     it "should get no results for trust level too low" do
-
       best = FilterBestPosts.new(topic, @filtered_posts, 99, min_trust_level: coding_horror.trust_level + 1)
       expect(best.posts.count).to eq(0)
     end
 
     it "should filter out the posts with a score that is too low" do
-
       best = FilterBestPosts.new(topic, @filtered_posts, 99, min_score: 99)
       expect(best.posts.count).to eq(0)
     end
@@ -85,6 +79,5 @@ describe FilterBestPosts do
       best = FilterBestPosts.new(topic, @filtered_posts, 99, only_moderator_liked: true)
       expect(best.posts.count).to eq(1)
     end
-
   end
 end

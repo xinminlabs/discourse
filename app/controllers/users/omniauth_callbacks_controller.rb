@@ -4,7 +4,6 @@ require_dependency 'enum'
 require_dependency 'user_name_suggester'
 
 class Users::OmniauthCallbacksController < ApplicationController
-
   BUILTIN_AUTH = [
     Auth::FacebookAuthenticator.new,
     Auth::GoogleOAuth2Authenticator.new,
@@ -137,5 +136,4 @@ class Users::OmniauthCallbacksController < ApplicationController
       end
     end
   end
-
 end

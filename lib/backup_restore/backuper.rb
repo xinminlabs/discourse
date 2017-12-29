@@ -1,5 +1,4 @@
 module BackupRestore
-
   class Backuper
     attr_reader :success
 
@@ -330,7 +329,5 @@ module BackupRestore
     def save_log(message, timestamp)
       @logs << "[#{timestamp}] #{message}"
     end
-
   end
-
 end

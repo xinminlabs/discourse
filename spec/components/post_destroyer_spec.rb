@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'post_destroyer'
 
 describe PostDestroyer do
-
   before do
     UserActionCreator.enable
   end
@@ -12,7 +11,6 @@ describe PostDestroyer do
   let(:post) { create_post }
 
   describe "destroy_old_hidden_posts" do
-
     it "destroys posts that have been hidden for 30 days" do
       Fabricate(:admin)
 
@@ -46,7 +44,6 @@ describe PostDestroyer do
       expect(reply3.deleted_at).to eq(nil)
       expect(reply4.deleted_at).to eq(nil)
     end
-
   end
 
   describe 'destroy_old_stubs' do
@@ -90,7 +87,6 @@ describe PostDestroyer do
 
       reply1.reload
       expect(reply1.deleted_at).to eq(nil)
-
     end
 
     it 'uses the delete_removed_posts_after site setting' do
@@ -357,11 +353,9 @@ describe PostDestroyer do
         }.to_not change { user_stat.reload.post_count }
       end
     end
-
   end
 
   context 'deleting the second post in a topic' do
-
     let(:user) { Fabricate(:user) }
     let!(:post) { create_post(user: user) }
     let(:topic) { post.topic.reload }
@@ -381,7 +375,6 @@ describe PostDestroyer do
     end
 
     context 'topic_user' do
-
       let(:topic_user) { second_user.topic_users.find_by(topic_id: topic.id) }
 
       it 'clears the posted flag for the second user' do
@@ -395,9 +388,7 @@ describe PostDestroyer do
       it "sets the second user's last_read_post_number back to 1" do
         expect(topic_user.highest_seen_post_number).to eq(1)
       end
-
     end
-
   end
 
   context "deleting a post belonging to a deleted topic" do
@@ -481,7 +472,6 @@ describe PostDestroyer do
   end
 
   describe 'after delete' do
-
     let!(:coding_horror) { Fabricate(:coding_horror) }
     let!(:post) { Fabricate(:post, raw: "Hello @CodingHorror") }
 
@@ -491,7 +481,6 @@ describe PostDestroyer do
     end
 
     describe 'with a reply' do
-
       let!(:reply) { Fabricate(:basic_reply, user: coding_horror, topic: post.topic) }
       let!(:post_reply) { PostReply.create(post_id: post.id, reply_id: reply.id) }
 
@@ -514,9 +503,7 @@ describe PostDestroyer do
         p = Fabricate(:post, user: post.user, topic: post.topic)
         expect(p.post_number).to eq(3)
       end
-
     end
-
   end
 
   context '@mentions' do
@@ -591,5 +578,4 @@ describe PostDestroyer do
       expect(topic.topic_links.count).to eq(0)
     end
   end
-
 end

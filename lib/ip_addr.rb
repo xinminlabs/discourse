@@ -1,5 +1,4 @@
 class IPAddr
-
   def self.handle_wildcards(val)
     return if val.blank?
 
@@ -31,5 +30,4 @@ class IPAddr
       nil
     end
   end
-
 end

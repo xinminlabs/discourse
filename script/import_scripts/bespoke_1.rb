@@ -6,7 +6,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 # Call it like this:
 #   RAILS_ENV=production bundle exec ruby script/import_scripts/bespoke_1.rb
 class ImportScripts::Bespoke < ImportScripts::Base
-
   BATCH_SIZE = 1000
 
   def initialize(path)
@@ -30,7 +29,6 @@ class ImportScripts::Bespoke < ImportScripts::Base
     import_users
     import_categories
     import_posts
-
   end
 
   class RowResolver
@@ -69,7 +67,6 @@ class ImportScripts::Bespoke < ImportScripts::Base
     double_quote_count = 0
 
     File.open(filename).each_line do |line|
-
       # escaping is mental here
       line.gsub!(/\\(.{1})/) { |m| m[-1] == '"' ? '""' : m[-1] }
       line.strip!
@@ -131,7 +128,6 @@ class ImportScripts::Bespoke < ImportScripts::Base
     total = total_rows("users")
 
     csv_parse("users") do |row|
-
       id = row.id
       email = row.email
 
@@ -160,7 +156,6 @@ class ImportScripts::Bespoke < ImportScripts::Base
       if count % BATCH_SIZE == 0
         load_user_batch! users, count - users.length, total
       end
-
     end
 
     load_user_batch! users, count, total
@@ -187,7 +182,6 @@ class ImportScripts::Bespoke < ImportScripts::Base
 
   def import_post_batch!(posts, topics, offset, total)
     create_posts(posts, total: total, offset: offset) do |post|
-
       mapped = {}
 
       mapped[:id] = post[:id]
@@ -244,7 +238,6 @@ class ImportScripts::Bespoke < ImportScripts::Base
     posts = []
     count = 0
     csv_parse("posts") do |row|
-
       unless row.dcreate
         puts "NO CREATION DATE FOR POST"
         p row
@@ -273,7 +266,6 @@ class ImportScripts::Bespoke < ImportScripts::Base
 
     exit
   end
-
 end
 
 unless ARGV[0] && Dir.exist?(ARGV[0])

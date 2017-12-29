@@ -2,7 +2,6 @@ require_dependency 'pretty_text'
 
 # A very simple formatter for imported emails
 class EmailCook
-
   def self.url_regexp
     @url_regexp ||= /((?:https?:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.])(?:[^\s()<>]+|\([^\s()<>]+\))+(?:\([^\s()<>]+\)|[^`!()\[\]{};:'".,<>?«»“”‘’\s]))/
   end
@@ -103,5 +102,4 @@ class EmailCook
     result << "\n<br><br>" << Email::Receiver.elided_html(htmlify(@elided)) if @elided.present?
     result
   end
-
 end

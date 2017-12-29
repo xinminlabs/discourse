@@ -1,5 +1,4 @@
 class UserField < ActiveRecord::Base
-
   include AnonCacheInvalidator
 
   validates_presence_of :name, :description, :field_type

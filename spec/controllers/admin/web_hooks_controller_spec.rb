@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Admin::WebHooksController do
-
   it 'is a subclass of AdminController' do
     expect(Admin::WebHooksController < Admin::AdminController).to eq(true)
   end

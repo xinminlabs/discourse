@@ -1,6 +1,5 @@
 class RemoveNullableDates < ActiveRecord::Migration[4.2]
   def up
-
     # must drop so we can muck with the column
     execute "DROP VIEW badge_posts"
 
@@ -33,7 +32,6 @@ class RemoveNullableDates < ActiveRecord::Migration[4.2]
           t.deleted_at IS NULL AND
           NOT c.read_restricted AND
           t.visible"
-
   end
 
   def down

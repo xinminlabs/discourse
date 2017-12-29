@@ -1,6 +1,5 @@
 class AddUserOptions < ActiveRecord::Migration[4.2]
   def up
-
     create_table :user_options, id: false do |t|
       t.integer :user_id, null: false
       t.boolean :email_always, null: false, default: false

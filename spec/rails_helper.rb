@@ -143,7 +143,6 @@ RSpec.configure do |config|
       super
     end
   end
-
 end
 
 class TrackTimeStub

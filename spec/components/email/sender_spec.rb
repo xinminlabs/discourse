@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'email/sender'
 
 describe Email::Sender do
-
   it "doesn't deliver mail when mails are disabled" do
     SiteSetting.disable_emails = true
     Mail::Message.any_instance.expects(:deliver_now).never
@@ -56,11 +55,9 @@ describe Email::Sender do
     it "downcases hosts" do
       expect(Email::Sender.host_for("http://ForumSite.com")).to eq("forumsite.com")
     end
-
   end
 
   context 'with a valid message' do
-
     let(:reply_key) { "abcd" * 8 }
 
     let(:message) do
@@ -114,7 +111,6 @@ describe Email::Sender do
     end
 
     context "adds a Message-ID header even when topic id is not present" do
-
       it 'should add the right header' do
         email_sender.send
 
@@ -238,7 +234,6 @@ describe Email::Sender do
 
         expect(message.header['References'].to_s).to eq(references.join(" "))
       end
-
     end
 
     context "merges custom mandrill header" do
@@ -340,7 +335,5 @@ describe Email::Sender do
     it 'should have the current user_id' do
       expect(@email_log.user_id).to eq(user.id)
     end
-
   end
-
 end

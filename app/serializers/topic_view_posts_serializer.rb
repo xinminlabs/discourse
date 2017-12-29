@@ -7,5 +7,4 @@ class TopicViewPostsSerializer < ApplicationSerializer
   def id
     object.topic.id
   end
-
 end

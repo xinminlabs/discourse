@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe SearchController do
-
   context "integration" do
     before do
       SearchIndexer.enable
@@ -160,7 +159,6 @@ describe SearchController do
         expect(response).to be_success
       end
     end
-
   end
 
   context "#click" do

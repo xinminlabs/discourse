@@ -1,7 +1,6 @@
 require_dependency 'composer_messages_finder'
 
 class ComposerMessagesController < ApplicationController
-
   before_action :ensure_logged_in
 
   def index

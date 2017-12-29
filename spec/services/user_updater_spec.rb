@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UserUpdater do
-
   let(:acting_user) { Fabricate.build(:user) }
 
   describe '#update_muted_users' do
@@ -22,7 +21,6 @@ describe UserUpdater do
       expect(MutedUser.where(user_id: u2.id).count).to eq 2
       expect(MutedUser.where(user_id: u1.id).count).to eq 2
       expect(MutedUser.where(user_id: u3.id).count).to eq 0
-
     end
   end
 
@@ -55,7 +53,6 @@ describe UserUpdater do
         category_id: category.id,
         notification_level: CategoryUser.notification_levels[:muted]
       ).count).to eq(1)
-
     end
 
     it 'updates various fields' do

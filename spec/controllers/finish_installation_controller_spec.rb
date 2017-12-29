@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe FinishInstallationController do
-
   describe '.index' do
     context "has_login_hint is false" do
       before do
@@ -81,7 +80,6 @@ describe FinishInstallationController do
         expect(response).to be_redirect
         expect(User.where(username: 'eviltrout').exists?).to eq(true)
       end
-
     end
   end
 

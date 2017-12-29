@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Onebox::Engine::DiscourseLocalOnebox do
-
   before { SiteSetting.external_system_avatars_enabled = false }
 
   def build_link(url)
@@ -78,7 +77,6 @@ describe Onebox::Engine::DiscourseLocalOnebox do
   end
 
   context "for a link to an internal audio or video file" do
-
     let(:sha) { Digest::SHA1.hexdigest("discourse") }
     let(:path) { "/uploads/default/original/3X/5/c/#{sha}" }
 
@@ -138,7 +136,5 @@ describe Onebox::Engine::DiscourseLocalOnebox do
         expect(html).to include("<blockquote>")
       end
     end
-
   end
-
 end

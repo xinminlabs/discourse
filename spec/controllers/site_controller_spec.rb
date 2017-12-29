@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe SiteController do
   describe '.basic_info' do
-
     it 'is visible always even for sites requiring login' do
       SiteSetting.login_required = true
 
@@ -26,7 +25,6 @@ describe SiteController do
   end
 
   describe '.statistics' do
-
     it 'is visible for sites requiring login' do
       SiteSetting.login_required = true
       SiteSetting.share_anonymized_statistics = true

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ScreenedEmail do
-
   let(:email) { 'block@spamfromhome.org' }
   let(:similar_email) { 'bl0ck@spamfromhome.org' }
 
@@ -97,5 +96,4 @@ describe ScreenedEmail do
       include_examples "when a ScreenedEmail record matches"
     end
   end
-
 end

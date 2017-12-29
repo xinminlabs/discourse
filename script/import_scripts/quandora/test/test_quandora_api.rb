@@ -4,7 +4,6 @@ require_relative '../quandora_api.rb'
 require_relative './test_data.rb'
 
 class TestQuandoraApi < Minitest::Test
-
   DEBUG = false
 
   def initialize(args)

@@ -1,5 +1,4 @@
 class MergePollsVotes < ActiveRecord::Migration[4.2]
-
   def up
     PostCustomField.where(name: "polls").order(:post_id).pluck(:post_id).each do |post_id|
       polls_votes = {}
@@ -16,5 +15,4 @@ class MergePollsVotes < ActiveRecord::Migration[4.2]
 
   def down
   end
-
 end

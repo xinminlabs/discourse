@@ -66,18 +66,15 @@ describe AdminUserIndexQuery do
   end
 
   describe "no users with trust level" do
-
     TrustLevel.levels.each do |key, value|
       it "#{key} returns no records" do
         query = ::AdminUserIndexQuery.new(query: key.to_s)
         expect(real_users_count(query)).to eq(0)
       end
     end
-
   end
 
   describe "users with trust level" do
-
     TrustLevel.levels.each do |key, value|
       it "finds user with trust #{key}" do
         Fabricate(:user, trust_level: TrustLevel.levels[key])
@@ -85,7 +82,6 @@ describe AdminUserIndexQuery do
         expect(real_users_count(query)).to eq(1)
       end
     end
-
   end
 
   describe 'with a suspected user' do
@@ -101,7 +97,6 @@ describe AdminUserIndexQuery do
   end
 
   describe "with a pending user" do
-
     let!(:user) { Fabricate(:user, active: true, approved: false) }
     let!(:inactive_user) { Fabricate(:user, approved: false, active: false) }
 
@@ -118,7 +113,6 @@ describe AdminUserIndexQuery do
         expect(query.find_users).not_to include(suspended_user)
       end
     end
-
   end
 
   describe "correct order with nil values" do
@@ -140,44 +134,36 @@ describe AdminUserIndexQuery do
       expect(users.where('users.id > -2').count).to eq(2)
       expect(users.first.last_emailed_at).to_not eq(nil)
     end
-
   end
 
   describe "with an admin user" do
-
     let!(:user) { Fabricate(:user, admin: true) }
 
     it "finds the admin" do
       query = ::AdminUserIndexQuery.new(query: 'admins')
       expect(real_users_count(query)).to eq(1)
     end
-
   end
 
   describe "with a moderator" do
-
     let!(:user) { Fabricate(:user, moderator: true) }
 
     it "finds the moderator" do
       query = ::AdminUserIndexQuery.new(query: 'moderators')
       expect(real_users_count(query)).to eq(1)
     end
-
   end
 
   describe "with a silenced user" do
-
     let!(:user) { Fabricate(:user, silenced_till: 1.year.from_now) }
 
     it "finds the silenced user" do
       query = ::AdminUserIndexQuery.new(query: 'silenced')
       expect(query.find_users.count).to eq(1)
     end
-
   end
 
   describe "filtering" do
-
     context "exact email bypass" do
       it "can correctly bypass expensive ilike query" do
         user = Fabricate(:user, email: 'sam@Sam.com')
@@ -200,12 +186,10 @@ describe AdminUserIndexQuery do
         expect(query.first.id).to eq(user.id)
         expect(query.count).to eq(1)
         expect(query.to_sql.downcase).not_to include("ilike")
-
       end
     end
 
     context "by email fragment" do
-
       before(:each) { Fabricate(:user, email: "test1@example.com") }
 
       it "matches the email" do
@@ -217,11 +201,9 @@ describe AdminUserIndexQuery do
         query = ::AdminUserIndexQuery.new(filter: "Test1\t")
         expect(query.find_users.count()).to eq(1)
       end
-
     end
 
     context "by username fragment" do
-
       before(:each) { Fabricate(:user, username: "test_user_1") }
 
       it "matches the username" do
@@ -236,15 +218,12 @@ describe AdminUserIndexQuery do
     end
 
     context "by ip address fragment" do
-
       let!(:user) { Fabricate(:user, ip_address: "117.207.94.9") }
 
       it "matches the ip address" do
         query = ::AdminUserIndexQuery.new(filter: " 117.207.94.9 ")
         expect(query.find_users.count()).to eq(1)
       end
-
     end
-
   end
 end

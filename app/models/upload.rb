@@ -147,7 +147,6 @@ class Upload < ActiveRecord::Base
 
     problems
   end
-
 end
 
 # == Schema Information

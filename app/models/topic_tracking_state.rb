@@ -4,7 +4,6 @@
 # and which topics are new
 
 class TopicTrackingState
-
   include ActiveModel::SerializerSupport
 
   CHANNEL = "/user-tracking"
@@ -18,7 +17,6 @@ class TopicTrackingState
                 :notification_level
 
   def self.publish_new(topic)
-
     message = {
       topic_id: topic.id,
       message_type: "new_topic",
@@ -93,7 +91,6 @@ class TopicTrackingState
 
       MessageBus.publish("/unread/#{tu.user_id}", message.as_json, group_ids: group_ids)
     end
-
   end
 
   def self.publish_recover(topic)
@@ -108,7 +105,6 @@ class TopicTrackingState
     }
 
     MessageBus.publish("/recover", message.as_json, group_ids: group_ids)
-
   end
 
   def self.publish_delete(topic)
@@ -126,7 +122,6 @@ class TopicTrackingState
   end
 
   def self.publish_read(topic_id, last_read_post_number, user_id, notification_level = nil)
-
     highest_post_number = Topic.where(id: topic_id).pluck(:highest_post_number).first
 
     message = {
@@ -141,7 +136,6 @@ class TopicTrackingState
     }
 
     MessageBus.publish("/unread/#{user_id}", message.as_json, user_ids: [user_id])
-
   end
 
   def self.treat_as_new_topic_clause
@@ -159,7 +153,6 @@ class TopicTrackingState
   end
 
   def self.report(user, topic_id = nil)
-
     # Sam: this is a hairy report, in particular I need custom joins and fancy conditions
     #  Dropping to sql_builder so I can make sense of it.
     #
@@ -176,11 +169,9 @@ class TopicTrackingState
 
     SqlBuilder.new(sql)
       .map_exec(TopicTrackingState, user_id: user.id, topic_id: topic_id)
-
   end
 
   def self.report_raw_sql(opts = nil)
-
     unread =
       if opts && opts[:skip_unread]
         "1=0"
@@ -245,5 +236,4 @@ SQL
 
     sql
   end
-
 end

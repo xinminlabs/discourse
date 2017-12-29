@@ -1,7 +1,6 @@
 require_dependency 'search'
 
 class SearchIndexer
-
   def self.disable
     @disabled = true
   end

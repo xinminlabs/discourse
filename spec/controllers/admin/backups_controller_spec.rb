@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Admin::BackupsController do
-
   it "is a subclass of AdminController" do
     expect(Admin::BackupsController < Admin::AdminController).to eq(true)
   end
@@ -9,13 +8,10 @@ describe Admin::BackupsController do
   let(:backup_filename) { "2014-02-10-065935.tar.gz" }
 
   context "while logged in as an admin" do
-
     before { @admin = log_in(:admin) }
 
     describe ".index" do
-
       context "html format" do
-
         it "preloads important data" do
           Backup.expects(:all).returns([])
           subject.expects(:store_preloaded).with("backups", "[]")
@@ -30,11 +26,9 @@ describe Admin::BackupsController do
 
           expect(response).to be_success
         end
-
       end
 
       context "json format" do
-
         it "returns a list of all the backups" do
           Backup.expects(:all).returns([Backup.new("backup1"), Backup.new("backup2")])
 
@@ -46,13 +40,10 @@ describe Admin::BackupsController do
           expect(json[0]["filename"]).to eq("backup1")
           expect(json[1]["filename"]).to eq("backup2")
         end
-
       end
-
     end
 
     describe ".status" do
-
       it "returns the current backups status" do
         BackupRestore.expects(:operations_status)
 
@@ -60,11 +51,9 @@ describe Admin::BackupsController do
 
         expect(response).to be_success
       end
-
     end
 
     describe ".create" do
-
       it "starts a backup" do
         BackupRestore.expects(:backup!).with(@admin.id, publish_to_message_bus: true, with_uploads: false, client_id: "foo")
 
@@ -74,11 +63,9 @@ describe Admin::BackupsController do
 
         expect(response).to be_success
       end
-
     end
 
     describe ".show" do
-
       it "uses send_file to transmit the backup" do
         begin
           token = EmailBackupToken.set(@admin.id)
@@ -124,11 +111,9 @@ describe Admin::BackupsController do
 
         expect(response).to be_not_found
       end
-
     end
 
     describe ".destroy" do
-
       let(:b) { Backup.new(backup_filename) }
 
       it "removes the backup if found" do
@@ -148,11 +133,9 @@ describe Admin::BackupsController do
         delete :destroy, params: { id: backup_filename }, format: :json
         expect(response).not_to be_success
       end
-
     end
 
     describe ".logs" do
-
       it "preloads important data" do
         BackupRestore.expects(:operations_status).returns({})
         subject.expects(:store_preloaded).with("operations_status", "{}")
@@ -167,7 +150,6 @@ describe Admin::BackupsController do
     end
 
     describe ".restore" do
-
       it "starts a restore" do
         expect(SiteSetting.disable_emails).to eq(false)
         BackupRestore.expects(:restore!).with(@admin.id, filename: backup_filename, publish_to_message_bus: true, client_id: "foo")
@@ -177,11 +159,9 @@ describe Admin::BackupsController do
         expect(SiteSetting.disable_emails).to eq(true)
         expect(response).to be_success
       end
-
     end
 
     describe ".readonly" do
-
       it "enables readonly mode" do
         Discourse.expects(:enable_readonly_mode)
 
@@ -209,7 +189,6 @@ describe Admin::BackupsController do
         expect(UserHistory.last.action).to eq(UserHistory.actions[:change_readonly_mode])
         expect(UserHistory.last.new_value).to eq('f')
       end
-
     end
 
     describe "#upload_backup_chunk" do
@@ -253,7 +232,5 @@ describe Admin::BackupsController do
         end
       end
     end
-
   end
-
 end

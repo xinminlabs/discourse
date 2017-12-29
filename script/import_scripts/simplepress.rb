@@ -2,7 +2,6 @@ require 'mysql2'
 require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 
 class ImportScripts::SimplePress < ImportScripts::Base
-
   SIMPLE_PRESS_DB ||= ENV['SIMPLEPRESS_DB'] || "simplepress"
   TABLE_PREFIX = "wp_sf"
   BATCH_SIZE ||= 1000
@@ -186,7 +185,6 @@ class ImportScripts::SimplePress < ImportScripts::Base
   def mysql_query(sql)
     @client.query(sql, cache_rows: false)
   end
-
 end
 
 ImportScripts::SimplePress.new.perform

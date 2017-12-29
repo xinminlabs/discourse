@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'user_name_suggester'
 
 describe UserNameSuggester do
-
   describe 'name heuristics' do
     it 'is able to guess a decent username from an email' do
       expect(UserNameSuggester.suggest('bob@bob.com')).to eq('bob')
@@ -103,5 +102,4 @@ describe UserNameSuggester do
       expect(UserNameSuggester.suggest('uuuuuuu_u')).to eq('uuuuuuu1')
     end
   end
-
 end

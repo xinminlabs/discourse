@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 module Slug
-
   CHAR_FILTER_REGEXP = /[:\/\?#\[\]@!\$&'\(\)\*\+,;=_\.~%\\`^\s|\{\}"<>]+/ # :/?#[]@!$&'()*+,;=_.~%\`^|{}"<>
   MAX_LENGTH = 255
 

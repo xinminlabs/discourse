@@ -4,7 +4,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 # Edit the constants and initialize method for your import data.
 
 class ImportScripts::Muut < ImportScripts::Base
-
   JSON_FILE_PATH = "/path/to/json/file"
   CSV_FILE_PATH = "/path/to/csv/file"
 
@@ -78,9 +77,7 @@ class ImportScripts::Muut < ImportScripts::Base
     posts = 0
 
     @imported_json['categories'].each do |category|
-
       @imported_json['threads'][category['path']].each do |thread|
-
         next if thread["seed"]["key"] == "skip-this-topic"
 
         mapped = {}
@@ -120,7 +117,6 @@ class ImportScripts::Muut < ImportScripts::Base
         # create replies
         if thread["replies"].present? && thread["replies"].count > 0
           thread["replies"].reverse_each do |post|
-
             if post_id_from_imported_post_id(post["id"])
               next # already imported this post
             end
@@ -139,7 +135,6 @@ class ImportScripts::Muut < ImportScripts::Base
               puts "Error creating post #{post["id"]}. Skipping."
               puts new_post.inspect
             end
-
           end
 
         end
@@ -175,7 +170,6 @@ class ImportScripts::Muut < ImportScripts::Base
   def file_full_path(relpath)
     File.join JSON_FILES_DIR, relpath.split("?").first
   end
-
 end
 
 if __FILE__ == $0

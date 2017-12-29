@@ -3,7 +3,6 @@ require_dependency 'post'
 require_dependency 'user'
 
 describe BasicPostSerializer do
-
   context "name" do
     let(:user) { Fabricate.build(:user) }
     let(:post) { Fabricate.build(:post, user: user) }
@@ -19,7 +18,5 @@ describe BasicPostSerializer do
       SiteSetting.enable_names = false
       expect(json[:name]).to be_blank
     end
-
   end
-
 end
