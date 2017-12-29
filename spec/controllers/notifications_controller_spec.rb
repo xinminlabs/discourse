@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe NotificationsController do
-
   context 'when logged in' do
     let!(:user) { log_in }
 
@@ -80,5 +79,4 @@ describe NotificationsController do
       end.to raise_error(Discourse::NotLoggedIn)
     end
   end
-
 end

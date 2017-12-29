@@ -111,7 +111,6 @@ class ImportScripts::Nabble < ImportScripts::Base
     else
       Rails.logger.error("Could not persist avatar for user #{user.username}")
     end
-
   end
 
   def parse_email(msg)
@@ -130,7 +129,6 @@ class ImportScripts::Nabble < ImportScripts::Base
     topic_count = @client.exec("SELECT COUNT(node_id) AS count FROM node WHERE parent_id = #{app_node_id}")[0]["count"]
 
     batches(BATCH_SIZE) do |offset|
-
       topics = @client.exec <<-SQL
         SELECT n.node_id, n.subject, n.owner_id, n.when_created, nm.message, n.msg_fmt
         FROM node AS n

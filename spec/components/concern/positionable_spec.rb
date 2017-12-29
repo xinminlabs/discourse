@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Positionable do
-
   def positions
     TestItem.order('position asc, id asc').pluck(:id)
   end

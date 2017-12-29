@@ -8,7 +8,6 @@ module Positionable
   end
 
   def move_to(position_arg)
-
     position = [[position_arg, 0].max, self.class.count - 1].min
 
     if self.position.nil? || position > self.position

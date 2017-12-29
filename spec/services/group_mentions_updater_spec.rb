@@ -47,6 +47,5 @@ RSpec.describe GroupMentionsUpdater do
       post.reload
       expect(post.raw_mentions).to match_array(['cool_team', 'pro_team'])
     end
-
   end
 end

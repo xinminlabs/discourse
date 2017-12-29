@@ -99,7 +99,6 @@ module I18n
 
           existing_translations
         end
-
     end
   end
 end

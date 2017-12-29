@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe ClicksController do
-
   context 'create' do
-
     context 'missing params' do
       it 'raises a 404 without the url param' do
         get :track, params: { post_id: 123 }, format: :json
@@ -83,9 +81,6 @@ describe ClicksController do
           expect(response).to redirect_to(url)
         end
       end
-
     end
-
   end
-
 end

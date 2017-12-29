@@ -154,11 +154,9 @@ describe Group do
 
     user.reload
     expect(user.primary_group_id).to eq nil
-
   end
 
   it "Correctly handles title" do
-
     group = Fabricate(:group, title: 'Super Awesome')
     user = Fabricate(:user)
 
@@ -197,7 +195,6 @@ describe Group do
 
     user.reload
     expect(user.title).to eq nil
-
   end
 
   describe '.refresh_automatic_group!' do
@@ -287,7 +284,6 @@ describe Group do
   end
 
   it "Can update moderator/staff/admin groups correctly" do
-
     admin = Fabricate(:admin)
     moderator = Fabricate(:moderator)
 
@@ -370,7 +366,6 @@ describe Group do
     # system and user
     expect(g.users.count).to eq g.user_count
     expect(g.users.where('users.id > -2').count).to eq 2
-
   end
 
   it "can set members via usernames helper" do
@@ -396,7 +391,6 @@ describe Group do
   end
 
   it "correctly destroys groups" do
-
     g = Fabricate(:group)
     u1 = Fabricate(:user)
     g.add(u1)
@@ -518,7 +512,6 @@ describe Group do
   end
 
   describe ".visible_groups" do
-
     def can_view?(user, group)
       Group.visible_groups(user).where(id: group.id).exists?
     end
@@ -565,7 +558,6 @@ describe Group do
       expect(can_view?(member, group)).to eq(true)
       expect(can_view?(nil, group)).to eq(true)
     end
-
   end
 
   describe '#add' do

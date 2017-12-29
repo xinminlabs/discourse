@@ -1,5 +1,4 @@
 module Jobs
-
   class CleanUpDigestKeys < Jobs::Scheduled
     every 1.day
 
@@ -8,5 +7,4 @@ module Jobs
       DigestUnsubscribeKey.where('created_at < ?', 2.months.ago).delete_all
     end
   end
-
 end

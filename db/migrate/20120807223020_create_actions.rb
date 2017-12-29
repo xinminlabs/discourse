@@ -1,7 +1,6 @@
 class CreateActions < ActiveRecord::Migration[4.2]
   def change
     create_table :actions do |t|
-
       # I elected for multiple ids as opposed to using :as cause it makes the table
       # thinner, and the joining semantics much simpler (a simple multiple left join will do)
       #

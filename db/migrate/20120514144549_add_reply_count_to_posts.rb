@@ -9,5 +9,4 @@ class AddReplyCountToPosts < ActiveRecord::Migration[4.2]
   def down
     remove_column :posts, :reply_count
   end
-
 end

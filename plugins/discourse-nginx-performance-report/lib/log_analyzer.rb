@@ -1,7 +1,5 @@
 class LogAnalyzer
-
   class LineParser
-
     # log_format log_discourse '[$time_local] "$http_host" $remote_addr "$request" "$http_user_agent" "$sent_http_x_discourse_route" $status $bytes_sent "$http_referer" $upstream_response_time $request_time "$sent_http_x_discourse_username"';
 
     attr_accessor :time, :ip_address, :url, :route, :user_agent, :rails_duration, :total_duration,
@@ -12,7 +10,6 @@ class LogAnalyzer
     TIME_FORMAT = "%d/%b/%Y:%H:%M:%S %Z"
 
     def self.parse(line)
-
       result = new
       _, result.time, result.ip_address, result.url, result.user_agent,
         result.route, result.status, result.bytes_sent, result.referer,
@@ -60,7 +57,6 @@ class LogAnalyzer
   end
 
   class Aggeregator
-
     attr_accessor :aggregate_type
 
     def initialize
@@ -152,5 +148,4 @@ class LogAnalyzer
     end
     self
   end
-
 end

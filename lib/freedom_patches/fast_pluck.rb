@@ -5,7 +5,6 @@
 require_dependency 'sql_builder'
 
 class ActiveRecord::Relation
-
   # Note: In discourse, the following code is included in lib/sql_builder.rb
   #
   # class RailsDateTimeDecoder < PG::SimpleDecoder
@@ -43,7 +42,6 @@ class ActiveRecord::Relation
   end
 
   def pluck(*cols)
-
     conn = ActiveRecord::Base.connection
     relation = self
 

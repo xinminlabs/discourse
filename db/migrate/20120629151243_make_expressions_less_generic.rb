@@ -12,5 +12,4 @@ class MakeExpressionsLessGeneric < ActiveRecord::Migration[4.2]
     rename_column :expressions, :expression_index, :expression_type_id
     add_column :expressions, :parent_type, :string, null: true
   end
-
 end

@@ -2,7 +2,6 @@ require "rails_helper"
 require "import_export/category_structure_exporter"
 
 describe ImportExport::CategoryStructureExporter do
-
   before do
     STDOUT.stubs(:write)
   end
@@ -39,5 +38,4 @@ describe ImportExport::CategoryStructureExporter do
     expect(data[:groups].count).to eq(1)
     expect(data[:users].count).to eq(1)
   end
-
 end

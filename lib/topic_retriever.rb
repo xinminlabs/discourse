@@ -1,5 +1,4 @@
 class TopicRetriever
-
   def initialize(embed_url, opts = nil)
     @embed_url = embed_url
     @author_username = opts[:author_username]
@@ -55,5 +54,4 @@ class TopicRetriever
 
       TopicEmbed.import_remote(user, @embed_url)
     end
-
 end

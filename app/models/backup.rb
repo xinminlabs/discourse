@@ -85,5 +85,4 @@ class Backup
     return if all_backups.size <= SiteSetting.maximum_backups
     all_backups[SiteSetting.maximum_backups..-1].each(&:remove)
   end
-
 end

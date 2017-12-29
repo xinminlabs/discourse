@@ -13,7 +13,6 @@ if Rails.env.development?
 end
 
 module Discourse
-
   require 'sidekiq/exception_handler'
   class SidekiqExceptionHandler
     extend Sidekiq::ExceptionHandler
@@ -236,7 +235,6 @@ module Discourse
   end
 
   def self.route_for(uri)
-
     uri = URI(uri) rescue nil unless uri.is_a?(URI)
     return unless uri
 
@@ -522,5 +520,4 @@ module Discourse
   def self.running_in_rack?
     ENV["DISCOURSE_RUNNING_IN_RACK"] == "1"
   end
-
 end

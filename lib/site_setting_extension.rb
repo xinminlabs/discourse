@@ -314,7 +314,6 @@ module SiteSettingExtension
       Rails.logger.warn("An attempt was to change #{clean_name} SiteSetting to #{val} however it is shadowed so this will be ignored!")
       nil
     end
-
   end
 
   def setup_methods(name)
@@ -351,5 +350,4 @@ module SiteSettingExtension
   def logger
     Rails.logger
   end
-
 end

@@ -28,7 +28,6 @@ class ImportScripts::VBulletin < ImportScripts::Base
       database: DATABASE,
       password: "password"
     )
-
   end
 
   def execute
@@ -628,7 +627,6 @@ class ImportScripts::VBulletin < ImportScripts::Base
   def mysql_query(sql)
     @client.query(sql, cache_rows: false)
   end
-
 end
 
 ImportScripts::VBulletin.new.perform

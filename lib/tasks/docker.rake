@@ -114,7 +114,6 @@ task 'docker:test' do
 
       end
     end
-
   ensure
     puts "Terminating"
 
@@ -127,5 +126,4 @@ task 'docker:test' do
   if !@good
     exit 1
   end
-
 end

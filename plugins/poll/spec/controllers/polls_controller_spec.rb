@@ -10,7 +10,6 @@ describe ::DiscoursePoll::PollsController do
   let(:multi_poll)  { Fabricate(:post, topic_id: topic.id, user_id: user.id, raw: "[poll min=1 max=2 type=multiple public=true]\n- A\n- B\n[/poll]") }
 
   describe "#vote" do
-
     it "works" do
       MessageBus.expects(:publish)
 
@@ -185,7 +184,6 @@ describe ::DiscoursePoll::PollsController do
   end
 
   describe "#toggle_status" do
-
     it "works for OP" do
       MessageBus.expects(:publish)
 
@@ -222,13 +220,10 @@ describe ::DiscoursePoll::PollsController do
       json = ::JSON.parse(response.body)
       expect(json["errors"][0]).to eq(I18n.t("poll.post_is_deleted"))
     end
-
   end
 
   describe "votes" do
-
     it "correctly handles offset" do
-
       first = "5c24fc1df56d764b550ceae1b9319125"
       second = "e89dec30bbd9bf50fabf6a05b4324edf"
 
@@ -270,7 +265,5 @@ describe ::DiscoursePoll::PollsController do
       expect(json["poll"][first].map { |h| h["id"] }.sort).to eq([user1.id, user2.id])
       expect(json["poll"][second].map { |h| h["id"] }).to eq([user3.id])
     end
-
   end
-
 end

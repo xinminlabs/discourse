@@ -1,7 +1,5 @@
 module FileStore
-
   class BaseStore
-
     def store_upload(file, upload, content_type = nil)
       path = get_path_for_upload(upload)
       store_file(file, path)
@@ -139,7 +137,5 @@ module FileStore
     def not_implemented
       raise "Not implemented."
     end
-
   end
-
 end

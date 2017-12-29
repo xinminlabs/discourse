@@ -2,7 +2,6 @@ require "rails_helper"
 require "import_export/category_exporter"
 
 describe ImportExport::CategoryExporter do
-
   let(:category) { Fabricate(:category) }
   let(:group) { Fabricate(:group) }
   let(:user) { Fabricate(:user) }
@@ -47,5 +46,4 @@ describe ImportExport::CategoryExporter do
       expect(data[:users].count).to eq(1)
     end
   end
-
 end

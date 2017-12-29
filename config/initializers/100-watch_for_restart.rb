@@ -22,7 +22,6 @@ Thread.new do
 
     begin
       listener = Listen.to("#{Rails.root}/tmp", only: /restart/) do
-
         time = File.ctime(file).to_i if File.exists? file
 
         if old_time != time

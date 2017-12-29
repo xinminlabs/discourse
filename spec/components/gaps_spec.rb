@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'cache'
 
 describe Gaps do
-
   it 'returns no gaps for empty data' do
     expect(Gaps.new(nil, nil)).to be_blank
   end
@@ -75,5 +74,4 @@ describe Gaps do
       expect(gap.after[3]).to eq([4, 5, 6])
     end
   end
-
 end

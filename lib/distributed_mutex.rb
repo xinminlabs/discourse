@@ -1,6 +1,5 @@
 # Cross-process locking using Redis.
 class DistributedMutex
-
   def self.synchronize(key, redis = nil, &blk)
     self.new(key, redis).synchronize(&blk)
   end
@@ -19,7 +18,6 @@ class DistributedMutex
     end
 
     yield
-
   ensure
     @redis.del @key
     @mutex.unlock
@@ -48,5 +46,4 @@ class DistributedMutex
 
     got_lock
   end
-
 end

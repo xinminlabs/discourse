@@ -33,7 +33,6 @@ SQL
     DROP TABLE topic_revisions
 
 SQL
-
   end
 
   def down

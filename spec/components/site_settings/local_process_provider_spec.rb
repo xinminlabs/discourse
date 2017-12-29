@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'site_settings/local_process_provider'
 
 describe SiteSettings::LocalProcessProvider do
-
   def expect_same_setting(actual, expected)
     expect(actual.name).to eq(expected.name)
     expect(actual.value).to eq(expected.value)

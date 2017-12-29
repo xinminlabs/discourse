@@ -1,7 +1,6 @@
 # this class is used to track changes to an arbitrary buffer
 
 class ContentBuffer
-
   def initialize(initial_content)
     @initial_content = initial_content
     @lines = @initial_content.split("\n")

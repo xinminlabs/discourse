@@ -1,7 +1,6 @@
 desc "Runs the qunit test suite"
 
 task "qunit:test", [:timeout, :qunit_path] => :environment do |_, args|
-
   require "rack"
   require "socket"
 
@@ -100,7 +99,6 @@ task "qunit:test", [:timeout, :qunit_path] => :environment do |_, args|
     end
 
     success &&= $?.success?
-
   ensure
     # was having issues with HUP
     Process.kill "KILL", pid
@@ -112,5 +110,4 @@ task "qunit:test", [:timeout, :qunit_path] => :environment do |_, args|
     puts "\nTests Failed"
     exit(1)
   end
-
 end

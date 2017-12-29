@@ -1,5 +1,4 @@
 class CategorySerializer < BasicCategorySerializer
-
   attributes :read_restricted,
              :available_groups,
              :auto_close_hours,

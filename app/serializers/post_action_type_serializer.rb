@@ -1,7 +1,6 @@
 require_dependency 'configurable_urls'
 
 class PostActionTypeSerializer < ApplicationSerializer
-
   attributes(
     :id,
     :name_key,
@@ -49,5 +48,4 @@ class PostActionTypeSerializer < ApplicationSerializer
       key = "post_action_types.#{name_key}.#{field}"
       vars ? I18n.t(key, vars) : I18n.t(key)
     end
-
 end

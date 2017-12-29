@@ -2,7 +2,6 @@ require_dependency 'distributed_memoizer'
 require_dependency 'file_helper'
 
 class StaticController < ApplicationController
-
   skip_before_action :check_xhr, :redirect_to_login_if_required
   skip_before_action :verify_authenticity_token, only: [:brotli_asset, :cdn_asset, :enter, :favicon, :service_worker_asset]
   skip_before_action :preload_json, only: [:brotli_asset, :cdn_asset, :enter, :favicon, :service_worker_asset]
@@ -100,7 +99,6 @@ class StaticController < ApplicationController
   # instead we cache the favicon in redis and serve it out real quick with
   # a huge expiry, we also cache these assets in nginx so it bypassed if needed
   def favicon
-
     hijack do
       data = DistributedMemoizer.memoize('favicon' + SiteSetting.favicon_url, 60 * 30) do
         begin
@@ -147,7 +145,6 @@ class StaticController < ApplicationController
   def service_worker_asset
     respond_to do |format|
       format.js do
-
         # we take 1 hour to give a new service worker to all users
         immutable_for 1.hour
 
@@ -162,7 +159,6 @@ class StaticController < ApplicationController
   protected
 
   def serve_asset(suffix = nil)
-
     path = File.expand_path(Rails.root + "public/assets/#{params[:path]}#{suffix}")
 
     # SECURITY what if path has /../
@@ -201,7 +197,5 @@ class StaticController < ApplicationController
     opts = { disposition: nil }
     opts[:type] = "application/javascript" if params[:path] =~ /\.js$/
     send_file(path, opts)
-
   end
-
 end

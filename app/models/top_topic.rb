@@ -1,7 +1,6 @@
 require_dependency "distributed_memoizer"
 
 class TopTopic < ActiveRecord::Base
-
   belongs_to :topic
 
   # The top topics we want to refresh often
@@ -141,7 +140,6 @@ class TopTopic < ActiveRecord::Base
   end
 
   def self.compute_top_score_for(period)
-
     log_views_multiplier = SiteSetting.top_topics_formula_log_views_multiplier.to_f
     log_views_multiplier = 2 if log_views_multiplier == 0
 

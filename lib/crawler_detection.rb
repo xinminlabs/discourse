@@ -1,5 +1,4 @@
 module CrawlerDetection
-
   # added 'ia_archiver' based on https://meta.discourse.org/t/unable-to-archive-discourse-pages-with-the-internet-archive/21232
   # added 'Wayback Save Page' based on https://meta.discourse.org/t/unable-to-archive-discourse-with-the-internet-archive-save-page-now-button/22875
   # added 'Swiftbot' based on https://meta.discourse.org/t/how-to-add-html-markup-or-meta-tags-for-external-search-engine/28220

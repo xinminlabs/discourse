@@ -26,5 +26,4 @@ describe Wizard::Builder do
     expect(wizard).to be_present
     expect(wizard.steps).to be_blank
   end
-
 end

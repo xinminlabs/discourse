@@ -45,5 +45,4 @@ eos
 
     PostCreator.new(evil_trout, raw: raw, topic_id: topic.id).create
   end
-
 end

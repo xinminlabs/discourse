@@ -18,7 +18,6 @@ class ApiKey < ActiveRecord::Base
     end
     api_key
   end
-
 end
 
 # == Schema Information

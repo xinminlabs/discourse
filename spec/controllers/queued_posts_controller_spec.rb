@@ -47,7 +47,6 @@ describe QueuedPostsController do
 
     context 'approved' do
       it 'updates the post to approved' do
-
         put :update, params: {
           id: qp.id, queued_post: { state: 'approved' }
         }, format: :json
@@ -61,7 +60,6 @@ describe QueuedPostsController do
 
     context 'rejected' do
       it 'updates the post to rejected' do
-
         put :update, params: {
           id: qp.id, queued_post: { state: 'rejected' }
         }, format: :json

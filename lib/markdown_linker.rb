@@ -1,6 +1,5 @@
 # Helps create links using markdown (where references are at the bottom)
 class MarkdownLinker
-
   def initialize(base_url)
     @base_url = base_url
     @index = 1
@@ -23,5 +22,4 @@ class MarkdownLinker
     @rendered = @index
     result
   end
-
 end

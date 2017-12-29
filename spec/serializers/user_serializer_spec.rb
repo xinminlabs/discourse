@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'user'
 
 describe UserSerializer do
-
   context "with a TL0 user seen as anonymous" do
     let(:user) { Fabricate.build(:user, trust_level: 0, user_profile: Fabricate.build(:user_profile)) }
     let(:serializer) { UserSerializer.new(user, scope: Guardian.new, root: false) }
@@ -34,7 +33,6 @@ describe UserSerializer do
       expect(json[:user_option][:new_topic_duration_minutes]).to eq(60 * 24)
       expect(json[:user_option][:auto_track_topics_after_msecs]).to eq(0)
       expect(json[:user_option][:notification_level_when_replying]).to eq(3)
-
     end
   end
 

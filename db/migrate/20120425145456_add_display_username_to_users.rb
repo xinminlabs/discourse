@@ -11,5 +11,4 @@ class AddDisplayUsernameToUsers < ActiveRecord::Migration[4.2]
     execute "UPDATE users SET username = display_username"
     remove_column :users, :display_username
   end
-
 end

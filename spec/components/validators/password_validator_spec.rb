@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency "common_passwords/common_passwords"
 
 describe PasswordValidator do
-
   def password_error_message(key)
     I18n.t("activerecord.errors.models.user.attributes.password.#{key.to_s}")
   end
@@ -169,5 +168,4 @@ describe PasswordValidator do
       expect(record.errors[:password]).to be_present
     end
   end
-
 end

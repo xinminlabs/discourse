@@ -47,7 +47,6 @@ describe TopicsController do
 
       get :show, params: { id: 666 }
       expect(controller.theme_key).to eq(theme2.key)
-
     end
 
     it "cookie can fail back to user if out of sync" do
@@ -78,7 +77,6 @@ describe TopicsController do
     render_views
 
     context "when the SiteSetting is disabled" do
-
       it "uses the application layout even with an escaped fragment param" do
         SiteSetting.enable_escaped_fragments = false
 
@@ -93,7 +91,6 @@ describe TopicsController do
         expect(body).to have_tag(:script, with: { src: '/assets/application.js' })
         expect(body).to_not have_tag(:meta, with: { name: 'fragment' })
       end
-
     end
 
     context "when the SiteSetting is enabled" do
@@ -150,7 +147,6 @@ describe TopicsController do
         expect(body).to_not have_tag(:meta, with: { name: 'fragment' })
       end
     end
-
   end
 
   describe "print" do
@@ -190,7 +186,6 @@ describe TopicsController do
 
       notification.reload
       expect(notification.read).to eq true
-
     end
 
     it 'correctly clears notifications if specified via header' do
@@ -307,7 +302,6 @@ describe TopicsController do
 end
 
 describe 'api' do
-
   before do
     ActionController::Base.allow_forgery_protection = true
   end

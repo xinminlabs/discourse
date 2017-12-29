@@ -4,7 +4,6 @@ require_dependency 'ip_addr'
 # A ScreenedIpAddress record represents an IP address or subnet that is being watched,
 # and possibly blocked from creating accounts.
 class ScreenedIpAddress < ActiveRecord::Base
-
   include ScreeningModel
 
   default_action :block
@@ -166,7 +165,6 @@ class ScreenedIpAddress < ActiveRecord::Base
     # return the subnets
     subnets
   end
-
 end
 
 # == Schema Information

@@ -1,7 +1,6 @@
 require_dependency 'ip_addr'
 
 class Admin::ScreenedIpAddressesController < Admin::AdminController
-
   before_action :fetch_screened_ip_address, only: [:update, :destroy]
 
   def index
@@ -59,5 +58,4 @@ class Admin::ScreenedIpAddressesController < Admin::AdminController
     def fetch_screened_ip_address
       @screened_ip_address = ScreenedIpAddress.find(params[:id])
     end
-
 end

@@ -3,7 +3,6 @@
 require_dependency 'middleware/anonymous_cache'
 
 class Middleware::RequestTracker
-
   @@detailed_request_loggers = nil
 
   # register callbacks for detailed request loggers called on every request
@@ -13,7 +12,6 @@ class Middleware::RequestTracker
   #   # do stuff with env and data
   # end
   def self.register_detailed_request_logger(callback)
-
     unless @patched_instrumentation
       require_dependency "method_profiler"
       MethodProfiler.patch(PG::Connection, [
@@ -35,7 +33,6 @@ class Middleware::RequestTracker
     if @@detailed_request_loggers.length == 0
       @detailed_request_loggers = nil
     end
-
   end
 
   def initialize(app, settings = {})
@@ -77,7 +74,6 @@ class Middleware::RequestTracker
     elsif status >= 200 && status < 300
       ApplicationRequest.increment!(:http_2xx)
     end
-
   end
 
   def self.get_data(env, result, timing)
@@ -102,11 +98,9 @@ class Middleware::RequestTracker
       track_view: track_view,
       timing: timing
     }
-
   end
 
   def log_request_info(env, result, info)
-
     # we got to skip this on error ... its just logging
     data = self.class.get_data(env, result, info) rescue nil
     host = RailsMultisite::ConnectionManagement.host(env)
@@ -122,7 +116,6 @@ class Middleware::RequestTracker
 
       log_later(data, host)
     end
-
   end
 
   def call(env)
@@ -187,5 +180,4 @@ class Middleware::RequestTracker
       self.class.log_request_on_site(data, host)
     end
   end
-
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe PostActionsController do
-
   describe 'create' do
     it 'requires you to be logged in' do
       expect do
@@ -29,7 +28,6 @@ describe PostActionsController do
   end
 
   context 'destroy' do
-
     let(:post) { Fabricate(:post, user: Fabricate(:coding_horror)) }
 
     it 'requires you to be logged in' do
@@ -78,13 +76,10 @@ describe PostActionsController do
           expect(response).to be_forbidden
         end
       end
-
     end
-
   end
 
   context 'defer_flags' do
-
     let(:flagged_post) { Fabricate(:post, user: Fabricate(:coding_horror)) }
 
     context "not logged in" do
@@ -137,11 +132,7 @@ describe PostActionsController do
 
           expect(response).to be_success
         end
-
       end
-
     end
-
   end
-
 end

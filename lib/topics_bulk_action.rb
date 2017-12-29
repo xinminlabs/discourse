@@ -1,5 +1,4 @@
 class TopicsBulkAction
-
   def initialize(user, topic_ids, operation, options = {})
     @user = user
     @topic_ids = topic_ids
@@ -178,5 +177,4 @@ class TopicsBulkAction
     def topics
       @topics ||= Topic.where(id: @topic_ids)
     end
-
 end

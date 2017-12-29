@@ -2,7 +2,6 @@ require_relative './quandora_question.rb'
 require File.expand_path(File.dirname(__FILE__) + "/../base.rb")
 
 class ImportScripts::Quandora < ImportScripts::Base
-
   JSON_FILES_DIR = "output"
 
   def initialize

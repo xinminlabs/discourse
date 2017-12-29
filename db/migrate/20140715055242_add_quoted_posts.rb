@@ -15,7 +15,6 @@ class AddQuotedPosts < ActiveRecord::Migration[4.2]
   end
 
   def backfill_batch(start_id, batch_size)
-
     results = execute <<SQL
     SELECT id, cooked
     FROM posts

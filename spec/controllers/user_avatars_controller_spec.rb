@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UserAvatarsController do
-
   context 'show_proxy_letter' do
     it 'returns not found if external avatar is set somewhere else' do
       SiteSetting.external_system_avatars_url = "https://somewhere.else.com/avatar.png"

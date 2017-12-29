@@ -1,9 +1,7 @@
 require "rails_helper"
 
 describe TestMailer do
-
   describe "send_test" do
-
     it "works" do
       test_mailer = TestMailer.send_test('marcheline@adventuretime.ooo')
 
@@ -12,7 +10,5 @@ describe TestMailer do
       expect(test_mailer.subject).to be_present
       expect(test_mailer.body).to be_present
     end
-
   end
-
 end

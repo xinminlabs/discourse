@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Jobs::AutoQueueHandler do
-
   subject { Jobs::AutoQueueHandler.new.execute({}) }
 
   context "old flag" do
@@ -41,5 +40,4 @@ describe Jobs::AutoQueueHandler do
       expect(old.reload.state).to eq(QueuedPost.states[:new])
     end
   end
-
 end

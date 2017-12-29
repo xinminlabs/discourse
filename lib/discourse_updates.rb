@@ -1,7 +1,5 @@
 module DiscourseUpdates
-
   class << self
-
     def check_version
       attrs = {
         installed_version: Discourse::VERSION::STRING,

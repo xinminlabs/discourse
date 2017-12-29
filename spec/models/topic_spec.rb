@@ -244,7 +244,6 @@ describe Topic do
   end
 
   context 'topic title uniqueness' do
-
     let!(:topic) { Fabricate(:topic) }
     let(:new_topic) { Fabricate.build(:topic, title: topic.title) }
 
@@ -282,11 +281,9 @@ describe Topic do
         expect(new_topic).to be_valid
       end
     end
-
   end
 
   context 'html in title' do
-
     def build_topic_with_title(title)
       build(:topic, title: title).tap { |t| t.valid? }
     end
@@ -311,7 +308,6 @@ describe Topic do
     it "escapes image contents" do
       expect(topic_image.fancy_title).to eq("Topic with &lt;img src=&lsquo;something&rsquo;&gt; image in its title")
     end
-
   end
 
   context 'fancy title' do
@@ -420,7 +416,6 @@ describe Topic do
   end
 
   context 'similar_to' do
-
     it 'returns blank with nil params' do
       expect(Topic.similar_to(nil, nil)).to be_blank
     end
@@ -461,9 +456,7 @@ describe Topic do
           expect(Topic.similar_to("has evil trout made any topics?", "i am wondering has evil trout made any topics?", user)).to include(topic)
         end
       end
-
     end
-
   end
 
   context 'post_numbers' do
@@ -478,7 +471,6 @@ describe Topic do
       topic.reload
       expect(topic.post_numbers).to eq([1, 3])
     end
-
   end
 
   context 'private message' do
@@ -498,7 +490,6 @@ describe Topic do
     end
 
     context 'invite' do
-
       context 'existing user' do
         let(:walter) { Fabricate(:walter_white) }
 
@@ -538,11 +529,9 @@ describe Topic do
             expect(notification.notification_type)
               .to eq(Notification.types[:invited_to_private_message])
           end
-
         end
 
         context 'by username' do
-
           it 'adds and removes walter to the allowed users' do
             expect(topic.invite(topic.user, walter.username)).to eq(true)
             expect(topic.allowed_users.include?(walter)).to eq(true)
@@ -563,17 +552,14 @@ describe Topic do
         end
 
         context 'by email' do
-
           it 'adds user correctly' do
             expect {
               expect(topic.invite(topic.user, walter.email)).to eq(true)
             }.to change(Notification, :count)
             expect(topic.allowed_users.include?(walter)).to eq(true)
           end
-
         end
       end
-
     end
 
     context "user actions" do
@@ -586,13 +572,10 @@ describe Topic do
         expect(actions.map { |a| a.action_type }).to include(UserAction::NEW_PRIVATE_MESSAGE)
         expect(coding_horror.user_actions.map { |a| a.action_type }).to include(UserAction::GOT_PRIVATE_MESSAGE)
       end
-
     end
-
   end
 
   context 'rate limits' do
-
     it "rate limits topic invitations" do
       SiteSetting.max_topic_invitations_per_day = 2
       RateLimiter.enable
@@ -617,11 +600,9 @@ describe Topic do
         topic.invite(topic.user, "user@example.com")
       }.to raise_error(RateLimiter::LimitExceeded)
     end
-
   end
 
   context 'bumping topics' do
-
     before do
       @topic = Fabricate(:topic, bumped_at: 1.year.ago)
     end
@@ -770,7 +751,6 @@ describe Topic do
           expect(@topic.bumped_at.to_f).to eq(@original_bumped_at)
           expect(@topic.moderator_posts_count).to eq(1)
         end
-
       end
     end
 
@@ -802,7 +782,6 @@ describe Topic do
           expect(@topic.moderator_posts_count).to eq(1)
           expect(@topic.bumped_at.to_f).to eq(@original_bumped_at)
         end
-
       end
     end
 
@@ -820,7 +799,6 @@ describe Topic do
           expect(@closed_topic.moderator_posts_count).to eq(1)
           expect(@closed_topic.bumped_at.to_f).not_to eq(@original_bumped_at)
         end
-
       end
 
       context 'enable' do
@@ -878,7 +856,6 @@ describe Topic do
   end
 
   describe "banner" do
-
     let(:topic) { Fabricate(:topic) }
     let(:user) { topic.user }
     let(:banner) { { html: "<p>BANNER</p>", url: topic.url, key: topic.id } }
@@ -886,7 +863,6 @@ describe Topic do
     before { topic.stubs(:banner).returns(banner) }
 
     describe "make_banner!" do
-
       it "changes the topic archetype to 'banner'" do
         messages = MessageBus.track_publish do
           topic.make_banner!(user)
@@ -913,24 +889,19 @@ describe Topic do
         user.user_profile.reload
         expect(user.user_profile.dismissed_banner_key).to be_nil
       end
-
     end
 
     describe "remove_banner!" do
-
       it "resets the topic archetype" do
         topic.expects(:add_moderator_post)
         MessageBus.expects(:publish).with("/site/banner", nil)
         topic.remove_banner!(user)
         expect(topic.archetype).to eq(Archetype.default)
       end
-
     end
-
   end
 
   context 'last_poster info' do
-
     before do
       @post = create_post
       @user = @post.user
@@ -954,12 +925,10 @@ describe Topic do
         topic_user = @second_user.topic_users.find_by(topic_id: @topic.id)
         expect(topic_user.posted?).to eq(true)
       end
-
     end
   end
 
   describe 'with category' do
-
     before do
       @category = Fabricate(:category)
     end
@@ -981,7 +950,6 @@ describe Topic do
     end
 
     context 'updating' do
-
       context 'existing key' do
         before do
           topic.update_meta_data('hello' => 'bane')
@@ -1001,7 +969,6 @@ describe Topic do
           expect(topic.meta_data['city']).to eq('gotham')
           expect(topic.meta_data['hello']).to eq('world')
         end
-
       end
 
       context 'new key' do
@@ -1018,13 +985,10 @@ describe Topic do
           expect(Topic.find(topic.id).custom_fields["other"]).to eq("key")
         end
       end
-
     end
-
   end
 
   describe 'after create' do
-
     let(:topic) { Fabricate(:topic) }
 
     it 'is a regular topic by default' do
@@ -1174,9 +1138,7 @@ describe Topic do
           expect(category.topic_count).to eq(0)
         end
       end
-
     end
-
   end
 
   describe 'scopes' do
@@ -1533,7 +1495,6 @@ describe Topic do
         expect(Topic.for_digest(user, 1.year.ago, top_order: true)).to eq([topic1])
       end
     end
-
   end
 
   describe 'secured' do
@@ -1751,7 +1712,6 @@ describe Topic do
         expect(Topic.count_exceeds_minimum?).to_not be_truthy
       end
     end
-
   end
 
   describe "calculate_avg_time" do
@@ -1762,7 +1722,6 @@ describe Topic do
   end
 
   describe "expandable_first_post?" do
-
     let(:topic) { Fabricate.build(:topic) }
 
     it "is false if embeddable_host is blank" do
@@ -1789,7 +1748,6 @@ describe Topic do
         expect(topic.expandable_first_post?).to eq(false)
       end
     end
-
   end
 
   it "has custom fields" do
@@ -1874,7 +1832,6 @@ describe Topic do
   end
 
   it 'allows users to normalize counts' do
-
     topic = Fabricate(:topic, last_posted_at: 1.year.ago)
     post1 = Fabricate(:post, topic: topic, post_number: 1)
     post2 = Fabricate(:post, topic: topic, post_type: Post.types[:whisper], post_number: 2)

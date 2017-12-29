@@ -1,5 +1,4 @@
 module DirectoryHelper
-
   def tmp_directory(prefix)
     directory_cache[prefix] ||= begin
       f = File.join(Rails.root, 'tmp', Time.now.strftime("#{prefix}%Y%m%d%H%M%S"))
@@ -15,8 +14,8 @@ module DirectoryHelper
   end
 
   private
+
   def directory_cache
     @directory_cache ||= {}
   end
-
 end

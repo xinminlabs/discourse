@@ -18,7 +18,6 @@ require_relative 'base/uploader'
 module ImportScripts; end
 
 class ImportScripts::Base
-
   include ActionView::Helpers::NumberHelper
 
   def initialize
@@ -57,7 +56,6 @@ class ImportScripts::Base
 
     elapsed = Time.now - @start_times[:import]
     puts '', '', 'Done (%02dh %02dmin %02dsec)' % [elapsed / 3600, elapsed / 60 % 60, elapsed % 60]
-
   ensure
     reset_site_settings
   end

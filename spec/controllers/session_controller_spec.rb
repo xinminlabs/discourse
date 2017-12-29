@@ -27,7 +27,6 @@ describe SessionController do
   end
 
   describe '.sso_login' do
-
     before do
       @sso_url = "http://somesite.com/discourse_sso"
       @sso_secret = "shjkfdhsfkjh"
@@ -406,7 +405,6 @@ describe SessionController do
         expect(logged_on_user.name).to eq(@user.name)
         expect(logged_on_user.email).to eq(@user.email)
       end
-
     end
   end
 
@@ -471,7 +469,6 @@ describe SessionController do
   end
 
   describe '.create' do
-
     let(:user) { Fabricate(:user) }
 
     context 'local login is disabled' do
@@ -795,7 +792,6 @@ describe SessionController do
   end
 
   describe '.forgot_password' do
-
     it 'raises an error without a username parameter' do
       expect do
         post :forgot_password, format: :json

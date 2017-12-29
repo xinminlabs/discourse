@@ -26,7 +26,6 @@ module ImportScripts
       double_quote_count = 0
 
       File.open(filename).each_line do |line|
-
         line.strip!
 
         current_row << "\n" unless current_row.empty?

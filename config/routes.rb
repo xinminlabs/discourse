@@ -10,7 +10,6 @@ USERNAME_ROUTE_FORMAT = /[\w.\-]+?/ unless defined? USERNAME_ROUTE_FORMAT
 BACKUP_ROUTE_FORMAT = /.+\.(sql\.gz|tar\.gz|tgz)/i unless defined? BACKUP_ROUTE_FORMAT
 
 Discourse::Application.routes.draw do
-
   match "/404", to: "exceptions#not_found", via: [:get, :post]
   get "/404-body" => "exceptions#not_found_body"
 
@@ -753,5 +752,4 @@ Discourse::Application.routes.draw do
   get "/themes/assets/:key" => "themes#assets"
 
   get "*url", to: 'permalinks#show', constraints: PermalinkConstraint.new
-
 end

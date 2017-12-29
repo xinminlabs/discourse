@@ -4,7 +4,6 @@ require 'set'
 require File.expand_path(File.dirname(__FILE__) + "/../base.rb")
 
 class ImportScripts::Socialcast < ImportScripts::Base
-
   MESSAGES_DIR = "output/messages"
   USERS_DIR = "output/users"
 
@@ -93,7 +92,6 @@ class ImportScripts::Socialcast < ImportScripts::Base
       puts new_post.inspect
     end
   end
-
 end
 
 if __FILE__ == $0

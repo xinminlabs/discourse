@@ -17,5 +17,4 @@ RSpec::Matchers.define :match_html do |expected|
   def make_canonical_html(html)
     Nokogiri::HTML(html) { |config| config.options = Nokogiri::XML::ParseOptions::NOBLANKS | Nokogiri::XML::ParseOptions::COMPACT }
   end
-
 end

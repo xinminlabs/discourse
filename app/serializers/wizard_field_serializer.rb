@@ -1,5 +1,4 @@
 class WizardFieldSerializer < ApplicationSerializer
-
   attributes :id, :type, :required, :value, :label, :placeholder, :description
   has_many :choices, serializer: WizardFieldChoiceSerializer, embed: :objects
 
@@ -50,5 +49,4 @@ class WizardFieldSerializer < ApplicationSerializer
   def include_description?
     description.present?
   end
-
 end

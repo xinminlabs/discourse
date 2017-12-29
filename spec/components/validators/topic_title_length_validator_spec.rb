@@ -4,7 +4,6 @@ require 'rails_helper'
 require 'validators/topic_title_length_validator'
 
 describe TopicTitleLengthValidator do
-
   # simulate Rails behavior (singleton)
   def validate
     @validator ||= TopicTitleLengthValidator.new(attributes: :title)
@@ -66,5 +65,4 @@ describe TopicTitleLengthValidator do
 
     include_examples "validating any topic title"
   end
-
 end

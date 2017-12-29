@@ -13,11 +13,9 @@ class AddDescriptionToCategories < ActiveRecord::Migration[4.2]
       post = c.topic.posts.order(:post_number).first
       PostRevisor.new(post).send(:update_category_description)
     end
-
   end
 
   def down
     remove_column :categories, :description
   end
-
 end

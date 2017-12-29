@@ -5,7 +5,6 @@ require 'ox'
 require 'set'
 
 class Saxy < Ox::Sax
-
   def initialize
     @stack = []
   end
@@ -30,7 +29,6 @@ class Saxy < Ox::Sax
   def cdata(val)
     @stack[-1][:text] = val
   end
-
 end
 
 class Convert < Saxy

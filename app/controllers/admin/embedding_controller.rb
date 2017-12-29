@@ -1,7 +1,6 @@
 require_dependency 'embedding'
 
 class Admin::EmbeddingController < Admin::AdminController
-
   before_action :ensure_logged_in, :ensure_staff, :fetch_embedding
 
   def show

@@ -15,7 +15,6 @@ describe DirectoryItemsController do
   end
 
   context "without data" do
-
     context "and a logged in user" do
       before { sign_in(user) }
 
@@ -24,7 +23,6 @@ describe DirectoryItemsController do
         expect(response).to be_success
       end
     end
-
   end
 
   context "with data" do

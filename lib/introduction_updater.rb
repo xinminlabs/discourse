@@ -1,5 +1,4 @@
 class IntroductionUpdater
-
   def initialize(user)
     @user = user
   end
@@ -20,7 +19,6 @@ class IntroductionUpdater
       remaining = post.raw.split("\n")[1..-1]
       revisor.revise!(@user, raw: "#{new_value}\n#{remaining.join("\n")}")
     end
-
   end
 
 protected
@@ -38,5 +36,4 @@ protected
 
     post
   end
-
 end

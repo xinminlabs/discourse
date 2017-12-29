@@ -3,10 +3,8 @@
 require 'rails_helper'
 
 describe 'invite only' do
-
   describe '#create invite only' do
     it 'can create user via API' do
-
       SiteSetting.invite_only = true
 
       admin = Fabricate(:admin)
@@ -38,7 +36,6 @@ describe 'invite only' do
       u = User.find(user_id)
       expect(u.active).to eq(true)
       expect(u.approved).to eq(true)
-
     end
   end
 end

@@ -203,5 +203,4 @@ describe Validators::PostValidator do
     before { post.acting_user = build(:user, staged: true) }
     include_examples "almost no validations"
   end
-
 end

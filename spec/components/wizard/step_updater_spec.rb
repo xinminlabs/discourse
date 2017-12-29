@@ -50,7 +50,6 @@ describe Wizard::StepUpdater do
     expect(welcome_post.raw).to eq("Welcome to my new awesome forum!\n\ncool!")
 
     expect(wizard.completed_steps?('introduction')).to eq(true)
-
   end
 
   it "won't allow updates to the default value, when required" do
@@ -107,9 +106,7 @@ describe Wizard::StepUpdater do
   end
 
   context "corporate step" do
-
     it "updates the fields properly" do
-
       p = Fabricate(:post, raw: 'company_domain - company_full_name - company_short_name template')
       SiteSetting.tos_topic_id = p.topic_id
 
@@ -288,5 +285,4 @@ describe Wizard::StepUpdater do
       expect(mod_invite.moderator?).to eq(true)
     end
   end
-
 end

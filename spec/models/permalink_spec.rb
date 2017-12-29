@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Permalink do
-
   describe "normalization" do
     it "correctly normalizes" do
       normalizer = Permalink::Normalizer.new("/(\\/hello.*)\\?.*/\\1|/(\\/bye.*)\\?.*/\\1")
@@ -25,7 +24,6 @@ describe Permalink do
   end
 
   describe "target_url" do
-
     let(:permalink)       { Fabricate.build(:permalink) }
     let(:topic)           { Fabricate(:topic) }
     let(:post)            { Fabricate(:post, topic: topic) }

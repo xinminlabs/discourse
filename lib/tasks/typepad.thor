@@ -1,7 +1,6 @@
 require 'open-uri'
 
 class Typepad < Thor
-
   desc "import", "Imports posts from a Disqus XML export"
   method_option :file, aliases: '-f', required: true, desc: "The typepad file to import"
   method_option :post_as, aliases: '-p', required: true, desc: "The Discourse username to post as"
@@ -98,7 +97,6 @@ class Typepad < Thor
         end
       end
     end
-
   ensure
     RateLimiter.enable
     backup_settings.each do |s, v|
@@ -239,5 +237,4 @@ class Typepad < Thor
 
     entry[:title] && entry[:body] ? entry : nil
   end
-
 end

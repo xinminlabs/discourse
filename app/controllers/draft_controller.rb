@@ -17,5 +17,4 @@ class DraftController < ApplicationController
     Draft.clear(current_user, params[:draft_key], params[:sequence].to_i)
     render json: success_json
   end
-
 end

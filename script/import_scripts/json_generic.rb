@@ -4,7 +4,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 # Edit the constants and initialize method for your import data.
 
 class ImportScripts::JsonGeneric < ImportScripts::Base
-
   JSON_FILE_PATH = ENV['JSON_FILE']
   BATCH_SIZE ||= 1000
 

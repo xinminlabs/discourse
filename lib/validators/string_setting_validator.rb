@@ -1,5 +1,4 @@
 class StringSettingValidator
-
   include RegexSettingValidation
 
   def initialize(opts = {})

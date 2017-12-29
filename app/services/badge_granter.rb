@@ -1,5 +1,4 @@
 class BadgeGranter
-
   def initialize(badge, user, opts = {})
     @badge, @user, @opts = badge, user, opts
     @granted_by = opts[:granted_by] || Discourse.system_user
@@ -362,5 +361,4 @@ class BadgeGranter
                         )
                    ")
   end
-
 end

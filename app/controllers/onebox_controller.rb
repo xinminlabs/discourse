@@ -32,5 +32,4 @@ class OneboxController < ApplicationController
       end
     end
   end
-
 end

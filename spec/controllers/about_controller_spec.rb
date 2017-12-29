@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe AboutController do
-
   context '.index' do
-
     it "should display the about page for anonymous user when login_required is false" do
       SiteSetting.login_required = false
       get :index

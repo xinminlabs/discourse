@@ -1,8 +1,6 @@
 # lightweight Twitter api calls
 class TwitterApi
-
   class << self
-
     def prettify_tweet(tweet)
       text = tweet["full_text"].dup
       if (entities = tweet["entities"]) && (urls = entities["urls"])
@@ -136,6 +134,5 @@ class TwitterApi
     def consumer_secret
       SiteSetting.twitter_consumer_secret
     end
-
   end
 end

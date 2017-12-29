@@ -1,5 +1,4 @@
 class UsernameChanger
-
   def initialize(user, new_username, actor = nil)
     @user = user
     @new_username = new_username

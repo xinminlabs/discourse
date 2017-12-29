@@ -2,7 +2,6 @@ require "mysql2"
 require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 
 class ImportScripts::Drupal < ImportScripts::Base
-
   DRUPAL_DB = ENV['DRUPAL_DB'] || "newsite3"
   VID = ENV['DRUPAL_VID'] || 1
 
@@ -202,7 +201,6 @@ class ImportScripts::Drupal < ImportScripts::Base
       end
     end
   end
-
 end
 
 if __FILE__ == $0

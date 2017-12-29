@@ -1,5 +1,4 @@
 module Scheduler::Schedule
-
   def daily(options = nil)
     if options
       @daily = options

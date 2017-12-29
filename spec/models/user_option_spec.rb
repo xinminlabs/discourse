@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'user_option'
 
 describe UserOption do
-
   describe "#ensure_consistency!" do
     it "recreates missing user option records" do
       user = Fabricate(:user)
@@ -27,7 +26,6 @@ describe UserOption do
       user.user_option.expects(:redirected_to_top).returns(nil)
       expect(user.user_option.should_be_redirected_to_top).to eq(false)
     end
-
   end
 
   describe "#mailing_list_mode" do
@@ -77,7 +75,6 @@ describe UserOption do
         end
 
         context "and there are enough topics" do
-
           before { SiteSetting.expects(:min_redirected_to_top_period).returns(:monthly) }
 
           describe "a new user" do
@@ -113,14 +110,9 @@ describe UserOption do
               expect(user.user_option.redirected_to_top).to eq(reason: I18n.t('redirected_to_top_reasons.not_seen_in_a_month'),
                                                                period: :monthly)
             end
-
           end
-
         end
-
       end
-
     end
-
   end
 end

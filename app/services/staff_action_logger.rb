@@ -1,6 +1,5 @@
 # Responsible for logging the actions of admins and moderators.
 class StaffActionLogger
-
   def self.base_attrs
     [:topic_id, :post_id, :context, :subject, :ip_address, :previous_value, :new_value]
   end
@@ -380,5 +379,4 @@ class StaffActionLogger
     def validate_category(category)
       raise Discourse::InvalidParameters.new(:category) unless category && category.is_a?(Category)
     end
-
 end

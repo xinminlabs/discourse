@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe IncomingLink do
-
   let(:post) { Fabricate(:post) }
   let(:topic) { post.topic }
 
@@ -10,7 +9,6 @@ describe IncomingLink do
   end
 
   describe 'local topic link' do
-
     describe 'tracking link counts' do
       it "increases the incoming link counts" do
         link = incoming_link
@@ -25,11 +23,9 @@ describe IncomingLink do
         expect(topic.incoming_link_count).to eq 1
       end
     end
-
   end
 
   describe 'add' do
-
     def req(opts)
       {
         referer: opts[:referer],
@@ -89,5 +85,4 @@ describe IncomingLink do
       expect(first.user_id).to eq user.id
     end
   end
-
 end

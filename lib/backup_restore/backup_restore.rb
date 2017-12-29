@@ -2,7 +2,6 @@ require "backup_restore/backuper"
 require "backup_restore/restorer"
 
 module BackupRestore
-
   class OperationRunningError < RuntimeError; end
 
   VERSION_PREFIX = "v".freeze
@@ -198,5 +197,4 @@ module BackupRestore
   def self.backup_tables_count
     User.exec_sql("SELECT COUNT(*) AS count FROM information_schema.tables WHERE table_schema = 'backup'")[0]['count'].to_i
   end
-
 end

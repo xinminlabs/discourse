@@ -3,7 +3,6 @@ require_dependency 'site_setting'
 require_dependency 'site_setting_extension'
 
 describe SiteSetting do
-
   describe 'topic_title_length' do
     it 'returns a range of min/max topic title length' do
       expect(SiteSetting.topic_title_length).to eq(
@@ -31,7 +30,6 @@ describe SiteSetting do
   end
 
   describe 'in test we do some judo to ensure SiteSetting is always reset between tests' do
-
     it 'is always the correct default' do
       expect(SiteSetting.contact_email).to eq('')
     end
@@ -70,9 +68,7 @@ describe SiteSetting do
   end
 
   describe "min_redirected_to_top_period" do
-
     context "has_enough_top_topics" do
-
       before do
         SiteSetting.topics_per_period_in_top_page = 2
         SiteSetting.top_page_default_timeframe = 'daily'
@@ -87,11 +83,9 @@ describe SiteSetting do
       it "should_return_a_time_period" do
         expect(SiteSetting.min_redirected_to_top_period(1.days.ago)).to eq(:daily)
       end
-
     end
 
     context "does_not_have_enough_top_topics" do
-
       before do
         SiteSetting.topics_per_period_in_top_page = 20
         SiteSetting.top_page_default_timeframe = 'daily'
@@ -101,9 +95,7 @@ describe SiteSetting do
       it "should_return_a_time_period" do
         expect(SiteSetting.min_redirected_to_top_period(1.days.ago)).to eq(nil)
       end
-
     end
-
   end
 
   describe "scheme" do
@@ -119,7 +111,6 @@ describe SiteSetting do
     it "returns https when using ssl" do
       expect(SiteSetting.scheme).to eq("https")
     end
-
   end
 
   context 'deprecated site settings' do

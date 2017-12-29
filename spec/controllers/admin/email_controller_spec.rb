@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Admin::EmailController do
-
   it "is a subclass of AdminController" do
     expect(Admin::EmailController < Admin::AdminController).to eq(true)
   end
@@ -109,5 +108,4 @@ describe Admin::EmailController do
       expect(incoming['error']).to eq(I18n.t("emails.incoming.unrecognized_error"))
     end
   end
-
 end

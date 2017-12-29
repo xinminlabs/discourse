@@ -1,7 +1,6 @@
 require_dependency 'enum_site_setting'
 
 class LocaleSiteSetting < EnumSiteSetting
-
   def self.valid_value?(val)
     supported_locales.include?(val)
   end

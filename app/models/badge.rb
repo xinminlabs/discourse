@@ -228,7 +228,6 @@ class Badge < ActiveRecord::Base
     def i18n_name
       self.name.downcase.tr(' ', '_')
     end
-
 end
 
 # == Schema Information

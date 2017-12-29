@@ -103,7 +103,6 @@ class EmbedController < ApplicationController
     end
 
     def ensure_embeddable
-
       if !(Rails.env.development? && current_user.try(:admin?))
         raise Discourse::InvalidAccess.new('invalid referer host') unless EmbeddableHost.url_allowed?(request.referer)
       end
@@ -112,5 +111,4 @@ class EmbedController < ApplicationController
     rescue URI::InvalidURIError
       raise Discourse::InvalidAccess.new('invalid referer host')
     end
-
 end

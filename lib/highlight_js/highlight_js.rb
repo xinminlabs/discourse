@@ -1,5 +1,4 @@
 module HighlightJs
-
   def self.languages
     Dir.glob(File.dirname(__FILE__) << "/assets/lang/*.js").map do |path|
       File.basename(path)[0..-4]

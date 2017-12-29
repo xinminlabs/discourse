@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'discourse_updates'
 
 describe DiscourseUpdates do
-
   def stub_data(latest, missing, critical, updated_at)
     DiscourseUpdates.stubs(:latest_version).returns(latest)
     DiscourseUpdates.stubs(:missing_versions_count).returns(missing)

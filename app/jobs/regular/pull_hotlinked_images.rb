@@ -3,7 +3,6 @@ require_dependency 'file_helper'
 require_dependency 'upload_creator'
 
 module Jobs
-
   class PullHotlinkedImages < Jobs::Base
     sidekiq_options queue: 'low'
 
@@ -169,7 +168,5 @@ module Jobs
         "#{RailsMultisite::ConnectionManagement.current_db}: #{message}"
       )
     end
-
   end
-
 end

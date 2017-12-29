@@ -1,7 +1,6 @@
 require_dependency 'enum_site_setting'
 
 class NewTopicDurationSiteSetting < EnumSiteSetting
-
   def self.valid_value?(val)
     val.to_i.to_s == val.to_s &&
     values.any? { |v| v[:value] == val.to_i }
@@ -21,5 +20,4 @@ class NewTopicDurationSiteSetting < EnumSiteSetting
   def self.translate_names?
     true
   end
-
 end

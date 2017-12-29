@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe ExtraLocalesController do
-
   context 'show' do
-
     it "needs a valid bundle" do
       get :show, params: { bundle: 'made-up-bundle' }
       expect(response).to_not be_success
@@ -36,7 +34,5 @@ describe ExtraLocalesController do
       expect(response).to be_success
       expect(response.body.include?("github_badges")).to eq(true)
     end
-
   end
-
 end

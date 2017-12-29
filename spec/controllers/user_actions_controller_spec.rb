@@ -3,7 +3,6 @@ require_dependency 'post_enqueuer'
 
 describe UserActionsController do
   context 'index' do
-
     it 'fails if username is not specified' do
       expect do
         get :index, format: :json
@@ -39,7 +38,6 @@ describe UserActionsController do
       parsed = JSON.parse(response.body)
 
       expect(parsed["no_results_help"]).to eq(I18n.t("user_activity.no_bookmarks.self"))
-
     end
 
     it 'renders help text for others' do
@@ -65,7 +63,6 @@ describe UserActionsController do
             username: user.username, filter: UserAction::PENDING
           }, format: :json
           expect(response).to_not be_success
-
         end
       end
 

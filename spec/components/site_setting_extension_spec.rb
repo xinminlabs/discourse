@@ -3,7 +3,6 @@ require_dependency 'site_setting_extension'
 require_dependency 'site_settings/local_process_provider'
 
 describe SiteSettingExtension do
-
   describe '#types' do
     context "verify enum sequence" do
       before do
@@ -40,7 +39,6 @@ describe SiteSettingExtension do
   end
 
   describe "refresh!" do
-
     it "will reset to default if provider vanishes" do
       settings.setting(:hello, 1)
       settings.hello = 100
@@ -53,7 +51,6 @@ describe SiteSettingExtension do
     end
 
     it "will set to new value if provider changes" do
-
       settings.setting(:hello, 1)
       settings.hello = 100
       expect(settings.hello).to eq(100)
@@ -78,7 +75,6 @@ describe SiteSettingExtension do
       settings2.refresh!
       expect(settings2.hello).to eq(99)
     end
-
   end
 
   describe "multisite" do
@@ -257,6 +253,7 @@ describe SiteSettingExtension do
       def self.valid_value?(v)
         true
       end
+
       def self.values
         [1, 2, 3]
       end
@@ -269,18 +266,18 @@ describe SiteSettingExtension do
       expect(settings.defaults[:test_int_enum]).to eq(1)
       expect(settings.test_int_enum).to eq(2)
     end
-
   end
 
   describe 'enum setting' do
-
     class TestEnumClass
       def self.valid_value?(v)
         self.values.include?(v)
       end
+
       def self.values
         ['en']
       end
+
       def self.translate_names?
         false
       end
@@ -472,7 +469,6 @@ describe SiteSettingExtension do
       it "should return default cause nothing is set" do
         expect(settings.nada).to eq('nothing')
       end
-
     end
 
     context "with a false override" do
@@ -585,5 +581,4 @@ describe SiteSettingExtension do
       settings.default_locale = 'zh_CN'
     end
   end
-
 end

@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'auth/default_current_user_provider'
 
 describe Auth::DefaultCurrentUserProvider do
-
   class TestProvider < Auth::DefaultCurrentUserProvider
     attr_reader :env
     def initialize(env)
@@ -22,7 +21,6 @@ describe Auth::DefaultCurrentUserProvider do
   end
 
   context "server api" do
-
     it "raises errors for incorrect api_key" do
       expect {
         provider("/?api_key=INCORRECT").current_user
@@ -64,7 +62,6 @@ describe Auth::DefaultCurrentUserProvider do
       expect {
         provider("/?api_key=hello&api_username=#{user.username.downcase}", "REMOTE_ADDR" => "10.1.0.1").current_user
       }.to raise_error(Discourse::InvalidAccess)
-
     end
 
     it "allows a user with a matching ip" do
@@ -79,7 +76,6 @@ describe Auth::DefaultCurrentUserProvider do
       found_user = provider("/?api_key=hello&api_username=#{user.username.downcase}",
                             "HTTP_X_FORWARDED_FOR" => "10.1.1.1, 100.0.0.22").current_user
       expect(found_user.id).to eq(user.id)
-
     end
 
     it "finds a user for a correct system api key" do
@@ -130,10 +126,8 @@ describe Auth::DefaultCurrentUserProvider do
         key = SecureRandom.hex
         ApiKey.create!(key: key, created_by_id: -1)
         provider("/?api_key=#{key}&api_username=#{user.username.downcase}").current_user
-
       end
     end
-
   end
 
   it "should not update last seen for ajax calls without Discourse-Visible header" do
@@ -224,11 +218,9 @@ describe Auth::DefaultCurrentUserProvider do
     # assume it never reached the client
     expect(token.prev_auth_token).to eq(old_token)
     expect(token.auth_token).not_to eq(unverified_token)
-
   end
 
   context "rate limiting" do
-
     before do
       RateLimiter.enable
     end
@@ -356,11 +348,9 @@ describe Auth::DefaultCurrentUserProvider do
       expect {
         provider("/", params).current_user
       }.to raise_error(Discourse::InvalidAccess)
-
     end
 
     context "rate limiting" do
-
       before do
         RateLimiter.enable
       end
@@ -404,7 +394,6 @@ describe Auth::DefaultCurrentUserProvider do
         expect {
           provider("/", params).current_user
         }.to raise_error(RateLimiter::LimitExceeded)
-
       end
     end
   end

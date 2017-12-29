@@ -2,9 +2,7 @@ require 'rails_helper'
 require 'discourse_diff'
 
 describe DiscourseDiff do
-
   describe "inline_html" do
-
     it "does not lead to XSS" do
       a = "<test>start</test>"
       b = "<test>end</test>"
@@ -54,11 +52,9 @@ describe DiscourseDiff do
       after = "<p></p>"
       expect(DiscourseDiff.new(before, after).inline_html).to eq("<div class=\"inline-diff\"><p><del>&#39;</del></p></div>")
     end
-
   end
 
   describe "side_by_side_html" do
-
     it "returns two empty divs when no content is diffed" do
       expect(DiscourseDiff.new("", "").side_by_side_html).to eq("<div class=\"span8\"></div><div class=\"span8 offset1\"></div>")
     end
@@ -97,11 +93,9 @@ describe DiscourseDiff do
       after = "<p></p>"
       expect(DiscourseDiff.new(before, after).side_by_side_html).to eq("<div class=\"span8\"><p><del>&#39;</del></p></div><div class=\"span8 offset1\"><p></p></div>")
     end
-
   end
 
   describe "side_by_side_markdown" do
-
     it "returns an empty table when no content is diffed" do
       expect(DiscourseDiff.new("", "").side_by_side_markdown).to eq("<table class=\"markdown\"></table>")
     end
@@ -140,7 +134,5 @@ describe DiscourseDiff do
       after = "this is the second paragraph"
       expect(DiscourseDiff.new(before, after).side_by_side_markdown).to eq("<table class=\"markdown\"><tr><td class=\"diff-del\">this is the first paragraph\n</td><td></td></tr><tr><td>this is the second paragraph</td><td>this is the second paragraph</td></tr></table>")
     end
-
   end
-
 end

@@ -1,7 +1,6 @@
 module Autospec; end
 
 class Autospec::ReloadCss
-
   WATCHERS = {}
   def self.watch(pattern, &blk)
     WATCHERS[pattern] = blk
@@ -46,5 +45,4 @@ class Autospec::ReloadCss
     end
     message_bus.publish "/file-change", paths
   end
-
 end

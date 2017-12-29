@@ -1,5 +1,4 @@
 class AnonymousShadowCreator
-
   def self.get_master(user)
     return unless user
     return unless SiteSetting.allow_anonymous_posting

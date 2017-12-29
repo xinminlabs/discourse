@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe StylesheetCache do
-
   describe "add" do
     it "correctly cycles once MAX_TO_KEEP is hit" do
       StylesheetCache.destroy_all
@@ -23,6 +22,5 @@ describe StylesheetCache do
       expect(StylesheetCache.count).to eq 1
       expect(StylesheetCache.first.content).to eq "c"
     end
-
   end
 end

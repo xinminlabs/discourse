@@ -6,7 +6,6 @@ class QuotedPost < ActiveRecord::Base
   #  however topic links exclude quotes and links within a topic
   #  we are double parsing this fragment, this may be worth optimising later
   def self.extract_from(post)
-
     doc = Nokogiri::HTML.fragment(post.cooked)
 
     uniq = {}
@@ -55,7 +54,6 @@ class QuotedPost < ActiveRecord::Base
     if reply_quoted != post.reply_quoted
       post.update_columns(reply_quoted: reply_quoted)
     end
-
   end
 end
 

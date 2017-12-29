@@ -331,7 +331,6 @@ EOM
       #     Permalink.create(url: url_slug, topic_id: topic[:topic_id].to_i) if url_slug.present? && topic[:topic_id].present?
       #   end
       # end
-
     end
   end
 
@@ -851,7 +850,6 @@ EOM
         csv << [value]
       end
     end
-
   end
 
   def suspend_users
@@ -896,7 +894,6 @@ EOM
   def mysql_query(sql)
     @client.query(sql, cache_rows: true)
   end
-
 end
 
 ImportScripts::VBulletin.new.perform

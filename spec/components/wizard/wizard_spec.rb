@@ -97,7 +97,6 @@ describe Wizard do
   end
 
   describe "#requires_completion?" do
-
     def build_simple(user)
       wizard = Wizard.new(user)
       wizard.append_step('simple') do |step|
@@ -157,7 +156,5 @@ describe Wizard do
       wizard = build_simple(Fabricate(:admin))
       expect(wizard.requires_completion?).to eq(false)
     end
-
   end
-
 end

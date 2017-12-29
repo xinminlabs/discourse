@@ -4,7 +4,6 @@ require 'rails_helper'
 require_dependency 'search'
 
 describe Search do
-
   class TextHelper
     extend ActionView::Helpers::TextHelper
   end
@@ -57,7 +56,6 @@ describe Search do
     it "should pick up on name" do
       expect(@indexed).to match(/america/)
     end
-
   end
 
   it 'strips zero-width characters from search terms' do
@@ -142,9 +140,7 @@ describe Search do
         result = Search.execute('bruce', type_filter: 'user', guardian: Guardian.new(user))
         expect(result.users.length).to eq(1)
       end
-
     end
-
   end
 
   context 'inactive users' do
@@ -166,7 +162,6 @@ describe Search do
   end
 
   context 'private messages' do
-
     let(:topic) {
       Fabricate(:topic,
                   category_id: nil,
@@ -178,7 +173,6 @@ describe Search do
                                    raw: 'hello from mars, we just landed') }
 
     it 'searches correctly' do
-
       expect do
         Search.execute('mars', type_filter: 'private_messages')
       end.to raise_error(Discourse::InvalidAccess)
@@ -235,9 +229,7 @@ describe Search do
                               guardian: Guardian.new(user))
 
       expect(results.posts.length).to eq(1)
-
     end
-
   end
 
   context 'topics' do
@@ -245,13 +237,11 @@ describe Search do
     let(:topic) { post.topic }
 
     context 'search within topic' do
-
       def new_post(raw, topic)
         Fabricate(:post, topic: topic, topic_id: topic.id, user: topic.user, raw: raw)
       end
 
       it 'displays multiple results within a topic' do
-
         topic = Fabricate(:topic)
         topic2 = Fabricate(:topic)
 
@@ -326,7 +316,6 @@ describe Search do
     end
 
     context 'security' do
-
       def result(current_user)
         Search.execute('hello', guardian: Guardian.new(current_user))
       end
@@ -343,10 +332,8 @@ describe Search do
         expect(result(nil).posts).not_to be_present
         expect(result(Fabricate(:user)).posts).not_to be_present
         expect(result(Fabricate(:admin)).posts).to be_present
-
       end
     end
-
   end
 
   context 'cyrillic topic' do
@@ -369,7 +356,6 @@ describe Search do
   end
 
   context 'categories' do
-
     let!(:category) { Fabricate(:category) }
     def search
       Search.execute(category.name)
@@ -383,7 +369,6 @@ describe Search do
 
       expect(search.categories).not_to be_present
     end
-
   end
 
   context 'tags' do
@@ -432,7 +417,6 @@ describe Search do
   end
 
   context 'type_filter' do
-
     let!(:user) { Fabricate(:user, username: 'amazing', email: 'amazing@amazing.com') }
     let!(:category) { Fabricate(:category, name: 'amazing category', user: user) }
 
@@ -444,7 +428,6 @@ describe Search do
         expect(results.posts.length).to eq(0)
         expect(results.users.length).to eq(1)
       end
-
     end
 
     context 'category filter' do
@@ -455,15 +438,11 @@ describe Search do
         expect(results.posts.length).to eq(0)
         expect(results.users.length).to eq(0)
       end
-
     end
-
   end
 
   context 'search_context' do
-
     it 'can find a user when using search context' do
-
       coding_horror = Fabricate(:coding_horror)
       post = Fabricate(:post)
 
@@ -492,7 +471,6 @@ describe Search do
       expect(search.posts.map(&:id).sort).to eq([post.id, sub_post.id].sort)
       expect(search.posts.length).to eq(2)
     end
-
   end
 
   describe 'Chinese search' do
@@ -550,7 +528,6 @@ describe Search do
   end
 
   describe 'Advanced search' do
-
     it 'supports pinned and unpinned' do
       topic = Fabricate(:topic)
       Fabricate(:post, raw: 'hi this is a test 123 123', topic: topic)
@@ -617,7 +594,6 @@ describe Search do
     end
 
     it 'supports before and after, in:first, user:, @username' do
-
       time = Time.zone.parse('2001-05-20 2:55')
       freeze_time(time)
 
@@ -655,7 +631,6 @@ describe Search do
     end
 
     it 'supports badge' do
-
       topic = Fabricate(:topic, created_at: 3.months.ago)
       post = Fabricate(:post, raw: 'hi this is a test 123 123', topic: topic)
 
@@ -706,7 +681,6 @@ describe Search do
       TopicUser.change(topic.user.id, topic.id, notification_level: TopicUser.notification_levels[:tracking])
       expect(Search.execute('test in:watching', guardian: Guardian.new(topic.user)).posts.length).to eq(0)
       expect(Search.execute('test in:tracking', guardian: Guardian.new(topic.user)).posts.length).to eq(1)
-
     end
 
     it 'can find posts with images' do
@@ -949,7 +923,5 @@ describe Search do
       expect(results.posts).to eq([post5])
       expect(results.more_full_page_results).to eq(nil)
     end
-
   end
-
 end

@@ -1,5 +1,4 @@
 class MessageBusDiags
-
   @host_info = {}
 
   def self.my_id

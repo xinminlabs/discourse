@@ -1,5 +1,4 @@
 class TopicConverter
-
   attr_reader :topic
 
   def initialize(topic, user)
@@ -91,5 +90,4 @@ class TopicConverter
       topic.notifier.watch!(tau.user_id)
     end
   end
-
 end

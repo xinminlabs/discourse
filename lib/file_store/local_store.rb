@@ -1,9 +1,7 @@
 require_dependency 'file_store/base_store'
 
 module FileStore
-
   class LocalStore < BaseStore
-
     def store_file(file, path)
       copy_file(file, "#{public_dir}#{path}")
       "#{Discourse.base_uri}#{path}"
@@ -95,7 +93,5 @@ module FileStore
     def tombstone_dir
       "#{public_dir}#{relative_base_url.sub("/uploads/", "/uploads/tombstone/")}"
     end
-
   end
-
 end

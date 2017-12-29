@@ -3,7 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 require File.expand_path(File.dirname(__FILE__) + "/drupal.rb")
 
 class ImportScripts::DrupalQA < ImportScripts::Drupal
-
   def categories_query
     result = @client.query("SELECT n.nid, GROUP_CONCAT(ti.tid) AS tids
                             FROM node AS n
@@ -25,7 +24,6 @@ class ImportScripts::DrupalQA < ImportScripts::Drupal
   end
 
   def create_forum_topics
-
     puts '', "creating forum topics"
 
     total_count = @client.query("
@@ -84,7 +82,6 @@ class ImportScripts::DrupalQA < ImportScripts::Drupal
     batch_size = 1000
 
     batches(batch_size) do |offset|
-
       results = @client.query("
         SELECT n.nid AS cid,
                q.field_answer_question_nid AS nid,
@@ -136,7 +133,6 @@ class ImportScripts::DrupalQA < ImportScripts::Drupal
     batch_size = 1000
 
     batches(batch_size) do |offset|
-
       # WARNING: If there are more than 1000000 this might have to be revisited
       results = @client.query("
         SELECT (c.cid + 1000000) as cid,
@@ -187,7 +183,6 @@ class ImportScripts::DrupalQA < ImportScripts::Drupal
     batch_size = 1000
 
     batches(batch_size) do |offset|
-
       # WARNING: If there are more than 1000000 this might have to be revisited
       results = @client.query("
         SELECT (c.cid + 1000000) as cid,
@@ -232,7 +227,6 @@ class ImportScripts::DrupalQA < ImportScripts::Drupal
     create_direct_replies
     create_nested_replies
   end
-
 end
 
 if __FILE__ == $0

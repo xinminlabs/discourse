@@ -4,7 +4,6 @@ require 'csv'
 require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 
 class ImportScripts::Jive < ImportScripts::Base
-
   BATCH_SIZE = 1000
   CATEGORY_IDS = [2023, 2003, 2004, 2042, 2036, 2029] # categories that should be imported
 
@@ -71,7 +70,6 @@ class ImportScripts::Jive < ImportScripts::Base
     double_quote_count = 0
 
     File.open(filename).each_line do |line|
-
       line.gsub!(/\\(.{1})/) { |m| m[-1] == '"' ? '""' : m[-1] }
       line.strip!
 
@@ -145,7 +143,6 @@ class ImportScripts::Jive < ImportScripts::Base
     total = total_rows("users")
 
     csv_parse("users") do |row|
-
       id = row.userid
 
       email = "#{row.email}"
@@ -180,7 +177,6 @@ class ImportScripts::Jive < ImportScripts::Base
       if count % BATCH_SIZE == 0
         load_user_batch! users, count - users.length, total
       end
-
     end
 
     load_user_batch! users, count, total
@@ -229,7 +225,6 @@ class ImportScripts::Jive < ImportScripts::Base
 
   def import_post_batch!(posts, topics, offset, total)
     create_posts(posts, total: total, offset: offset) do |post|
-
       mapped = {}
 
       mapped[:id] = post[:id]
@@ -279,7 +274,6 @@ class ImportScripts::Jive < ImportScripts::Base
     thread_map = {}
 
     csv_parse("messages") do |thread|
-
       next unless CATEGORY_IDS.include?(thread.containerid.to_i)
 
       if !thread.parentmessageid
@@ -397,7 +391,6 @@ class ImportScripts::Jive < ImportScripts::Base
 
     import_post_batch!(posts, topic_map, count - posts.length, total) if posts.length > 0
   end
-
 end
 
 unless ARGV[0] && Dir.exist?(ARGV[0])

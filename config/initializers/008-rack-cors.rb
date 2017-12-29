@@ -11,7 +11,6 @@ class Discourse::Cors
   end
 
   def call(env)
-
     cors_origins = @global_origins || []
     cors_origins += SiteSetting.cors_origins.split('|') if SiteSetting.cors_origins.present?
     cors_origins = cors_origins.presence

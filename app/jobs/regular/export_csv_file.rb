@@ -2,7 +2,6 @@ require 'csv'
 require_dependency 'system_message'
 
 module Jobs
-
   class ExportCsvFile < Jobs::Base
     include ActionView::Helpers::NumberHelper
 

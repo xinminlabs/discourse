@@ -2,7 +2,6 @@ require "rails_helper"
 
 describe CategoriesController do
   describe "create" do
-
     it "requires the user to be logged in" do
       expect { post :create, format: :json }.to raise_error(Discourse::NotLoggedIn)
     end
@@ -88,7 +87,6 @@ describe CategoriesController do
   end
 
   describe "destroy" do
-
     it "requires the user to be logged in" do
       expect { delete :destroy, params: { id: "category" }, format: :json }
         .to raise_error(Discourse::NotLoggedIn)
@@ -115,7 +113,6 @@ describe CategoriesController do
         expect(UserHistory.count).to eq(1)
       end
     end
-
   end
 
   describe "reorder" do
@@ -156,7 +153,6 @@ describe CategoriesController do
   end
 
   describe "update" do
-
     it "requires the user to be logged in" do
       expect { put :update, params: { id: 'category' }, format: :json }.to raise_error(Discourse::NotLoggedIn)
     end
@@ -246,7 +242,6 @@ describe CategoriesController do
       end
 
       describe "success" do
-
         it "updates the group correctly" do
           readonly = CategoryGroup.permission_types[:readonly]
           create_post = CategoryGroup.permission_types[:create_post]
@@ -297,7 +292,6 @@ describe CategoriesController do
         end
       end
     end
-
   end
 
   describe 'update_slug' do

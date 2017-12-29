@@ -1,5 +1,4 @@
 class SpamRule::AutoSilence
-
   def initialize(user)
     @user = user
   end
