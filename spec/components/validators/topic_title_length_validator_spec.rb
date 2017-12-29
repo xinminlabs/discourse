@@ -29,13 +29,13 @@ describe TopicTitleLengthValidator do
     end
 
     it 'does not add an error when length is good' do
-      record.title = 'a' * (SiteSetting.min_topic_title_length)
+      record.title = 'a' * SiteSetting.min_topic_title_length
       validate
       expect(record.errors[:title]).to_not be_present
     end
 
     it 'is up to date' do
-      record.title = 'a' * (SiteSetting.min_topic_title_length)
+      record.title = 'a' * SiteSetting.min_topic_title_length
       validate
       expect(record.errors[:title]).to_not be_present
 
@@ -59,7 +59,7 @@ describe TopicTitleLengthValidator do
     end
 
     it 'does not add an error when topic title is shorter than SiteSetting.min_topic_title_length' do
-      record.title = 'a' * (SiteSetting.min_private_message_title_length)
+      record.title = 'a' * SiteSetting.min_private_message_title_length
       validate
       expect(record.errors[:title]).to_not be_present
     end

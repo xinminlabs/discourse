@@ -13,7 +13,7 @@ module TimelineLookup
 
       days_ago = t[2]
 
-      if (days_ago != last_days_ago)
+      if days_ago != last_days_ago
         result << [idx + 1, days_ago]
         last_days_ago = days_ago
       end

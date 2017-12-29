@@ -158,7 +158,7 @@ EOM
     username.gsub!(/_+/, "_") # could result in dupes, but wtf?
     username.gsub!(/_$/, "") # could result in dupes, but wtf?
     if olduser != username
-      print_warning ("#{olduser} --> #{username}")
+      print_warning "#{olduser} --> #{username}"
     end
     username
   end

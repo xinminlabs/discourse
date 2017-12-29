@@ -36,17 +36,17 @@ class TwitterApi
     end
 
     def user_timeline(screen_name)
-      JSON.parse(twitter_get(user_timeline_uri_for screen_name))
+      JSON.parse(twitter_get(user_timeline_uri_for(screen_name)))
     end
 
     def tweet_for(id)
-      JSON.parse(twitter_get(tweet_uri_for id))
+      JSON.parse(twitter_get(tweet_uri_for(id)))
     end
 
     alias_method :status, :tweet_for
 
     def raw_tweet_for(id)
-      twitter_get(tweet_uri_for id)
+      twitter_get(tweet_uri_for(id))
     end
 
     def twitter_credentials_missing?

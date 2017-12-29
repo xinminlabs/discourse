@@ -74,7 +74,7 @@ class ImportScripts::MyAskBot < ImportScripts::Base
         OFFSET #{offset}
       SQL
       )
-      break if tags.ntuples() < 1
+      break if tags.ntuples < 1
       tags.each do |tag|
         tid = tag["thread_id"].to_i
         tnm = tag["name"].downcase
@@ -108,7 +108,7 @@ class ImportScripts::MyAskBot < ImportScripts::Base
       SQL
       )
 
-      break if users.ntuples() < 1
+      break if users.ntuples < 1
 
       next if all_records_exist? :users, users.map { |u| u["id"].to_i }
 
@@ -153,7 +153,7 @@ class ImportScripts::MyAskBot < ImportScripts::Base
       SQL
       )
 
-      break if posts.ntuples() < 1
+      break if posts.ntuples < 1
 
       next if all_records_exist? :posts, posts.map { |p| p["id"].to_i }
 
@@ -208,7 +208,7 @@ class ImportScripts::MyAskBot < ImportScripts::Base
       SQL
       )
 
-      break if posts.ntuples() < 1
+      break if posts.ntuples < 1
 
       next if all_records_exist? :posts, posts.map { |p| p["id"].to_i }
 

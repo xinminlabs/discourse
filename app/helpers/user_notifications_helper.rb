@@ -50,7 +50,7 @@ module UserNotificationsHelper
 
   def email_excerpt(html_arg, posts_count = nil)
     # only include 1st paragraph when more than 1 posts
-    html = (posts_count.nil? || posts_count > 1) ? (first_paragraph_from(html_arg) || html_arg).to_s : html_arg
+    html = posts_count.nil? || posts_count > 1 ? (first_paragraph_from(html_arg) || html_arg).to_s : html_arg
     PrettyText.format_for_email(html).html_safe
   end
 

@@ -232,7 +232,7 @@ after_initialize do
         per_option_voters = {}
 
         options.each do |option|
-          if (params[:option_id])
+          if params[:option_id]
             next unless option["id"] == params[:option_id].to_s
           end
 
@@ -253,7 +253,7 @@ after_initialize do
           user_hash = UserNameSerializer.new(user).serializable_hash
 
           poll_votes[user.id.to_s][poll_name].each do |option_id|
-            if (params[:option_id])
+            if params[:option_id]
               next unless option_id == params[:option_id].to_s
             end
 

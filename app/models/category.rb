@@ -414,7 +414,7 @@ SQL
   end
 
   def has_children?
-    @has_children ||= (id && Category.where(parent_category_id: id).exists?) ? :true : :false
+    @has_children ||= id && Category.where(parent_category_id: id).exists? ? :true : :false
     @has_children == :true
   end
 
