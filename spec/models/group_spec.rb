@@ -358,7 +358,7 @@ describe Group do
     expect(g.users.pluck(:id).sort.reject { |id| id < -1 }).to eq([-1, admin.id])
 
     g = groups.find { |grp| grp.id == Group::AUTO_GROUPS[:staff] }
-    expect(g.users.count).to eq (g.user_count)
+    expect(g.users.count).to eq g.user_count
     expect(g.users.pluck(:id).sort.reject { |id| id < -1 }).to eq([-1, admin.id])
 
     g = groups.find { |grp| grp.id == Group::AUTO_GROUPS[:trust_level_1] }

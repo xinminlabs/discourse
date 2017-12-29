@@ -8,7 +8,7 @@ task "i18n:stats" => :environment do
     if source.kind_of?(Hash)
 
       # detect pluralizable string
-      if (source["other"] != nil)
+      if source["other"] != nil
         target[namespace] = { pluralizable: true, content: source }
         return
       end

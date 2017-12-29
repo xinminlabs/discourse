@@ -45,7 +45,7 @@ describe ::Presence::PresenceManager do
       manager.publish('post', post1.id)
     end
 
-    expect(messages.count).to eq (1)
+    expect(messages.count).to eq 1
     message = messages.first
 
     expect(message.channel).to eq("/presence/post/#{post1.id}")
@@ -61,7 +61,7 @@ describe ::Presence::PresenceManager do
       manager.publish('post', private_post.id)
     end
 
-    expect(messages.count).to eq (1)
+    expect(messages.count).to eq 1
     message = messages.first
 
     expect(message.channel).to eq("/presence/post/#{private_post.id}")
@@ -82,7 +82,7 @@ describe ::Presence::PresenceManager do
       manager.publish('topic', private_topic.id)
     end
 
-    expect(messages.count).to eq (1)
+    expect(messages.count).to eq 1
     message = messages.first
 
     expect(message.channel).to eq("/presence/topic/#{private_topic.id}")

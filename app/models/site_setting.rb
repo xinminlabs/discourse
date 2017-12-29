@@ -76,7 +76,7 @@ class SiteSetting < ActiveRecord::Base
     return true unless setting.present?
 
     host = URI.parse(src).host
-    return !(setting.split('|').include?(host))
+    return !setting.split('|').include?(host)
   rescue URI::InvalidURIError
     return true
   end

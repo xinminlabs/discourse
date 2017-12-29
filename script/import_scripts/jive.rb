@@ -290,7 +290,7 @@ class ImportScripts::Jive < ImportScripts::Base
         #IMAGE UPLOADER
         if thread.imagecount
           Dir.foreach("/var/www/discourse/script/import_scripts/jive/img/#{thread.messageid}") do |item|
-            next if item == ('.') || item == ('..') || item == ('.DS_Store')
+            next if item == '.' || item == '..' || item == '.DS_Store'
             photo_path = "/var/www/discourse/script/import_scripts/jive/img/#{thread.messageid}/#{item}"
             upload = create_upload(thread.userid, photo_path, File.basename(photo_path))
                if upload.persisted?
@@ -305,7 +305,7 @@ class ImportScripts::Jive < ImportScripts::Base
         #ATTACHMENT UPLOADER
         if thread.attachmentcount
           Dir.foreach("/var/www/discourse/script/import_scripts/jive/attach/#{thread.messageid}") do |item|
-            next if item == ('.') || item == ('..') || item == ('.DS_Store')
+            next if item == '.' || item == '..' || item == '.DS_Store'
             attach_path = "/var/www/discourse/script/import_scripts/jive/attach/#{thread.messageid}/#{item}"
             upload = create_upload(thread.userid, attach_path, File.basename(attach_path))
                if upload.persisted?
@@ -350,7 +350,7 @@ class ImportScripts::Jive < ImportScripts::Base
         #IMAGE UPLOADER
         if thread.imagecount
           Dir.foreach("/var/www/discourse/script/import_scripts/jive/img/#{thread.messageid}") do |item|
-            next if item == ('.') || item == ('..') || item == ('.DS_Store')
+            next if item == '.' || item == '..' || item == '.DS_Store'
             photo_path = "/var/www/discourse/script/import_scripts/jive/img/#{thread.messageid}/#{item}"
             upload = create_upload(thread.userid, photo_path, File.basename(photo_path))
                if upload.persisted?
@@ -365,7 +365,7 @@ class ImportScripts::Jive < ImportScripts::Base
         #ATTACHMENT UPLOADER
         if thread.attachmentcount
           Dir.foreach("/var/www/discourse/script/import_scripts/jive/attach/#{thread.messageid}") do |item|
-            next if item == ('.') || item == ('..') || item == ('.DS_Store')
+            next if item == '.' || item == '..' || item == '.DS_Store'
             attach_path = "/var/www/discourse/script/import_scripts/jive/attach/#{thread.messageid}/#{item}"
             upload = create_upload(thread.userid, attach_path, File.basename(attach_path))
                if upload.persisted?

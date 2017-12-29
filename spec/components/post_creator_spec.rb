@@ -539,7 +539,7 @@ describe PostCreator do
 
     it "sends a message to moderators" do
       GroupMessage.expects(:create).with do |group_name, msg_type, params|
-        group_name == (Group[:moderators].name) && msg_type == (:spam_post_blocked) && params[:user].id == (user.id)
+        group_name == Group[:moderators].name && msg_type == :spam_post_blocked && params[:user].id == user.id
       end
       creator.create
     end

@@ -21,7 +21,7 @@ class ContentBuffer
       l = @lines[start_row]
       l = l[0...start_col]
 
-      if (finish_row == start_row)
+      if finish_row == start_row
         l << @lines[start_row][finish_col..-1]
         @lines[start_row] = l
         return
