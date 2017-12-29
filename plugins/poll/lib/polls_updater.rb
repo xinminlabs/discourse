@@ -106,7 +106,7 @@ module DiscoursePoll
     end
 
     def self.polls_updated?(current_polls, previous_polls)
-      return true if (current_polls.keys.sort != previous_polls.keys.sort)
+      return true if current_polls.keys.sort != previous_polls.keys.sort
 
       current_polls.each_key do |poll_name|
         if !previous_polls[poll_name] ||

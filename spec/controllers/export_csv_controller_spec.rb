@@ -40,7 +40,7 @@ describe ExportCsvController do
         file = UserExport.create(file_name: "user-archive-codinghorror-150116-003249", user_id: @user.id)
         file_name = "user-archive-codinghorror-150116-003249-#{file.id}.csv.gz"
         controller.stubs(:render)
-        export = UserExport.new()
+        export = UserExport.new
         UserExport.expects(:get_download_path).with(file_name).returns(export)
         subject.expects(:send_file).with(export)
         get :show, params: { id: file_name }
@@ -83,7 +83,7 @@ describe ExportCsvController do
         file = UserExport.create(file_name: "screened-email-150116-010145", user_id: @admin.id)
         file_name = "screened-email-150116-010145-#{file.id}.csv.gz"
         controller.stubs(:render)
-        export = UserExport.new()
+        export = UserExport.new
         UserExport.expects(:get_download_path).with(file_name).returns(export)
         subject.expects(:send_file).with(export)
         get :show, params: { id: file_name }

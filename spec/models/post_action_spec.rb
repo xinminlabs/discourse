@@ -346,7 +346,7 @@ describe PostAction do
       post = Fabricate(:post)
       PostAction.act(eviltrout, post, PostActionType.types[:spam])
       PostAction.remove_act(eviltrout, post, PostActionType.types[:spam])
-      expect { PostAction.act(eviltrout, post, PostActionType.types[:off_topic]) }.not_to raise_error()
+      expect { PostAction.act(eviltrout, post, PostActionType.types[:off_topic]) }.not_to raise_error
     end
 
     it 'should update counts when you clear flags' do

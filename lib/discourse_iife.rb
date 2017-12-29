@@ -16,17 +16,17 @@ class DiscourseIIFE
     data = input[:data]
 
     # Only discourse or admin paths
-    return data unless (path =~ /\/javascripts\/discourse/ || path =~ /\/javascripts\/admin/ || path =~ /\/test\/javascripts/)
+    return data unless path =~ /\/javascripts\/discourse/ || path =~ /\/javascripts\/admin/ || path =~ /\/test\/javascripts/
 
     # Ignore the js helpers
-    return data if (path =~ /test\_helper\.js/)
-    return data if (path =~ /javascripts\/helpers\//)
+    return data if path =~ /test\_helper\.js/
+    return data if path =~ /javascripts\/helpers\//
 
     # Ignore ES6 files
-    return data if (path =~ /\.es6/)
+    return data if path =~ /\.es6/
 
     # Ignore translations
-    return data if (path =~ /\/translations/)
+    return data if path =~ /\/translations/
 
     # We don't add IIFEs to handlebars
     return data if path =~ /\.handlebars/

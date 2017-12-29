@@ -16,9 +16,9 @@ describe CategoryList do
       cat.save
 
       # uncategorized + this
-      expect(CategoryList.new(Guardian.new admin).categories.count).to eq(2)
-      expect(CategoryList.new(Guardian.new user).categories.count).to eq(1)
-      expect(CategoryList.new(Guardian.new nil).categories.count).to eq(1)
+      expect(CategoryList.new(Guardian.new(admin)).categories.count).to eq(2)
+      expect(CategoryList.new(Guardian.new(user)).categories.count).to eq(1)
+      expect(CategoryList.new(Guardian.new(nil)).categories.count).to eq(1)
     end
 
     it "doesn't show topics that you can't view" do

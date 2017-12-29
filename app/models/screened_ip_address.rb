@@ -69,8 +69,8 @@ class ScreenedIpAddress < ActiveRecord::Base
 
   def self.exists_for_ip_address_and_action?(ip_address, action_type, opts = {})
     b = match_for_ip_address(ip_address)
-    found = (!!b && b.action_type == (action_type))
-    b.record_match! if found && opts[:record_match] != (false)
+    found = (!!b && b.action_type == action_type)
+    b.record_match! if found && opts[:record_match] != false
     found
   end
 

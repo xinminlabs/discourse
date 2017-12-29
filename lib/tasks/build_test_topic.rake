@@ -32,7 +32,7 @@ task 'build_test_topic' => :environment do
     links = []
     [-30, -10, 10, 30].each do |offset|
       where = (post_number + offset)
-      if where >= (1) && where <= (100)
+      if where >= 1 && where <= 100
         links << "Link to ##{where}: #{topic_url}/#{where}"
       end
     end

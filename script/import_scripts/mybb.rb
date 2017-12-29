@@ -258,7 +258,7 @@ class ImportScripts::MyBB < ImportScripts::Base
       count += 1
       next unless id = ccf["import_id"]
       unless QUIET
-        puts ("forum-#{id}.html --> /c/#{cat.id}")
+        puts "forum-#{id}.html --> /c/#{cat.id}"
       end
       Permalink.create(url: "#{BASE}/forum-#{id}.html", category_id: cat.id) rescue nil
       print_status(count, total_categories, start_time)
@@ -288,7 +288,7 @@ class ImportScripts::MyBB < ImportScripts::Base
           id = post['topic_id']
           Permalink.create(url: "#{BASE}/thread-#{id}.html", topic_id: topic[:topic_id]) rescue nil
           unless QUIET
-            puts ("#{BASE}/thread-#{id}.html --> http://localhost:3000/t/#{topic[:topic_id]}")
+            puts "#{BASE}/thread-#{id}.html --> http://localhost:3000/t/#{topic[:topic_id]}"
           end
           print_status(count, total_posts, start_time)
         end

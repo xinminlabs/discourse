@@ -144,7 +144,7 @@ class SiteSettings::TypeSupervisor
     type = @types[name] || self.class.parse_value_type(val)
 
     if type == self.class.types[:bool]
-      val = (val == true || val == 't' || val == 'true') ? 't' : 'f'
+      val = val == true || val == 't' || val == 'true' ? 't' : 'f'
     elsif type == self.class.types[:integer] && !val.is_a?(Integer)
       val = val.to_i
     elsif type == self.class.types[:null] && val != ''

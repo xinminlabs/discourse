@@ -114,7 +114,7 @@ class StaffActionLogger
     old.each do |k, v|
       next if k == "name"
       next if k == "id"
-      if (v == cur[k])
+      if v == cur[k]
         cur.delete(k)
         old.delete(k)
       end

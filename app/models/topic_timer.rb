@@ -28,7 +28,7 @@ class TopicTimer < ActiveRecord::Base
   end
 
   after_save do
-    if (saved_change_to_execute_at? || saved_change_to_user_id?)
+    if saved_change_to_execute_at? || saved_change_to_user_id?
       now = Time.zone.now
       time = execute_at < now ? now : execute_at
 
@@ -66,7 +66,7 @@ class TopicTimer < ActiveRecord::Base
   end
 
   def duration
-    if (self.execute_at && self.created_at)
+    if self.execute_at && self.created_at
       ((self.execute_at - self.created_at) / 1.hour).round(2)
     else
       0

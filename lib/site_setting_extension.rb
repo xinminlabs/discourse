@@ -169,9 +169,9 @@ module SiteSettingExtension
     mutex.synchronize do
       ensure_listen_for_changes
 
-      new_hash = Hash[*(defaults.db_all.map { |s|
+      new_hash = Hash[*defaults.db_all.map { |s|
         [s.name.to_sym, type_supervisor.to_rb_value(s.name, s.value, s.data_type)]
-      }.to_a.flatten)]
+      }.to_a.flatten]
 
       defaults_view = defaults.all
 
