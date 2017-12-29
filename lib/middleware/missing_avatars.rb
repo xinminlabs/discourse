@@ -9,7 +9,7 @@ module Middleware
     end
 
     def call(env)
-      if (env['REQUEST_PATH'] =~ /^\/uploads\/default\/avatars/)
+      if env['REQUEST_PATH'] =~ /^\/uploads\/default\/avatars/
         path = "#{Rails.root}/public#{env['REQUEST_PATH']}"
         unless File.exist?(path)
           default_image = "#{Rails.root}/public/images/d-logo-sketch-small.png"

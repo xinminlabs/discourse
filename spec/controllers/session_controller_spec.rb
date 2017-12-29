@@ -735,7 +735,7 @@ describe SessionController do
       it "shows the 'not activated' error message" do
         post_login
         expect(JSON.parse(response.body)['error']).to eq(
-          I18n.t 'login.not_activated'
+          I18n.t('login.not_activated')
         )
       end
 
@@ -745,7 +745,7 @@ describe SessionController do
         it "shows the 'not approved' error message" do
           post_login
           expect(JSON.parse(response.body)['error']).to eq(
-            I18n.t 'login.not_approved'
+            I18n.t('login.not_approved')
           )
         end
       end

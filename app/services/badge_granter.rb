@@ -287,12 +287,12 @@ class BadgeGranter
       return
     end
 
-    if (post_ids && !badge.query.include?(":post_ids"))
+    if post_ids && !badge.query.include?(":post_ids")
       Rails.logger.warn "Your triggered badge query for #{badge.name} does not include the :post_ids param, skipping!"
       return
     end
 
-    if (user_ids && !badge.query.include?(":user_ids"))
+    if user_ids && !badge.query.include?(":user_ids")
       Rails.logger.warn "Your triggered badge query for #{badge.name} does not include the :user_ids param, skipping!"
       return
     end
@@ -304,7 +304,7 @@ class BadgeGranter
                                  user_ids: user_ids || [-2]).each do |row|
 
       # old bronze badges do not matter
-      next if badge.badge_type_id == (BadgeType::Bronze) && row.granted_at < (2.days.ago)
+      next if badge.badge_type_id == BadgeType::Bronze && row.granted_at < 2.days.ago
 
       # Try to use user locale in the badge notification if possible without too much resources
       notification_locale =
@@ -317,7 +317,7 @@ class BadgeGranter
       # Make this variable in this scope
       notification = nil
 
-      next if (row.staff && badge.awarded_for_trust_level?)
+      next if row.staff && badge.awarded_for_trust_level?
 
       I18n.with_locale(notification_locale) do
         notification = Notification.create!(

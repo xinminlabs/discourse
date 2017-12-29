@@ -20,17 +20,17 @@ class SpamRule::AutoSilence
     return false if @user.staged?
     return false if @user.has_trust_level?(TrustLevel[1])
 
-    if SiteSetting.num_spam_flags_to_silence_new_user > (0) &&
-        SiteSetting.num_users_to_silence_new_user > (0) &&
-        num_spam_flags_against_user >= (SiteSetting.num_spam_flags_to_silence_new_user) &&
-        num_users_who_flagged_spam_against_user >= (SiteSetting.num_users_to_silence_new_user)
+    if SiteSetting.num_spam_flags_to_silence_new_user > 0 &&
+        SiteSetting.num_users_to_silence_new_user > 0 &&
+        num_spam_flags_against_user >= SiteSetting.num_spam_flags_to_silence_new_user &&
+        num_users_who_flagged_spam_against_user >= SiteSetting.num_users_to_silence_new_user
       return true
     end
 
-    if SiteSetting.num_tl3_flags_to_silence_new_user > (0) &&
-        SiteSetting.num_tl3_users_to_silence_new_user > (0) &&
-        num_tl3_flags_against_user >= (SiteSetting.num_tl3_flags_to_silence_new_user) &&
-        num_tl3_users_who_flagged >= (SiteSetting.num_tl3_users_to_silence_new_user)
+    if SiteSetting.num_tl3_flags_to_silence_new_user > 0 &&
+        SiteSetting.num_tl3_users_to_silence_new_user > 0 &&
+        num_tl3_flags_against_user >= SiteSetting.num_tl3_flags_to_silence_new_user &&
+        num_tl3_users_who_flagged >= SiteSetting.num_tl3_users_to_silence_new_user
       return true
     end
 

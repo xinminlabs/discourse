@@ -37,7 +37,7 @@ class IncomingLink < ActiveRecord::Base
                              post_number: opts[:post_number] || 1)
         .pluck(:id).first
 
-      cid = current_user ? (current_user.id) : (nil)
+      cid = current_user ? current_user.id : nil
 
       unless cid && cid == user_id
 

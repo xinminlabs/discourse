@@ -33,7 +33,7 @@ if ARGV.length < 1
 end
 
 new_version = ARGV[0].split('.')
-if new_version.length < (2) && !ARGV.include?('push')
+if new_version.length < 2 && !ARGV.include?('push')
   puts "First argument must be a version number with at least 2 parts. Examples: 0.9.8, 0.10, 0.9.7.3"
   exit 1
 end

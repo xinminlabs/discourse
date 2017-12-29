@@ -104,10 +104,10 @@ class UserProfile < ActiveRecord::Base
 
   def website_domain_validator
     allowed_domains = SiteSetting.user_website_domains_whitelist
-    return if (allowed_domains.blank? || self.website.blank?)
+    return if allowed_domains.blank? || self.website.blank?
 
     domain = URI.parse(self.website).host
-    self.errors.add :base, (I18n.t('user.website.domain_not_allowed', domains: allowed_domains.split('|').join(", "))) unless allowed_domains.split('|').include?(domain)
+    self.errors.add :base, I18n.t('user.website.domain_not_allowed', domains: allowed_domains.split('|').join(", ")) unless allowed_domains.split('|').include?(domain)
   end
 end
 

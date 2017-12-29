@@ -34,7 +34,7 @@ module Jobs
       def call(name, start, finish, message_id, values)
         stats = Instrumenter.stats
         stats.query_count += 1
-        stats.duration_ms += (((finish - start).to_f) * 1000).to_i
+        stats.duration_ms += ((finish - start).to_f * 1000).to_i
       end
     end
 

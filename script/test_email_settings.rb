@@ -38,18 +38,18 @@ end
 message = EmailTestMailer.email_test(MAILFROM, MAILTO)
 
 begin
-  message.deliver_now()
+  message.deliver_now
 rescue SocketError => e
-  print "Delivery failed: " + e.message.strip() + "\n"
+  print "Delivery failed: " + e.message.strip + "\n"
   print " Is the server hostname correct?\n"
 rescue OpenSSL::SSL::SSLError => e
-  print "Delivery failed: " + e.message.strip() + "\n"
+  print "Delivery failed: " + e.message.strip + "\n"
   print " You probably need to change the ssl verify mode.\n"
 rescue Net::SMTPAuthenticationError => e
-  print "Delivery failed: " + e.message.strip() + "\n"
+  print "Delivery failed: " + e.message.strip + "\n"
   print " Check to ensure your username and password are correct.\n"
 rescue Net::SMTPFatalError => e
-  print "Delivery failed: " + e.message.strip() + "\n"
+  print "Delivery failed: " + e.message.strip + "\n"
   print " Check the above error and fix your settings.\n"
 else
   print "Successfully delivered.\n"

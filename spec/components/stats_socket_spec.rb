@@ -51,6 +51,6 @@ describe StatsSocket do
 
     parsed = JSON.parse(line)
 
-    expect(parsed['total_physical_size']).to be > (0)
+    expect(parsed['total_physical_size']).to be > 0
   end
 end

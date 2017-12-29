@@ -180,7 +180,7 @@ describe JsLocaleHelper do
     it "finds moment.js locale file for #{locale[:value]}" do
       content = JsLocaleHelper.moment_locale(locale[:value])
 
-      if (locale[:value] == 'en')
+      if locale[:value] == 'en'
         expect(content).to eq('')
       else
         expect(content).to_not eq('')

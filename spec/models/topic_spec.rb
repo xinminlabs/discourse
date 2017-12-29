@@ -1842,7 +1842,7 @@ describe Topic do
     expect(topic.posts_count).to eq(1)
     expect(topic.highest_post_number).to eq(post1.post_number)
     expect(topic.highest_staff_post_number).to eq(post2.post_number)
-    expect(topic.last_posted_at).to be_within(1.second).of (post1.created_at)
+    expect(topic.last_posted_at).to be_within(1.second).of post1.created_at
   end
 
   context 'featured link' do

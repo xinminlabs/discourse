@@ -22,7 +22,7 @@ module HighlightJs
 
   def self.version(lang_string)
     (@lang_string_cache ||= {})[lang_string] ||=
-      Digest::SHA1.hexdigest(bundle lang_string.split("|"))
+      Digest::SHA1.hexdigest(bundle(lang_string.split("|")))
   end
 
   def self.path

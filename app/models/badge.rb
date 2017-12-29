@@ -69,11 +69,11 @@ class Badge < ActiveRecord::Base
   attr_accessor :has_badge
 
   def self.trigger_hash
-    Hash[*(
+    Hash[*
       Badge::Trigger.constants.map { |k|
         [k.to_s.underscore, Badge::Trigger.const_get(k)]
       }.flatten
-    )]
+    ]
   end
 
   module Trigger

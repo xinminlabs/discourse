@@ -81,7 +81,7 @@ class ImportScripts::Kunena < ImportScripts::Base
     puts "fetching Joomla users data from mysql"
     results = @client.query("SELECT id, username, email, registerDate FROM #{KUNENA_PREFIX}users;", cache_rows: false)
     results.each do |u|
-      next unless u['id'].to_i > (0) && u['username'].present? && u['email'].present?
+      next unless u['id'].to_i > 0 && u['username'].present? && u['email'].present?
       username = u['username'].gsub(' ', '_').gsub(/[^A-Za-z0-9_]/, '')[0, User.username_length.end]
       if username.length < User.username_length.first
         username = username * User.username_length.first

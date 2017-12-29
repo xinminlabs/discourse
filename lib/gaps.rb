@@ -32,7 +32,7 @@ class Gaps
       e1 = @subset[i]
       e2 = @original[j]
 
-      if (e1 == e2)
+      if e1 == e2
         if current_gap.size > 0
           @before[e1] = current_gap.dup
           current_gap = []

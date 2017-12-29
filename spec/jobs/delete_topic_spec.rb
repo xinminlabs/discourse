@@ -16,7 +16,7 @@ describe Jobs::DeleteTopic do
   it "can delete a topic" do
     first_post
 
-    freeze_time (2.hours.from_now)
+    freeze_time 2.hours.from_now
 
     described_class.new.execute(topic_timer_id: topic.public_topic_timer.id)
     expect(topic.reload).to be_trashed
