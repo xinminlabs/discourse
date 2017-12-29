@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe MetadataController do
   describe 'manifest.json' do
     it 'returns the right output' do
-
       title = 'MyApp'
       SiteSetting.title = title
       SiteSetting.large_icon_url = "http://big.square/png"

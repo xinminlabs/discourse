@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Report do
-
   describe 'visits report' do
     let(:report) { Report.find('visits') }
 
@@ -22,7 +21,6 @@ describe Report do
         expect(report.data).to be_present
         expect(report.data.select { |v| v[:x].today? }).to be_present
       end
-
     end
   end
 

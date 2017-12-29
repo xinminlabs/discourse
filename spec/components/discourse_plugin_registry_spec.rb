@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'discourse_plugin_registry'
 
 describe DiscoursePluginRegistry do
-
   class TestRegistry < DiscoursePluginRegistry; end
 
   let(:registry) { TestRegistry }
@@ -185,5 +184,4 @@ describe DiscoursePluginRegistry do
       expect(registry.seed_data["admin_quick_start_filename"]).to eq(File.expand_path("../docs/BANANA-QUICK-START.md", __FILE__))
     end
   end
-
 end

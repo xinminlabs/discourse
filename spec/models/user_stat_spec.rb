@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UserStat do
-
   it "is created automatically when a user is created" do
     user = Fabricate(:evil_trout)
     expect(user.user_stat).to be_present
@@ -11,7 +10,6 @@ describe UserStat do
   end
 
   context '#update_view_counts' do
-
     let(:user) { Fabricate(:user) }
     let(:stat) { user.user_stat }
 
@@ -42,7 +40,6 @@ describe UserStat do
           stat.reload
           expect(stat.topics_entered).to eq(1)
         end
-
       end
     end
 
@@ -97,6 +94,5 @@ describe UserStat do
       stat.reload
       expect(stat.time_read).to eq(0)
     end
-
   end
 end

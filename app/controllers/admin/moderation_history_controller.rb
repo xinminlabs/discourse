@@ -1,5 +1,4 @@
 class Admin::ModerationHistoryController < Admin::AdminController
-
   def index
     history_filter = params[:filter]
     raise Discourse::NotFound unless ['post', 'topic'].include?(history_filter)
@@ -36,5 +35,4 @@ class Admin::ModerationHistoryController < Admin::AdminController
       rest_serializer: true
     )
   end
-
 end

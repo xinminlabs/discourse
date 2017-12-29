@@ -2,9 +2,7 @@ require 'rails_helper'
 require 'text_cleaner'
 
 describe TextCleaner do
-
   context "exclamation marks" do
-
     let(:duplicated_string) { "my precious!!!!" }
     let(:deduplicated_string) { "my precious!" }
 
@@ -15,11 +13,9 @@ describe TextCleaner do
     it "deduplicates ! when enabled" do
       expect(TextCleaner.clean(duplicated_string, deduplicate_exclamation_marks: true)).to eq(deduplicated_string)
     end
-
   end
 
   context "question marks" do
-
     let(:duplicated_string) { "please help me????" }
     let(:deduplicated_string) { "please help me?" }
 
@@ -30,11 +26,9 @@ describe TextCleaner do
     it "deduplicates ? when enabled" do
       expect(TextCleaner.clean(duplicated_string, deduplicate_question_marks: true)).to eq(deduplicated_string)
     end
-
   end
 
   context "all upper case text" do
-
     let(:all_caps) { "ENTIRE TEXT IS ALL CAPS" }
     let(:almost_all_caps) { "ENTIRE TEXT iS ALL CAPS" }
     let(:regular_case) { "entire text is all caps" }
@@ -50,11 +44,9 @@ describe TextCleaner do
     it "ignores almost all upper case text when enabled" do
       expect(TextCleaner.clean(almost_all_caps, replace_all_upper_case: true)).to eq(almost_all_caps)
     end
-
   end
 
   context "first letter" do
-
     let(:lowercased) { "this is awesome" }
     let(:capitalized) { "This is awesome" }
     let(:iletter) { "iLetter" }
@@ -70,11 +62,9 @@ describe TextCleaner do
       expect(TextCleaner.clean(capitalized, capitalize_first_letter: true)).to eq(capitalized)
       expect(TextCleaner.clean(iletter, capitalize_first_letter: true)).to eq(iletter)
     end
-
   end
 
   context "periods at the end" do
-
     let(:with_one_period) { "oops." }
     let(:with_several_periods) { "oops..." }
     let(:without_period) { "oops" }
@@ -92,11 +82,9 @@ describe TextCleaner do
     it "keeps trailing whitespaces when enabled" do
       expect(TextCleaner.clean(with_several_periods + " ", remove_all_periods_from_the_end: true)).to eq(without_period + " ")
     end
-
   end
 
   context "extraneous space" do
-
     let(:with_space_exclamation) { "oops !" }
     let(:without_space_exclamation) { "oops!" }
     let(:with_space_question) { "oops ?" }
@@ -116,11 +104,9 @@ describe TextCleaner do
       expect(TextCleaner.clean(with_space_exclamation + " ", remove_extraneous_space: true)).to eq(without_space_exclamation + " ")
       expect(TextCleaner.clean(with_space_question + " ", remove_extraneous_space: true)).to eq(without_space_question + " ")
     end
-
   end
 
   context "interior spaces" do
-
     let(:spacey_string) { "hello     there's weird     spaces here." }
     let(:unspacey_string) { "hello there's weird spaces here." }
 
@@ -131,11 +117,9 @@ describe TextCleaner do
     it "fixes interior spaces when enabled" do
       expect(TextCleaner.clean(spacey_string, fixes_interior_spaces: true)).to eq(unspacey_string)
     end
-
   end
 
   context "leading and trailing whitespaces" do
-
     let(:spacey_string) { "   \t  test \n  " }
     let(:unspacey_string) { "test" }
 
@@ -146,11 +130,9 @@ describe TextCleaner do
     it "strips leading and trailing whitespaces when enabled" do
       expect(TextCleaner.clean(spacey_string, strip_whitespaces: true)).to eq(unspacey_string)
     end
-
   end
 
   context "title" do
-
     it "fixes interior spaces" do
       expect(TextCleaner.clean_title("Hello   there")).to eq("Hello there")
     end
@@ -160,7 +142,6 @@ describe TextCleaner do
     end
 
     context "title_prettify site setting is enabled" do
-
       before { SiteSetting.title_prettify = true }
 
       it "deduplicates !" do
@@ -198,9 +179,7 @@ describe TextCleaner do
       it "capitalizes first unicode letter" do
         expect(TextCleaner.clean_title("épico encontro")).to eq("Épico encontro")
       end
-
     end
-
   end
 
   describe "#normalize_whitespaces" do
@@ -214,8 +193,6 @@ describe TextCleaner do
       # this is used for khmer, dont mess with it
       expect(TextCleaner.normalize_whitespaces("hello\u200Bworld").strip).to eq("hello\u200Bworld")
       expect(TextCleaner.normalize_whitespaces("hello\uFEFFworld").strip).to eq("hello\uFEFFworld")
-
     end
   end
-
 end

@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'jobs/regular/bulk_grant_trust_level'
 
 describe Jobs::BulkGrantTrustLevel do
-
   it "raises an error when trust_level is missing" do
     expect { Jobs::BulkGrantTrustLevel.new.execute(user_ids: [1, 2]) }.to raise_error(Discourse::InvalidParameters)
   end

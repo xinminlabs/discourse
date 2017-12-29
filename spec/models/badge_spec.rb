@@ -60,5 +60,4 @@ describe Badge do
     b.reload
     expect(b.grant_count).to eq(1)
   end
-
 end

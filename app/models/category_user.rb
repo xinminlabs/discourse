@@ -63,7 +63,6 @@ class CategoryUser < ActiveRecord::Base
   end
 
   def self.auto_track(opts = {})
-
     builder = SqlBuilder.new <<SQL
     UPDATE topic_users tu
     SET notification_level = :tracking,
@@ -96,7 +95,6 @@ SQL
   end
 
   def self.auto_watch(opts = {})
-
     builder = SqlBuilder.new <<SQL
     UPDATE topic_users tu
     SET notification_level =
@@ -151,7 +149,6 @@ SQL
                  tracking: notification_levels[:tracking],
                  regular: notification_levels[:regular],
                  auto_watch_category:  TopicUser.notification_reasons[:auto_watch_category])
-
   end
 
   def self.ensure_consistency!
@@ -164,7 +161,6 @@ SQL
       )
 SQL
   end
-
 end
 
 # == Schema Information

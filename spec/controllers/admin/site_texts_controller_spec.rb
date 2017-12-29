@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Admin::SiteTextsController do
-
   it "is a subclass of AdminController" do
     expect(Admin::SiteTextsController < Admin::AdminController).to eq(true)
   end
@@ -127,5 +126,4 @@ describe Admin::SiteTextsController do
       end
     end
   end
-
 end

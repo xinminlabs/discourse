@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Admin::BadgesController do
-
   context "while logged in as an admin" do
     let!(:user) { log_in(:admin) }
     let!(:badge) { Fabricate(:badge) }
@@ -52,7 +51,6 @@ describe Admin::BadgesController do
     end
 
     context '.save_badge_groupings' do
-
       it 'can save badge groupings' do
         groupings = BadgeGrouping.all.order(:position).to_a
         groupings << BadgeGrouping.new(name: 'Test 1')
@@ -95,7 +93,6 @@ describe Admin::BadgesController do
     end
 
     context '.update' do
-
       it 'does not update the name of system badges' do
         editor_badge = Badge.find(Badge::Editor)
         editor_badge_name = editor_badge.name

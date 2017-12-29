@@ -1,5 +1,4 @@
 module Jobs
-
   class BadgeGrant < Jobs::Scheduled
     def self.run
       self.new.execute(nil)
@@ -21,7 +20,5 @@ module Jobs
 
       BadgeGranter.revoke_ungranted_titles!
     end
-
   end
-
 end

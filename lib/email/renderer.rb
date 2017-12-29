@@ -2,7 +2,6 @@ require_dependency 'email/styles'
 
 module Email
   class Renderer
-
     def initialize(message, opts = nil)
       @message = message
       @opts = opts || {}
@@ -26,6 +25,5 @@ module Email
 
       style.to_html
     end
-
   end
 end

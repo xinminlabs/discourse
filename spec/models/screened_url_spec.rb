@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ScreenedUrl do
-
   let(:url)    { 'http://shopppping.com/bad/drugz' }
   let(:domain) { 'shopppping.com' }
 

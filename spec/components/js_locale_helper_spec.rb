@@ -3,7 +3,6 @@ require_dependency 'js_locale_helper'
 require 'mini_racer'
 
 describe JsLocaleHelper do
-
   module StubLoadTranslations
     def set_translations(locale, translations)
       @loaded_translations ||= HashWithIndifferentAccess.new
@@ -24,17 +23,14 @@ describe JsLocaleHelper do
   end
 
   describe "#output_locale" do
-
     it "doesn't change the cached translations hash" do
       I18n.locale = :fr
       expect(JsLocaleHelper.output_locale('fr').length).to be > 0
       expect(JsLocaleHelper.translations_for('fr')['fr'].keys).to contain_exactly("js", "admin_js", "wizard_js")
     end
-
   end
 
   context "message format" do
-
     def setup_message_format(format)
       @ctx = MiniRacer::Context.new
       @ctx.eval('MessageFormat = {locale: {}};')
@@ -191,5 +187,4 @@ describe JsLocaleHelper do
       end
     end
   end
-
 end

@@ -1,5 +1,4 @@
 module Jobs
-
   class MigrateUploadScheme < Jobs::Scheduled
     every 10.minutes
     sidekiq_options retry: false
@@ -31,7 +30,5 @@ module Jobs
         Discourse.handle_job_exception(hash[:ex], error_context(args, "Migrating optimized_image id #{optimized_image_id}", optimized_image_id: optimized_image_id))
       end
     end
-
   end
-
 end

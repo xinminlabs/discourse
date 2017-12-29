@@ -2,7 +2,6 @@ require_dependency 'enum_site_setting'
 require_dependency 'notification_levels'
 
 class NotificationLevelWhenReplyingSiteSetting < EnumSiteSetting
-
   def self.valid_value?(val)
     val.to_i.to_s == val.to_s &&
     values.any? { |v| v[:value] == val.to_i }
@@ -23,5 +22,4 @@ class NotificationLevelWhenReplyingSiteSetting < EnumSiteSetting
   def self.translate_names?
     true
   end
-
 end

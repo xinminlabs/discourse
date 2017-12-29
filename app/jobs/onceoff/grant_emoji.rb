@@ -1,5 +1,4 @@
 module Jobs
-
   class GrantEmoji < Jobs::Onceoff
     def execute_onceoff(args)
       return unless SiteSetting.enable_badges
@@ -28,7 +27,5 @@ module Jobs
     def badge
       Badge.find(Badge::FirstEmoji)
     end
-
   end
-
 end

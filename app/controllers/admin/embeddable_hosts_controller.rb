@@ -1,5 +1,4 @@
 class Admin::EmbeddableHostsController < Admin::AdminController
-
   before_action :ensure_logged_in, :ensure_staff
 
   def create
@@ -32,5 +31,4 @@ class Admin::EmbeddableHostsController < Admin::AdminController
         render_json_error(host)
       end
     end
-
 end

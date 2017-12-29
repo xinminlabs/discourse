@@ -212,7 +212,6 @@ class TopicEmbed < ActiveRecord::Base
       body
     end
   end
-
 end
 
 # == Schema Information

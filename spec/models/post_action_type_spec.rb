@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe PostActionType do
-
   describe '#types' do
     context "verify enum sequence" do
       before do

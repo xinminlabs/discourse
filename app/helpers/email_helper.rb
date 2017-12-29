@@ -1,5 +1,4 @@
 module EmailHelper
-
   def mailing_list_topic(topic, post_count)
     render(
       partial: partial_for("mailing_list_post"),
@@ -34,5 +33,4 @@ module EmailHelper
   def partial_for(name)
     SiteSetting.private_email? ? "email/secure_#{name}" : "email/#{name}"
   end
-
 end

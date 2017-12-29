@@ -1,5 +1,4 @@
 class RateLimiter
-
   # A mixin we can use on ActiveRecord Models to automatically rate limit them
   # based on a SiteSetting.
   #
@@ -7,7 +6,6 @@ class RateLimiter
   # `model_name` is the class name of your model, underscored.
   #
   module OnCreateRecord
-
     # Over write to define your own rate limiter
     def default_rate_limiter
       return @rate_limiter if @rate_limiter.present?
@@ -32,7 +30,6 @@ class RateLimiter
 
     module ClassMethods
       def rate_limit(limiter_method = nil)
-
         limiter_method = limiter_method || :default_rate_limiter
 
         self.after_create do |*args|
@@ -61,10 +58,7 @@ class RateLimiter
             end
           end
         end
-
       end
     end
-
   end
-
 end

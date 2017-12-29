@@ -2,9 +2,7 @@ require "rails_helper"
 require "spam_handler"
 
 describe SpamHandler do
-
   describe "#should_prevent_registration_from_ip?" do
-
     it "works" do
       # max_new_accounts_per_registration_ip = 0 disables the check
       SiteSetting.max_new_accounts_per_registration_ip = 0
@@ -56,7 +54,5 @@ describe SpamHandler do
       SiteSetting.max_new_accounts_per_registration_ip = 1
       Fabricate(:user, ip_address: "42.42.42.42", trust_level: TrustLevel[0])
     end
-
   end
-
 end

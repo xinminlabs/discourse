@@ -27,6 +27,7 @@ end
 #
 class Rack::ConditionalGet
   private
+
    def to_rfc2822(since)
      # shortest possible valid date is the obsolete: 1 Nov 97 09:55 A
      # anything shorter is invalid, this avoids exceptions for common cases

@@ -1,5 +1,4 @@
 class ExportCsvController < ApplicationController
-
   skip_before_action :preload_json, :check_xhr, only: [:show]
 
   def export_entity

@@ -44,5 +44,4 @@ describe DistributedMutex do
       end
     }.to raise_error(ThreadError)
   end
-
 end

@@ -94,7 +94,6 @@ class PostTiming < ActiveRecord::Base
     end
 
     timings.each_with_index do |(post_number, time), index|
-
       join_table << "SELECT #{topic_id.to_i} topic_id, #{post_number.to_i} post_number,
                      #{current_user.id.to_i} user_id, #{time.to_i} msecs, #{index} idx"
 

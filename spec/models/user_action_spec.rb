@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UserAction do
-
   before do
     UserActionCreator.enable
   end
@@ -10,7 +9,6 @@ describe UserAction do
   it { is_expected.to validate_presence_of :user_id }
 
   describe 'lists' do
-
     let(:public_post) { Fabricate(:post) }
     let(:public_topic) { public_post.topic }
     let(:user) { Fabricate(:user) }
@@ -124,7 +122,6 @@ describe UserAction do
         expect(stream).to be_blank
       end
     end
-
   end
 
   describe "mentions" do
@@ -132,7 +129,6 @@ describe UserAction do
     end
   end
   describe 'when user likes' do
-
     let(:post) { Fabricate(:post) }
     let(:likee) { post.user }
     let(:liker) { Fabricate(:coding_horror) }
@@ -184,11 +180,9 @@ describe UserAction do
           expect(likee.user_stat.reload.likes_received).to eq(0)
         end
       end
-
     end
 
     context "liking a private message" do
-
       before do
         post.topic.update_columns(category_id: nil, archetype: Archetype::private_message)
       end
@@ -197,9 +191,7 @@ describe UserAction do
         PostAction.act(liker, post, PostActionType.types[:like])
         expect(likee_stream.count).not_to eq(@old_count + 1)
       end
-
     end
-
   end
 
   describe 'when a user posts a new topic' do
@@ -247,7 +239,6 @@ describe UserAction do
         @response.save!
         expect(@response.user.user_actions.where(action_type: UserAction::REPLY).count).to eq(1)
       end
-
     end
   end
 
@@ -271,7 +262,6 @@ describe UserAction do
   end
 
   describe 'secures private messages' do
-
     let(:user) do
       Fabricate(:user)
     end
@@ -312,9 +302,7 @@ describe UserAction do
       private_message.topic.topic_allowed_groups.create(group_id: group.id)
 
       expect(count_bookmarks).to eq(1)
-
     end
-
   end
 
   describe 'synchronize_target_topic_ids' do

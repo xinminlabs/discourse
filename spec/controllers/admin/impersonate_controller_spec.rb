@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Admin::ImpersonateController do
-
   it "is a subclass of AdminController" do
     expect(Admin::ImpersonateController < Admin::AdminController).to eq(true)
   end
@@ -18,7 +17,6 @@ describe Admin::ImpersonateController do
     end
 
     context 'create' do
-
       it 'requires a username_or_email parameter' do
         expect { put :create, format: :json }.to raise_error(ActionController::ParameterMissing)
       end
@@ -35,7 +33,6 @@ describe Admin::ImpersonateController do
       end
 
       context 'success' do
-
         it "logs the impersonation" do
           StaffActionLogger.any_instance.expects(:log_impersonate)
           post :create, params: { username_or_email: user.username }, format: :json
@@ -55,11 +52,7 @@ describe Admin::ImpersonateController do
           post :create, params: { username_or_email: user.email }, format: :json
           expect(session[:current_user_id]).to eq(user.id)
         end
-
       end
-
     end
-
   end
-
 end

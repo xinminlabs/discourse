@@ -37,7 +37,6 @@ def is_yaml_compatible?(english, translated)
 end
 
 describe "i18n integrity checks" do
-
   it 'has an i18n key for each Trust Levels' do
     TrustLevel.all.each do |ts|
       expect(ts.name).not_to match(/translation missing/)
@@ -122,10 +121,7 @@ describe "i18n integrity checks" do
           end
 
         end
-
       end
-
     end
   end
-
 end

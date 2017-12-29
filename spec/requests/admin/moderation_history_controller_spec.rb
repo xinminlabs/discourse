@@ -34,7 +34,6 @@ RSpec.describe Admin::BackupsController do
       expect(response).to be_success
       expect(::JSON.parse(response.body)['moderation_history']).to be_present
     end
-
   end
 
   describe "for a topic" do

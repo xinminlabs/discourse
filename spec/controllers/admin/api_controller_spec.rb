@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Admin::ApiController do
-
   it "is a subclass of AdminController" do
     expect(Admin::ApiController < Admin::AdminController).to eq(true)
   end
@@ -52,5 +51,4 @@ describe Admin::ApiController do
       end.to change(ApiKey, :count).by(1)
     end
   end
-
 end

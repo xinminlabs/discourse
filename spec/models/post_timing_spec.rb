@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe PostTiming do
-
   it { is_expected.to validate_presence_of :post_number }
   it { is_expected.to validate_presence_of :msecs }
 
@@ -56,7 +55,6 @@ describe PostTiming do
       tu = TopicUser.find_by(topic_id: topic_id, user_id: 3)
       expect(tu.last_read_post_number).to eq(3)
       expect(tu.highest_seen_post_number).to eq(3)
-
     end
   end
 
@@ -73,11 +71,9 @@ describe PostTiming do
       msecs = PostTiming.where(post_number: post.post_number, user_id: user.id).pluck(:msecs)[0]
       expect(msecs).to eq(123 + PostTiming::MAX_READ_TIME_PER_BATCH)
     end
-
   end
 
   describe 'process_timings' do
-
     # integration tests
 
     it 'processes timings correctly' do
@@ -157,11 +153,9 @@ describe PostTiming do
 
         expect(@coding_horror.user_stat.posts_read_count).to eq(1)
       end
-
     end
 
     describe 'avg times' do
-
       describe 'posts' do
         it 'has no avg_time by default' do
           expect(@post.avg_time).to be_blank
@@ -193,7 +187,6 @@ describe PostTiming do
           @post.reload
           expect(@post.avg_time).to be_blank
         end
-
       end
 
       describe 'with a timing for another user' do
@@ -216,13 +209,8 @@ describe PostTiming do
           it 'has an avg_time from the timing' do
             expect(@topic.avg_time).to be_present
           end
-
         end
-
       end
-
     end
-
   end
-
 end

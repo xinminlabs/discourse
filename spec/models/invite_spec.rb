@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Invite do
-
   it { is_expected.to validate_presence_of :invited_by_id }
 
   it { is_expected.to rate_limit }
@@ -20,7 +19,6 @@ describe Invite do
     it "should not allow a user to invite themselves" do
       expect(invite.email_already_exists).to eq(true)
     end
-
   end
 
   context 'email validators' do
@@ -35,11 +33,9 @@ describe Invite do
       invite = Fabricate(:invite, email: "test@mail.com", invited_by: coding_horror)
       expect(invite).to be_valid
     end
-
   end
 
   context '#create' do
-
     context 'saved' do
       subject { Fabricate(:invite) }
 
@@ -92,7 +88,6 @@ describe Invite do
             expect(new_invite.invite_key).not_to eq(@invite.invite_key)
             expect(new_invite.topics).to eq([topic])
           end
-
         end
 
         context 'when adding a duplicate' do
@@ -128,7 +123,6 @@ describe Invite do
             expect(another_topic.invites).to eq([@invite])
             expect(@invite.topics).to match_array([topic, another_topic])
           end
-
         end
       end
     end
@@ -175,11 +169,9 @@ describe Invite do
       # gives the user permission to access the topic
       expect(topic.allowed_users.include?(coding_horror)).to eq(true)
     end
-
   end
 
   context '.redeem' do
-
     let(:invite) { Fabricate(:invite) }
 
     it 'creates a notification for the invitee' do
@@ -218,7 +210,6 @@ describe Invite do
         used_invite = Invite.find_by(id: redeemed_invite.id)
         expect(used_invite).not_to be_nil
       end
-
     end
 
     context "as a moderator" do
@@ -268,7 +259,6 @@ describe Invite do
     end
 
     context 'simple invite' do
-
       let!(:user) { invite.redeem }
 
       it 'works correctly' do
@@ -313,7 +303,6 @@ describe Invite do
           end
         end
       end
-
     end
 
     context 'invited to topics' do
@@ -473,7 +462,6 @@ describe Invite do
       invite.reload
       expect(invite).not_to be_redeemed
     end
-
   end
 
   describe '.rescind_all_invites_from' do

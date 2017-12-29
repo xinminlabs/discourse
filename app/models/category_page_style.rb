@@ -1,7 +1,6 @@
 require "enum_site_setting"
 
 class CategoryPageStyle < EnumSiteSetting
-
   def self.valid_value?(val)
     values.any? { |v| v[:value].to_s == val.to_s }
   end
@@ -17,5 +16,4 @@ class CategoryPageStyle < EnumSiteSetting
   def self.translate_names?
     true
   end
-
 end

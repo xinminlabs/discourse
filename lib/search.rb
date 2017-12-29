@@ -61,7 +61,6 @@ class Search
   end
 
   def self.word_to_date(str)
-
     if str =~ /^[0-9]{1,3}$/
       return Time.zone.now.beginning_of_day.days_ago(str.to_i)
     end
@@ -365,7 +364,6 @@ class Search
   end
 
   advanced_filter(/^\#([a-zA-Z0-9\-:=]+)/) do |posts, match|
-
     exact = true
 
     slug = match.to_s.split(":")
@@ -497,7 +495,6 @@ class Search
   private
 
     def process_advanced_search!(term)
-
       term.to_s.scan(/(([^" \t\n\x0B\f\r]+)?(("[^"]+")?))/).to_a.map do |(word, _)|
         next if word.blank?
 
@@ -545,7 +542,6 @@ class Search
     end
 
     def find_grouped_results
-
       if @results.type_filter.present?
         raise Discourse::InvalidAccess.new("invalid type filter") unless Search.facets.include?(@results.type_filter)
         send("#{@results.type_filter}_search")
@@ -773,7 +769,6 @@ class Search
     end
 
     def self.ts_query(term, ts_config = nil, joiner = "&")
-
       data = Post.exec_sql("SELECT TO_TSVECTOR(:config, :term)",
                            config: 'simple',
                            term: term).values[0][0]
@@ -880,5 +875,4 @@ class Search
 
       query.includes(topic: topic_eager_loads)
     end
-
 end

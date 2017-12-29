@@ -2,13 +2,11 @@ require 'rails_helper'
 require 'stringio'
 
 describe TopicEmbed do
-
   it { is_expected.to belong_to :topic }
   it { is_expected.to belong_to :post }
   it { is_expected.to validate_presence_of :embed_url }
 
   context '.import' do
-
     let(:user) { Fabricate(:user) }
     let(:title) { "How to turn a fish from good to evil in 30 seconds" }
     let(:url) { 'http://eviltrout.com/123' }
@@ -57,13 +55,10 @@ describe TopicEmbed do
         expect(post.cooked).to match(/#{cased_url}/)
       end
     end
-
   end
 
   describe '.find_remote' do
-
     context ".title_scrub" do
-
       let(:url) { 'http://eviltrout.com/123' }
       let(:contents) { "<title>Through the Looking Glass - Classic Books</title><body>some content here</body>" }
       let!(:embeddable_host) { Fabricate(:embeddable_host) }
@@ -84,7 +79,6 @@ describe TopicEmbed do
         response = TopicEmbed.find_remote(url)
         expect(response.title).to eq("Through the Looking Glass")
       end
-
     end
 
     context 'post with allowed classes "foo" and "emoji"' do
@@ -145,7 +139,6 @@ describe TopicEmbed do
     end
 
     context 'post with no allowed classes' do
-
       let(:user) { Fabricate(:user) }
       let(:url) { 'http://eviltrout.com/123' }
       let(:contents) { "my normal size emoji <p class='foo'>Hi</p> <img class='emoji other foo' src='/images/smiley.jpg'>" }
@@ -232,5 +225,4 @@ describe TopicEmbed do
       end
     end
   end
-
 end

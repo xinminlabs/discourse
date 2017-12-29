@@ -1,7 +1,6 @@
 require 'socket_server'
 
 class StatsSocket < SocketServer
-
   def initialize(socket_path)
     super(socket_path)
   end
@@ -27,5 +26,4 @@ class StatsSocket < SocketServer
 
     result << "\n"
   end
-
 end

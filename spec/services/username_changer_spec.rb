@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UsernameChanger do
-
   describe '#change' do
     let(:user) { Fabricate(:user) }
 
@@ -91,5 +90,4 @@ describe UsernameChanger do
       end
     end
   end
-
 end

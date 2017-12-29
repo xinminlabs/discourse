@@ -2,7 +2,6 @@
 # Check whether a user is ready for a new trust level.
 #
 class Promotion
-
   def initialize(user)
     @user = user
   end
@@ -133,5 +132,4 @@ class Promotion
       user.change_trust_level!(2, log_action_for: performed_by || Discourse.system_user)
     end
   end
-
 end

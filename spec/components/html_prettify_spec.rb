@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'html_prettify'
 
 describe HtmlPrettify do
-
   def t(source, expected)
     expect(HtmlPrettify.render(source)).to eq(expected)
   end
@@ -28,5 +27,4 @@ describe HtmlPrettify do
 
     t ERB::Util.html_escape('<img src="test.png"> yay'), "&lt;img src=&ldquo;test.png&rdquo;&gt; yay"
   end
-
 end

@@ -47,7 +47,6 @@ class SidekiqPauser
   def paused_key
     "sidekiq_is_paused_v2"
   end
-
 end
 
 module Sidekiq
@@ -67,7 +66,6 @@ end
 
 # server middleware that will reschedule work whenever Sidekiq is paused
 class Sidekiq::Pausable
-
   def initialize(delay = 5.seconds)
     @delay = delay
   end
@@ -83,5 +81,4 @@ class Sidekiq::Pausable
       result
     end
   end
-
 end

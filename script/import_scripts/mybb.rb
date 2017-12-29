@@ -15,7 +15,6 @@ export BASE="" #
 # Call it like this:
 #   RAILS_ENV=production ruby script/import_scripts/mybb.rb
 class ImportScripts::MyBB < ImportScripts::Base
-
   DB_HOST ||= ENV['DB_HOST'] || "localhost"
   DB_NAME ||= ENV['DB_NAME'] || "mybb"
   DB_PW ||= ENV['DB_PW'] || ""

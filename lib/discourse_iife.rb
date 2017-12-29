@@ -38,5 +38,4 @@ class DiscourseIIFE
 
     "(function () {\n\nvar $ = window.jQuery;\n// IIFE Wrapped Content Begins:\n\n#{data}\n\n// IIFE Wrapped Content Ends\n\n })(this);"
   end
-
 end

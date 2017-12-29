@@ -1,5 +1,4 @@
 class HandleChunkUpload
-
   def initialize(chunk, params = {})
     @chunk = chunk
     @params = params
@@ -61,5 +60,4 @@ class HandleChunkUpload
     # remove tmp directory
     FileUtils.rm_rf(tmp_directory) rescue nil
   end
-
 end

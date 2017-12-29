@@ -2,7 +2,6 @@ require 'admin_confirmation'
 require 'rails_helper'
 
 describe AdminConfirmation do
-
   let(:admin) { Fabricate(:admin) }
   let(:user) { Fabricate(:user) }
 
@@ -47,7 +46,5 @@ describe AdminConfirmation do
       expect(AdminConfirmation.find_by_code(ac.token)).to eq(nil)
       expect(AdminConfirmation.exists_for?(user.id)).to eq(false)
     end
-
   end
-
 end

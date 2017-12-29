@@ -45,7 +45,6 @@ SQL
 
       rval
     end
-
   end
 end
 

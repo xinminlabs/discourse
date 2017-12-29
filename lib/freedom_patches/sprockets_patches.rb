@@ -8,7 +8,6 @@
 
 if Rails.env == "development"
   module ActionView::Helpers::AssetUrlHelper
-
     def asset_path(source, options = {})
       source = source.to_s
       return "" unless source.present?

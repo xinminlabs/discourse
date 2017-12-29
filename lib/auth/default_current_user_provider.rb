@@ -4,7 +4,6 @@ require_dependency "auth/current_user_provider"
 require_dependency "rate_limiter"
 
 class Auth::DefaultCurrentUserProvider
-
   CURRENT_USER_KEY ||= "_DISCOURSE_CURRENT_USER".freeze
   API_KEY ||= "api_key".freeze
   USER_API_KEY ||= "HTTP_USER_API_KEY".freeze
@@ -120,7 +119,6 @@ class Auth::DefaultCurrentUserProvider
   end
 
   def refresh_session(user, session, cookies)
-
     # if user was not loaded, no point refreshing session
     # it could be an anonymous path, this would add cost
     return if is_api? || !@env.key?(CURRENT_USER_KEY)
@@ -262,5 +260,4 @@ class Auth::DefaultCurrentUserProvider
       end
     end
   end
-
 end

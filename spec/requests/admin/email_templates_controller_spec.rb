@@ -217,9 +217,7 @@ RSpec.describe Admin::EmailTemplatesController do
           expect(log.new_value).to eq(email_body)
         end
       end
-
     end
-
   end
 
   context "#revert" do
@@ -306,7 +304,5 @@ RSpec.describe Admin::EmailTemplatesController do
         end
       end
     end
-
   end
-
 end

@@ -11,7 +11,6 @@ RSpec.describe Admin::EmojisController do
   describe "#create" do
     describe 'when upload is invalid' do
       it 'should publish the right error' do
-
         post "/admin/customize/emojis.json", params: {
           name: 'test',
           file: fixture_file_upload("#{Rails.root}/spec/fixtures/images/fake.jpg")

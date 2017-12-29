@@ -1,5 +1,4 @@
 module CategoryBadge
-
   def self.category_stripe(color, classes)
     style = color ? "style='background-color: ##{color};'" : ''
     "<span class='#{classes}' #{style}></span>"

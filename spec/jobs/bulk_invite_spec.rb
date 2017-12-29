@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe Jobs::BulkInvite do
-
   context '.execute' do
-
     it 'raises an error when the filename is missing' do
       user = Fabricate(:user)
       expect { Jobs::BulkInvite.new.execute(current_user_id: user.id) }.to raise_error(Discourse::InvalidParameters)
@@ -71,9 +69,6 @@ describe Jobs::BulkInvite do
         expect(InvitedGroup.where(invite_id: invite.id, group_id: group.id).exists?).to eq(true)
         expect(TopicInvite.where(invite_id: invite.id, topic_id: topic.id).exists?).to eq(true)
       end
-
     end
-
   end
-
 end

@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'unsubscribe_key'
 
 describe UnsubscribeKey do
-
   describe 'post unsubscribe key' do
     it 'can generate a correct url' do
       post = Fabricate(:post)
@@ -19,7 +18,6 @@ describe UnsubscribeKey do
   end
 
   describe 'key' do
-
     let(:user) { Fabricate(:user) }
     let!(:key) { UnsubscribeKey.create_key_for(user, "digest") }
 
@@ -28,7 +26,6 @@ describe UnsubscribeKey do
     end
 
     describe '#user_for_key' do
-
       it 'can be used to find the user' do
         expect(UnsubscribeKey.user_for_key(key)).to eq(user)
       end
@@ -36,9 +33,6 @@ describe UnsubscribeKey do
       it 'returns nil with an invalid key' do
         expect(UnsubscribeKey.user_for_key('asdfasdf')).to be_blank
       end
-
     end
-
   end
-
 end

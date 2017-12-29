@@ -87,7 +87,6 @@ class CategoryFeaturedTopic < ActiveRecord::Base
     admin.id = -1
     admin
   end
-
 end
 
 # == Schema Information

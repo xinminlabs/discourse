@@ -1,5 +1,4 @@
 class GitImporter
-
   attr_reader :url
 
   def initialize(url)
@@ -54,5 +53,4 @@ class GitImporter
     return nil unless fullpath
     File.read(fullpath)
   end
-
 end

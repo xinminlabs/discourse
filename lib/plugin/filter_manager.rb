@@ -1,6 +1,5 @@
 module Plugin
   class FilterManager
-
     def initialize
       @map = {}
     end

@@ -100,13 +100,11 @@ class UserAvatar < ActiveRecord::Base
         user.update_columns(uploaded_avatar_id: upload.id)
       end
     end
-
   rescue Net::ReadTimeout, OpenURI::HTTPError
     # skip saving, we are not connected to the net
   ensure
     tempfile.close! if tempfile && tempfile.respond_to?(:close!)
   end
-
 end
 
 # == Schema Information

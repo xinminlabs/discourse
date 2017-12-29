@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'queued_post'
 
 describe QueuedPost do
-
   describe '#states' do
     context "verify enum sequence" do
       before do
@@ -152,5 +151,4 @@ describe QueuedPost do
       expect(QueuedPost.new_count).to eq(1)
     end
   end
-
 end

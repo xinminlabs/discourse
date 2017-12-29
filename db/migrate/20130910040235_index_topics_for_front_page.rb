@@ -4,5 +4,4 @@ class IndexTopicsForFrontPage < ActiveRecord::Migration[4.2]
     # covering index for join
     add_index :topics, [:id, :deleted_at]
   end
-
 end

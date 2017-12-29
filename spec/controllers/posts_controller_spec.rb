@@ -56,7 +56,6 @@ shared_examples 'action requires login' do |method, action, params|
 end
 
 describe PostsController do
-
   describe 'latest' do
     let(:user) { log_in }
     let!(:public_topic) { Fabricate(:topic) }
@@ -136,9 +135,7 @@ describe PostsController do
         json = ::JSON.parse(response.body)
         expect(json['raw_email']).to eq('email_content')
       end
-
     end
-
   end
 
   describe 'show' do
@@ -195,7 +192,6 @@ describe PostsController do
     include_examples 'action requires login', :delete, :destroy, id: 123
 
     describe 'when logged in' do
-
       let(:user) { log_in(:moderator) }
       let(:post) { Fabricate(:post, user: user, post_number: 2) }
 
@@ -221,7 +217,6 @@ describe PostsController do
         destroyer.expects(:destroy)
         delete :destroy, params: { id: post.id }, format: :json
       end
-
     end
   end
 
@@ -229,7 +224,6 @@ describe PostsController do
     include_examples 'action requires login', :put, :recover, post_id: 123
 
     describe 'when logged in' do
-
       let(:user) { log_in(:moderator) }
       let(:post) { Fabricate(:post, user: user, post_number: 2) }
 
@@ -248,7 +242,6 @@ describe PostsController do
         post.reload
         expect(post.deleted_at).to eq(nil)
       end
-
     end
   end
 
@@ -256,7 +249,6 @@ describe PostsController do
     include_examples 'action requires login', :delete, :destroy_many, post_ids: [123, 345]
 
     describe 'when logged in' do
-
       let!(:poster) { log_in(:moderator) }
       let!(:post1) { Fabricate(:post, user: poster, post_number: 2) }
       let!(:post2) { Fabricate(:post, topic_id: post1.topic_id, user: poster, post_number: 3, reply_to_post_number: post1.post_number) }
@@ -290,7 +282,6 @@ describe PostsController do
       end
 
       describe "can delete replies" do
-
         before do
           PostReply.create(post_id: post1.id, reply_id: post2.id)
         end
@@ -301,15 +292,11 @@ describe PostsController do
             params: { post_ids: [post1.id], reply_post_ids: [post1.id] },
             format: :json
         end
-
       end
-
     end
-
   end
 
   describe 'edit a post' do
-
     include_examples 'action requires login', :put, :update, id: 2
 
     let(:post) { Fabricate(:post, user: logged_in_as) }
@@ -396,11 +383,9 @@ describe PostsController do
         expect(post.raw).to eq('edited body')
       end
     end
-
   end
 
   describe 'bookmark a post' do
-
     include_examples 'action requires login', :put, :bookmark, post_id: 2
 
     describe 'when logged in' do
@@ -474,13 +459,10 @@ describe PostsController do
           end
         end
       end
-
     end
-
   end
 
   describe "wiki" do
-
     include_examples "action requires login", :put, :wiki, post_id: 2
 
     describe "when logged in" do
@@ -541,13 +523,10 @@ describe PostsController do
         wikied_post.reload
         expect(wikied_post.wiki).to eq(false)
       end
-
     end
-
   end
 
   describe "post_type" do
-
     include_examples "action requires login", :put, :post_type, post_id: 2
 
     describe "when logged in" do
@@ -570,13 +549,10 @@ describe PostsController do
         post.reload
         expect(post.post_type).to eq(2)
       end
-
     end
-
   end
 
   describe "rebake" do
-
     include_examples "action requires login", :put, :rebake, post_id: 2
 
     describe "when logged in" do
@@ -598,13 +574,10 @@ describe PostsController do
 
         expect(response).to be_success
       end
-
     end
-
   end
 
   describe 'creating a post' do
-
     before do
       SiteSetting.min_first_post_typing_time = 0
     end
@@ -687,7 +660,6 @@ describe PostsController do
     end
 
     describe 'when logged in' do
-
       let!(:user) { log_in }
       let(:moderator) { log_in(:moderator) }
       let(:new_post) { Fabricate.build(:post, user: user) }
@@ -767,7 +739,6 @@ describe PostsController do
       end
 
       it "can send a message to a group" do
-
         group = Group.create(name: 'test_group', messageable_level: Group::ALIAS_LEVELS[:nobody])
         user1 = Fabricate(:user)
         group.add(user1)
@@ -825,7 +796,6 @@ describe PostsController do
       end
 
       context "errors" do
-
         let(:post_with_errors) { Fabricate.build(:post, user: user) }
 
         before do
@@ -850,7 +820,6 @@ describe PostsController do
   end
 
   describe "revisions" do
-
     let(:post) { Fabricate(:post, version: 2) }
     let(:post_revision) { Fabricate(:post_revision, post: post) }
 
@@ -863,7 +832,6 @@ describe PostsController do
     end
 
     context "when edit history is not visible to the public" do
-
       before { SiteSetting.edit_history_visible_to_public = false }
 
       it "ensures anonymous cannot see the revisions" do
@@ -907,11 +875,9 @@ describe PostsController do
         }, format: :json
         expect(response).to be_success
       end
-
     end
 
     context "when edit history is visible to everyone" do
-
       before { SiteSetting.edit_history_visible_to_public = true }
 
       it "ensures anyone can see the revisions" do
@@ -920,7 +886,6 @@ describe PostsController do
         }, format: :json
         expect(response).to be_success
       end
-
     end
 
     context "deleted post" do
@@ -953,7 +918,6 @@ describe PostsController do
         expect(response).to be_success
       end
     end
-
   end
 
   describe 'revert post to a specific revision' do
@@ -1056,7 +1020,6 @@ describe PostsController do
   end
 
   describe "flagged posts" do
-
     include_examples "action requires login", :get, :flagged_posts, username: "system"
 
     describe "when logged in" do
@@ -1096,13 +1059,10 @@ describe PostsController do
 
         expect(JSON.parse(response.body).length).to eq(2)
       end
-
     end
-
   end
 
   describe "deleted posts" do
-
     include_examples "action requires login", :get, :deleted_posts, username: "system"
 
     describe "when logged in" do
@@ -1176,9 +1136,7 @@ describe PostsController do
         expect(data[0]["id"]).to eq(post_deleted_by_admin.id)
         expect(data[0]["deleted_by"]["id"]).to eq(admin.id)
       end
-
     end
-
   end
 
   describe "view raw" do

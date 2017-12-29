@@ -1,5 +1,4 @@
 class ClosePollsInClosedTopics < ActiveRecord::Migration[4.2]
-
   def up
     PostCustomField.joins(post: :topic)
       .where("post_custom_fields.name = 'polls'")
@@ -14,5 +13,4 @@ class ClosePollsInClosedTopics < ActiveRecord::Migration[4.2]
 
   def down
   end
-
 end

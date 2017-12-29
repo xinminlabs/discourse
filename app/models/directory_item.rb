@@ -26,7 +26,6 @@ class DirectoryItem < ActiveRecord::Base
   end
 
   def self.refresh_period!(period_type, force: false)
-
     # Don't calculate it if the user directory is disabled
     return unless SiteSetting.enable_user_directory? || force
 

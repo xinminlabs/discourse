@@ -1,7 +1,6 @@
 require 'enum_site_setting'
 
 class EmojiSetSiteSetting < EnumSiteSetting
-
   # fix the URLs when changing the site setting
   DiscourseEvent.on(:site_setting_saved) do |site_setting|
     if site_setting.name.to_s == "emoji_set" && site_setting.value_changed?
@@ -40,5 +39,4 @@ class EmojiSetSiteSetting < EnumSiteSetting
   def self.translate_names?
     true
   end
-
 end

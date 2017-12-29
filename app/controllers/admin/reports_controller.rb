@@ -1,7 +1,6 @@
 require_dependency 'report'
 
 class Admin::ReportsController < Admin::AdminController
-
   def show
     report_type = params[:type]
 
@@ -28,5 +27,4 @@ class Admin::ReportsController < Admin::AdminController
 
     render_json_dump(report: report)
   end
-
 end

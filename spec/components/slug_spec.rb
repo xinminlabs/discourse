@@ -4,7 +4,6 @@ require 'rails_helper'
 require 'slug'
 
 describe Slug do
-
   describe '#for' do
     let(:default_slug) { 'topic' }
 

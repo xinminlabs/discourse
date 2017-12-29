@@ -15,7 +15,6 @@ describe DiscourseHub do
   end
 
   describe '.version_check_payload' do
-
     describe 'when Discourse Hub has not fetched stats since past 7 days' do
       it 'should include stats' do
         DiscourseHub.stats_fetched_at = 8.days.ago

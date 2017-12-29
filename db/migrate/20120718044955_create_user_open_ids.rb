@@ -8,6 +8,5 @@ class CreateUserOpenIds < ActiveRecord::Migration[4.2]
     end
 
     add_index :user_open_ids, [:url]
-
   end
 end

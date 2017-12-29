@@ -165,5 +165,4 @@ class CategoryList
         c.displayable_topics = c.displayable_topics[0, c.num_featured_topics]
       end
     end
-
 end

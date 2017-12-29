@@ -1,5 +1,4 @@
 class RateLimiter
-
   # A rate limit has been exceeded.
   class LimitExceeded < StandardError
     attr_reader :type, :available_in
@@ -28,5 +27,4 @@ class RateLimiter
       I18n.t("rate_limiter.too_many_requests", time_left: time_left)
     end
   end
-
 end

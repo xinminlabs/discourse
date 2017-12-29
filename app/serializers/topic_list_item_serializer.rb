@@ -1,5 +1,4 @@
 class TopicListItemSerializer < ListableTopicSerializer
-
   attributes :views,
              :like_count,
              :has_summary,
@@ -81,5 +80,4 @@ class TopicListItemSerializer < ListableTopicSerializer
   def include_featured_link_root_domain?
     SiteSetting.topic_featured_link_enabled && object.featured_link.present?
   end
-
 end

@@ -1,5 +1,4 @@
 class GlobalSetting
-
   def self.register(key, default)
     define_singleton_method(key) do
       provider.lookup(key, default)
@@ -21,7 +20,6 @@ class GlobalSetting
   # - generate a token on the fly if needed and cache in redis
   # - enforce rules about token format falling back to redis if needed
   def self.safe_secret_key_base
-
     if @safe_secret_key_base && @token_in_redis && (@token_last_validated + REDIS_VALIDATE_SECONDS) < Time.now
       @token_last_validated = Time.now
       token = $redis.without_namespace.get(REDIS_SECRET_KEY)
@@ -236,5 +234,4 @@ class GlobalSetting
         EnvProvider.new
     end
   end
-
 end

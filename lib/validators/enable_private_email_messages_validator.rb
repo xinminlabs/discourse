@@ -1,5 +1,4 @@
 class EnablePrivateEmailMessagesValidator
-
   def initialize(opts = {})
     @opts = opts
   end

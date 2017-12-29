@@ -3,7 +3,6 @@ require 'rails_helper'
 
 describe "CommonMark" do
   it 'passes spec' do
-
     SiteSetting.traditional_markdown_linebreaks = true
     SiteSetting.enable_markdown_typographer = false
 
@@ -65,7 +64,6 @@ describe "CommonMark" do
       if state == :html
         html = (html || String.new) << line
       end
-
     end
 
     expect(failed).to eq(0)

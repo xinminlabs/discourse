@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'cache'
 
 describe "Redis Store" do
-
   let :cache do
     Cache.new(namespace: 'foo')
   end
@@ -27,7 +26,6 @@ describe "Redis Store" do
   end
 
   it "doesn't collide with our Cache" do
-
     store.fetch "key" do
       "key in store"
     end
@@ -53,7 +51,5 @@ describe "Redis Store" do
     store.clear
     expect(store.read("key")).to eq(nil)
     expect(cache.fetch("key")).to eq("key in cache")
-
   end
-
 end

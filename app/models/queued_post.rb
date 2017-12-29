@@ -1,5 +1,4 @@
 class QueuedPost < ActiveRecord::Base
-
   class InvalidStateTransition < StandardError; end;
 
   belongs_to :user
@@ -107,7 +106,6 @@ class QueuedPost < ActiveRecord::Base
 
       QueuedPost.broadcast_new! if visible?
     end
-
 end
 
 # == Schema Information

@@ -2,17 +2,14 @@ require 'rails_helper'
 require 'discourse'
 
 describe Discourse do
-
   before do
     RailsMultisite::ConnectionManagement.stubs(:current_hostname).returns('foo.com')
   end
 
   context 'current_hostname' do
-
     it 'returns the hostname from the current db connection' do
       expect(Discourse.current_hostname).to eq('foo.com')
     end
-
   end
 
   context 'running_in_rack' do
@@ -60,7 +57,6 @@ describe Discourse do
   end
 
   context '#site_contact_user' do
-
     let!(:admin) { Fabricate(:admin) }
     let!(:another_admin) { Fabricate(:admin) }
 
@@ -73,11 +69,9 @@ describe Discourse do
       SiteSetting.site_contact_username = nil
       expect(Discourse.site_contact_user.username).to eq("system")
     end
-
   end
 
   context "#store" do
-
     it "returns LocalStore by default" do
       expect(Discourse.store).to be_a(FileStore::LocalStore)
     end
@@ -89,7 +83,6 @@ describe Discourse do
       SiteSetting.s3_secret_access_key = "s3_secret_access_key"
       expect(Discourse.store).to be_a(FileStore::S3Store)
     end
-
   end
 
   context 'readonly mode' do
@@ -192,7 +185,6 @@ describe Discourse do
   end
 
   context "#handle_exception" do
-
     class TempSidekiqLogger < Sidekiq::ExceptionHandler::Logger
       attr_accessor :exception, :context
       def call(ex, ctx)
@@ -224,5 +216,4 @@ describe Discourse do
       expect(logger.context.keys.sort).to eq([:current_db, :current_hostname, :message, :post_id].sort)
     end
   end
-
 end

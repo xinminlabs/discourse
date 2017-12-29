@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'promotion'
 
 describe Promotion do
-
   describe "review" do
     it "skips regular users" do
       # Reviewing users at higher trust levels is expensive, so trigger those reviews in a background job.
@@ -14,7 +13,6 @@ describe Promotion do
   end
 
   context "newuser" do
-
     let(:user) { Fabricate(:user, trust_level: TrustLevel[0], created_at: 2.days.ago) }
     let(:promotion) { Promotion.new(user) }
 
@@ -35,7 +33,6 @@ describe Promotion do
     end
 
     context "that has done the requisite things" do
-
       before do
         stat = user.user_stat
         stat.topics_entered = SiteSetting.tl1_requires_topics_entered
@@ -65,11 +62,9 @@ describe Promotion do
         expect(user.trust_level).to eq(TrustLevel[0])
       end
     end
-
   end
 
   context "basic" do
-
     let(:user) { Fabricate(:user, trust_level: TrustLevel[1], created_at: 2.days.ago) }
     let(:promotion) { Promotion.new(user) }
 
@@ -86,7 +81,6 @@ describe Promotion do
     end
 
     context "that has done the requisite things" do
-
       before do
         stat = user.user_stat
         stat.topics_entered = SiteSetting.tl2_requires_topics_entered
@@ -127,7 +121,6 @@ describe Promotion do
         expect(user.trust_level).to eq(TrustLevel[1])
       end
     end
-
   end
 
   context "regular" do
@@ -179,5 +172,4 @@ describe Promotion do
       end
     end
   end
-
 end

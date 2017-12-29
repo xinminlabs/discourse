@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'email/message_builder'
 
 describe Email::MessageBuilder do
-
   let(:to_address) { "jake@adventuretime.ooo" }
   let(:subject) { "Tree Trunks has made some apple pie!" }
   let(:body) { "oh my glob Jake, Tree Trunks just made the tastiest apple pie ever!" }
@@ -31,7 +30,6 @@ describe Email::MessageBuilder do
   end
 
   context "reply by email" do
-
     context "without allow_reply_by_email" do
       it "does not have a X-Discourse-Reply-Key" do
         expect(header_args['X-Discourse-Reply-Key']).to be_blank
@@ -116,11 +114,9 @@ describe Email::MessageBuilder do
         end
       end
     end
-
   end
 
   context "custom headers" do
-
     let(:custom_headers_string) { " Precedence : bulk | :: | No-colon | No-Value: | Multi-colon : : value : : | Auto-Submitted : auto-generated " }
     let(:custom_headers_result) { { "Precedence" => "bulk", "Multi-colon" => ": value : :", "Auto-Submitted" => "auto-generated" } }
 
@@ -135,11 +131,9 @@ describe Email::MessageBuilder do
     it "null headers builder" do
       expect(Email::MessageBuilder.custom_headers(nil)).to eq({})
     end
-
   end
 
   context "header args" do
-
     let(:message_with_header_args) do
       Email::MessageBuilder.new(
         to_address,
@@ -156,11 +150,9 @@ describe Email::MessageBuilder do
     it "passes through a topic_id" do
       expect(message_with_header_args.header_args['X-Discourse-Topic-Id']).to eq('1234')
     end
-
   end
 
   context "unsubscribe link" do
-
     context "with add_unsubscribe_link false" do
       it "has no unsubscribe header by default" do
         expect(builder.header_args['List-Unsubscribe']).to be_blank
@@ -169,11 +161,9 @@ describe Email::MessageBuilder do
       it "doesn't have the user preferences url in the body" do
         expect(builder.body).not_to match(builder.template_args[:user_preferences_url])
       end
-
     end
 
     context "with add_unsubscribe_link true" do
-
       let(:message_with_unsubscribe) { Email::MessageBuilder.new(to_address,
                                                                 body: 'hello world',
                                                                 add_unsubscribe_link: true,
@@ -191,9 +181,7 @@ describe Email::MessageBuilder do
       it "does not add unsubscribe via email link without site setting set" do
         expect(message_with_unsubscribe.body).to_not match(/mailto:reply@#{Discourse.current_hostname}\?subject=unsubscribe/)
       end
-
     end
-
   end
 
   context "template_args" do
@@ -231,7 +219,6 @@ describe Email::MessageBuilder do
   end
 
   context "subject_template" do
-
     let(:templated_builder) { Email::MessageBuilder.new(to_address, template: 'mystery') }
     let(:rendered_template) { "rendered template" }
 
@@ -244,11 +231,9 @@ describe Email::MessageBuilder do
       I18n.expects(:t).with("mystery.subject_template", templated_builder.template_args).returns(rendered_template)
       expect(templated_builder.subject).to eq(rendered_template)
     end
-
   end
 
   context "from field" do
-
     it "has the default from" do
       SiteSetting.title = ""
       expect(build_args[:from]).to eq(SiteSetting.notification_email)
@@ -300,7 +285,5 @@ describe Email::MessageBuilder do
       SiteSetting.stubs(:email_site_title).returns("::>>>Best \"Forum\", EU: Award Winning<<<")
       expect(build_args[:from]).to eq("\"Best Forum EU Award Winning\" <#{SiteSetting.notification_email}>")
     end
-
   end
-
 end

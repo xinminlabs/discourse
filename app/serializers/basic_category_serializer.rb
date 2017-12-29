@@ -1,5 +1,4 @@
 class BasicCategorySerializer < ApplicationSerializer
-
   attributes :id,
              :name,
              :color,

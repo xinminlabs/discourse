@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe Admin::AdminController do
-
   context 'index' do
-
     it 'needs you to be logged in' do
       expect do
         get :index, format: :json
@@ -15,7 +13,5 @@ describe Admin::AdminController do
       get :index, format: :json
       expect(response).to be_forbidden
     end
-
   end
-
 end

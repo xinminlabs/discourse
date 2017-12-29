@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'stylesheet/importer'
 
 describe Stylesheet::Importer do
-
   def compile_css(name)
     Stylesheet::Compiler.compile_asset(name)[0]
   end
@@ -32,5 +31,4 @@ describe Stylesheet::Importer do
 
     expect(compile_css("category_backgrounds")).to include("body.category-#{category.full_slug}{background-image:url(https://s3.cdn/uploads")
   end
-
 end

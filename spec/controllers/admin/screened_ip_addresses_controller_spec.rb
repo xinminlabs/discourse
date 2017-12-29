@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Admin::ScreenedIpAddressesController do
-
   it "is a subclass of AdminController" do
     expect(Admin::ScreenedIpAddressesController < Admin::AdminController).to eq(true)
   end
@@ -9,7 +8,6 @@ describe Admin::ScreenedIpAddressesController do
   let!(:user) { log_in(:admin) }
 
   describe 'index' do
-
     it 'filters screened ip addresses' do
       Fabricate(:screened_ip_address, ip_address: "1.2.3.4")
       Fabricate(:screened_ip_address, ip_address: "1.2.3.5")
@@ -28,11 +26,9 @@ describe Admin::ScreenedIpAddressesController do
       result = JSON.parse(response.body)
       expect(result.length).to eq(1)
     end
-
   end
 
   describe 'roll_up' do
-
     it "rolls up 1.2.3.* entries" do
       Fabricate(:screened_ip_address, ip_address: "1.2.3.4", match_count: 1)
       Fabricate(:screened_ip_address, ip_address: "1.2.3.5", match_count: 1)
@@ -71,7 +67,5 @@ describe Admin::ScreenedIpAddressesController do
       expect(subnet).to be_present
       expect(subnet.match_count).to eq(6)
     end
-
   end
-
 end

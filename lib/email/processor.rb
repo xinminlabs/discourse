@@ -1,7 +1,5 @@
 module Email
-
   class Processor
-
     def initialize(mail, retry_on_rate_limit = true)
       @mail = mail
       @retry_on_rate_limit = retry_on_rate_limit
@@ -116,7 +114,5 @@ module Email
         Rails.logger.warn("Email can not be processed: #{exception}\n\n#{mail_string}")
       end
     end
-
   end
-
 end

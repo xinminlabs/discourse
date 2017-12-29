@@ -1,9 +1,8 @@
 module Autospec
-
   class RspecRunner < BaseRunner
-
     WATCHERS = {}
     def self.watch(pattern, &blk); WATCHERS[pattern] = blk; end
+
     def watchers; WATCHERS; end
 
     # Discourse specific
@@ -27,6 +26,7 @@ module Autospec
 
     RELOADERS = Set.new
     def self.reload(pattern); RELOADERS << pattern; end
+
     def reloaders; RELOADERS; end
 
     # we are using a simple runner at the moment, whole idea of using a reloader is no longer needed
@@ -40,7 +40,5 @@ module Autospec
       specs = File.readlines(path) if File.exist?(path)
       specs
     end
-
   end
-
 end

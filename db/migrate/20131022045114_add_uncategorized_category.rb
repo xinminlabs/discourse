@@ -1,6 +1,5 @@
 class AddUncategorizedCategory < ActiveRecord::Migration[4.2]
   def up
-
     result = execute "SELECT 1 FROM categories WHERE lower(name) = 'uncategorized'"
     name = 'Uncategorized'
     if result.count > 0
@@ -22,7 +21,6 @@ class AddUncategorizedCategory < ActiveRecord::Migration[4.2]
     execute "UPDATE topics SET category_id = #{category_id} WHERE archetype = 'regular' AND category_id IS NULL"
 
     execute "ALTER table topics ADD CONSTRAINT has_category_id CHECK (category_id IS NOT NULL OR archetype <> 'regular')"
-
   end
 
   def down

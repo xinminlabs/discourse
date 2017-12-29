@@ -1,5 +1,4 @@
 class IncomingEmailDetailsSerializer < ApplicationSerializer
-
   attributes :error,
              :error_description,
              :rejection_message,
@@ -42,5 +41,4 @@ class IncomingEmailDetailsSerializer < ApplicationSerializer
     body ||= @mail.body.decoded      rescue nil
     body.strip.truncate_words(100, escape: false)
   end
-
 end

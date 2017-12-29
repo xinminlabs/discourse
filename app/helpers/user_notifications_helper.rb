@@ -1,5 +1,4 @@
 module UserNotificationsHelper
-
   def indent(text, by = 2)
     spacer = " " * by
     result = ""
@@ -106,5 +105,4 @@ module UserNotificationsHelper
   rescue URI::InvalidURIError, URI::InvalidComponentError
     href
   end
-
 end

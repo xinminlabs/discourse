@@ -1,6 +1,5 @@
 module Jobs
   class BotInput < Jobs::Base
-
     sidekiq_options queue: 'critical', retry: false
 
     def execute(args)

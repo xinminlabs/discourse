@@ -36,5 +36,4 @@ describe TimelineLookup do
     expect(result.size).to eq(3)
     expect(result).to eq([[1, 99], [35, 65], [69, 31]])
   end
-
 end

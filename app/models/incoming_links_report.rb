@@ -1,5 +1,4 @@
 class IncomingLinksReport
-
   attr_accessor :type, :data, :y_titles
 
   def initialize(type)

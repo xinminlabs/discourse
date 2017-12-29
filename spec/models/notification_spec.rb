@@ -82,11 +82,9 @@ describe Notification do
         }.to change(user.notifications, :count).by(0)
       end
     end
-
   end
 
   describe 'unread counts' do
-
     let(:user) { Fabricate(:user) }
 
     context 'a regular notification' do
@@ -116,11 +114,9 @@ describe Notification do
         expect { Fabricate(:private_message_notification, user: user); user.reload }.to change(user, :unread_private_messages)
       end
     end
-
   end
 
   describe 'message bus' do
-
     it 'updates the notification count on create' do
       Notification.any_instance.expects(:refresh_notification_count).returns(nil)
       Fabricate(:notification)
@@ -133,7 +129,6 @@ describe Notification do
         Notification.any_instance.expects(:refresh_notification_count).returns(nil)
         notification.destroy!
       end
-
     end
   end
 
@@ -158,18 +153,15 @@ describe Notification do
       @target.reload
       expect(@target.unread_private_messages).to eq(1)
     end
-
   end
 
   describe '.post' do
-
     let(:post) { Fabricate(:post) }
     let!(:notification) { Fabricate(:notification, user: post.user, topic: post.topic, post_number: post.post_number) }
 
     it 'returns the post' do
       expect(notification.post).to eq(post)
     end
-
   end
 
   describe 'data' do
@@ -228,7 +220,6 @@ describe Notification do
 
   describe 'ensure consistency' do
     it 'deletes notifications if post is missing or deleted' do
-
       NotificationEmailer.disable
 
       p = Fabricate(:post)
@@ -249,7 +240,6 @@ describe Notification do
       expect(Notification.count).to eq(2)
     end
   end
-
 end
 
 # pulling this out cause I don't want an observer
@@ -294,7 +284,6 @@ describe Notification do
 
       notifications = Notification.recent_report(user, 3)
       expect(notifications.map { |n| n.id }).to eq([a.id, d.id, c.id])
-
     end
   end
 end

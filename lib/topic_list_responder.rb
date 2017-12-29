@@ -1,6 +1,5 @@
 # Helps us respond with a topic list from a controller
 module TopicListResponder
-
   def respond_with_list(list)
     discourse_expires_in 1.minute
 
@@ -19,5 +18,4 @@ module TopicListResponder
       end
     end
   end
-
 end

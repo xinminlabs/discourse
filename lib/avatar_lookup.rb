@@ -1,5 +1,4 @@
 class AvatarLookup
-
   def initialize(user_ids = [])
     @user_ids = user_ids.tap(&:compact!).tap(&:uniq!).tap(&:flatten!)
   end

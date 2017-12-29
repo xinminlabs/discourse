@@ -108,6 +108,5 @@ describe ApplicationRequest do
     expect(ApplicationRequest.http_total.first.count).to eq(3)
     expect(ApplicationRequest.http_2xx.first.count).to eq(2)
     expect(ApplicationRequest.http_3xx.first.count).to eq(4)
-
   end
 end

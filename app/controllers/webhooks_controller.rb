@@ -1,7 +1,6 @@
 require "openssl"
 
 class WebhooksController < ActionController::Base
-
   def mailgun
     # can't verify data without an API key
     return mailgun_failure if SiteSetting.mailgun_api_key.blank?
@@ -144,5 +143,4 @@ class WebhooksController < ActionController::Base
 
       Email::Receiver.update_bounce_score(email_log.user.email, bounce_score)
     end
-
 end

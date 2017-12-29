@@ -4,7 +4,6 @@ require 'time'
 require_relative 'create_title.rb'
 
 class SocialcastMessage
-
   DEFAULT_CATEGORY = "Socialcast Import"
   DEFAULT_TAG = "socialcast-import"
   TAGS_AND_CATEGORIES = {

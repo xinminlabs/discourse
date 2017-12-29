@@ -72,5 +72,4 @@ class InviteMailer < ActionMailer::Base
                   email_token: email_token.token)
     end
   end
-
 end

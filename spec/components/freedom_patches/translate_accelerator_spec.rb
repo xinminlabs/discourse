@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe "translate accelerator" do
-
   it "overrides for both string and symbol keys" do
     key = "user.email.not_allowed"
     text_overriden = "foobar"
@@ -31,5 +30,4 @@ describe "translate accelerator" do
       )
     end
   end
-
 end

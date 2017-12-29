@@ -54,7 +54,6 @@ describe ActiveRecord::ConnectionHandling do
 
     context 'when master server is down' do
       before do
-
         @replica_connection = mock('replica_connection')
       end
 
