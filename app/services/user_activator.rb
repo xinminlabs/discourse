@@ -37,7 +37,6 @@ class UserActivator
       LoginActivator
     end
   end
-
 end
 
 class ApprovalActivator < UserActivator

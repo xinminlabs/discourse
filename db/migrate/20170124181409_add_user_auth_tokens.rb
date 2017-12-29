@@ -9,7 +9,6 @@ class AddUserAuthTokens < ActiveRecord::Migration[4.2]
 SQL
 
     drop_table :user_auth_tokens
-
   end
 
   def up

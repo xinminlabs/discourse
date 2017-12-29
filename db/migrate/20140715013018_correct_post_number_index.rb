@@ -1,6 +1,5 @@
 class CorrectPostNumberIndex < ActiveRecord::Migration[4.2]
   def change
-
     begin
       a = execute <<SQL
       UPDATE posts SET post_number = post_number + 1

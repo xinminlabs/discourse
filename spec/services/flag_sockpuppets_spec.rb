@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe SpamRule::FlagSockpuppets do
-
   let(:user1) { Fabricate(:user, ip_address: '182.189.119.174') }
   let(:post1) { Fabricate(:post, user: user1, topic: Fabricate(:topic, user: user1)) }
 

@@ -58,7 +58,6 @@ def top(cols, aggregator, count, aggregator_formatter = nil)
   end.join(" "))
 
   sorted.each do |raw_row|
-
     rows = []
     idx = 0
     raw_row.each do |col|
@@ -86,7 +85,6 @@ def top(cols, aggregator, count, aggregator_formatter = nil)
     if rows.length > 1
       puts
     end
-
   end
 end
 

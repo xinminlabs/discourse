@@ -122,7 +122,6 @@ describe DiscourseSingleSignOn do
   end
 
   it "can specify groups" do
-
     user = Fabricate(:user)
 
     add_group1 = Fabricate(:group, name: 'group1')
@@ -233,7 +232,6 @@ describe DiscourseSingleSignOn do
     sso.expire_nonce!
 
     expect(sso.nonce_valid?).to eq false
-
   end
 
   it "generates a correct sso url" do
@@ -284,7 +282,6 @@ describe DiscourseSingleSignOn do
     end
 
     it 'deactivates accounts that have updated email address' do
-
       SiteSetting.email_editable = false
       SiteSetting.sso_overrides_email = true
       sso.require_activation = true
@@ -303,9 +300,7 @@ describe DiscourseSingleSignOn do
       user = sso.lookup_or_create_user(ip_address)
       expect(user.email).to eq(old_email)
       expect(user.active).to eq(false)
-
     end
-
   end
 
   context 'welcome emails' do
@@ -393,11 +388,9 @@ describe DiscourseSingleSignOn do
       user = sso.lookup_or_create_user(ip_address)
       expect(user.user_profile.bio_cooked).to match_html("<p>new profile 2</p")
     end
-
   end
 
   context 'when sso_overrides_avatar is not enabled' do
-
     it "correctly handles provided avatar_urls" do
       sso = DiscourseSingleSignOn.new
       sso.external_id = 666
@@ -453,7 +446,6 @@ describe DiscourseSingleSignOn do
       # we better have the same avatar
       expect(user.uploaded_avatar_id).to eq(avatar_id)
     end
-
   end
 
   context 'when sso_overrides_avatar is enabled' do

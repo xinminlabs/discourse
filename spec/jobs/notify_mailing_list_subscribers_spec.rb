@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Jobs::NotifyMailingListSubscribers do
-
   let(:mailing_list_user) { Fabricate(:user) }
 
   before { mailing_list_user.user_option.update(mailing_list_mode: true, mailing_list_mode_frequency: 1) }
@@ -67,7 +66,6 @@ describe Jobs::NotifyMailingListSubscribers do
     end
 
     context "with a valid post from another user" do
-
       context "to an inactive user" do
         before { mailing_list_user.update(active: false) }
         include_examples "no emails"
@@ -134,7 +132,6 @@ describe Jobs::NotifyMailingListSubscribers do
       end
 
       context "bounce score was reached" do
-
         it "doesn't send any emails" do
           mailing_list_user.user_stat.update(bounce_score: SiteSetting.bounce_score_threshold + 1)
 
@@ -143,9 +140,7 @@ describe Jobs::NotifyMailingListSubscribers do
 
           expect(EmailLog.where(user: mailing_list_user, skipped: true).count).to eq(1)
         end
-
       end
-
     end
 
     context "with a valid post from same user" do
@@ -166,7 +161,5 @@ describe Jobs::NotifyMailingListSubscribers do
         include_examples "no emails"
       end
     end
-
   end
-
 end

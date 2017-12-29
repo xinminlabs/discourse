@@ -2,7 +2,6 @@ require "rails_helper"
 require_dependency "middleware/anonymous_cache"
 
 describe Middleware::AnonymousCache::Helper do
-
   def env(opts = {})
     {
       "HTTP_HOST" => "http://test.com",
@@ -83,5 +82,4 @@ describe Middleware::AnonymousCache::Helper do
       expect(crawler.cached).to eq([200, { "X-Discourse-Cached" => "true", "HELLO" => "WORLD" }, ["hello world"]])
     end
   end
-
 end

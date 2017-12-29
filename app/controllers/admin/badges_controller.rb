@@ -1,5 +1,4 @@
 class Admin::BadgesController < Admin::AdminController
-
   def index
     data = {
       badge_types: BadgeType.all.order(:id).to_a,
@@ -15,7 +14,6 @@ class Admin::BadgesController < Admin::AdminController
   end
 
   def preview
-
     unless SiteSetting.enable_badge_sql
       render json: "preview not allowed", status: 403
       return
@@ -39,7 +37,6 @@ class Admin::BadgesController < Admin::AdminController
   end
 
   def save_badge_groupings
-
     badge_groupings = BadgeGrouping.all.order(:position).to_a
     ids = params[:ids].map(&:to_i)
 
@@ -88,6 +85,7 @@ class Admin::BadgesController < Admin::AdminController
   end
 
   private
+
     def find_badge
       params.require(:id)
       Badge.find(params[:id])

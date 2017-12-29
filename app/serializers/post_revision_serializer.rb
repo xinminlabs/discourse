@@ -1,5 +1,4 @@
 class PostRevisionSerializer < ApplicationSerializer
-
   attributes :created_at,
              :post_id,
              # which revision is hidden
@@ -256,5 +255,4 @@ class PostRevisionSerializer < ApplicationSerializer
       # if stuff goes pear shape attribute to system
       object.user || Discourse.system_user
     end
-
 end

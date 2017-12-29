@@ -12,9 +12,7 @@ require 'openssl'
 require 'xor'
 
 class Pbkdf2
-
   def self.hash_password(password, salt, iterations, algorithm = "sha256")
-
     h = OpenSSL::Digest.new(algorithm)
 
     u = ret = prf(h, password, salt + [1].pack("N"))
@@ -37,5 +35,4 @@ class Pbkdf2
   def self.prf(hash_function, password, data)
     OpenSSL::HMAC.digest(hash_function, password, data)
   end
-
 end

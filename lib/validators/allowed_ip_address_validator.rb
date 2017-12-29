@@ -1,7 +1,6 @@
 require_dependency "spam_handler"
 
 class AllowedIpAddressValidator < ActiveModel::EachValidator
-
   def validate_each(record, attribute, value)
     if record.ip_address
       if ScreenedIpAddress.should_block?(record.ip_address)
@@ -12,5 +11,4 @@ class AllowedIpAddressValidator < ActiveModel::EachValidator
       end
     end
   end
-
 end

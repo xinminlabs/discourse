@@ -3,9 +3,7 @@ require_dependency 'stylesheet/importer'
 require_dependency 'stylesheet/functions'
 
 module Stylesheet
-
   class Compiler
-
     def self.error_as_css(error, label)
       error = error.message
       error.gsub!("\n", '\A ')
@@ -17,7 +15,6 @@ module Stylesheet
     end
 
     def self.compile_asset(asset, options = {})
-
       if Importer.special_imports[asset.to_s]
         filename = "theme.scss"
         file = "@import \"theme_variables\"; @import \"#{asset}\";"
@@ -28,7 +25,6 @@ module Stylesheet
       end
 
       compile(file, filename, options)
-
     end
 
     def self.compile(stylesheet, filename, options = {})

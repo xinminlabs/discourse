@@ -252,5 +252,4 @@ class DiscourseRedis
   def self.new_redis_store
     Cache.new
   end
-
 end

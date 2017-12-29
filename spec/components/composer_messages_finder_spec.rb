@@ -3,7 +3,6 @@ require 'rails_helper'
 require 'composer_messages_finder'
 
 describe ComposerMessagesFinder do
-
   context "delegates work" do
     let(:user) { Fabricate.build(:user) }
     let(:finder) { ComposerMessagesFinder.new(user, composer_action: 'createTopic') }
@@ -18,7 +17,6 @@ describe ComposerMessagesFinder do
       finder.expects(:check_get_a_room).once
       finder.find
     end
-
   end
 
   context '.check_education_message' do
@@ -97,7 +95,6 @@ describe ComposerMessagesFinder do
         expect(finder.check_new_user_many_replies).to be_present
       end
     end
-
   end
 
   context '.check_avatar_notification' do
@@ -213,10 +210,8 @@ describe ComposerMessagesFinder do
         it "creates a notified_about_sequential_replies log" do
           expect(UserHistory.exists_for_user?(user, :notified_about_sequential_replies)).to eq(true)
         end
-
       end
     end
-
   end
 
   context '.check_dominating_topic' do
@@ -298,10 +293,8 @@ describe ComposerMessagesFinder do
         it "creates a notified_about_dominating_topic log" do
           expect(UserHistory.exists_for_user?(user, :notified_about_dominating_topic)).to eq(true)
         end
-
       end
     end
-
   end
 
   context '.check_get_a_room' do
@@ -417,7 +410,6 @@ describe ComposerMessagesFinder do
         end
       end
     end
-
   end
 
   context '.check_reviving_old_topic' do
@@ -463,5 +455,4 @@ describe ComposerMessagesFinder do
       end
     end
   end
-
 end

@@ -1,5 +1,4 @@
 class Admin::WatchedWordsController < Admin::AdminController
-
   def index
     render_json_dump WatchedWordListSerializer.new(WatchedWord.by_action, scope: guardian, root: false)
   end
@@ -43,5 +42,4 @@ class Admin::WatchedWordsController < Admin::AdminController
   def watched_words_params
     params.permit(:id, :word, :action_key)
   end
-
 end

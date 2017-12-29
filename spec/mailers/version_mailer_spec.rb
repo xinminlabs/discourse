@@ -20,6 +20,5 @@ describe VersionMailer do
       expect(subject.from).to eq([SiteSetting.notification_email])
       expect(subject.body).to be_present
     end
-
   end
 end

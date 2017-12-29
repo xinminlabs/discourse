@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UserSearch do
-
   let(:topic)     { Fabricate :topic }
   let(:topic2)    { Fabricate :topic }
   let(:topic3)    { Fabricate :topic }
@@ -138,5 +137,4 @@ describe UserSearch do
     results = search_for(staged.username, include_staged_users: true)
     expect(results.first.username).to eq(staged.username)
   end
-
 end

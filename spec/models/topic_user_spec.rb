@@ -15,7 +15,6 @@ describe TopicUser do
 
   describe "#unwatch_categories!" do
     it "correctly unwatches categories" do
-
       op_topic = Fabricate(:topic)
       another_topic = Fabricate(:topic)
       tracked_topic = Fabricate(:topic)
@@ -35,7 +34,6 @@ describe TopicUser do
       expect(TopicUser.get(another_topic, user).notification_level).to eq(regular)
       expect(TopicUser.get(tracked_topic, user).notification_level).to eq(tracking)
     end
-
   end
 
   describe '#notification_levels' do
@@ -98,12 +96,10 @@ describe TopicUser do
   end
 
   describe "unpinned" do
-
     it "defaults to blank" do
       ensure_topic_user
       expect(topic_user.cleared_pinned_at).to be_blank
     end
-
   end
 
   describe 'notifications' do
@@ -171,7 +167,6 @@ describe TopicUser do
   end
 
   describe 'visited at' do
-
     it 'set upon initial visit' do
       freeze_time yesterday
 
@@ -193,14 +188,11 @@ describe TopicUser do
       topic_user = TopicUser.get(topic, user)
       expect(topic_user.first_visited_at.to_i).to eq(yesterday.to_i)
       expect(topic_user.last_visited_at.to_i).to eq(Time.zone.now.to_i)
-
     end
   end
 
   describe 'read tracking' do
-
     context "without auto tracking" do
-
       let(:topic_user) { TopicUser.get(topic, user) }
 
       it 'should create a new record for a visit' do
@@ -214,7 +206,6 @@ describe TopicUser do
       end
 
       it 'should update the record for repeat visit' do
-
         today = Time.zone.now
         freeze_time Time.zone.now
 
@@ -235,7 +226,6 @@ describe TopicUser do
 
     context 'private messages' do
       it 'should ensure recepients and senders are watching' do
-
         target_user = Fabricate(:user)
         post = create_post(archetype: Archetype.private_message, target_usernames: target_user.username);
 
@@ -245,7 +235,6 @@ describe TopicUser do
     end
 
     context 'auto tracking' do
-
       let(:post_creator) { PostCreator.new(new_user, raw: Fabricate.build(:post).raw, topic_id: topic.id) }
 
       before do
@@ -324,9 +313,7 @@ describe TopicUser do
   end
 
   describe 'change a flag' do
-
     it "only inserts a row once, even on repeated calls" do
-
       topic; user
 
       expect {
@@ -348,9 +335,7 @@ describe TopicUser do
       it 'has a key in the lookup for this forum topic' do
         expect(TopicUser.lookup_for(user, [topic]).has_key?(topic.id)).to eq(true)
       end
-
     end
-
   end
 
   it "can scope by tracking" do
@@ -379,11 +364,9 @@ describe TopicUser do
     tu = TopicUser.find_by(user_id: p1.user_id, topic_id: p1.topic_id)
     expect(tu.last_read_post_number).to eq(p2.post_number)
     expect(tu.highest_seen_post_number).to eq(2)
-
   end
 
   describe "mailing_list_mode" do
-
     it "will receive email notification for every topic" do
       user1 = Fabricate(:user)
 
@@ -409,5 +392,4 @@ describe TopicUser do
       expect(tu.last_emailed_post_number).to eq(2)
     end
   end
-
 end

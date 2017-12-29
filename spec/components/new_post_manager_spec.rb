@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'new_post_manager'
 
 describe NewPostManager do
-
   let(:topic) { Fabricate(:topic) }
 
   context "default action" do
@@ -50,7 +49,6 @@ describe NewPostManager do
       expect(result.post.topic.private_message?).to eq(true)
       expect(result.post).to be_a(Post)
     end
-
   end
 
   context "default handler" do
@@ -124,7 +122,6 @@ describe NewPostManager do
         expect(result).to eq(nil)
       end
     end
-
   end
 
   context "new topic handler" do
@@ -139,11 +136,9 @@ describe NewPostManager do
         expect(result.action).to eq(:enqueued)
       end
     end
-
   end
 
   context "extensibility priority" do
-
     after do
       NewPostManager.clear_handlers!
     end
@@ -167,11 +162,9 @@ describe NewPostManager do
       NewPostManager.add_handler(101, &c)
       expect(NewPostManager.handlers).to eq([c, a, b, default_handler])
     end
-
   end
 
   context "extensibility" do
-
     before do
       @counter = 0
 
@@ -238,11 +231,9 @@ describe NewPostManager do
       expect(result.post).to be_present
       expect(@counter).to be(0)
     end
-
   end
 
   context "user needs approval?" do
-
     let :user do
       user = Fabricate.build(:user, trust_level: 0)
       user_stat = UserStat.new(post_count: 0)
@@ -268,5 +259,4 @@ describe NewPostManager do
       expect(NewPostManager.post_needs_approval?(with_check_tl1)).to eq(false)
     end
   end
-
 end

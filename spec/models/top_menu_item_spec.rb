@@ -36,5 +36,4 @@ describe TopMenuItem do
     expect(items.first.specific_category).to be_nil
     expect(items.last.specific_category).to eq('xyz')
   end
-
 end

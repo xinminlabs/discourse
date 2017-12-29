@@ -16,6 +16,5 @@ module Jobs
       message = AdminConfirmationMailer.send_email(to_address, target_username, token)
       Email::Sender.new(message, :admin_confirmation_message).send
     end
-
   end
 end

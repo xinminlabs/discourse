@@ -3,7 +3,6 @@ require 'post_creator'
 require 'topic_subtype'
 
 describe PostCreator do
-
   let(:user) { Fabricate(:user) }
   let(:topic) { Fabricate(:topic, user: user) }
 
@@ -105,7 +104,6 @@ describe PostCreator do
       end
 
       it "generates the correct messages for a secure topic" do
-
         UserActionCreator.enable
 
         admin = Fabricate(:admin)
@@ -139,7 +137,6 @@ describe PostCreator do
       end
 
       it 'generates the correct messages for a normal topic' do
-
         UserActionCreator.enable
 
         p = nil
@@ -240,7 +237,6 @@ describe PostCreator do
       end
 
       it 'creates post stats' do
-
         Draft.set(user, 'new_topic', 0, "test")
         Draft.set(user, 'new_topic', 0, "test1")
 
@@ -322,7 +318,6 @@ describe PostCreator do
           expect(topic_status_update.execute_at).to be_within(1.second).of(Time.zone.now + 12.hours)
           expect(topic_status_update.created_at).to be_within(1.second).of(Time.zone.now)
         end
-
       end
 
       context "tags" do
@@ -459,7 +454,6 @@ describe PostCreator do
   end
 
   context 'uniqueness' do
-
     let!(:topic) { Fabricate(:topic, user: user) }
     let(:basic_topic_params) { { raw: 'test reply', topic_id: topic.id, reply_to_post_number: 4 } }
     let(:creator) { PostCreator.new(user, basic_topic_params) }
@@ -516,11 +510,9 @@ describe PostCreator do
         expect(new_post_creator.errors).to be_blank
       end
     end
-
   end
 
   context "host spam" do
-
     let!(:topic) { Fabricate(:topic, user: user) }
     let(:basic_topic_params) { { raw: 'test reply', topic_id: topic.id, reply_to_post_number: 4 } }
     let(:creator) { PostCreator.new(user, basic_topic_params) }
@@ -543,7 +535,6 @@ describe PostCreator do
       end
       creator.create
     end
-
   end
 
   # more integration testing ... maximise our testing
@@ -837,7 +828,6 @@ describe PostCreator do
   end
 
   describe "embed_url" do
-
     let(:embed_url) { "http://eviltrout.com/stupid-url" }
 
     it "creates the topic_embed record" do

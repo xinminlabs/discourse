@@ -10,7 +10,6 @@ describe Admin::ReportsController do
     let(:user) { Fabricate(:user) }
 
     context '.show' do
-
       context "invalid id form" do
         let(:invalid_id) { "!!&asdfasdf" }
 
@@ -26,7 +25,6 @@ describe Admin::ReportsController do
       end
 
       context "valid type form" do
-
         context 'missing report' do
           before do
             Report.expects(:find).with('active', instance_of(Hash)).returns(nil)
@@ -51,9 +49,7 @@ describe Admin::ReportsController do
           it "renders the report as JSON" do
             expect(::JSON.parse(response.body)).to be_present
           end
-
         end
-
       end
 
       describe 'when report is scoped to a category' do
@@ -95,9 +91,6 @@ describe Admin::ReportsController do
           expect(report["data"].count).to eq(1)
         end
       end
-
     end
-
   end
-
 end

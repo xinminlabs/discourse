@@ -1,5 +1,4 @@
 class UserUpdater
-
   CATEGORY_IDS = {
     watched_first_post_category_ids: :watching_first_post,
     watched_category_ids: :watching,

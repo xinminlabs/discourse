@@ -3,7 +3,6 @@ require_dependency 'slug'
 require_dependency 'discourse'
 
 class TopicLink < ActiveRecord::Base
-
   def self.max_domain_length
     100
   end
@@ -36,7 +35,6 @@ class TopicLink < ActiveRecord::Base
   end
 
   def self.topic_map(guardian, topic_id)
-
     # Sam: complicated reports are really hard in AR
     builder = SqlBuilder.new <<-SQL
   SELECT ftl.url,
@@ -65,7 +63,6 @@ SQL
     builder.secure_category(guardian.secure_category_ids)
 
     builder.exec.to_a
-
   end
 
   def self.counts_for(guardian, topic, posts)
@@ -109,7 +106,6 @@ SQL
 
     added_urls = []
     TopicLink.transaction do
-
       added_urls = []
       reflected_ids = []
 
@@ -204,7 +200,6 @@ SQL
               reflected_ids << tl.id if tl.persisted?
             end
           end
-
         rescue URI::InvalidURIError
           # if the URI is invalid, don't store it.
         rescue ActionController::RoutingError

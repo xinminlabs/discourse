@@ -134,7 +134,6 @@ describe ::Presence::PresencesController do
 
         expect(data['users'].length).to eq(1)
       end
-
     end
 
     describe 'when post has been deleted' do
@@ -157,7 +156,5 @@ describe ::Presence::PresencesController do
         expect(JSON.parse(response.body)).to eq({})
       end
     end
-
   end
-
 end

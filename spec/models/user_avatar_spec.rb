@@ -17,7 +17,6 @@ describe UserAvatar do
   end
 
   context '.import_url_for_user' do
-
     it 'creates user_avatar record if missing' do
       user = Fabricate(:user)
       user.user_avatar.destroy

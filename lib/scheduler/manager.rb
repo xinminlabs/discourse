@@ -60,7 +60,6 @@ module Scheduler
       end
 
       def process_queue
-
         klass = @queue.deq
         return unless klass
 
@@ -171,7 +170,6 @@ module Scheduler
           end
         }
       end
-
     end
 
     def self.without_runner(redis = nil)

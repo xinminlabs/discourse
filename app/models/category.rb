@@ -329,7 +329,6 @@ SQL
   def email_in_validator
     return if self.email_in.blank?
     email_in.split("|").each do |email|
-
       escaped = Rack::Utils.escape_html(email)
       if !Email.is_valid?(email)
         self.errors.add(:base, I18n.t('category.errors.invalid_email_in', email: escaped))

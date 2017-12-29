@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe PostAnalyzer do
-
   let(:default_topic_id) { 12 }
   let(:url) { 'https://twitter.com/evil_trout/status/345954894420787200' }
 
@@ -191,7 +190,6 @@ describe PostAnalyzer do
   end
 
   describe "raw_mentions" do
-
     it "returns an empty array with no matches" do
       post_analyzer = PostAnalyzer.new("Hello Jake and Finn!", default_topic_id)
       expect(post_analyzer.raw_mentions).to eq([])

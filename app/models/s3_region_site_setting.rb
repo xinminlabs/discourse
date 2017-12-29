@@ -1,7 +1,6 @@
 require_dependency 'enum_site_setting'
 
 class S3RegionSiteSetting < EnumSiteSetting
-
   def self.valid_value?(val)
     valid_values.include? val
   end

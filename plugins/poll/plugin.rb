@@ -31,7 +31,6 @@ after_initialize do
 
   class DiscoursePoll::Poll
     class << self
-
       def vote(post_id, poll_name, options, user)
         DistributedMutex.synchronize("#{PLUGIN_NAME}-#{post_id}") do
           user_id = user.id

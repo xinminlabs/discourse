@@ -1,5 +1,4 @@
 class FilterBestPosts
-
   attr_accessor :filtered_posts, :posts
 
   def initialize(topic, filtered_posts, limit, options = {})
@@ -61,5 +60,4 @@ class FilterBestPosts
   def sort_posts
     @posts = Post.from(@posts, :posts).order(post_number: :asc)
   end
-
 end

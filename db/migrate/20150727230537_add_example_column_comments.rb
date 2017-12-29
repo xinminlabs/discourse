@@ -1,7 +1,6 @@
 require 'comment_migration'
 
 class AddExampleColumnComments < CommentMigration
-
   def comments_up
     {
       posts: {
@@ -22,5 +21,4 @@ class AddExampleColumnComments < CommentMigration
     {
     }
   end
-
 end

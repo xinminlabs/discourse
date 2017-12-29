@@ -2,7 +2,6 @@
 #  A class that handles interaction between a plugin and the Discourse App.
 #
 class DiscoursePluginRegistry
-
   class << self
     attr_writer :javascripts
     attr_writer :service_workers
@@ -76,7 +75,6 @@ class DiscoursePluginRegistry
     def vendored_pretty_text
       @vendored_pretty_text ||= Set.new
     end
-
   end
 
   def register_js(filename, options = {})
@@ -229,5 +227,4 @@ class DiscoursePluginRegistry
     plugin = plugin_class.new(registry)
     plugin.setup
   end
-
 end

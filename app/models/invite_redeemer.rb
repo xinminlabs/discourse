@@ -1,5 +1,4 @@
 InviteRedeemer = Struct.new(:invite, :username, :name, :password, :user_custom_fields) do
-
   def redeem
     Invite.transaction do
       if invite_was_redeemed?

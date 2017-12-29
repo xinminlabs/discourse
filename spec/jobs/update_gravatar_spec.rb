@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Jobs::UpdateGravatar do
-
   it "picks gravatar if system avatar is picked and gravatar was just downloaded" do
     user = User.create!(username: "bob", name: "bob", email: "a@a.com")
     expect(user.uploaded_avatar_id).to eq(nil)
@@ -19,5 +18,4 @@ describe Jobs::UpdateGravatar do
 
     expect(user.uploaded_avatar_id).to eq(user.user_avatar.gravatar_upload_id)
   end
-
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TopicLink do
-
   it { is_expected.to validate_presence_of :url }
 
   def test_uri
@@ -47,11 +46,9 @@ http://b.com/#{'a' * 500}
       #works with markdown links followed by a period
       expect(topic.topic_links.exists?(url: "http://b.com/b")).to eq(true)
     end
-
   end
 
   describe 'internal links' do
-
     it "extracts onebox" do
       other_topic = Fabricate(:topic, user: user)
       other_topic.posts.create(user: user, raw: "some content for the first post")
@@ -74,7 +71,6 @@ http://b.com/#{'a' * 500}
     end
 
     context 'topic link' do
-
       let(:other_topic) do
         Fabricate(:topic, user: user)
       end
@@ -84,7 +80,6 @@ http://b.com/#{'a' * 500}
       end
 
       it 'works' do
-
         # ensure other_topic has a post
         post
 
@@ -208,7 +203,6 @@ http://b.com/#{'a' * 500}
         # should have file extension
         expect(link.extension).to eq('rb')
       end
-
     end
 
     context "link to an attachments uploaded on S3" do
@@ -228,7 +222,6 @@ http://b.com/#{'a' * 500}
         # should have file extension
         expect(link.extension).to eq('rb')
       end
-
     end
   end
 
@@ -247,7 +240,6 @@ http://b.com/#{'a' * 500}
       expect(topic.topic_links.first).to eq(nil)
       expect(pm.topic_links.first).not_to eq(nil)
     end
-
   end
 
   describe 'internal link from unlisted topic' do
@@ -286,7 +278,6 @@ http://b.com/#{'a' * 500}
     end
 
     context 'with data' do
-
       let(:post) do
         topic = Fabricate(:topic)
         Fabricate(:post_with_external_links, user: topic.user, topic: topic)
@@ -387,5 +378,4 @@ http://b.com/#{'a' * 500}
       expect { TopicLink.extract_from(post) }.to_not raise_error
     end
   end
-
 end

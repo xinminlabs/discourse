@@ -383,5 +383,4 @@ class HtmlPrettify < String
   def entity(key)
     @entities[key]
   end
-
 end

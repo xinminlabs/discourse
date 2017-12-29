@@ -4,7 +4,6 @@ require 'rails_helper'
 require_dependency 'post_creator'
 
 describe "category tag restrictions" do
-
   def sorted_tag_names(tag_records)
     tag_records.map(&:name).sort
   end

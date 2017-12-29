@@ -1,5 +1,4 @@
 class EmailLogSerializer < ApplicationSerializer
-
   attributes :id,
              :reply_key,
              :to_address,
@@ -33,5 +32,4 @@ class EmailLogSerializer < ApplicationSerializer
   def post_description
     "#{object.post.topic.title} ##{object.post.post_number}"
   end
-
 end

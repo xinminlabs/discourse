@@ -16,7 +16,6 @@ class TopicUser < ActiveRecord::Base
 
   # Class methods
   class << self
-
     # Enums
     def notification_levels
       NotificationLevels.topic_levels
@@ -129,7 +128,6 @@ SQL
       if attrs[:notification_level]
         notification_level_change(user_id, topic_id, attrs[:notification_level], attrs[:notifications_reason_id])
       end
-
     rescue ActiveRecord::RecordNotUnique
       # In case of a race condition to insert, do nothing
     end
@@ -144,7 +142,6 @@ SQL
         user_id,
         topic_id
       )
-
     end
 
     def create_missing_record(user_id, topic_id, attrs)
@@ -325,7 +322,6 @@ SQL
         notification_level_change(user.id, topic_id, args[:new_status], nil)
       end
     end
-
   end
 
   def self.update_post_action_cache(opts = {})
@@ -448,7 +444,6 @@ SQL
 
     builder.exec
   end
-
 end
 
 # == Schema Information

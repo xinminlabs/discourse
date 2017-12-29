@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'topic_view'
 
 describe TopicView do
-
   let(:topic) { create_topic }
   let(:coding_horror) { Fabricate(:coding_horror) }
   let(:first_poster) { topic.user }
@@ -51,7 +50,6 @@ describe TopicView do
     let(:admin) { Fabricate(:admin) }
 
     it "it can find the best responses" do
-
       best2 = TopicView.new(topic.id, coding_horror, best: 2)
       expect(best2.posts.count).to eq(2)
       expect(best2.posts[0].id).to eq(p2.id)
@@ -101,7 +99,6 @@ describe TopicView do
       PostAction.act(moderator, p2, PostActionType.types[:like])
       best = TopicView.new(topic.id, nil, best: 99, only_moderator_liked: true)
       expect(best.posts.count).to eq(1)
-
     end
 
     it "raises NotLoggedIn if the user isn't logged in and is trying to view a private message" do
@@ -257,7 +254,6 @@ describe TopicView do
         expect(recent_posts.first.created_at).to be > recent_posts.last.created_at
       end
     end
-
   end
 
   context 'whispers' do
@@ -278,7 +274,6 @@ describe TopicView do
   end
 
   context '.posts' do
-
     # Create the posts in a different order than the sort_order
     let!(:p5) { Fabricate(:post, topic: topic, user: coding_horror) }
     let!(:p2) { Fabricate(:post, topic: topic, user: coding_horror) }
@@ -328,7 +323,6 @@ describe TopicView do
       }.to raise_error(Discourse::InvalidAccess)
 
       expect(TopicView.new(t2.id, coding_horror, post_ids: [p1.id, p2.id]).posts.count).to eq(0)
-
     end
 
     describe '#filter_posts_paged' do
@@ -343,7 +337,6 @@ describe TopicView do
     end
 
     describe "filter_posts_near" do
-
       def topic_view_near(post, show_deleted = false)
         TopicView.new(topic.id, coding_horror, post_number: post.post_number, show_deleted: show_deleted)
       end

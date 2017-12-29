@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe NotificationEmailer do
-
   before do
     NotificationEmailer.enable
   end
@@ -20,7 +19,6 @@ describe NotificationEmailer do
   end
 
   shared_examples "enqueue" do
-
     it "enqueues a job for the email" do
       Jobs.expects(:enqueue_in).with(delay, :user_email, NotificationEmailer::EmailUser.notification_params(notification, type))
       NotificationEmailer.process_notification(notification)
@@ -63,15 +61,12 @@ describe NotificationEmailer do
     end
 
     context "small action" do
-
       it "doesn't enqueue a job" do
         Post.any_instance.expects(:post_type).returns(Post.types[:small_action])
         Jobs.expects(:enqueue_in).with(delay, :user_email, has_entry(type: type)).never
         NotificationEmailer.process_notification(notification)
       end
-
     end
-
   end
 
   shared_examples "enqueue_public" do
@@ -92,7 +87,6 @@ describe NotificationEmailer do
       Jobs.expects(:enqueue_in).with(delay, :user_email, has_entry(type: type)).never
       NotificationEmailer.process_notification(notification)
     end
-
   end
 
   context 'user_mentioned' do
@@ -107,7 +101,6 @@ describe NotificationEmailer do
       Jobs.expects(:enqueue_in).with(delay, :user_email, NotificationEmailer::EmailUser.notification_params(notification, type))
       NotificationEmailer.process_notification(notification)
     end
-
   end
 
   context 'user_replied' do
@@ -154,7 +147,6 @@ describe NotificationEmailer do
       Jobs.expects(:enqueue_in).with(delay, :user_email, has_entry(type: type)).never
       NotificationEmailer.process_notification(notification)
     end
-
   end
 
   context 'user_invited_to_private_message' do
@@ -180,5 +172,4 @@ describe NotificationEmailer do
 
     include_examples "enqueue_public"
   end
-
 end

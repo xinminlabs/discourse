@@ -3,7 +3,6 @@ require_dependency 'email_validator'
 require_dependency 'email_updater'
 
 class UsersEmailController < ApplicationController
-
   before_action :ensure_logged_in, only: [:index, :update]
 
   skip_before_action :check_xhr, only: [:confirm]
@@ -43,5 +42,4 @@ class UsersEmailController < ApplicationController
 
     render layout: 'no_ember'
   end
-
 end

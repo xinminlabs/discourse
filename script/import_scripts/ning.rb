@@ -3,7 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 # Edit the constants and initialize method for your import data.
 
 class ImportScripts::Ning < ImportScripts::Base
-
   JSON_FILES_DIR = "/Users/techapj/Downloads/ben/ADEM"
   ATTACHMENT_PREFIXES = ["discussions", "pages", "blogs", "members", "photos"]
   EXTRA_AUTHORIZED_EXTENSIONS = ["bmp", "ico", "txt", "pdf", "gif", "jpg", "jpeg", "html"]
@@ -245,7 +244,6 @@ class ImportScripts::Ning < ImportScripts::Base
 
         if topic["comments"].present?
           topic["comments"].reverse.each do |post|
-
             if post_id_from_imported_post_id(post["id"])
               next # already imported this post
             end

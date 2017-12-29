@@ -78,5 +78,4 @@ class UserActionSerializer < ApplicationSerializer
   def archived
     object.topic_archived
   end
-
 end

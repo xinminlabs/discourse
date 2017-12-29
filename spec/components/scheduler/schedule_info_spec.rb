@@ -3,7 +3,6 @@ require 'rails_helper'
 require 'scheduler/scheduler'
 
 describe Scheduler::ScheduleInfo do
-
   let(:manager) { Scheduler::Manager.new }
 
   context "every" do
@@ -55,7 +54,6 @@ describe Scheduler::ScheduleInfo do
   end
 
   context "daily" do
-
     class DailyJob
       extend ::Scheduler::Schedule
       daily at: 11.hours
@@ -99,5 +97,4 @@ describe Scheduler::ScheduleInfo do
       expect(@info.valid?).to eq(false)
     end
   end
-
 end

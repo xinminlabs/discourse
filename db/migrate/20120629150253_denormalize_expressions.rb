@@ -1,6 +1,5 @@
 class DenormalizeExpressions < ActiveRecord::Migration[4.2]
   def change
-
     # Denormalizing this makes our queries so, so, so much nicer
 
     add_column :posts, :expression1_count, :integer, null: false, default: 0
@@ -20,5 +19,4 @@ class DenormalizeExpressions < ActiveRecord::Migration[4.2]
       execute "update forum_threads set expression#{i}_count = (select sum(expression#{i}_count) from posts where forum_thread_id = forum_threads.id)"
     end
   end
-
 end

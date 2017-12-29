@@ -4,7 +4,6 @@ require "auth/authenticator"
 require_dependency "auth/result"
 
 describe "users/omniauth_callbacks/complete.html.erb" do
-
   let :rendered_data do
     JSON.parse(rendered.match(/var authResult = (.*);/)[1])
   end
@@ -37,5 +36,4 @@ describe "users/omniauth_callbacks/complete.html.erb" do
     #  clean it up throughout
     expect(rendered_data["auth_provider"]).to eq("Cas")
   end
-
 end

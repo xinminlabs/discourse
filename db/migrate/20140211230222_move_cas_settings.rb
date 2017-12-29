@@ -31,6 +31,5 @@ class MoveCasSettings < ActiveRecord::Migration[4.2]
 
    #remove the unused table
    drop_table :cas_user_infos
-
   end
 end

@@ -5,7 +5,6 @@ Auth.send(:remove_const, :GoogleOAuth2Authenticator)
 load 'auth/google_oauth2_authenticator.rb'
 
 describe Auth::GoogleOAuth2Authenticator do
-
   it 'does not look up user unless email is verified' do
     # note, emails that come back from google via omniauth are always valid
     # this protects against future regressions
@@ -111,5 +110,4 @@ describe Auth::GoogleOAuth2Authenticator do
       expect(user.email_confirmed?).to eq(false)
     end
   end
-
 end

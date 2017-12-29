@@ -2,7 +2,6 @@
 require_dependency 'search'
 
 class UserSearch
-
   def initialize(term, opts = {})
     @term = term
     @term_like = "#{term.downcase.gsub("_", "\\_")}%"
@@ -107,5 +106,4 @@ class UserSearch
     ) x on uid = users.id")
       .order("rn")
   end
-
 end

@@ -81,7 +81,6 @@ describe WebHook do
         it 'can include wildcard hooks' do
           expect(WebHook.find_by_type(:post).sort_by(&:id)).to eq([post_hook, wildcard_hook])
           expect(WebHook.find_by_type(:topic).sort_by(&:id)).to eq([topic_hook, wildcard_hook])
-
         end
       end
 

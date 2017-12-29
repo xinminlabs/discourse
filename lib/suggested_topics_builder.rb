@@ -1,7 +1,6 @@
 require_dependency 'topic_list'
 
 class SuggestedTopicsBuilder
-
   attr_reader :excluded_topic_ids
 
   def initialize(topic)
@@ -12,7 +11,6 @@ class SuggestedTopicsBuilder
   end
 
   def add_results(results, priority = :low)
-
     # WARNING .blank? will execute an Active Record query
     return unless results
 
@@ -73,5 +71,4 @@ class SuggestedTopicsBuilder
   def size
     @results.size
   end
-
 end

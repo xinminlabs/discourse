@@ -4,7 +4,6 @@ require 'rails_helper'
 require_dependency 'post_creator'
 
 describe CategoryUser do
-
   def tracking
     CategoryUser.notification_levels[:tracking]
   end
@@ -192,6 +191,5 @@ describe CategoryUser do
 
       expect(CategoryUser.where(user_id: user.id).count).to eq(0)
     end
-
   end
 end

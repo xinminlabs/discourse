@@ -6,7 +6,6 @@ require_dependency 'screening_model'
 # For now, nothing is done. We're just collecting the data and will decide
 # what to do with it later.
 class ScreenedUrl < ActiveRecord::Base
-
   include ScreeningModel
 
   default_action :do_nothing

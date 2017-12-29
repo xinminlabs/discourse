@@ -8,7 +8,6 @@ require 'weakref'
 require 'base64'
 
 class DistributedCache
-
   class Manager
     CHANNEL_NAME ||= '/distributed_hash'.freeze
 
@@ -43,7 +42,6 @@ class DistributedCache
           when "delete" then hash.delete(payload["key"])
           when "clear"  then hash.clear
           end
-
         rescue WeakRef::RefError
           @subscribers.delete_at(i)
         ensure
@@ -149,5 +147,4 @@ class DistributedCache
 
     @data[db] ||= ThreadSafe::Hash.new
   end
-
 end

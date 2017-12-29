@@ -1,7 +1,6 @@
 module SiteSettings; end
 
 class SiteSettings::DbProvider
-
   def initialize(model)
     model.after_commit do
       model.notify_changed!
@@ -64,5 +63,4 @@ class SiteSettings::DbProvider
 
     @table_exists[current_site]
   end
-
 end

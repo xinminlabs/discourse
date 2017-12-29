@@ -19,7 +19,6 @@ class Plugin::CustomEmoji
 end
 
 class Plugin::Instance
-
   attr_accessor :path, :metadata
   attr_reader :admin_route
 
@@ -47,7 +46,6 @@ class Plugin::Instance
     [].tap { |plugins|
       # also follows symlinks - http://stackoverflow.com/q/357754
       Dir["#{parent_path}/*/plugin.rb"].sort.each do |path|
-
         # tagging is included in core, so don't load it
         next if path =~ /discourse-tagging/
 
@@ -361,7 +359,6 @@ class Plugin::Instance
     js = javascripts.join("\n")
 
     auth_providers.each do |auth|
-
       auth_json = auth.to_json
       hash = Digest::SHA1.hexdigest(auth_json)
       js << <<JS
@@ -409,7 +406,6 @@ JS
   # this allows us to present information about a plugin in the UI
   # prior to activations
   def activate!
-
     if @path
       # Automatically include all ES6 JS and hbs files
       root_path = "#{File.dirname(@path)}/assets/javascripts"
@@ -552,5 +548,4 @@ JS
     # apply the patch
     yield plugin
   end
-
 end

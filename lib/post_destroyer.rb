@@ -3,7 +3,6 @@
 # this class contains the logic to delete it.
 #
 class PostDestroyer
-
   def self.destroy_old_hidden_posts
     Post.where(deleted_at: nil, hidden: true)
       .where("hidden_at < ?", 30.days.ago)
@@ -133,7 +132,6 @@ class PostDestroyer
   # When a user 'deletes' their own post. We just change the text.
   def mark_for_deletion(delete_removed_posts_after = SiteSetting.delete_removed_posts_after)
     I18n.with_locale(SiteSetting.default_locale) do
-
       # don't call revise from within transaction, high risk of deadlock
       @post.revise(@user,
         { raw: I18n.t('js.post.deleted_by_author', count: delete_removed_posts_after) },
@@ -272,5 +270,4 @@ class PostDestroyer
       end
     end
   end
-
 end

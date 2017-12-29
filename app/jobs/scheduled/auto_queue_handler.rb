@@ -2,7 +2,6 @@
 # queue for a long time.
 module Jobs
   class AutoQueueHandler < Jobs::Scheduled
-
     every 1.day
 
     def execute(args)

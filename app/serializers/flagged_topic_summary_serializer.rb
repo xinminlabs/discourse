@@ -1,5 +1,4 @@
 class FlaggedTopicSummarySerializer < ActiveModel::Serializer
-
   attributes(
     :id,
     :flag_counts,

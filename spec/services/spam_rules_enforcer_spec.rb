@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe SpamRulesEnforcer do
-
   before do
     SystemMessage.stubs(:create)
   end
@@ -25,5 +24,4 @@ describe SpamRulesEnforcer do
       end
     end
   end
-
 end

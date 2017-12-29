@@ -8,5 +8,4 @@ class AddForumIdToCategories < ActiveRecord::Migration[4.2]
   def down
     remove_column :categories, :forum_id
   end
-
 end

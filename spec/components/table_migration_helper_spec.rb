@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'table_migration_helper'
 
 describe TableMigrationHelper do
-
   def table_exists?(table_name)
     sql = <<-SQL
     SELECT 1

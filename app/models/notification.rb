@@ -188,7 +188,6 @@ class Notification < ActiveRecord::Base
     else
       []
     end
-
   end
 
   def unread_pm?
@@ -208,7 +207,6 @@ class Notification < ActiveRecord::Base
   def send_email
     NotificationEmailer.process_notification(self) if !skip_send_email
   end
-
 end
 
 # == Schema Information

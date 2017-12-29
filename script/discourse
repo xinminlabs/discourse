@@ -84,7 +84,6 @@ class DiscourseCLI < Thor
 
   desc "restore", "Restore a Discourse backup"
   def restore(filename = nil)
-
     if File.exist?('/usr/local/bin/discourse')
       discourse = 'discourse'
     else
@@ -267,7 +266,6 @@ WHERE table_schema='public' and (data_type like 'char%' or data_type like 'text%
       end
     end
   end
-
 end
 
 DiscourseCLI.start(ARGV)

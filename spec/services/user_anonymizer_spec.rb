@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe UserAnonymizer do
-
   describe "make_anonymous" do
     let(:admin) { Fabricate(:admin) }
     let(:user) { Fabricate(:user, username: "edward") }
@@ -130,7 +129,5 @@ describe UserAnonymizer do
       user.reload
       expect(user.api_key).to eq(nil)
     end
-
   end
-
 end

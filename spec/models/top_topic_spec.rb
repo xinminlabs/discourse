@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TopTopic do
-
   describe '#sorted_periods' do
     context "verify enum sequence" do
       before do
@@ -21,7 +20,6 @@ describe TopTopic do
   it { is_expected.to belong_to :topic }
 
   context "refresh!" do
-
     let!(:t1) { Fabricate(:topic) }
     let!(:t2) { Fabricate(:topic) }
 
@@ -30,7 +28,6 @@ describe TopTopic do
     end
 
     context "after calculating" do
-
       before do
         TopTopic.refresh!
       end
@@ -42,7 +39,6 @@ describe TopTopic do
   end
 
   describe "#compute_top_score_for" do
-
     let(:user) { Fabricate(:user) }
     let(:coding_horror) { Fabricate(:coding_horror) }
 
@@ -139,7 +135,6 @@ describe TopTopic do
       expect(top_topics.where(topic_id: topic_1.id).pluck(:yearly_score).first).to eq(27)
       expect(top_topics.where(topic_id: topic_2.id).pluck(:yearly_score).first).to eq(18.301029995664)
       expect(top_topics.where(topic_id: topic_3.id).pluck(:yearly_score).first).to eq(10.602059991328)
-
     end
   end
 end

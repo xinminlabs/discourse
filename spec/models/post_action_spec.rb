@@ -17,9 +17,7 @@ describe PostAction do
   end
 
   describe "rate limits" do
-
     it "limits redo/undo" do
-
       RateLimiter.enable
 
       PostAction.act(eviltrout, post, PostActionType.types[:like])
@@ -30,12 +28,10 @@ describe PostAction do
       expect {
         PostAction.act(eviltrout, post, PostActionType.types[:like])
       }.to raise_error(RateLimiter::LimitExceeded)
-
     end
   end
 
   describe "messaging" do
-
     it "doesn't generate title longer than 255 characters" do
       topic = create_topic(title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet rutrum neque. Pellentesque suscipit vehicula facilisis. Phasellus lacus sapien, aliquam nec convallis sit amet, vestibulum laoreet ante. Curabitur et pellentesque tortor. Donec non.")
       post = create_post(topic: topic)
@@ -172,11 +168,9 @@ describe PostAction do
       expect(post.hidden).to eq(true)
       expect(post.hidden_at).to be_present
     end
-
   end
 
   describe "update_counters" do
-
     it "properly updates topic counters" do
       freeze_time Date.today
       # we need this to test it
@@ -196,7 +190,6 @@ describe PostAction do
       expect(tu.liked).to be true
       expect(tu.bookmarked).to be false
     end
-
   end
 
   describe "when a user bookmarks something" do
@@ -205,7 +198,6 @@ describe PostAction do
     end
 
     describe 'when deleted' do
-
       before do
         bookmark.save
         post.reload
@@ -218,14 +210,11 @@ describe PostAction do
       it 'reduces the bookmark count of the post' do
         expect { post.reload }.to change(post, :bookmark_count).by(-1)
       end
-
     end
   end
 
   describe 'when a user likes something' do
-
     it 'should generate notifications correctly' do
-
       PostActionNotifier.enable
 
       PostAction.act(codinghorror, post, PostActionType.types[:like])
@@ -244,7 +233,6 @@ describe PostAction do
       PostAction.act(admin, post, PostActionType.types[:like])
 
       expect(Notification.count).to eq(2)
-
     end
 
     it 'should increase the `like_count` and `like_score` when a user likes something' do
@@ -313,7 +301,6 @@ describe PostAction do
   end
 
   describe 'flagging' do
-
     context "flag_counts_for" do
       it "returns the correct flag counts" do
         post = create_post
@@ -501,7 +488,6 @@ describe PostAction do
       expect(topic_status_update.execute_at).to be_within(1.second).of(1.hour.from_now)
       expect(topic_status_update.status_type).to eq(TopicTimer.types[:open])
     end
-
   end
 
   it "prevents user to act twice at the same time" do
@@ -546,7 +532,6 @@ describe PostAction do
         group.update!(messageable_level: messageable_level)
       end
     end
-
   end
 
   describe ".lookup_for" do
@@ -562,7 +547,6 @@ describe PostAction do
   end
 
   describe "#add_moderator_post_if_needed" do
-
     it "should not add a moderator post when it's disabled" do
       post = create_post
 
@@ -592,11 +576,9 @@ describe PostAction do
       expect(user_notifications.count).to eq(1)
       expect(user_notifications.last.topic).to eq(topic)
     end
-
   end
 
   describe "rate limiting" do
-
     def limiter(tl)
       user = Fabricate.build(:user)
       user.trust_level = tl
@@ -620,7 +602,5 @@ describe PostAction do
       SiteSetting.tl2_additional_likes_per_day_multiplier = "bob"
       expect(limiter(2).max).to eq SiteSetting.max_likes_per_day
     end
-
   end
-
 end

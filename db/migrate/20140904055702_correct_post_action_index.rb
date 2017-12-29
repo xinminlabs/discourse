@@ -1,7 +1,5 @@
 class CorrectPostActionIndex < ActiveRecord::Migration[4.2]
-
   def up
-
     # NOTE: not stored in the table yet, is_flag contains notify_user
     #  hardcoding, long term we can store all metadata and join for index
     # This means that if we muck with flag types we need to redo this index

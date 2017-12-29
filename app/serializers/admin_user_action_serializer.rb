@@ -88,5 +88,4 @@ class AdminUserActionSerializer < ApplicationSerializer
       @topic = object.topic || Topic.with_deleted.find(object.topic_id)
       @topic
     end
-
 end

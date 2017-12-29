@@ -41,5 +41,4 @@ class PostEnqueuer
     post_creator = PostCreator.new(@user, create_options)
     validate_child(post_creator)
   end
-
 end

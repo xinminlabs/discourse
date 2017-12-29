@@ -5,7 +5,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 # Call it like this:
 #   RAILS_ENV=production bundle exec ruby script/import_scripts/xenforo.rb
 class ImportScripts::XenForo < ImportScripts::Base
-
   XENFORO_DB = "xenforo_db"
   TABLE_PREFIX = "xf_"
   BATCH_SIZE = 1000
@@ -131,7 +130,6 @@ class ImportScripts::XenForo < ImportScripts::Base
         skip ? nil : mapped
       end
     end
-
   end
 
   def process_xenforo_post(raw, import_id)

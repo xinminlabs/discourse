@@ -74,7 +74,6 @@ describe Post do
   end
 
   describe 'scopes' do
-
     describe '#by_newest' do
       it 'returns posts ordered by created_at desc' do
         2.times do |t|
@@ -90,11 +89,9 @@ describe Post do
         expect(Post.with_user.first.user).to be_a User
       end
     end
-
   end
 
   describe "revisions and deleting/recovery" do
-
     context 'a post without links' do
       let(:post) { Fabricate(:post, post_args) }
 
@@ -133,7 +130,6 @@ describe Post do
         end
       end
     end
-
   end
 
   describe 'flagging helpers' do
@@ -206,7 +202,6 @@ describe Post do
     end
 
     context "validation" do
-
       before do
         SiteSetting.newuser_max_images = 1
       end
@@ -234,9 +229,7 @@ describe Post do
         post_two_images.user.trust_level = TrustLevel[1]
         expect(post_two_images).to be_valid
       end
-
     end
-
   end
 
   describe "maximum attachments" do
@@ -254,7 +247,6 @@ describe Post do
     end
 
     context "validation" do
-
       before do
         SiteSetting.newuser_max_attachments = 1
       end
@@ -282,9 +274,7 @@ describe Post do
         post_two_attachments.user.trust_level = TrustLevel[1]
         expect(post_two_attachments).to be_valid
       end
-
     end
-
   end
 
   context "links" do
@@ -327,13 +317,11 @@ describe Post do
     end
 
     describe "total host usage" do
-
       it "has none for a regular post" do
         expect(no_links.total_hosts_usage).to be_blank
       end
 
       context "with a previous host" do
-
         let(:user) { old_post.newuser }
         let(:another_disney_link) { post_with_body("[radiator springs](http://disneyland.disney.go.com/disney-california-adventure/radiator-springs-racers/)", newuser) }
 
@@ -345,11 +333,8 @@ describe Post do
         it "contains the new post's links, PLUS the previous one" do
           expect(two_links.total_hosts_usage).to eq('disneyland.disney.go.com' => 2, 'reddit.com' => 1)
         end
-
       end
-
     end
-
   end
 
   describe "maximum links" do
@@ -371,12 +356,10 @@ describe Post do
     end
 
     it "finds links from HTML" do
-
       expect(post_two_links.link_count).to eq(2)
     end
 
     context "validation" do
-
       before do
         SiteSetting.newuser_max_links = 1
       end
@@ -395,15 +378,11 @@ describe Post do
         post_two_links.user.trust_level = TrustLevel[1]
         expect(post_two_links).to be_valid
       end
-
     end
-
   end
 
   describe "@mentions" do
-
     context 'raw_mentions' do
-
       it "returns an empty array with no matches" do
         post = Fabricate.build(:post, post_args.merge(raw: "Hello Jake and Finn!"))
         expect(post.raw_mentions).to eq([])
@@ -445,11 +424,9 @@ describe Post do
         post = Fabricate.build(:post, post_args.merge(raw: "@org-board"))
         expect(post.raw_mentions).to eq(['org-board'])
       end
-
     end
 
     context "max mentions" do
-
       let(:newuser) { Fabricate(:user, trust_level: TrustLevel[0]) }
       let(:post_with_one_mention) { post_with_body("@Jake is the person I'm mentioning", newuser) }
       let(:post_with_two_mentions) { post_with_body("@Jake @Finn are the people I'm mentioning", newuser) }
@@ -485,9 +462,7 @@ describe Post do
           expect(post_with_two_mentions).not_to be_valid
         end
       end
-
     end
-
   end
 
   context 'validation' do
@@ -501,7 +476,6 @@ describe Post do
   end
 
   context "raw_hash" do
-
     let(:raw) { "this is our test post body" }
     let(:post) { post_with_body(raw) }
 
@@ -528,7 +502,6 @@ describe Post do
   end
 
   context 'revise' do
-
     let(:post) { Fabricate(:post, post_args) }
     let(:first_version_at) { post.last_version_at }
 
@@ -539,15 +512,12 @@ describe Post do
     end
 
     describe 'with the same body' do
-
       it "doesn't change version" do
         expect { post.revise(post.user, raw: post.raw); post.reload }.not_to change(post, :version)
       end
-
     end
 
     describe 'ninja editing & edit windows' do
-
       before { SiteSetting.editing_grace_period = 1.minute.to_i }
 
       it 'works' do
@@ -586,7 +556,6 @@ describe Post do
         expect(post.revisions.size).to eq(2)
         expect(post.last_version_at.to_i).to eq(new_revised_at.to_i)
       end
-
     end
 
     describe 'rate limiter' do
@@ -613,7 +582,6 @@ describe Post do
       end
 
       context 'second poster posts again quickly' do
-
         it 'is a ninja edit, because the second poster posted again quickly' do
           SiteSetting.expects(:editing_grace_period).returns(1.minute.to_i)
           post.revise(changed_by, { raw: 'yet another updated body' }, revised_at: post.updated_at + 10.seconds)
@@ -623,11 +591,8 @@ describe Post do
           expect(post.public_version).to eq(2)
           expect(post.revisions.size).to eq(1)
         end
-
       end
-
     end
-
   end
 
   describe 'before save' do
@@ -647,7 +612,6 @@ describe Post do
   end
 
   describe 'after save' do
-
     let(:post) { Fabricate(:post, post_args) }
 
     it "has correct info set" do
@@ -663,7 +627,6 @@ describe Post do
     end
 
     describe 'extract_quoted_post_numbers' do
-
       let!(:post) { Fabricate(:post, post_args) }
       let(:reply) { Fabricate.build(:post, post_args) }
 
@@ -678,11 +641,9 @@ describe Post do
         reply.extract_quoted_post_numbers
         expect(reply.quoted_post_numbers).to be_blank
       end
-
     end
 
     describe 'a new reply' do
-
       let(:topic) { Fabricate(:topic) }
       let(:other_user) { Fabricate(:coding_horror) }
       let(:reply_text) { "[quote=\"Evil Trout, post:1\"]\nhello\n[/quote]\nHmmm!" }
@@ -719,7 +680,6 @@ describe Post do
       end
 
       context 'a multi-quote reply' do
-
         let!(:multi_reply) do
           raw = "[quote=\"Evil Trout, post:1\"]post1 quote[/quote]\nAha!\n[quote=\"Evil Trout, post:2\"]post2 quote[/quote]\nNeat-o"
           PostCreator.new(other_user, raw: raw, topic_id: topic.id, reply_to_post_number: post.post_number).create
@@ -731,9 +691,7 @@ describe Post do
           expect(reply.replies.include?(multi_reply)).to eq(true)
         end
       end
-
     end
-
   end
 
   context 'summary' do
@@ -745,12 +703,10 @@ describe Post do
       SiteSetting.summary_percent_filter = 66
       expect(Post.summary.order(:post_number)).to eq([p1, p2])
     end
-
   end
 
   context 'sort_order' do
     context 'regular topic' do
-
       let!(:p1) { Fabricate(:post, post_args) }
       let!(:p2) { Fabricate(:post, post_args) }
       let!(:p3) { Fabricate(:post, post_args) }
@@ -762,7 +718,6 @@ describe Post do
   end
 
   context "reply_history" do
-
     let!(:p1) { Fabricate(:post, post_args) }
     let!(:p2) { Fabricate(:post, post_args.merge(reply_to_post_number: p1.post_number)) }
     let!(:p3) { Fabricate(:post, post_args) }
@@ -774,11 +729,9 @@ describe Post do
       expect(p3.reply_history).to be_blank
       expect(p2.reply_history).to eq([p1])
     end
-
   end
 
   context "reply_ids" do
-
     let!(:topic) { Fabricate(:topic) }
     let!(:p1) { Fabricate(:post, topic: topic, post_number: 1) }
     let!(:p2) { Fabricate(:post, topic: topic, post_number: 2, reply_to_post_number: 1) }
@@ -804,7 +757,6 @@ describe Post do
       expect(p5.reply_ids).to be_empty # has no replies
       expect(p6.reply_ids).to be_empty # quotes itself
     end
-
   end
 
   describe 'urls' do
@@ -861,7 +813,6 @@ describe Post do
   end
 
   describe "calculate_avg_time" do
-
     it "should not crash" do
       Post.calculate_avg_time
       Post.calculate_avg_time(1.day.ago)
@@ -1028,5 +979,4 @@ describe Post do
     expect(second_post.hidden).to eq(false)
     expect(hidden_topic.visible).to eq(false)
   end
-
 end

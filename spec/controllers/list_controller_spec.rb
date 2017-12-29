@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ListController do
-
   # we need some data
   before do
     @user = Fabricate(:coding_horror)
@@ -12,7 +11,6 @@ describe ListController do
   end
 
   describe 'indexes' do
-
     (Discourse.anonymous_filters - [:categories]).each do |filter|
       context "#{filter}" do
         before { get filter }
@@ -81,7 +79,6 @@ describe ListController do
   end
 
   context 'category' do
-
     context 'in a category' do
       let(:category) { Fabricate(:category) }
 
@@ -311,7 +308,6 @@ describe ListController do
   end
 
   describe "best_periods_for" do
-
     it "returns yearly for more than 180 days" do
       expect(ListController.best_periods_for(nil, :all)).to eq([:yearly])
       expect(ListController.best_periods_for(180.days.ago, :all)).to eq([:yearly])
@@ -384,7 +380,6 @@ describe ListController do
       topic_titles = JSON.parse(response.body)["topic_list"]["topics"].map { |t| t["title"] }
       expect(topic_titles).to include(topic_in_sub_category.title)
     end
-
   end
 
   describe "safe mode" do
@@ -402,9 +397,6 @@ describe ListController do
       get :latest, params: { safe_mode: "only_official" }
       expect(response.body).to match(/plugin\.js/)
       expect(response.body).not_to match(/plugin-third-party\.js/)
-
     end
-
   end
-
 end

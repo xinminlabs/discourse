@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SearchLog, type: :model do
-
   describe ".log" do
-
     context "invalid arguments" do
       it "no search type returns error" do
         status, _ = SearchLog.log(
@@ -152,7 +150,6 @@ RSpec.describe SearchLog, type: :model do
         )
         expect(action).to eq(:created)
       end
-
     end
   end
 
@@ -208,7 +205,6 @@ RSpec.describe SearchLog, type: :model do
   end
 
   context "clean_up" do
-
     it "will remove old logs" do
       SearchLog.log(term: 'jawa', search_type: :header, ip_address: '127.0.0.1')
       SearchLog.log(term: 'jedi', search_type: :header, ip_address: '127.0.0.1')
@@ -225,7 +221,5 @@ RSpec.describe SearchLog, type: :model do
       expect(SearchLog.where(term: 'rey').first).to be_present
       expect(SearchLog.where(term: 'finn').first).to be_present
     end
-
   end
-
 end

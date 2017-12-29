@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UserSilencer do
-
   before do
     SystemMessage.stubs(:create)
   end
@@ -129,5 +128,4 @@ describe UserSilencer do
       expect(old_post.topic).to be_visible
     end
   end
-
 end

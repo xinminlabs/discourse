@@ -1,5 +1,4 @@
 module Jobs
-
   class CleanUpUnusedStagedUsers < Jobs::Scheduled
     every 1.day
 
@@ -22,7 +21,5 @@ module Jobs
         end
       end
     end
-
   end
-
 end

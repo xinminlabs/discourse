@@ -44,7 +44,6 @@ describe TagUser do
 
   context "batch_set" do
     it "watches and unwatches tags correctly" do
-
       user = Fabricate(:user)
       tag = Fabricate(:tag)
       post = create_post(tags: [tag.name])
@@ -74,7 +73,6 @@ describe TagUser do
     let(:tracked_tag) { Fabricate(:tag) }
 
     context "with some tag notification settings" do
-
       let :watched_post do
         TagUser.create!(user: user, tag: watched_tag, notification_level: TagUser.notification_levels[:watching])
         create_post(tags: [watched_tag.name])
@@ -91,7 +89,6 @@ describe TagUser do
       end
 
       it "sets notification levels correctly" do
-
         expect(Notification.where(user_id: user.id, topic_id: watched_post.topic_id).count).to eq 1
         expect(Notification.where(user_id: user.id, topic_id: tracked_post.topic_id).count).to eq 0
 
@@ -148,11 +145,9 @@ describe TagUser do
         DiscourseTagging.tag_topic_by_names(post.topic, Guardian.new(user), [])
         post.topic.save!
         expect(TopicUser.get(post.topic, user).notification_level).to eq TopicUser.notification_levels[:tracking]
-
       end
 
       it "correctly handles staff tags" do
-
         staff = Fabricate(:admin)
         topic = create_post.topic
 
@@ -178,7 +173,6 @@ describe TagUser do
 
         topic.reload
         expect(topic.tags.length).to eq(2)
-
       end
 
       it "is destroyed when a user is deleted" do

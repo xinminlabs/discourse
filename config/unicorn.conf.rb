@@ -65,7 +65,6 @@ end
 
 initialized = false
 before_fork do |server, worker|
-
   unless initialized
     # load up the yaml for the localization bits, in master process
     I18n.t(:posts)

@@ -1,5 +1,4 @@
 class DiskSpace
-
   extend ActionView::Helpers::NumberHelper
 
   def self.uploads_used_bytes
@@ -51,7 +50,6 @@ class DiskSpace
     if stats
       JSON.parse(stats)
     end
-
   end
 
   protected
@@ -63,5 +61,4 @@ class DiskSpace
   def self.used(path)
     `du -s #{path}`.to_i * 1024
   end
-
 end

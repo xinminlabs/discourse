@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'post_enqueuer'
 
 describe PostEnqueuer do
-
   let(:user) { Fabricate(:user) }
 
   context 'with valid arguments' do
@@ -44,5 +43,4 @@ describe PostEnqueuer do
       expect(qp).to be_blank
     end
   end
-
 end

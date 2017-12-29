@@ -22,7 +22,6 @@ class GroupArchivedMessage < ActiveRecord::Base
       DiscourseEvent.trigger(event, group: group, topic: topic)
     end
   end
-
 end
 
 # == Schema Information

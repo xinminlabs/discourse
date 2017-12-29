@@ -4,7 +4,6 @@ RSpec.describe ComposerController do
   let(:user) { Fabricate(:user) }
 
   describe '#parse_html' do
-
     it "should not be able access without sign in" do
       expect {
         post "/composer/parse_html.json", params: {

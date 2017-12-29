@@ -102,7 +102,6 @@ class TopicLinkClick < ActiveRecord::Base
 
     url
   end
-
 end
 
 # == Schema Information

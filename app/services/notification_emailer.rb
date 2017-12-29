@@ -1,5 +1,4 @@
 class NotificationEmailer
-
   class EmailUser
     attr_reader :notification
 
@@ -101,7 +100,6 @@ class NotificationEmailer
         type
       end
     end
-
   end
 
   def self.disable
@@ -120,5 +118,4 @@ class NotificationEmailer
 
     email_user.send(email_method) if email_user.respond_to? email_method
   end
-
 end

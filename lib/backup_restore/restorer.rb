@@ -1,7 +1,6 @@
 require_dependency "db_helper"
 
 module BackupRestore
-
   class RestoreDisabledError < RuntimeError; end
   class FilenameMissingError < RuntimeError; end
 
@@ -467,7 +466,5 @@ module BackupRestore
     def save_log(message, timestamp)
       @logs << "[#{timestamp}] #{message}"
     end
-
   end
-
 end

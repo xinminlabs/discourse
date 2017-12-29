@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'suggested_topics_builder'
 
 describe SuggestedTopicsBuilder do
-
   let(:topic) { Fabricate(:topic) }
   let(:builder) { SuggestedTopicsBuilder.new(topic) }
 
@@ -11,7 +10,6 @@ describe SuggestedTopicsBuilder do
   end
 
   context "splicing category results" do
-
     def fake_topic(topic_id, category_id)
       build(:topic, id: topic_id, category_id: category_id)
     end
@@ -57,7 +55,6 @@ describe SuggestedTopicsBuilder do
   end
 
   context "adding results" do
-
     it "adds nothing with nil results" do
       builder.add_results(nil)
       expect(builder.results_left).to eq(5)
@@ -80,7 +77,6 @@ describe SuggestedTopicsBuilder do
         expect(builder.excluded_topic_ids.include?(topic.id)).to eq(true)
         expect(builder.excluded_topic_ids.include?(other_topic.id)).to eq(true)
       end
-
     end
 
     context "adding topics that are not open" do
@@ -105,7 +101,5 @@ describe SuggestedTopicsBuilder do
         expect(builder).not_to be_full
       end
     end
-
   end
-
 end

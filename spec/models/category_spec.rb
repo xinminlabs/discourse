@@ -39,7 +39,6 @@ describe Category do
 
   describe "topic_create_allowed and post_create_allowed" do
     it "works" do
-
       # NOTE we also have the uncategorized category ... hence the increased count
 
       _default_category = Fabricate(:category)
@@ -86,9 +85,7 @@ describe Category do
       expect(Category.post_create_allowed(guardian).count).to be(0)
       expect(Category.topic_create_allowed(guardian).count).to be(0)
       expect(Category.scoped_to_permissions(guardian, [:readonly]).count).to be(3)
-
     end
-
   end
 
   describe "security" do
@@ -440,7 +437,6 @@ describe Category do
         expect(@category.posts_month).to eq(1)
         expect(@category.posts_week).to eq(1)
       end
-
     end
 
     context 'with deleted topics' do
@@ -584,7 +580,6 @@ describe Category do
         expect(category).to eq(Category.query_category(category.slug, parent_category.id))
       end
     end
-
   end
 
   describe "find_by_email" do
@@ -640,7 +635,5 @@ describe Category do
         expect(category.errors.full_messages.join).not_to match(/<b>/)
       end
     end
-
   end
-
 end

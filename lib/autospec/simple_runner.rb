@@ -1,9 +1,7 @@
 require "autospec/rspec_runner"
 
 module Autospec
-
   class SimpleRunner < RspecRunner
-
     def run(specs)
       puts "Running Rspec: " << specs
       # kill previous rspec instance
@@ -37,7 +35,5 @@ module Autospec
     def stop
       abort
     end
-
   end
-
 end

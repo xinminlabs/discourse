@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe 'admin rate limit' do
-
   before do
     RateLimiter.enable
   end
@@ -13,7 +12,6 @@ describe 'admin rate limit' do
   end
 
   it 'can cleanly limit requests' do
-
     admin = Fabricate(:admin)
     api_key = Fabricate(:api_key, key: SecureRandom.hex, user: admin)
 
@@ -32,6 +30,5 @@ describe 'admin rate limit' do
     }
 
     expect(response.status).to eq(429)
-
   end
 end

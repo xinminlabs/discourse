@@ -6,7 +6,6 @@ require_dependency 'post_destroyer'
 # TODO - test pinning, create_moderator_post
 
 describe TopicStatusUpdater do
-
   let(:user) { Fabricate(:user) }
   let(:admin) { Fabricate(:admin) }
 
@@ -71,7 +70,6 @@ describe TopicStatusUpdater do
   end
 
   describe "repeat actions" do
-
     shared_examples "an action that doesn't repeat" do
       it "does not perform the update twice" do
         topic = Fabricate(:topic, status_name => false)
@@ -91,7 +89,6 @@ describe TopicStatusUpdater do
         expect(updated).to eq(false)
         expect(topic.posts.where(post_type: Post.types[:small_action]).count).to eq(2)
       end
-
     end
 
     it_behaves_like "an action that doesn't repeat" do
@@ -124,6 +121,5 @@ describe TopicStatusUpdater do
       expect(updated).to eq(false)
       expect(topic.posts.where(post_type: Post.types[:small_action]).count).to eq(2)
     end
-
   end
 end

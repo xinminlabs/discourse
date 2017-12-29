@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Admin::EmojisController do
-
   let(:custom_emoji) do
     Emoji.new("/path/to/hello").tap do |e|
       e.name = "hello"
@@ -30,5 +29,4 @@ describe Admin::EmojisController do
       end
     end
   end
-
 end

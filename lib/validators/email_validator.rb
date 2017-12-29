@@ -1,5 +1,4 @@
 class EmailValidator < ActiveModel::EachValidator
-
   def validate_each(record, attribute, value)
     unless EmailValidator.allowed?(value)
       record.errors.add(attribute, I18n.t(:'user.email.not_allowed'))
@@ -33,5 +32,4 @@ class EmailValidator < ActiveModel::EachValidator
   def self.email_regex
     /\A[a-zA-Z0-9!#\$%&'*+\/=?\^_`{|}~\-]+(?:\.[a-zA-Z0-9!#\$%&'\*+\/=?\^_`{|}~\-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-]*[a-zA-Z0-9])?$\z/
   end
-
 end

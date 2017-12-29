@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe GroupMessage do
-
   let(:moderators_group) { Group[:moderators].name }
 
   let!(:admin)     { Fabricate.build(:admin, id: 999) }

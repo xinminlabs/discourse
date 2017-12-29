@@ -1,7 +1,6 @@
 require_dependency 'category_serializer'
 
 class CategoriesController < ApplicationController
-
   before_action :ensure_logged_in, except: [:index, :categories_and_latest, :show, :redirect, :find_by_slug]
   before_action :fetch_category, only: [:show, :update, :destroy]
   before_action :initialize_staff_action_logger, only: [:create, :update, :destroy]
@@ -144,7 +143,6 @@ class CategoriesController < ApplicationController
     guardian.ensure_can_edit!(@category)
 
     json_result(@category, serializer: CategorySerializer) do |cat|
-
       cat.move_to(category_params[:position].to_i) if category_params[:position]
       category_params.delete(:position)
 

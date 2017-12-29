@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ReplyByEmailAddressValidator do
-
   describe '#valid_value?' do
     subject(:validator) { described_class.new }
 
@@ -27,7 +26,5 @@ describe ReplyByEmailAddressValidator do
       SiteSetting.expects(:notification_email).returns("foo@bar.com")
       expect(validator.valid_value?('bar%{reply_key}@foo.com')).to eq(true)
     end
-
   end
-
 end

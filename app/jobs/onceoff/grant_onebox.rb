@@ -1,5 +1,4 @@
 module Jobs
-
   class GrantOnebox < Jobs::Onceoff
     sidekiq_options queue: 'low'
 
@@ -25,7 +24,6 @@ module Jobs
             nil # if there is a problem cooking we don't care
           end
         end
-
       end
 
       to_award.each do |user_id, opts|
@@ -37,7 +35,5 @@ module Jobs
     def badge
       Badge.find(Badge::FirstOnebox)
     end
-
   end
-
 end

@@ -61,5 +61,4 @@ class About
        likes_30_days: UserAction.where(action_type: UserAction::LIKE).where("created_at > ?", 30.days.ago).count
     }
   end
-
 end

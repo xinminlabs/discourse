@@ -41,5 +41,4 @@ class Archetype
   register 'regular'
   register 'private_message'
   register 'banner'
-
 end

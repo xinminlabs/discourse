@@ -8,7 +8,6 @@ require 'fileutils'
 
 module RequireProfiler
   class << self
-
     attr_accessor :stats
 
     def profiling_enabled?
@@ -100,7 +99,6 @@ module RequireProfiler
       puts "GC duration: #{gc_duration_finish}"
       puts "GC impact: #{gc_duration_finish - gc_duration_start}"
     end
-
   end
 end
 

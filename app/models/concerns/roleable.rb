@@ -43,5 +43,4 @@ module Roleable
     self.send("#{permission_name}=", value)
     save_and_refresh_staff_groups!
   end
-
 end

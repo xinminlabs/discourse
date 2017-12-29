@@ -8,7 +8,6 @@ require "socket_server"
 module Autospec; end
 
 class Autospec::Manager
-
   def self.run(opts = {})
     self.new(opts).run
   end
@@ -42,7 +41,6 @@ class Autospec::Manager
       STDIN.gets
       process_queue
     end
-
   rescue => e
     fail(e, "failed in run")
   ensure
@@ -201,7 +199,6 @@ class Autospec::Manager
 
     # to speed up boot we use a thread
     ["spec", "lib", "app", "config", "test", "vendor", "plugins"].each do |watch|
-
       puts "@@@@@@@@@ Listen to #{path}/#{watch} #{options}" if @debug
       Thread.new do
         begin
@@ -219,7 +216,6 @@ class Autospec::Manager
         end
       end
     end
-
   end
 
   def process_change(files)
@@ -338,5 +334,4 @@ class Autospec::Manager
     puts exception.message
     puts exception.backtrace.join("\n")
   end
-
 end

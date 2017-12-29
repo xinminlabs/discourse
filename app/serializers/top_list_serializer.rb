@@ -1,5 +1,4 @@
 class TopListSerializer < ApplicationSerializer
-
   attributes :can_create_topic,
              :draft,
              :draft_key,
@@ -15,7 +14,5 @@ class TopListSerializer < ApplicationSerializer
     define_method(period) do
       TopicListSerializer.new(object.send(period), scope: scope).as_json if object.send(period)
     end
-
   end
-
 end

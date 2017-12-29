@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'distributed_cache'
 
 describe DistributedCache do
-
   before :all do
     @bus = MessageBus::Instance.new
     @bus.configure(backend: :memory)
@@ -64,7 +63,6 @@ describe DistributedCache do
 
     Thread.pass
     expect(cache1["hi"]).to eq(nil)
-
   end
 
   it 'allows coerces symbol keys to strings' do
@@ -112,5 +110,4 @@ describe DistributedCache do
       cache2["boom"] == nil
     end
   end
-
 end

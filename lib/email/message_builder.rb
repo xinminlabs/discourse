@@ -1,7 +1,6 @@
 # Builds a Mail::Message we can use for sending. Optionally supports using a template
 # for the body and subject
 module Email
-
   module BuildEmailHelper
     def build_email(*builder_args)
       builder = Email::MessageBuilder.new(*builder_args)
@@ -221,7 +220,5 @@ module Email
       from_alias = SiteSetting.email_site_title.presence || SiteSetting.title
       "\"#{Email.cleanup_alias(from_alias)}\" <#{source}>"
     end
-
   end
-
 end

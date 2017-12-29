@@ -16,7 +16,6 @@ export BASE="forum"
 =end
 
 class ImportScripts::MylittleforumSQL < ImportScripts::Base
-
   DB_HOST ||= ENV['DB_HOST'] || "localhost"
   DB_NAME ||= ENV['DB_NAME'] || "mylittleforum"
   DB_PW ||= ENV['DB_PW'] || ""
@@ -39,7 +38,6 @@ class ImportScripts::MylittleforumSQL < ImportScripts::Base
   end
 
   def initialize
-
     if IMPORT_AFTER > "1970-01-01"
       print_warning("Importing data after #{IMPORT_AFTER}")
     end
@@ -210,7 +208,6 @@ EOM
       next if all_records_exist? :posts, discussions.map { |t| "discussion#" + t['DiscussionID'].to_s }
 
       create_posts(discussions, total: total_count, offset: offset) do |discussion|
-
         raw = clean_up(discussion['Body'])
 
         youtube = nil
@@ -440,7 +437,6 @@ EOM
   def print_warning(message)
     $stderr.puts "#{message}"
   end
-
 end
 
 ImportScripts::MylittleforumSQL.new.perform

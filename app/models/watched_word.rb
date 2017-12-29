@@ -1,7 +1,6 @@
 require_dependency 'enum'
 
 class WatchedWord < ActiveRecord::Base
-
   def self.actions
     @actions ||= Enum.new(
       block: 1,
@@ -49,7 +48,6 @@ class WatchedWord < ActiveRecord::Base
   def clear_cache
     WordWatcher.clear_cache!
   end
-
 end
 
 # == Schema Information

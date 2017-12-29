@@ -16,7 +16,6 @@ require 'reverse_markdown' # gem 'reverse_markdown'
 # Call it like this:
 #   RAILS_ENV=production bundle exec ruby script/import_scripts/getsatisfaction.rb
 class ImportScripts::GetSatisfaction < ImportScripts::Base
-
   BATCH_SIZE = 1000
 
   def initialize(path)
@@ -88,7 +87,6 @@ class ImportScripts::GetSatisfaction < ImportScripts::Base
     # In case of Excel export file, I converted it to CSV and used:
     # CSV.open(filename, encoding:'iso-8859-1:utf-8').each do |raw|
     File.open(filename).each_line do |line|
-
       line.strip!
 
       current_row << "\n" unless current_row.empty?
@@ -145,7 +143,6 @@ class ImportScripts::GetSatisfaction < ImportScripts::Base
     total = total_rows("users")
 
     csv_parse("users") do |row|
-
       if row.suspended_at
         puts "skipping suspended user"
         p row
@@ -181,7 +178,6 @@ class ImportScripts::GetSatisfaction < ImportScripts::Base
       if count % BATCH_SIZE == 0
         load_user_batch! users, count - users.length, total
       end
-
     end
 
     load_user_batch! users, count, total
@@ -231,7 +227,6 @@ class ImportScripts::GetSatisfaction < ImportScripts::Base
 
   def import_post_batch!(posts, topics, offset, total)
     create_posts(posts, total: total, offset: offset) do |post|
-
       mapped = {}
 
       mapped[:id] = post[:id]
@@ -306,7 +301,6 @@ class ImportScripts::GetSatisfaction < ImportScripts::Base
     end
 
     csv_parse("replies") do |row|
-
       unless row.created_at
         puts "NO CREATION DATE FOR POST"
         p row
@@ -347,7 +341,6 @@ class ImportScripts::GetSatisfaction < ImportScripts::Base
       end
     end
   end
-
 end
 
 unless ARGV[0] && Dir.exist?(ARGV[0])

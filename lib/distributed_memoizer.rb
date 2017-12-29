@@ -1,5 +1,4 @@
 class DistributedMemoizer
-
   # never wait for longer that 1 second for a cross process lock
   MAX_WAIT = 2
   LOCK = Mutex.new
@@ -28,7 +27,6 @@ class DistributedMemoizer
           result = yield
           redis.setex(redis_key, duration, result)
         end
-
       ensure
         # NOTE: delete regardless so next one in does not need to wait MAX_WAIT again
         redis.del(redis_lock_key)

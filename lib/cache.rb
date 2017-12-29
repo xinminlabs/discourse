@@ -1,7 +1,6 @@
 # Discourse specific cache, enforces 1 day expiry
 
 class Cache < ActiveSupport::Cache::Store
-
   # nothing is cached for longer than 1 day EVER
   # there is no reason to have data older than this clogging redis
   # it is dangerous cause if we rename keys we will be stuck with
@@ -52,5 +51,4 @@ class Cache < ActiveSupport::Cache::Store
   def delete_entry(key, options)
     redis.del key
   end
-
 end

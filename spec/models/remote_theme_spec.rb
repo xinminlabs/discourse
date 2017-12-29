@@ -66,7 +66,6 @@ JSON
     end
 
     it 'can correctly import a remote theme' do
-
       time = Time.new('2000')
       freeze_time time
 
@@ -126,7 +125,6 @@ JSON
       expect(mapped["0-header"]).to eq("I AM UPDATED")
       expect(mapped["1-scss"]).to eq(scss_data)
       expect(remote.remote_updated_at).to eq(time)
-
     end
   end
 end

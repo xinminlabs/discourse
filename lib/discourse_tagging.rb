@@ -1,5 +1,4 @@
 module DiscourseTagging
-
   TAGS_FIELD_NAME = "tags"
   TAGS_FILTER_REGEXP = /[\/\?#\[\]@!\$&'\(\)\*\+,;=\.%\\`^\s|\{\}"<>]+/ # /?#[]@!$&'()*+,;=.%\`^|{}"<>
 
@@ -162,7 +161,6 @@ module DiscourseTagging
   end
 
   def self.tags_for_saving(tags_arg, guardian, opts = {})
-
     return [] unless guardian.can_tag_topics? && tags_arg.present?
 
     tag_names = Tag.where(name: tags_arg).pluck(:name)

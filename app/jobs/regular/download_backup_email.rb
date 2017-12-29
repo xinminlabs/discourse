@@ -2,9 +2,7 @@ require_dependency 'email/sender'
 require_dependency "email_backup_token"
 
 module Jobs
-
   class DownloadBackupEmail < Jobs::Base
-
     sidekiq_options queue: 'critical'
 
     def execute(args)
@@ -21,7 +19,5 @@ module Jobs
       message = DownloadBackupMailer.send_email(user.email, backup_file_path.to_s)
       Email::Sender.new(message, :download_backup_message).send
     end
-
   end
-
 end

@@ -35,5 +35,4 @@ class RejectionMailer < ActionMailer::Base
 
     build_email(message_from, template_args.merge(template: "system_messages.#{template}"))
   end
-
 end

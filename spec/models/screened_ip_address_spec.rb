@@ -240,7 +240,6 @@ describe ScreenedIpAddress do
 
   describe '#block_admin_login?' do
     context 'no allow_admin records exist' do
-
       it "returns false when use_admin_ip_whitelist is false" do
         expect(described_class.block_admin_login?(Fabricate.build(:user), '123.12.12.12')).to eq(false)
       end

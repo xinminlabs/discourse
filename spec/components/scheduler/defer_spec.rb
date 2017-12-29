@@ -83,5 +83,4 @@ describe Scheduler::Defer do
 
     expect(s).to eq("good")
   end
-
 end

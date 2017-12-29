@@ -10,7 +10,6 @@ require 'etc'
 require 'open3'
 
 class ImportScripts::Smf2 < ImportScripts::Base
-
   def self.run
     options = Options.new
     begin
@@ -431,7 +430,6 @@ class ImportScripts::Smf2 < ImportScripts::Base
 
   # Provides command line options and parses the SMF settings file.
   class Options
-
     class Error < StandardError; end
     class SettingsError < Error; end
 
@@ -504,7 +502,6 @@ class ImportScripts::Smf2 < ImportScripts::Base
         o.on('-t TIMEZONE', :REQUIRED, 'Timezone used by SMF2 [auto-detected from PHP]') { |s| self.timezone = s }
       end
     end
-
   end #Options
 
   # Framework around TSort, used to build a dependency graph over messages
@@ -588,7 +585,6 @@ class ImportScripts::Smf2 < ImportScripts::Base
         @graph[id].present? ? @graph[id].id.inspect : "(#{id})"
       end
     end #Node
-
   end #MessageDependencyGraph
 
   def make_prettyurl_permalinks(prefix)
@@ -615,7 +611,6 @@ class ImportScripts::Smf2 < ImportScripts::Base
     rescue
     end
   end
-
 end
 
 ImportScripts::Smf2.run
