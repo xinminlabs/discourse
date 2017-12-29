@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TopicViewItem do
-
   def add(topic_id, ip, user_id = nil)
     skip_redis = true
     TopicViewItem.add(topic_id, ip, user_id, nil, skip_redis)
@@ -26,5 +25,4 @@ describe TopicViewItem do
     user.user_stat.reload
     expect(user.user_stat.topics_entered).to eq(1)
   end
-
 end

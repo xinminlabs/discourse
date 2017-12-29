@@ -1,5 +1,4 @@
 class TrackedTopicsUpdater
-
   def initialize(user_id, threshold)
     @id = user_id
     @threshold = threshold

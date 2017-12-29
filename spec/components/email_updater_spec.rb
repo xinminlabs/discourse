@@ -57,7 +57,6 @@ describe EmailUpdater do
         expect(@change_req.change_state).to eq(EmailChangeRequest.states[:complete])
       end
     end
-
   end
 
   context 'as a staff user' do

@@ -1,7 +1,6 @@
 module Ember
   module Handlebars
     class Template
-
       # Wrap in an IIFE in development mode to get the correct filename
       def compile_ember_handlebars(string, ember_template = 'Handlebars', options = nil)
         if ::Rails.env.development?

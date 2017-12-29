@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe UserActivator do
-
   describe 'email_activator' do
-
     it 'does not create new email token unless required' do
       SiteSetting.email_token_valid_hours = 24
       user = Fabricate(:user)
@@ -27,6 +25,5 @@ describe UserActivator do
       user.reload
       expect(user.email_tokens.last.created_at).to be_within_one_second_of(Time.zone.now)
     end
-
   end
 end

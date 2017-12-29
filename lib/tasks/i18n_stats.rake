@@ -2,7 +2,6 @@ require 'yaml'
 
 desc "show the current translation status"
 task "i18n:stats" => :environment do
-
   def to_dotted_hash(source, target = {}, namespace = nil)
     prefix = "#{namespace}." if namespace
     if source.kind_of?(Hash)
@@ -130,5 +129,4 @@ task "i18n:stats" => :environment do
       plus2.each { |k| puts "server: #{locale}.#{k}" }
     end
   end
-
 end

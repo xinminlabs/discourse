@@ -1,5 +1,4 @@
 class Auth::FacebookAuthenticator < Auth::Authenticator
-
   AVATAR_SIZE = 480
 
   def name
@@ -119,5 +118,4 @@ class Auth::FacebookAuthenticator < Auth::Authenticator
         profile.save
       end
     end
-
 end

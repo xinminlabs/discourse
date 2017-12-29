@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe CategoryGroup do
-
   describe '#permission_types' do
     context "verify enum sequence" do
       before do

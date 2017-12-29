@@ -66,7 +66,6 @@ class EmailLog < ActiveRecord::Base
       .first
       .try(:to_address)
   end
-
 end
 
 # == Schema Information

@@ -1,5 +1,4 @@
 class Auth::InstagramAuthenticator < Auth::Authenticator
-
   def name
     "instagram"
   end
@@ -7,7 +6,6 @@ class Auth::InstagramAuthenticator < Auth::Authenticator
   # TODO twitter provides all sorts of extra info, like website/bio etc.
   #  it may be worth considering pulling some of it in.
   def after_authenticate(auth_token)
-
     result = Auth::Result.new
 
     data = auth_token[:info]
@@ -45,5 +43,4 @@ class Auth::InstagramAuthenticator < Auth::Authenticator
               strategy.options[:client_secret] = SiteSetting.instagram_consumer_secret
            }
   end
-
 end

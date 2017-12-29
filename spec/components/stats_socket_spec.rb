@@ -53,5 +53,4 @@ describe StatsSocket do
 
     expect(parsed['total_physical_size']).to be > (0)
   end
-
 end

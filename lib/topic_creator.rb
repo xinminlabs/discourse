@@ -1,7 +1,6 @@
 require_dependency 'has_errors'
 
 class TopicCreator
-
   attr_reader :user, :guardian, :opts
 
   include HasErrors
@@ -256,5 +255,4 @@ class TopicCreator
 
     user
   end
-
 end

@@ -23,7 +23,6 @@ describe Hijack do
     def hijack_test(&blk)
       hijack(&blk)
     end
-
   end
 
   let :tester do

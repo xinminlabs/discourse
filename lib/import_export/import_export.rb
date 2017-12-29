@@ -5,7 +5,6 @@ require "import_export/topic_exporter"
 require "json"
 
 module ImportExport
-
   def self.import(filename)
     data = ActiveSupport::HashWithIndifferentAccess.new(File.open(filename, "r:UTF-8") { |f| JSON.parse(f.read) })
     ImportExport::Importer.new(data).perform
@@ -22,5 +21,4 @@ module ImportExport
   def self.export_topics(topic_ids, filename = nil)
     ImportExport::TopicExporter.new(topic_ids).perform.save_to_file(filename)
   end
-
 end

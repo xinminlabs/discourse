@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe PostMover do
-
   describe '#move_types' do
     context "verify enum sequence" do
       before do
@@ -46,7 +45,6 @@ describe PostMover do
     end
 
     context 'success' do
-
       it "correctly handles notifications and bread crumbs" do
         old_topic = p2.topic
 
@@ -80,11 +78,9 @@ describe PostMover do
         expect(move_message.post_type).to eq(Post.types[:small_action])
         expect(move_message.raw).to include("3 posts were split")
       end
-
     end
 
     context "errors" do
-
       it "raises an error when one of the posts doesn't exist" do
         expect { topic.move_posts(user, [1003], title: "new testing topic name") }.to raise_error(Discourse::InvalidParameters)
       end
@@ -174,7 +170,6 @@ describe PostMover do
       end
 
       context "to a new topic" do
-
         it "works correctly" do
           topic.expects(:add_moderator_post).once
           new_topic = topic.move_posts(user, [p2.id, p4.id], title: "new testing topic name", category_id: category.id)
@@ -378,7 +373,6 @@ describe PostMover do
       end
 
       context "moving the first post" do
-
         it "copies the OP, doesn't delete it" do
           topic.expects(:add_moderator_post).once
           new_topic = topic.move_posts(user, [p1.id, p2.id], title: "new testing topic name")
@@ -445,7 +439,6 @@ describe PostMover do
       end
 
       context "to an existing topic with a deleted post" do
-
         before do
           topic.expects(:add_moderator_post)
         end
@@ -494,7 +487,6 @@ describe PostMover do
           expect(moved_to.highest_post_number).to eq(2)
         end
       end
-
     end
   end
 end

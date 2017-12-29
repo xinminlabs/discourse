@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe TrustLevelGranter do
-
   describe 'grant' do
-
     it 'grants trust level' do
       user = Fabricate(:user, email: "foo@bar.com", trust_level: 0)
       TrustLevelGranter.grant(3, user)

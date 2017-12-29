@@ -1,7 +1,6 @@
 require 'ostruct'
 
 module FlagQuery
-
   def self.flagged_posts_report(current_user, opts = nil)
     opts ||= {}
     offset = opts[:offset] || 0
@@ -154,11 +153,9 @@ module FlagQuery
         .where("posts.deleted_at" => nil)
         .where("topics.deleted_at" => nil)
     end
-
   end
 
   def self.flagged_topics
-
     results = PostAction
       .flags
       .active
@@ -208,5 +205,4 @@ module FlagQuery
       end
       fragment.to_html.strip
     end
-
 end

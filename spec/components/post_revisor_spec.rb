@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'post_revisor'
 
 describe PostRevisor do
-
   let(:topic) { Fabricate(:topic) }
   let(:newuser) { Fabricate(:newuser) }
   let(:post_args) { { user: newuser, topic: topic } }
@@ -34,12 +33,10 @@ describe PostRevisor do
 
       tc.record_change('tags', ['a', 'b'], ['a', 'b'])
       expect(tc.diff['tags']).to be_nil
-
     end
   end
 
   context 'revise wiki' do
-
     before do
       # There used to be a bug where wiki changes were considered posting "too similar"
       # so this is enabled and checked
@@ -102,7 +99,6 @@ describe PostRevisor do
     end
 
     describe 'revision much later' do
-
       let!(:revised_at) { post.updated_at + 2.minutes }
 
       before do
@@ -129,7 +125,6 @@ describe PostRevisor do
       end
 
       describe "new edit window" do
-
         before do
           subject.revise!(post.user, { raw: 'yet another updated body' }, revised_at: revised_at)
           post.reload
@@ -149,7 +144,6 @@ describe PostRevisor do
         end
 
         context "after second window" do
-
           let!(:new_revised_at) { revised_at + 2.minutes }
 
           before do
@@ -170,7 +164,6 @@ describe PostRevisor do
     end
 
     describe 'category topic' do
-
       let!(:category) do
         category = Fabricate(:category)
         category.update_column(:topic_id, topic.id)
@@ -244,7 +237,6 @@ describe PostRevisor do
           expect(subject.category_changed).to eq(category)
         end
       end
-
     end
 
     describe 'rate limiter' do
@@ -273,7 +265,6 @@ describe PostRevisor do
       it "marks the admin as the last updater" do
         expect(post.last_editor_id).to eq(changed_by.id)
       end
-
     end
 
     describe "new user editing their own post" do
@@ -287,7 +278,6 @@ describe PostRevisor do
       it "doesn't allow images to be inserted" do
         expect(post.errors).to be_present
       end
-
     end
 
     describe 'with a new body' do
@@ -503,7 +493,6 @@ describe PostRevisor do
               expect(post.topic.tags.size).to eq(0)
             end
           end
-
         end
 
         context "cannot create tags" do

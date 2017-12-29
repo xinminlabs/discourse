@@ -54,5 +54,4 @@ module Trashable
       raw_write_attribute :deleted_at, deleted_at
       raw_write_attribute :deleted_by_id, deleted_by_id
     end
-
 end

@@ -20,5 +20,4 @@ class GroupedSearchResultSerializer < ApplicationSerializer
   def can_create_topic
     scope.can_create?(Topic)
   end
-
 end

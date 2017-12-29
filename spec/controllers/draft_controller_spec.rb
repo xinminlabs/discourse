@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe DraftController do
-
   it 'requires you to be logged in' do
     expect { post :update }.to raise_error(Discourse::NotLoggedIn)
   end
@@ -18,5 +17,4 @@ describe DraftController do
     delete :destroy, params: { draft_key: 'xxx', sequence: 0 }, format: :json
     expect(Draft.get(user, 'xxx', 0)).to eq(nil)
   end
-
 end

@@ -1,5 +1,4 @@
 module JsonError
-
   def create_errors_json(obj, opts = nil)
     opts ||= {}
 
@@ -34,5 +33,4 @@ module JsonError
   def self.generic_error
     { errors: [I18n.t('js.generic_error')] }
   end
-
 end

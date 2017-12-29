@@ -1,5 +1,4 @@
 class UserApiKey < ActiveRecord::Base
-
   SCOPES = {
     read: [:get],
     write: [:get, :post, :patch],
@@ -57,7 +56,6 @@ class UserApiKey < ActiveRecord::Base
       UserApiKey.allow_scope?(name, env)
     end
   end
-
 end
 
 # == Schema Information

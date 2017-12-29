@@ -1,5 +1,4 @@
 class Unread
-
   # This module helps us calculate unread and new post counts
 
   def initialize(topic, topic_user, guardian)
@@ -33,5 +32,4 @@ class Unread
   def do_not_notify?(notification_level)
     [TopicUser.notification_levels[:muted], TopicUser.notification_levels[:regular]].include?(notification_level)
   end
-
 end

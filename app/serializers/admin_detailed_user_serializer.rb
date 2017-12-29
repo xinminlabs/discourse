@@ -1,5 +1,4 @@
 class AdminDetailedUserSerializer < AdminUserSerializer
-
   attributes :moderator,
              :can_grant_admin,
              :can_revoke_admin,
@@ -105,5 +104,4 @@ class AdminDetailedUserSerializer < AdminUserSerializer
   def post_count
     object.posts.count
   end
-
 end

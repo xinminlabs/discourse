@@ -4,7 +4,6 @@ require "import_export/category_structure_exporter"
 require "import_export/importer"
 
 describe ImportExport::Importer do
-
   before do
     STDOUT.stubs(:write)
   end
@@ -19,7 +18,6 @@ describe ImportExport::Importer do
   end
 
   context '.perform' do
-
     it 'topics and users' do
       data = import_data.dup
       data[:categories] = nil
@@ -66,7 +64,5 @@ describe ImportExport::Importer do
         .and change { Topic.count }.by(8)
         .and change { User.count }.by(2)
     end
-
   end
-
 end

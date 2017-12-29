@@ -1,11 +1,8 @@
 require 'rails_helper'
 
 describe UsersController do
-
   describe '.show' do
-
     context "anon" do
-
       let(:user) { Discourse.system_user }
 
       it "returns success" do
@@ -18,11 +15,9 @@ describe UsersController do
         get :show, params: { username: user.username }, format: :json
         expect(response).to redirect_to '/login'
       end
-
     end
 
     context "logged in" do
-
       let(:user) { log_in }
 
       it 'returns success' do
@@ -97,7 +92,6 @@ describe UsersController do
       end
 
       describe "include_post_count_for" do
-
         let(:admin) { Fabricate(:admin) }
         let(:topic) { Fabricate(:topic) }
 
@@ -126,11 +120,8 @@ describe UsersController do
           topic_post_count = JSON.parse(response.body).dig("user", "topic_post_count")
           expect(topic_post_count[topic.id.to_s]).to eq(2)
         end
-
       end
-
     end
-
   end
 
   describe '.user_preferences_redirect' do
@@ -151,7 +142,6 @@ describe UsersController do
     end
 
     context 'invalid token' do
-
       it 'return success' do
         EmailToken.expects(:confirm).with('asdfasdf').returns(nil)
         put :perform_account_activation, params: { token: 'asdfasdf' }
@@ -217,7 +207,6 @@ describe UsersController do
           expect(CGI.unescapeHTML(response.body))
             .to_not include(I18n.t('activation.approval_required'))
         end
-
       end
 
       context 'user is not approved' do
@@ -243,7 +232,6 @@ describe UsersController do
           expect(session[:current_user_id]).to be_blank
         end
       end
-
     end
   end
 
@@ -539,12 +527,10 @@ describe UsersController do
       post :toggle_anon, format: :json
       expect(response).to be_success
       expect(session[:current_user_id]).to eq(user.id)
-
     end
   end
 
   describe '#create' do
-
     before do
       UsersController.any_instance.stubs(:honeypot_value).returns(nil)
       UsersController.any_instance.stubs(:challenge_value).returns(nil)
@@ -586,7 +572,6 @@ describe UsersController do
     end
 
     context 'when creating a non active user (unconfirmed email)' do
-
       it 'returns a 500 when local logins are disabled' do
         SiteSetting.enable_local_logins = false
         post_user
@@ -805,7 +790,6 @@ describe UsersController do
       end
 
       context 'authentication records for' do
-
         it 'should create twitter user info if required' do
           SiteSetting.must_approve_users = true
           SiteSetting.enable_twitter_logins = true
@@ -1035,7 +1019,6 @@ describe UsersController do
         end
       end
     end
-
   end
 
   context '#username' do
@@ -1135,7 +1118,6 @@ describe UsersController do
 
         expect(::JSON.parse(response.body)['username']).to eq(new_username)
       end
-
     end
   end
 
@@ -1449,7 +1431,6 @@ describe UsersController do
           expect(user.title).to eq("foobar")
         end
       end
-
     end
 
     context 'with authenticated user' do
@@ -1502,7 +1483,6 @@ describe UsersController do
 
             expect(User.find_by(username: user.username).locale).to eq('fa_IR')
           end
-
         end
 
         context "with user fields" do
@@ -1570,7 +1550,6 @@ describe UsersController do
               expect(user.user_fields[user_field.id.to_s]).to be_blank
             end
           end
-
         end
 
         it 'returns user JSON' do
@@ -1579,7 +1558,6 @@ describe UsersController do
           json = JSON.parse(response.body)
           expect(json['user']['id']).to eq user.id
         end
-
       end
 
       context 'without permission to update' do
@@ -1654,7 +1632,6 @@ describe UsersController do
       user.save
       user.user_profile.reload
       expect(user.user_profile.badge_granted_title).to eq(false)
-
     end
   end
 
@@ -1793,7 +1770,6 @@ describe UsersController do
   end
 
   describe '.pick_avatar' do
-
     it 'raises an error when not logged in' do
       expect {
         put :pick_avatar, params: {
@@ -1803,7 +1779,6 @@ describe UsersController do
     end
 
     context 'while logged in' do
-
       let!(:user) { log_in }
       let(:upload) { Fabricate(:upload) }
 
@@ -1862,13 +1837,10 @@ describe UsersController do
         expect(user.reload.uploaded_avatar_id).to eq(upload.id)
         expect(user.user_avatar.reload.custom_upload_id).to eq(upload.id)
       end
-
     end
-
   end
 
   describe '.destroy_user_image' do
-
     it 'raises an error when not logged in' do
       expect do
         delete :destroy_user_image,
@@ -1878,7 +1850,6 @@ describe UsersController do
     end
 
     context 'while logged in' do
-
       let!(:user) { log_in }
 
       it 'raises an error when you don\'t have permission to clear the profile background' do
@@ -1913,7 +1884,6 @@ describe UsersController do
         expect(user.reload.user_profile.profile_background).to eq("")
         expect(response).to be_success
       end
-
     end
   end
 
@@ -1950,7 +1920,6 @@ describe UsersController do
   end
 
   describe '.my_redirect' do
-
     it "redirects if the user is not logged in" do
       get :my_redirect, params: { path: "wat" }, format: :json
       expect(response).not_to be_success
@@ -1978,7 +1947,6 @@ describe UsersController do
   end
 
   describe '.check_emails' do
-
     it 'raises an error when not logged in' do
       expect do
         put :check_emails, params: { username: 'zogstrip' }, format: :json
@@ -2024,13 +1992,10 @@ describe UsersController do
         expect(json["email"]).to be_present
         expect(json["associated_accounts"]).to be_present
       end
-
     end
-
   end
 
   describe ".is_local_username" do
-
     let(:user) { Fabricate(:user) }
     let(:group) { Fabricate(:group, name: "Discourse") }
     let(:topic) { Fabricate(:topic) }
@@ -2126,7 +2091,6 @@ describe UsersController do
       json = JSON.parse(response.body)
       expect(json["cannot_see"].size).to eq(0)
     end
-
   end
 
   describe '.topic_tracking_state' do
@@ -2155,7 +2119,6 @@ describe UsersController do
   end
 
   describe '.summary' do
-
     it "generates summary info" do
       user = Fabricate(:user)
       create_post(user: user)
@@ -2230,13 +2193,10 @@ describe UsersController do
         expect(user.admin?).to eq(true)
       end
     end
-
   end
 
   describe '.update_activation_email' do
-
     context "with a session variable" do
-
       it "raises an error with an invalid session value" do
         session[SessionController::ACTIVATE_USER_KEY] = 1234
 

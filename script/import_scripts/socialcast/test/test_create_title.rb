@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require_relative '../create_title.rb'
 
 class TestCreateTitle < Minitest::Test
-
   def test_create_title_1
     body = "@GreatCheerThreading \nWhere can I find information on how GCTS stacks up against the competition?  What are the key differentiators?"
     expected = "Where can I find information on how GCTS stacks up against the competition?"
@@ -107,5 +106,4 @@ class TestCreateTitle < Minitest::Test
     title = CreateTitle.from_body body
     assert_equal(expected, title)
   end
-
 end

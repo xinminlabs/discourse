@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'discourse_plugin'
 
 describe DiscoursePlugin do
-
   class TestPlugin < DiscoursePlugin
     module SomeModule
     end
@@ -49,7 +48,5 @@ describe DiscoursePlugin do
       plugin.expects(:hello).with('there')
       DiscourseEvent.trigger(:hello, 'there')
     end
-
   end
-
 end

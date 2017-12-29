@@ -1,5 +1,4 @@
 class UrlHelper
-
   def self.is_local(url)
     url.present? && (
       Discourse.store.has_been_uploaded?(url) ||
@@ -30,5 +29,4 @@ class UrlHelper
     encoded.gsub!(DOUBLE_ESCAPED_REGEXP, '%\1')
     encoded
   end
-
 end

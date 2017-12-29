@@ -4,7 +4,6 @@
 
 module ActiveSupport
   module Inflector
-
     LRU_CACHE_SIZE = 200
     LRU_CACHES = []
 

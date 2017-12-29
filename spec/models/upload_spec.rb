@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Upload do
-
   let(:upload) { build(:upload) }
   let(:thumbnail) { build(:optimized_image, upload: upload) }
 
@@ -27,7 +26,6 @@ describe Upload do
   let(:attachment_filesize) { File.size(attachment_path) }
 
   context ".create_thumbnail!" do
-
     it "does not create a thumbnail when disabled" do
       SiteSetting.create_thumbnails = false
       OptimizedImage.expects(:create_for).never
@@ -43,7 +41,6 @@ describe Upload do
       upload.reload
       expect(upload.optimized_images.count).to eq(1)
     end
-
   end
 
   it "extracts file extension" do
@@ -141,5 +138,4 @@ describe Upload do
       expect(Upload.sha1_from_short_url('upload://1Eg9p8rrCURq4T3a6iJUk0ri6.png')).to eq(sha1)
     end
   end
-
 end

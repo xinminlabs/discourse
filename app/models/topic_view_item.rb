@@ -48,7 +48,6 @@ class TopicViewItem < ActiveRecord::Base
       end
     end
   end
-
 end
 
 # == Schema Information

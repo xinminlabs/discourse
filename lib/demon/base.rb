@@ -2,7 +2,6 @@ module Demon; end
 
 # intelligent fork based demonizer
 class Demon::Base
-
   def self.demons
     @demons
   end

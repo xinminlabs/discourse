@@ -1,7 +1,6 @@
 require 'uri'
 
 class CreateTitle
-
   def self.from_body(body)
     title = remove_mentions body
     title = remove_urls title

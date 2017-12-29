@@ -1,5 +1,4 @@
 class MemInfo
-
   # Total memory in kb. On Mac OS uses "sysctl", elsewhere expects the system has /proc/meminfo.
   # Returns nil if it cannot be determined.
   def mem_total
@@ -17,5 +16,4 @@ class MemInfo
         nil
       end
   end
-
 end

@@ -67,6 +67,5 @@ RSpec.describe Admin::BackupsController do
 
       expect(response).to be_not_found
     end
-
   end
 end

@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe UserAuthToken do
-
   it "can remove old expired tokens" do
-
     SiteSetting.verbose_auth_token_logging = true
 
     freeze_time Time.zone.now
@@ -28,7 +26,6 @@ describe UserAuthToken do
     UserAuthToken.cleanup!
 
     expect(UserAuthToken.where(id: token.id).count).to eq(0)
-
   end
 
   it "can lookup both hashed and unhashed" do
@@ -54,7 +51,6 @@ describe UserAuthToken do
   end
 
   it "can validate token was seen at lookup time" do
-
     user = Fabricate(:user)
 
     user_token = UserAuthToken.generate!(user_id: user.id,
@@ -67,11 +63,9 @@ describe UserAuthToken do
 
     user_token.reload
     expect(user_token.auth_token_seen).to eq(true)
-
   end
 
   it "can rotate with no params maintaining data" do
-
     user = Fabricate(:user)
 
     user_token = UserAuthToken.generate!(user_id: user.id,
@@ -86,7 +80,6 @@ describe UserAuthToken do
   end
 
   it "expires correctly" do
-
     user = Fabricate(:user)
 
     user_token = UserAuthToken.generate!(user_id: user.id,
@@ -114,7 +107,6 @@ describe UserAuthToken do
   end
 
   it "can properly rotate tokens" do
-
     user = Fabricate(:user)
 
     user_token = UserAuthToken.generate!(user_id: user.id,
@@ -167,7 +159,6 @@ describe UserAuthToken do
   end
 
   it "keeps prev token valid for 1 minute after it is confirmed" do
-
     user = Fabricate(:user)
 
     token = UserAuthToken.generate!(user_id: user.id,
@@ -186,7 +177,6 @@ describe UserAuthToken do
 
     expect(UserAuthToken.lookup(token.unhashed_auth_token, seen: true)).not_to eq(nil)
     expect(UserAuthToken.lookup(prev_token, seen: true)).not_to eq(nil)
-
   end
 
   it "can correctly log auth tokens" do
@@ -253,7 +243,6 @@ describe UserAuthToken do
       client_ip: "1.1.1.1",
       user_auth_token_id: token.id
     ).count).to eq(1)
-
   end
 
   it "will not mark token unseen when prev and current are the same" do
@@ -268,5 +257,4 @@ describe UserAuthToken do
     lookup.reload
     expect(lookup.auth_token_seen).to eq(true)
   end
-
 end

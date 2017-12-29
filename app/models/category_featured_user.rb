@@ -42,9 +42,7 @@ class CategoryFeaturedUser < ActiveRecord::Base
         create(category_id: category_id, user_id: user_id)
       end
     end
-
   end
-
 end
 
 # == Schema Information

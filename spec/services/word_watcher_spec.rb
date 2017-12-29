@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe WordWatcher do
-
   let(:raw) { "Do you like liquorice?\n\nI really like them. One could even say that I am *addicted* to liquorice. Anf if\nyou can mix it up with some anise, then I'm in heaven ;)" }
 
   after do
@@ -77,8 +76,6 @@ describe WordWatcher do
           expect(m[1]).to eq("trooooooooot")
         end
       end
-
     end
   end
-
 end

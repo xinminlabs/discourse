@@ -14,5 +14,4 @@ class CreateUploads < ActiveRecord::Migration[4.2]
     add_index :uploads, :forum_thread_id
     add_index :uploads, :user_id
   end
-
 end

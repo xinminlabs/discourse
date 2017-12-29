@@ -1,7 +1,6 @@
 require "demon/base"
 
 class Demon::RailsAutospec < Demon::Base
-
   def self.prefix
     "rails-autospec"
   end
@@ -21,5 +20,4 @@ class Demon::RailsAutospec < Demon::Base
     STDERR.puts e.backtrace.join("\n")
     exit 1
   end
-
 end

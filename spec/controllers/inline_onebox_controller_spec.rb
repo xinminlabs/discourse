@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe InlineOneboxController do
-
   it "requires the user to be logged in" do
     expect do
       get :show, params: { urls: [] }, format: :json
@@ -32,7 +31,5 @@ describe InlineOneboxController do
         expect(onebox['title']).to eq(topic.title)
       end
     end
-
   end
-
 end

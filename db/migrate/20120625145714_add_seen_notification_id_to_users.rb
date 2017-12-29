@@ -1,6 +1,5 @@
 class AddSeenNotificationIdToUsers < ActiveRecord::Migration[4.2]
   def change
-
     execute "TRUNCATE TABLE notifications"
 
     add_column :users, :seen_notificaiton_id, :integer, default: 0, null: false

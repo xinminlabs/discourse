@@ -1,5 +1,4 @@
 class ResolveDuplicateGroupNames < ActiveRecord::Migration[4.2]
-
   def up
     results = Group.exec_sql 'SELECT id FROM groups
                               WHERE name ILIKE
@@ -19,5 +18,4 @@ class ResolveDuplicateGroupNames < ActiveRecord::Migration[4.2]
   def down
     # does not reverse changes
   end
-
 end

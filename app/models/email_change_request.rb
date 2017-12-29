@@ -11,7 +11,6 @@ class EmailChangeRequest < ActiveRecord::Base
   def self.states
     @states ||= Enum.new(authorizing_old: 1, authorizing_new: 2, complete: 3)
   end
-
 end
 
 # == Schema Information

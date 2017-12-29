@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'topic_view'
 
 describe TopicQuery do
-
   let!(:user) { Fabricate(:coding_horror) }
   let(:creator) { Fabricate(:user) }
   let(:topic_query) { TopicQuery.new(user) }
@@ -35,9 +34,7 @@ describe TopicQuery do
       group.save
 
       expect(TopicQuery.new(user).list_latest.topics.count).to eq(2)
-
     end
-
   end
 
   context "custom filters" do
@@ -56,7 +53,6 @@ describe TopicQuery do
   end
 
   context "list_topics_by" do
-
     it "allows users to view their own invisible topics" do
       _topic = Fabricate(:topic, user: user)
       _invisible_topic = Fabricate(:topic, user: user, visible: false)
@@ -64,13 +60,10 @@ describe TopicQuery do
       expect(TopicQuery.new(nil).list_topics_by(user).topics.count).to eq(1)
       expect(TopicQuery.new(user).list_topics_by(user).topics.count).to eq(2)
     end
-
   end
 
   context "prioritize_pinned_topics" do
-
     it "does the pagination correctly" do
-
       num_topics = 15
       per_page = 3
 
@@ -92,7 +85,6 @@ describe TopicQuery do
         page: 1)
       ).to eq(topics[per_page...num_topics])
     end
-
   end
 
   context 'bookmarks' do
@@ -153,7 +145,6 @@ describe TopicQuery do
         expect(TopicQuery.new(moderator, category: subcategory.id).list_latest.topics.size).to eq(1)
         expect(TopicQuery.new(moderator, category: category.id, no_subcategories: true).list_latest.topics.size).to eq(1)
       end
-
     end
   end
 
@@ -331,7 +322,6 @@ describe TopicQuery do
       end
 
       context 'sort_order' do
-
         def ids_in_order(order, descending = true)
           TopicQuery.new(admin, order: order, ascending: descending ? 'false' : 'true').list_latest.topics.map(&:id)
         end
@@ -385,11 +375,8 @@ describe TopicQuery do
 
           # returns the topics in reverse sheep order if requested" do
           expect(ids_in_order('sheep', false)).to eq([invisible_topic, regular_topic, closed_topic, pinned_topic, future_topic, archived_topic].map(&:id))
-
         end
-
       end
-
     end
 
     context 'after clearring a pinned topic' do
@@ -401,7 +388,6 @@ describe TopicQuery do
         expect(topics).to eq([future_topic, closed_topic, archived_topic, pinned_topic, regular_topic])
       end
     end
-
   end
 
   context 'categorized' do
@@ -443,7 +429,6 @@ describe TopicQuery do
   end
 
   context 'unread / read topics' do
-
     context 'with no data' do
       it "has no unread topics" do
         expect(topic_query.list_unread.topics).to be_blank
@@ -451,9 +436,7 @@ describe TopicQuery do
     end
 
     context 'with whispers' do
-
       it 'correctly shows up in unread for staff' do
-
         first = create_post(raw: 'this is the first post', title: 'super amazing title')
 
         _whisper = create_post(topic_id: first.topic.id,
@@ -501,13 +484,10 @@ describe TopicQuery do
           expect(topic_query.list_unread.topics).to eq([partially_read])
         end
       end
-
     end
-
   end
 
   context 'list_new' do
-
     context 'without a new topic' do
       it "has no new topics" do
         expect(topic_query.list_new.topics).to be_blank
@@ -541,7 +521,6 @@ describe TopicQuery do
 
         # if we attempt to access non preloaded fields explode
         expect { new_topic.custom_fields["boom"] }.to raise_error(StandardError)
-
       end
     end
 
@@ -550,7 +529,6 @@ describe TopicQuery do
       let(:topics) { topic_query.list_new.topics }
 
       it "contains no new topics for a user that has missed the window" do
-
         expect(topic_query.list_new.topics).to eq([new_topic])
 
         user.user_option.new_topic_duration_minutes = 5
@@ -582,7 +560,6 @@ describe TopicQuery do
         end
       end
     end
-
   end
 
   context 'list_posted' do
@@ -617,7 +594,6 @@ describe TopicQuery do
       end
 
       context "but interacted with" do
-
         it "is not included if read" do
           TopicUser.update_last_read(user, other_users_topic.id, 0, 0, 0)
 
@@ -640,7 +616,6 @@ describe TopicQuery do
   end
 
   context 'suggested_for message do' do
-
     let(:user) do
       Fabricate(:admin)
     end
@@ -670,7 +645,6 @@ describe TopicQuery do
     end
 
     it 'returns the correct suggestions' do
-
       pm_to_group = create_pm(sender, target_group_names: [group_with_user.name])
       pm_to_user = create_pm(sender, target_usernames: [user.username])
 
@@ -729,7 +703,6 @@ describe TopicQuery do
     end
 
     context 'when logged in' do
-
       let(:topic) { Fabricate(:topic) }
       let(:suggested_topics) {
         tt = topic
@@ -743,7 +716,6 @@ describe TopicQuery do
       end
 
       context 'random suggested' do
-
         let!(:new_topic) { Fabricate(:topic, created_at: 2.days.ago) }
         let!(:old_topic) { Fabricate(:topic, created_at: 3.years.ago) }
 
@@ -759,7 +731,6 @@ describe TopicQuery do
 
           expect(topic_query.list_suggested_for(tt).topics.length).to eq(1)
         end
-
       end
 
       context 'with private messages' do
@@ -868,10 +839,7 @@ describe TopicQuery do
           expect(suggested_topics[1, 3]).to include(closed_topic.id)
           expect(suggested_topics[1, 3]).to include(archived_topic.id)
         end
-
       end
     end
-
   end
-
 end

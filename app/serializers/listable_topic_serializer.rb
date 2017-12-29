@@ -1,7 +1,6 @@
 require_dependency 'pinned_check'
 
 class ListableTopicSerializer < BasicTopicSerializer
-
   attributes :reply_count,
              :highest_post_number,
              :image_url,
@@ -124,5 +123,4 @@ class ListableTopicSerializer < BasicTopicSerializer
     def unread_helper
       @unread_helper ||= Unread.new(object, object.user_data, scope)
     end
-
 end

@@ -11,7 +11,6 @@ class CreateTopTopics < ActiveRecord::Migration[4.2]
           t.integer "#{period}_#{sort}_count".to_sym, null: false, default: 0
         end
       end
-
     end
 
     add_index :top_topics, :topic_id, unique: true
@@ -21,6 +20,5 @@ class CreateTopTopics < ActiveRecord::Migration[4.2]
         add_index :top_topics, "#{period}_#{sort}_count".to_sym, order: 'desc'
       end
     end
-
   end
 end

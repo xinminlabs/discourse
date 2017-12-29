@@ -132,7 +132,6 @@ class ImportScripts::Mbox < ImportScripts::Base
         yield mail, f
         print_status(idx, files.size, start_time)
       end
-
     end
   end
 
@@ -173,7 +172,6 @@ class ImportScripts::Mbox < ImportScripts::Base
       first = titles[title]
       db.execute "UPDATE emails SET reply_to = ? WHERE title = ? and msg_id <> ?", [first, title, first]
     end
-
   ensure
     db.close
   end
@@ -238,7 +236,6 @@ class ImportScripts::Mbox < ImportScripts::Base
     puts "", "creating indices"
 
     all_messages do |mail, filename|
-
       directory = filename.sub("#{MBOX_DIR}/", '').split("/")[0]
 
       category = CATEGORY_MAPPINGS[directory] || CATEGORY_MAPPINGS['default'] || 'uncategorized'

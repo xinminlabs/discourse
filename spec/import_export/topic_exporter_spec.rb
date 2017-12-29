@@ -2,7 +2,6 @@ require "rails_helper"
 require "import_export/topic_exporter"
 
 describe ImportExport::TopicExporter do
-
   before do
     STDOUT.stubs(:write)
   end
@@ -30,5 +29,4 @@ describe ImportExport::TopicExporter do
       expect(data[:users].count).to eq(1)
     end
   end
-
 end

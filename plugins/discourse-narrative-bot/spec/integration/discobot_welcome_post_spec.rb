@@ -44,6 +44,5 @@ describe "Discobot welcome post" do
         expect(Jobs::NarrativeInit.jobs.first["args"].first["user_id"]).to eq(User.last.id)
       end
     end
-
   end
 end

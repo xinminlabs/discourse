@@ -1,5 +1,4 @@
 class WizardStepSerializer < ApplicationSerializer
-
   attributes :id, :next, :previous, :description, :title, :index, :banner
   has_many :fields, serializer: WizardFieldSerializer, embed: :objects
 
@@ -54,5 +53,4 @@ class WizardStepSerializer < ApplicationSerializer
   def include_banner?
     object.banner.present?
   end
-
 end

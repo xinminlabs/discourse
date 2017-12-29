@@ -44,7 +44,6 @@ describe PluginStore do
   end
 
   it "handles hashes correctly" do
-
     val = { "hi" => "there", "1" => 1 }
     set("hello", val)
     result = get("hello")
@@ -56,7 +55,6 @@ describe PluginStore do
   end
 
   it "handles nested hashes correctly" do
-
     val = { "hi" => "there", "nested" => { "a" => "b", "with list" => ["a", "b", 3] } }
     set("hello", val)
     result = get("hello")
@@ -70,7 +68,6 @@ describe PluginStore do
   end
 
   it "handles arrays correctly" do
-
     val = ["a", "b", { "hash" => "inside", "c" => 1 }]
     set("hello", val)
     result = get("hello")
@@ -80,7 +77,6 @@ describe PluginStore do
     # ensure indiff access holds
     expect(result[2][:hash]).to eq("inside")
     expect(result[2]["c"]).to eq(1)
-
   end
 
   it "removes correctly" do
@@ -88,5 +84,4 @@ describe PluginStore do
     remove_row("hello")
     expect(get("hello")).to eq(nil)
   end
-
 end

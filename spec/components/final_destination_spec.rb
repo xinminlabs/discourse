@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'final_destination'
 
 describe FinalDestination do
-
   let(:opts) do
     {
       ignore_redirects: ['https://ignore-me.com'],
@@ -49,7 +48,6 @@ describe FinalDestination do
   end
 
   describe '.resolve' do
-
     it "has a ready status code before anything happens" do
       expect(fd('https://eviltrout.com').status).to eq(:ready)
     end
@@ -311,7 +309,6 @@ describe FinalDestination do
 
   describe "https cache" do
     it 'will cache https lookups' do
-
       FinalDestination.clear_https_cache!("wikipedia.com")
 
       stub_request(:head, "http://wikipedia.com/image.png")
@@ -346,5 +343,4 @@ describe FinalDestination do
         .to eq('https://ru.wikipedia.org/wiki/%D0%A1%D0%B2%D0%BE%D0%B1%D0%BE')
     end
   end
-
 end

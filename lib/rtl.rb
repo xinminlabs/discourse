@@ -1,5 +1,4 @@
 class Rtl
-
   attr_reader :user
 
   def initialize(user)
@@ -25,5 +24,4 @@ class Rtl
   def css_class
     enabled? ? 'rtl' : ''
   end
-
 end

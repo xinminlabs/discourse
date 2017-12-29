@@ -27,7 +27,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base/csv_helper.rb")
 # Call it like this:
 #   bundle exec ruby script/import_scripts/zoho.rb <path-to-csv-files>
 class ImportScripts::Zoho < ImportScripts::Base
-
   include ImportScripts::CsvHelper
 
   BATCH_SIZE = 1000
@@ -175,7 +174,6 @@ class ImportScripts::Zoho < ImportScripts::Base
   STYLE_ATTR = /(\s)*style="(.)*"/
 
   def cleanup_post(raw)
-
     # Check if Zoho's most common form of a code block is present.
     # If so, don't clean up the post as much because we can't tell which markup
     # is inside the code block. These posts will look worse than others.
@@ -212,7 +210,6 @@ class ImportScripts::Zoho < ImportScripts::Base
     # The posted_time seems to be the same for all posts in a topic, so we can't use that.
     Digest::SHA1.hexdigest "#{row.permalink}:#{row.content}"
   end
-
 end
 
 unless ARGV[0] && Dir.exist?(ARGV[0])

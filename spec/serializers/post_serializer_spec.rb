@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'post_action'
 
 describe PostSerializer do
-
   context "a post with lots of actions" do
     let(:post) { Fabricate(:post) }
     let(:actor) { Fabricate(:user) }
@@ -143,7 +142,5 @@ describe PostSerializer do
         expect(serialized_post_for_user(Fabricate(:admin))[:can_view_edit_history]).to eq(true)
       end
     end
-
   end
-
 end

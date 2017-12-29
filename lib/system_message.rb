@@ -4,7 +4,6 @@ require_dependency 'topic_subtype'
 require_dependency 'discourse'
 
 class SystemMessage
-
   def self.create(recipient, type, params = {})
     self.new(recipient).create(type, params)
   end
@@ -66,5 +65,4 @@ class SystemMessage
       base_url: Discourse.base_url,
     }
   end
-
 end

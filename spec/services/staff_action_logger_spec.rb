@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe StaffActionLogger do
-
   let(:admin)  { Fabricate(:admin) }
   let(:logger) { described_class.new(admin) }
 
@@ -130,7 +129,6 @@ describe StaffActionLogger do
   end
 
   describe "log_theme_change" do
-
     it "raises an error when params are invalid" do
       expect { logger.log_theme_change(nil, nil) }.to raise_error(Discourse::InvalidParameters)
     end
@@ -140,7 +138,6 @@ describe StaffActionLogger do
     end
 
     it "logs new site customizations" do
-
       log_record = logger.log_theme_change(nil, theme)
       expect(log_record.subject).to eq(theme.name)
       expect(log_record.previous_value).to eq(nil)

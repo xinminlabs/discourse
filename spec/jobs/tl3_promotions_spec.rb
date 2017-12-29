@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Jobs::Tl3Promotions do
-
   subject(:run_job) { described_class.new.execute({}) }
 
   it "promotes tl2 user who qualifies for tl3" do
@@ -67,6 +66,5 @@ describe Jobs::Tl3Promotions do
       run_job
       expect(user.reload.trust_level).to eq(TrustLevel[3])
     end
-
   end
 end

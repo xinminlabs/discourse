@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'unread'
 
 describe Unread do
-
   let (:user) { Fabricate.build(:user, id: 1) }
   let (:topic) do
     Fabricate.build(:topic,
@@ -25,7 +24,6 @@ describe Unread do
 
   describe 'staff counts' do
     it 'shoule correctly return based on staff post number' do
-
       user.admin = true
 
       topic_user.last_read_post_number = 13
@@ -83,5 +81,4 @@ describe Unread do
       expect(unread.new_posts).to eq(0)
     end
   end
-
 end

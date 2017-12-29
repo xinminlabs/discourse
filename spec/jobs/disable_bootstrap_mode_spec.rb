@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Jobs::DisableBootstrapMode do
-
   context '.execute' do
     let(:admin) { Fabricate(:admin) }
 

@@ -1,5 +1,4 @@
 module Jobs
-
   class Tl3Promotions < Jobs::Scheduled
     daily at: 4.hours
 
@@ -30,5 +29,4 @@ module Jobs
       end
     end
   end
-
 end

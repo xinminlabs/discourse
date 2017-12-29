@@ -2,7 +2,6 @@ require "csv"
 require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 
 class ImportScripts::Vanilla < ImportScripts::Base
-
   def initialize
     super
 
@@ -248,7 +247,6 @@ class ImportScripts::Vanilla < ImportScripts::Base
         .gsub("&lt;", "<")
         .gsub("&gt;", ">")
     end
-
 end
 
 ImportScripts::Vanilla.new.perform

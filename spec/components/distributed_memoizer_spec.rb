@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'distributed_memoizer'
 
 describe DistributedMemoizer do
-
   before do
     $redis.del(DistributedMemoizer.redis_key("hello"))
     $redis.del(DistributedMemoizer.redis_lock_key("hello"))
@@ -23,7 +22,6 @@ describe DistributedMemoizer do
   end
 
   it "return the old value once memoized" do
-
     memoize do
       "abc"
     end
@@ -49,7 +47,5 @@ describe DistributedMemoizer do
     threads.each(&:join)
     expect(results.uniq.length).to eq(1)
     expect(results.count).to eq(5)
-
   end
-
 end

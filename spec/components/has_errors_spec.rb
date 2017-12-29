@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'has_errors'
 
 describe HasErrors do
-
   class ErrorTestClass
     include HasErrors
   end
@@ -43,7 +42,6 @@ describe HasErrors do
 
   context "rollback_with_error!" do
     it "triggers a rollback" do
-
       expect(-> {
         error_test.rollback_with!(invalid_topic, :too_many_users)
       }).to raise_error(ActiveRecord::Rollback)
@@ -51,5 +49,4 @@ describe HasErrors do
       expect(error_test.errors[:base]).to include("You can only send warnings to one user at a time.")
     end
   end
-
 end

@@ -1,5 +1,4 @@
 class AdminUserListSerializer < BasicUserSerializer
-
   attributes :email,
              :active,
              :admin,
@@ -114,5 +113,4 @@ class AdminUserListSerializer < BasicUserSerializer
   def include_approved?
     SiteSetting.must_approve_users
   end
-
 end

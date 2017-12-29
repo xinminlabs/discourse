@@ -3,7 +3,6 @@ require "mysql2"
 require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 
 class ImportScripts::Phorum < ImportScripts::Base
-
   PHORUM_DB = "piwik"
   TABLE_PREFIX = "pw_"
   BATCH_SIZE = 1000
@@ -134,7 +133,6 @@ class ImportScripts::Phorum < ImportScripts::Base
       #   end
       # end
     end
-
   end
 
   def process_raw_post(raw, import_id)

@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'wizard'
 
 describe Wizard::Step do
-
   let(:wizard) { Wizard.new(Fabricate.build(:user)) }
   let(:step) { wizard.create_step('test-step') }
 
@@ -19,5 +18,4 @@ describe Wizard::Step do
     expect(step.fields).to eq([text, dropdown])
     expect(dropdown.choices.size).to eq(3)
   end
-
 end

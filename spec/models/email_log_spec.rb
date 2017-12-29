@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe EmailLog do
-
   it { is_expected.to belong_to :user }
   it { is_expected.to validate_presence_of :to_address }
   it { is_expected.to validate_presence_of :email_type }
@@ -29,7 +28,6 @@ describe EmailLog do
       end
 
       expect(ran).to be_falsy
-
     end
   end
 
@@ -100,5 +98,4 @@ describe EmailLog do
       end
     end
   end
-
 end

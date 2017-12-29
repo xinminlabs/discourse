@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe BadgeGranter do
-
   let(:badge) { Fabricate(:badge) }
   let(:user) { Fabricate(:user) }
 
@@ -48,7 +47,6 @@ describe BadgeGranter do
   end
 
   describe 'backfill' do
-
     it 'has no broken badge queries' do
       Badge.all.each do |b|
         BadgeGranter.backfill(b)
@@ -98,7 +96,6 @@ describe BadgeGranter do
     end
 
     it 'should grant badges in the user locale' do
-
       SiteSetting.allow_user_locale = true
 
       nice_topic = Badge.find(Badge::NiceTopic)
@@ -116,7 +113,6 @@ describe BadgeGranter do
   end
 
   describe 'grant' do
-
     it 'allows overriding of granted_at does not notify old bronze' do
       badge = Fabricate(:badge, badge_type_id: BadgeType::Bronze)
       time = 1.year.ago
@@ -175,11 +171,9 @@ describe BadgeGranter do
       expect(badge.reload.grant_count).to eq(1)
       expect(user.notifications.find_by(notification_type: Notification.types[:granted_badge]).data_hash["badge_id"]).to eq(badge.id)
     end
-
   end
 
   describe 'revoke' do
-
     let(:admin) { Fabricate(:admin) }
     let!(:user_badge) { BadgeGranter.grant(badge, user) }
 
@@ -193,7 +187,6 @@ describe BadgeGranter do
       expect(user.notifications.where(notification_type: Notification.types[:granted_badge])).to be_empty
       expect(user.reload.title).to eq(nil)
     end
-
   end
 
   context "update_badges" do
@@ -292,5 +285,4 @@ describe BadgeGranter do
       expect(UserBadge.find_by(user_id: user.id, badge_id: Badge::GreatPost)).to eq(nil)
     end
   end
-
 end

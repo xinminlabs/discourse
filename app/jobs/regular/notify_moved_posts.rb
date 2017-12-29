@@ -1,7 +1,5 @@
 module Jobs
-
   class NotifyMovedPosts < Jobs::Base
-
     def execute(args)
       raise Discourse::InvalidParameters.new(:post_ids) if args[:post_ids].blank?
       raise Discourse::InvalidParameters.new(:moved_by_id) if args[:moved_by_id].blank?
@@ -23,9 +21,6 @@ module Jobs
           end
         end
       end
-
     end
-
   end
-
 end

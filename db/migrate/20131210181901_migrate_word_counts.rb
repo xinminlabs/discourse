@@ -27,7 +27,5 @@ class MigrateWordCounts < ActiveRecord::Migration[4.2]
       end
       topic_ids = execute("SELECT id FROM topics WHERE word_count IS NULL LIMIT 500").map { |r| r['id'].to_i }
     end
-
   end
-
 end

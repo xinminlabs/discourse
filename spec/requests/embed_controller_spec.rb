@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe EmbedController do
-
   let(:host) { "eviltrout.com" }
   let(:embed_url) { "http://eviltrout.com/2013/02/10/why-discourse-uses-emberjs.html" }
   let(:discourse_username) { "eviltrout" }
@@ -39,7 +38,6 @@ describe EmbedController do
     end
 
     context "with api key" do
-
       let(:api_key) { ApiKey.create_master_key }
 
       context "with valid embed url" do
@@ -117,7 +115,6 @@ describe EmbedController do
           params: { embed_url: embed_url, discourse_username: discourse_username },
           headers: headers
       end
-
     end
   end
 

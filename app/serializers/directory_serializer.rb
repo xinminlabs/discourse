@@ -5,5 +5,4 @@ class DirectorySerializer < ApplicationSerializer
   def id
     object.filter
   end
-
 end

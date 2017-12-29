@@ -21,5 +21,4 @@ module GlobalPath
       path
     end
   end
-
 end

@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'post_destroyer'
 
 describe PostActionNotifier do
-
   before do
     PostActionNotifier.enable
   end
@@ -38,7 +37,6 @@ describe PostActionNotifier do
     end
 
     context "edit notifications are disabled" do
-
       before { SiteSetting.disable_edit_notifications = true }
 
       it 'notifies a user of the revision made by another user' do
@@ -52,9 +50,7 @@ describe PostActionNotifier do
           post.revise(Discourse.system_user, raw: "world is the new body of the message")
         }.not_to change(post.user.notifications, :count)
       end
-
     end
-
   end
 
   context 'private message' do
@@ -94,5 +90,4 @@ describe PostActionNotifier do
       }.to_not change { Notification.count }
     end
   end
-
 end

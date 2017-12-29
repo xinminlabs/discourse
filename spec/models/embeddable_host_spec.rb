@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe EmbeddableHost do
-
   it "trims http" do
     eh = EmbeddableHost.new(host: 'http://example.com')
     expect(eh).to be_valid
@@ -120,5 +119,4 @@ describe EmbeddableHost do
       expect(EmbeddableHost.url_allowed?('http://eviltrout.com/inglés/foo')).to eq(true)
     end
   end
-
 end

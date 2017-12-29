@@ -7,7 +7,6 @@ Auth.send(:remove_const, :OpenIdAuthenticator)
 load 'auth/open_id_authenticator.rb'
 
 describe Auth::OpenIdAuthenticator do
-
   it "can lookup pre-existing user if trusted" do
     auth = Auth::OpenIdAuthenticator.new("test", "id", trusted: true)
 

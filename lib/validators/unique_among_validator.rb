@@ -17,5 +17,4 @@ class UniqueAmongValidator < ActiveRecord::Validations::UniquenessValidator
       record.errors[attribute].pop(new_errors) unless dupes.exists?
     end
   end
-
 end

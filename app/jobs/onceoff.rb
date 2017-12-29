@@ -24,7 +24,6 @@ class Jobs::Onceoff < Jobs::Base
         $redis.del(running_key_name) if has_lock
       end
     end
-
   end
 
   def self.enqueue_all
@@ -37,5 +36,4 @@ class Jobs::Onceoff < Jobs::Base
       end
     end
   end
-
 end

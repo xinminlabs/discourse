@@ -1,5 +1,4 @@
 module Jobs
-
   class CleanUpEmailLogs < Jobs::Scheduled
     every 1.day
 
@@ -12,7 +11,5 @@ module Jobs
         .where("created_at < ?", threshold)
         .delete_all
     end
-
   end
-
 end

@@ -90,5 +90,4 @@ describe GroupsController do
       expect(response).not_to be_success
     end
   end
-
 end

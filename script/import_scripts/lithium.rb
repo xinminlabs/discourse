@@ -50,7 +50,6 @@ class ImportScripts::Lithium < ImportScripts::Base
   end
 
   def execute
-
     @max_start_id = Post.maximum(:id)
 
     import_categories
@@ -102,7 +101,6 @@ class ImportScripts::Lithium < ImportScripts::Base
       next if all_records_exist? :users, users.map { |u| u["id"].to_i }
 
       create_users(users, total: user_count, offset: offset) do |user|
-
         {
           id: user["id"],
           name: user["nlogin"],
@@ -208,7 +206,6 @@ class ImportScripts::Lithium < ImportScripts::Base
       end
 
       category_info[display_id] = node
-
     end
 
     top_level_categories = categories.select { |c| top_level_ids.include? c["display_id"] }
@@ -252,7 +249,6 @@ class ImportScripts::Lithium < ImportScripts::Base
         end
       end
     end
-
   end
 
   def import_topics
@@ -276,7 +272,6 @@ class ImportScripts::Lithium < ImportScripts::Base
       next if all_records_exist? :posts, topics.map { |topic| "#{topic["node_id"]} #{topic["id"]}" }
 
       create_posts(topics, total: topic_count, offset: offset) do |topic|
-
         category_id = category_id_from_imported_category_id(topic["node_id"])
 
         raw = topic["body"]
@@ -296,13 +291,11 @@ class ImportScripts::Lithium < ImportScripts::Base
         else
           nil
         end
-
       end
     end
   end
 
   def import_posts
-
     post_count = mysql_query("SELECT COUNT(*) count FROM message2
                               WHERE id <> root_id").first["count"]
 
@@ -393,7 +386,6 @@ class ImportScripts::Lithium < ImportScripts::Base
     PostAction.exec_sql("create temp table like_data(user_id int, post_id int, created_at timestamp without time zone)")
     PostAction.transaction do
       results.each do |result|
-
         result["user_id"] = user_id_from_imported_user_id(result["user_id"].to_s)
         result["post_id"] = existing_map[result["post_id"].to_s]
 
@@ -404,7 +396,6 @@ class ImportScripts::Lithium < ImportScripts::Base
                               post_id: result["post_id"],
                               created_at: result["created_at"]
                            )
-
       end
     end
 
@@ -469,7 +460,6 @@ class ImportScripts::Lithium < ImportScripts::Base
   end
 
   def import_accepted_answers
-
     puts "\nimporting accepted answers..."
 
     sql = "select unique_id post_id from message2 where (attributes & 0x4000 ) != 0 and deleted = 0;"
@@ -485,7 +475,6 @@ class ImportScripts::Lithium < ImportScripts::Base
     PostAction.exec_sql("create temp table accepted_data(post_id int primary key)")
     PostAction.transaction do
       results.each do |result|
-
         result["post_id"] = existing_map[result["post_id"].to_s]
 
         next unless result["post_id"]
@@ -493,7 +482,6 @@ class ImportScripts::Lithium < ImportScripts::Base
         PostAction.exec_sql("INSERT INTO accepted_data VALUES (:post_id)",
                               post_id: result["post_id"]
                            )
-
       end
     end
 
@@ -532,7 +520,6 @@ class ImportScripts::Lithium < ImportScripts::Base
   end
 
   def import_pms
-
     puts "", "importing pms..."
 
     puts "determining participation records"
@@ -590,7 +577,6 @@ class ImportScripts::Lithium < ImportScripts::Base
       next if all_records_exist? :posts, topics.map { |topic| "pm_#{topic["note_id"]}" }
 
       create_posts(topics, total: topic_count, offset: offset) do |topic|
-
         user_id = user_id_from_imported_user_id(topic["sender_user_id"]) || Discourse::SYSTEM_USER_ID
         participants = users[topic["note_id"]]
 
@@ -629,11 +615,9 @@ class ImportScripts::Lithium < ImportScripts::Base
         msg
       end
     end
-
   end
 
   def close_topics
-
     puts "\nclosing closed topics..."
 
     sql = "select unique_id post_id from message2 where root_id = id AND (attributes & 0x0002 ) != 0;"
@@ -652,7 +636,6 @@ class ImportScripts::Lithium < ImportScripts::Base
                      WHERE id IN (SELECT topic_id FROM posts where id in (:ids))
                      ", ids: mapped) if mapped.present?
     end
-
   end
 
   def create_permalinks
@@ -683,7 +666,6 @@ SQL
 
     r = Permalink.exec_sql sql
     puts "#{r.cmd_tuples} permalinks to posts added!"
-
   end
 
   # find the uploaded file information from the db
@@ -752,7 +734,6 @@ SQL
   end
 
   def postprocess_post_raw(raw, user_id)
-
     doc = Nokogiri::HTML.fragment(raw)
 
     doc.css("a,img").each do |l|
@@ -800,7 +781,6 @@ SQL
         end
 
       end
-
     end
 
     raw = ReverseMarkdown.convert(doc.to_s)
@@ -822,7 +802,6 @@ SQL
   def mysql_query(sql)
     @client.query(sql, cache_rows: true)
   end
-
 end
 
 ImportScripts::Lithium.new.perform

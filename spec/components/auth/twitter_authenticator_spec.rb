@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Auth::TwitterAuthenticator do
-
   it "takes over account if email is supplied" do
     auth = Auth::TwitterAuthenticator.new
 
@@ -24,5 +23,4 @@ describe Auth::TwitterAuthenticator do
     info = TwitterUserInfo.find_by(user_id: user.id)
     expect(info.email).to eq(user.email)
   end
-
 end

@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'file_store/local_store'
 
 describe FileStore::LocalStore do
-
   let(:store) { FileStore::LocalStore.new }
 
   let(:upload) { Fabricate(:upload) }
@@ -11,25 +10,20 @@ describe FileStore::LocalStore do
   let(:optimized_image) { Fabricate(:optimized_image) }
 
   describe ".store_upload" do
-
     it "returns a relative url" do
       store.expects(:copy_file)
       expect(store.store_upload(uploaded_file, upload)).to match(/\/uploads\/default\/original\/.+#{upload.sha1}\.png/)
     end
-
   end
 
   describe ".store_optimized_image" do
-
     it "returns a relative url" do
       store.expects(:copy_file)
       expect(store.store_optimized_image({}, optimized_image)).to match(/\/uploads\/default\/optimized\/.+#{optimized_image.upload.sha1}_#{OptimizedImage::VERSION}_100x200\.png/)
     end
-
   end
 
   describe ".remove_upload" do
-
     it "does not delete non uploaded" do
       FileUtils.expects(:mkdir_p).never
       store.remove_upload(upload)
@@ -40,7 +34,6 @@ describe FileStore::LocalStore do
       store.remove_upload(upload)
       expect(File.exist?(store.tombstone_dir + "/" + filename))
     end
-
   end
 
   describe ".remove_optimized_image" do
@@ -52,11 +45,9 @@ describe FileStore::LocalStore do
       File.expects(:exists?).returns(true)
       store.remove_optimized_image(optimized_image)
     end
-
   end
 
   describe ".has_been_uploaded?" do
-
     it "identifies relatives urls" do
       expect(store.has_been_uploaded?("/uploads/default/42/0123456789ABCDEF.jpg")).to eq(true)
     end
@@ -77,7 +68,6 @@ describe FileStore::LocalStore do
       expect(store.has_been_uploaded?("http://domain.com/uploads/default/42/0123456789ABCDEF.jpg")).to eq(false)
       expect(store.has_been_uploaded?("//domain.com/uploads/default/42/0123456789ABCDEF.jpg")).to eq(false)
     end
-
   end
 
   def stub_for_subfolder
@@ -86,7 +76,6 @@ describe FileStore::LocalStore do
   end
 
   describe ".absolute_base_url" do
-
     it "is present" do
       expect(store.absolute_base_url).to eq("http://test.localhost/uploads/default")
     end
@@ -95,11 +84,9 @@ describe FileStore::LocalStore do
       stub_for_subfolder
       expect(store.absolute_base_url).to eq("http://test.localhost/forum/uploads/default")
     end
-
   end
 
   describe ".relative_base_url" do
-
     it "is present" do
       expect(store.relative_base_url).to eq("/uploads/default")
     end
@@ -108,12 +95,10 @@ describe FileStore::LocalStore do
       stub_for_subfolder
       expect(store.relative_base_url).to eq("/forum/uploads/default")
     end
-
   end
 
   it "is internal" do
     expect(store.internal?).to eq(true)
     expect(store.external?).to eq(false)
   end
-
 end

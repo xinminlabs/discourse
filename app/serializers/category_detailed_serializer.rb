@@ -1,5 +1,4 @@
 class CategoryDetailedSerializer < BasicCategorySerializer
-
   attributes :topic_count,
              :post_count,
              :topics_day,
@@ -60,5 +59,4 @@ class CategoryDetailedSerializer < BasicCategorySerializer
     end
     count
   end
-
 end

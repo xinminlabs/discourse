@@ -1,11 +1,10 @@
 require "demon/rails_autospec"
 
 module Autospec
-
   class QunitRunner < BaseRunner
-
     WATCHERS = {}
     def self.watch(pattern, &blk); WATCHERS[pattern] = blk; end
+
     def watchers; WATCHERS; end
 
     # Discourse specific
@@ -15,6 +14,7 @@ module Autospec
 
     RELOADERS = Set.new
     def self.reload(pattern); RELOADERS << pattern; end
+
     def reloaders; RELOADERS; end
 
     # Discourse specific
@@ -169,7 +169,5 @@ module Autospec
 
       nil
     end
-
   end
-
 end

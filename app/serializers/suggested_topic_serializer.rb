@@ -1,5 +1,4 @@
 class SuggestedTopicSerializer < ListableTopicSerializer
-
   # need to embed so we have users
   # front page json gets away without embedding
   class SuggestedPosterSerializer < ApplicationSerializer

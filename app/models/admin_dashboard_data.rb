@@ -233,5 +233,4 @@ class AdminDashboardData
     return unless SiteSetting.mailgun_api_key.blank?
     I18n.t('dashboard.missing_mailgun_api_key')
   end
-
 end

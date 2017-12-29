@@ -1,5 +1,4 @@
 class BackfillPostUploadReverseIndex < ActiveRecord::Migration[4.2]
-
   def up
     # clean the reverse index
     execute "TRUNCATE TABLE post_uploads"
@@ -70,5 +69,4 @@ class BackfillPostUploadReverseIndex < ActiveRecord::Migration[4.2]
   def is_s3_avatar?(url)
     url.starts_with?(s3_avatar_base_url)
   end
-
 end

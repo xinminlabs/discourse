@@ -1,7 +1,6 @@
 require 'scheduler/scheduler'
 
 module Jobs
-
   def self.queued
     Sidekiq::Stats.new.enqueued
   end
@@ -18,9 +17,7 @@ module Jobs
   end
 
   class Base
-
     class Instrumenter
-
       def self.stats
         Thread.current[:db_stats] ||= Stats.new
       end
@@ -161,7 +158,6 @@ module Jobs
       ActiveRecord::Base.connection_handler.clear_active_connections!
       @db_duration = total_db_time
     end
-
   end
 
   class HandledExceptionWrapper < StandardError
@@ -208,7 +204,6 @@ module Jobs
         klass.new.perform(opts)
       end
     end
-
   end
 
   def self.enqueue_in(secs, job_name, opts = {})

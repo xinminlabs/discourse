@@ -1,11 +1,9 @@
 module MemoryDiagnostics
-
   def self.snapshot_exists?
     File.exists?(snapshot_filename)
   end
 
   def self.compare(from = nil, to = nil)
-
     from ||= snapshot_filename
     if !to
       filename = snapshot_filename + ".new"
@@ -143,7 +141,6 @@ Classes:
 #{classes.length > 0 ? classes.join("\n") : "Class report omitted use ?full=1 to include it"}
 
 TEXT
-
   end
 
   def self.full_gc

@@ -6,7 +6,6 @@ require "mysql2"
 require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 
 class ImportScripts::Sfn < ImportScripts::Base
-
   BATCH_SIZE = 100_000
   MIN_CREATED_AT = "2003-11-01"
 
@@ -318,7 +317,6 @@ class ImportScripts::Sfn < ImportScripts::Base
     @client ||= Mysql2::Client.new(username: "root", database: "sfn")
     @client.query(sql)
   end
-
 end
 
 ImportScripts::Sfn.new.perform

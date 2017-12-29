@@ -1,5 +1,4 @@
 class SpamRule::FlagSockpuppets
-
   def initialize(post)
     @post = post
   end
@@ -37,5 +36,4 @@ class SpamRule::FlagSockpuppets
       PostAction.act(Discourse.system_user, first_post, PostActionType.types[:spam], message: message) rescue PostAction::AlreadyActed
     end
   end
-
 end

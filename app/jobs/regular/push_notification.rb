@@ -28,7 +28,6 @@ module Jobs
           Rails.logger.warn("Failed to push a notification to #{push_url} Status: #{result.status}: #{result.status_line}")
         end
       end
-
     end
   end
 end

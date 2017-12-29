@@ -10,7 +10,6 @@ register_asset "javascripts/details.js"
 register_asset "stylesheets/details.scss"
 
 after_initialize do
-
   Email::Styles.register_plugin_style do |fragment|
     # remove all elided content
     fragment.css("details.elided").each { |d| d.remove }
@@ -27,5 +26,4 @@ after_initialize do
       end
     end
   end
-
 end

@@ -149,7 +149,6 @@ class SiteSetting < ActiveRecord::Base
   def self.Upload
     SiteSetting::Upload
   end
-
 end
 
 # == Schema Information

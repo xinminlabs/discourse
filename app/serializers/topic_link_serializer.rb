@@ -1,5 +1,4 @@
 class TopicLinkSerializer < ApplicationSerializer
-
   attributes :url,
              :title,
              :fancy_title,
@@ -54,5 +53,4 @@ class TopicLinkSerializer < ApplicationSerializer
   def root_domain
     MiniSuffix.domain(domain)
   end
-
 end

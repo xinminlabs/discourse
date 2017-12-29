@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ReplyByEmailEnabledValidator do
-
   describe '#valid_value?' do
     subject(:validator) { described_class.new }
 
@@ -25,7 +24,5 @@ describe ReplyByEmailEnabledValidator do
       SiteSetting.expects(:email_polling_enabled?).returns(true)
       expect(validator.valid_value?("t")).to eq(true)
     end
-
   end
-
 end

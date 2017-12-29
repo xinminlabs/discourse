@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe StylesheetsController do
-
   it 'can survive cache miss' do
-
     StylesheetCache.destroy_all
     builder = Stylesheet::Manager.new('desktop_rtl', nil)
     builder.compile
@@ -25,7 +23,6 @@ describe StylesheetsController do
     expect(response).to be_success
 
     # there is an edge case which is ... disk and db cache is nuked, very unlikely to happen
-
   end
 
   it 'can lookup theme specific css' do
@@ -66,5 +63,4 @@ describe StylesheetsController do
 
     expect(response).to be_success
   end
-
 end

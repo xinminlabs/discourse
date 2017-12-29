@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe InvitesController do
-
   context '.show' do
     render_views
 
@@ -30,7 +29,6 @@ describe InvitesController do
   end
 
   context '.destroy' do
-
     it 'requires you to be logged in' do
       expect do
         delete :destroy,
@@ -64,9 +62,7 @@ describe InvitesController do
         Invite.any_instance.expects(:trash!).with(user)
         delete :destroy, params: { email: invite.email }, format: :json
       end
-
     end
-
   end
 
   context '#create' do
@@ -131,7 +127,6 @@ describe InvitesController do
         expect(json["errors"]).to be_present
       end
     end
-
   end
 
   context '.create_invite_link' do
@@ -205,7 +200,6 @@ describe InvitesController do
   end
 
   context '.perform_accept_invitation' do
-
     context 'with an invalid invite id' do
       before do
         put :perform_accept_invitation, params: { id: "doesn't exist" }, format: :json
@@ -361,7 +355,6 @@ describe InvitesController do
   end
 
   context '.resend_invite' do
-
     it 'requires you to be logged in' do
       expect {
         delete :resend_invite, params: { email: 'first_name@example.com' }, format: :json
@@ -393,9 +386,7 @@ describe InvitesController do
         Invite.any_instance.expects(:resend_invite)
         post :resend_invite, params: { email: invite.email }, format: :json
       end
-
     end
-
   end
 
   context '.upload_csv' do
@@ -426,7 +417,5 @@ describe InvitesController do
         expect(response).to be_success
       end
     end
-
   end
-
 end

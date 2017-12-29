@@ -519,7 +519,6 @@ FROM #{TABLE_PREFIX}discuss_users
         csv << [value]
       end
     end
-
   end
 
   def deactivate_all_users
@@ -563,7 +562,6 @@ FROM #{TABLE_PREFIX}discuss_users
   def mysql_query(sql)
     @client.query(sql, cache_rows: true)
   end
-
 end
 
 ImportScripts::Modx.new.perform

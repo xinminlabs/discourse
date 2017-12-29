@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe TopicFeaturedUsers do
   it 'ensures consistency' do
-
     t = Fabricate(:topic)
     Fabricate(:post, topic_id: t.id, user_id: t.user_id)
     p2 = Fabricate(:post, topic_id: t.id)

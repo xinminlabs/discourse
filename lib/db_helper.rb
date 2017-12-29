@@ -1,5 +1,4 @@
 class DbHelper
-
   REMAP_SQL ||= "
     SELECT table_name, column_name
       FROM information_schema.columns
@@ -19,5 +18,4 @@ class DbHelper
       connection.async_exec("UPDATE #{table_name} SET #{column_name} = REPLACE(#{column_name}, $1, $2) WHERE #{column_name} LIKE $3", args) rescue nil
     end
   end
-
 end

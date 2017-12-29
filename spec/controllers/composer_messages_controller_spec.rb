@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe ComposerMessagesController do
-
   context '.index' do
-
     it 'requires you to be logged in' do
       expect { get :index, format: :json }.to raise_error(Discourse::NotLoggedIn)
     end

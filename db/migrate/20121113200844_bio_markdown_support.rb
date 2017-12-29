@@ -7,7 +7,6 @@ class BioMarkdownSupport < ActiveRecord::Migration[4.2]
       u.send(:cook)
       u.save
     end
-
   end
 
   def down

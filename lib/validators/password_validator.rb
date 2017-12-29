@@ -1,7 +1,6 @@
 require_dependency "common_passwords/common_passwords"
 
 class PasswordValidator < ActiveModel::EachValidator
-
   def validate_each(record, attribute, value)
     return unless record.password_validation_required?
 
@@ -27,5 +26,4 @@ class PasswordValidator < ActiveModel::EachValidator
   def is_developer?(value)
     Rails.configuration.respond_to?(:developer_emails) && Rails.configuration.developer_emails.include?(value)
   end
-
 end

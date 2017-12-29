@@ -2,7 +2,6 @@ require_dependency 'version'
 require_dependency 'site_setting'
 
 module DiscourseHub
-
   STATS_FETCHED_AT_KEY = "stats_fetched_at"
 
   def self.version_check_payload
@@ -76,5 +75,4 @@ module DiscourseHub
     t = $redis.get(STATS_FETCHED_AT_KEY)
     t ? Time.zone.at(t.to_i) : 1.year.ago
   end
-
 end

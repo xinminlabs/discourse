@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe EmailToken do
-
   it { is_expected.to validate_presence_of :user_id }
   it { is_expected.to validate_presence_of :email }
   it { is_expected.to belong_to :user }
@@ -43,7 +42,6 @@ describe EmailToken do
   end
 
   context '#confirm' do
-
     let(:user) { Fabricate(:user, active: false) }
     let(:email_token) { user.email_tokens.first }
 
@@ -71,7 +69,6 @@ describe EmailToken do
     end
 
     context 'taken email address' do
-
       before do
         @other_user = Fabricate(:coding_horror)
         email_token.update_attribute :email, @other_user.email
@@ -80,7 +77,6 @@ describe EmailToken do
       it 'returns nil when the email has been taken since the token has been generated' do
         expect(EmailToken.confirm(email_token.token)).to be_blank
       end
-
     end
 
     context 'welcome message' do
@@ -88,11 +84,9 @@ describe EmailToken do
         user = EmailToken.confirm(email_token.token)
         expect(user.send_welcome_message).to eq true
       end
-
     end
 
     context 'success' do
-
       let!(:confirmed_user) { EmailToken.confirm(email_token.token) }
 
       it "returns the correct user" do
@@ -148,5 +142,4 @@ describe EmailToken do
       end
     end
   end
-
 end

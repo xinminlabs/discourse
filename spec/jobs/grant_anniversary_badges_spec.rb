@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'jobs/scheduled/grant_anniversary_badges'
 
 describe Jobs::GrantAnniversaryBadges do
-
   let(:granter) { described_class.new }
 
   it "doesn't award to a user who is less than a year old" do
@@ -133,5 +132,4 @@ describe Jobs::GrantAnniversaryBadges do
       expect(badge.count).to eq(2)
     end
   end
-
 end

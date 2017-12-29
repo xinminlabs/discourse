@@ -123,7 +123,6 @@ describe UserProfile do
   end
 
   describe 'bio link stripping' do
-
     it 'returns an empty string with no bio' do
       expect(Fabricate.build(:user_profile).bio_excerpt).to be_blank
     end

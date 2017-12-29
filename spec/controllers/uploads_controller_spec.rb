@@ -1,15 +1,12 @@
 require 'rails_helper'
 
 describe UploadsController do
-
   context '.create' do
-
     it 'requires you to be logged in' do
       expect { post :create, format: :json }.to raise_error(Discourse::NotLoggedIn)
     end
 
     context 'logged in' do
-
       before { @user = log_in :user }
 
       let(:logo) do
@@ -156,13 +153,10 @@ describe UploadsController do
         message = JSON.parse(response.body)["errors"]
         expect(message).to contain_exactly(I18n.t("upload.images.size_not_found"))
       end
-
     end
-
   end
 
   context '.show' do
-
     let(:site) { "default" }
     let(:sha) { Digest::SHA1.hexdigest("discourse") }
 
@@ -203,7 +197,6 @@ describe UploadsController do
     end
 
     context "prevent anons from downloading files" do
-
       before { SiteSetting.prevent_anons_from_downloading_files = true }
 
       it "returns 404 when an anonymous user tries to download a file" do
@@ -212,9 +205,6 @@ describe UploadsController do
         get :show, params: { site: site, sha: sha, extension: "pdf", format: :json }
         expect(response.response_code).to eq(404)
       end
-
     end
-
   end
-
 end

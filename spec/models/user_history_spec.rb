@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UserHistory do
-
   describe '#actions' do
     context "verify enum sequence" do
       before do
@@ -36,5 +35,4 @@ describe UserHistory do
       end
     end
   end
-
 end

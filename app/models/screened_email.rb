@@ -5,7 +5,6 @@ require_dependency 'screening_model'
 # (or some other form) matches a ScreenedEmail record, an action can be
 # performed based on the action_type.
 class ScreenedEmail < ActiveRecord::Base
-
   include ScreeningModel
 
   default_action :block
@@ -59,7 +58,6 @@ class ScreenedEmail < ActiveRecord::Base
     end
     matrix.last.last
   end
-
 end
 
 # == Schema Information

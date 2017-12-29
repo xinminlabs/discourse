@@ -2,13 +2,11 @@ require 'rails_helper'
 require 'category_list'
 
 describe CategoryList do
-
   let(:user) { Fabricate(:user) }
   let(:admin) { Fabricate(:admin) }
   let(:category_list) { CategoryList.new(Guardian.new(user), include_topics: true) }
 
   context "security" do
-
     it "properly hide secure categories" do
       cat = Fabricate(:category)
       Fabricate(:topic, category: cat)
@@ -46,11 +44,9 @@ describe CategoryList do
       expect(CategoryList.new(Guardian.new(nil), include_topics: true).categories.find { |x| x.name == public_cat.name }.displayable_topics.count).to eq(1)
       expect(CategoryList.new(Guardian.new(nil), include_topics: true).categories.find { |x| x.name == private_cat.name }).to eq(nil)
     end
-
   end
 
   context "with a category" do
-
     let!(:topic_category) { Fabricate(:category, num_featured_topics: 2) }
 
     context "with a topic in a category" do
@@ -80,7 +76,6 @@ describe CategoryList do
         expect(category.displayable_topics.map(&:id)).to eq([topic3.id, topic2.id])
       end
     end
-
   end
 
   describe 'category order' do
@@ -129,5 +124,4 @@ describe CategoryList do
       end
     end
   end
-
 end

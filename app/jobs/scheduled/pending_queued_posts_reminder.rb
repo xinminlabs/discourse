@@ -1,6 +1,5 @@
 module Jobs
   class PendingQueuedPostReminder < Jobs::Scheduled
-
     every 1.hour
 
     def execute(args)

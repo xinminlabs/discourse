@@ -1,5 +1,4 @@
 class UserApiKeysController < ApplicationController
-
   layout 'no_ember'
 
   skip_before_action :redirect_to_login_if_required, only: [:new]
@@ -9,7 +8,6 @@ class UserApiKeysController < ApplicationController
   AUTH_API_VERSION ||= 2
 
   def new
-
     if request.head?
       head :ok, auth_api_version: AUTH_API_VERSION
       return
@@ -42,13 +40,11 @@ class UserApiKeysController < ApplicationController
     @push_url = params[:push_url]
     @localized_scopes = params[:scopes].split(",").map { |s| I18n.t("user_api_key.scopes.#{s}") }
     @scopes = params[:scopes]
-
   rescue Discourse::InvalidAccess
     @generic_error = true
   end
 
   def create
-
     require_params
 
     unless SiteSetting.allowed_user_api_auth_redirects
@@ -141,5 +137,4 @@ class UserApiKeysController < ApplicationController
   def meets_tl?
     current_user.staff? || current_user.trust_level >= SiteSetting.min_trust_level_for_user_api_key
   end
-
 end

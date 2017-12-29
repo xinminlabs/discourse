@@ -2,11 +2,9 @@ require 'rails_helper'
 require_dependency 'jobs/regular/process_post'
 
 describe Jobs::PollMailbox do
-
   let(:poller) { Jobs::PollMailbox.new }
 
   describe ".execute" do
-
     it "does no polling if pop3_polling_enabled is false" do
       SiteSetting.expects(:pop3_polling_enabled).returns(false)
       poller.expects(:poll_pop3).never
@@ -18,11 +16,9 @@ describe Jobs::PollMailbox do
       poller.expects(:poll_pop3).once
       poller.execute({})
     end
-
   end
 
   describe ".poll_pop3" do
-
     context "pop errors" do
       let(:user) { Fabricate(:user) }
 
@@ -89,7 +85,5 @@ describe Jobs::PollMailbox do
         I18n.t("emails.incoming.errors.bounced_email_error")
       )
     end
-
   end
-
 end

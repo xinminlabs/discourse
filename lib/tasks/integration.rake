@@ -2,7 +2,6 @@ require 'open-uri'
 
 desc 'Creates the integration fixtures. Requires a development instance running.'
 task 'integration:create_fixtures' => :environment do
-
   fixtures = {
     discovery: ["/latest.json", "/categories.json", "/c/bug/l/latest.json"],
     topic: ["/t/280.json"],
@@ -14,12 +13,10 @@ task 'integration:create_fixtures' => :environment do
   }
 
   fixtures.each do |type, urls|
-
     filename = "#{Rails.root}/test/javascripts/fixtures/#{type}_fixtures.js"
 
     content = "/*jshint maxlen:10000000 */\nexport default {\n"
     urls.each do |url|
-
       http_result = fake_xhr("http://localhost:3000#{url}")
 
       # If the result is not JSON, convert it to JSON
@@ -29,13 +26,11 @@ task 'integration:create_fixtures' => :environment do
         http_result = http_result.to_json
       end
       content << "\"#{url}\": #{http_result},\n"
-
     end
     content << "};\n"
 
     File.write(filename, content)
   end
-
 end
 
 def fake_xhr(url)
@@ -50,5 +45,4 @@ def fake_xhr(url)
   end
 
   result
-
 end

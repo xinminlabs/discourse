@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TopicTrackingState do
-
   let(:user) do
     Fabricate(:user)
   end
@@ -16,7 +15,6 @@ describe TopicTrackingState do
   end
 
   it "correctly handles muted categories" do
-
     user = Fabricate(:user)
     post
 
@@ -63,7 +61,6 @@ describe TopicTrackingState do
 
     report = TopicTrackingState.report(user)
     expect(report.length).to eq(3)
-
   end
 
   it "correctly gets the tracking state" do

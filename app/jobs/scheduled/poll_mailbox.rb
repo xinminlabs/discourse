@@ -81,6 +81,5 @@ module Jobs
         SiteSetting.pop3_polling_period_mins.minutes + 5.minutes
       )
     end
-
   end
 end

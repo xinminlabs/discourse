@@ -1,7 +1,6 @@
 require 'sanitize'
 
 class Search
-
   class GroupedSearchResults
     include ActiveModel::Serialization
 
@@ -74,5 +73,4 @@ class Search
       Sanitize.clean(blurb)
     end
   end
-
 end

@@ -62,5 +62,4 @@ module UserNameSuggester
     name = remove_unallowed_trailing_characters(name)
     name.ljust(User.username_length.begin, '1')
   end
-
 end

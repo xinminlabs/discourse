@@ -95,7 +95,6 @@ module Onebox
         def same_category?(category, source_topic)
           source_topic.try(:category_id) == category.try(:id)
         end
-
     end
   end
 end

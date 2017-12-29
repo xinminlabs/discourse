@@ -38,7 +38,6 @@ class ActiveRecord::ConnectionAdapters::ConnectionPool
         @available.add conn if !conn.in_use?
       end
     end
-
   end
 
   private

@@ -1,7 +1,5 @@
 module Jobs
-
   class CreateAvatarThumbnails < Jobs::Base
-
     def execute(args)
       return if Rails.env.test?
       upload_id = args[:upload_id]
@@ -15,7 +13,5 @@ module Jobs
         OptimizedImage.create_for(upload, size, size, filename: upload.original_filename, allow_animation: SiteSetting.allow_animated_avatars)
       end
     end
-
   end
-
 end

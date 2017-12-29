@@ -3,7 +3,6 @@
 # Backporting a fix to rails itself may get too complex
 module FreedomPatches
   module Rails4
-
     def self.distance_of_time_in_words(from_time, to_time = 0, include_seconds = false, options = {})
       options = {
         scope: :'datetime.distance_in_words',

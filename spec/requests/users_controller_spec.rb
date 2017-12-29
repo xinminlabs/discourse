@@ -12,7 +12,6 @@ RSpec.describe UsersController do
   end
 
   describe '#create' do
-
     context "when taking over a staged account" do
       let!(:staged) { Fabricate(:staged, email: "staged@account.com", active: true) }
 
@@ -42,11 +41,9 @@ RSpec.describe UsersController do
         expect(response.status).not_to eq(200)
       end
     end
-
   end
 
   describe '#show' do
-
     it "should be able to view a user" do
       get "/u/#{user.username}"
 

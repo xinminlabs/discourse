@@ -14,7 +14,6 @@ class PostActionType < ActiveRecord::Base
   end
 
   class << self
-
     def flag_settings
       unless @flag_settings
         @flag_settings = FlagSettings.new

@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 describe AnonymousShadowCreator do
-
   it "returns no shadow by default" do
     expect(AnonymousShadowCreator.get(Fabricate.build(:user))).to eq(nil)
   end
 
   context "Anonymous posting is enabled" do
-
     before { SiteSetting.allow_anonymous_posting = true }
 
     let(:user) { Fabricate(:user, trust_level: 3) }
@@ -34,7 +32,6 @@ describe AnonymousShadowCreator do
       expect(shadow3.user_option.email_private_messages).to eq(false)
 
       expect(shadow2.id).not_to eq(shadow3.id)
-
     end
 
     it "returns a shadow for a legit user" do
@@ -61,7 +58,5 @@ describe AnonymousShadowCreator do
 
       expect { AnonymousShadowCreator.get(user) }.to_not raise_error
     end
-
   end
-
 end

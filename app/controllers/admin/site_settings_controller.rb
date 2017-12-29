@@ -25,5 +25,4 @@ class Admin::SiteSettingsController < Admin::AdminController
       raise Discourse::InvalidParameters, "You are not allowed to change hidden settings"
     end
   end
-
 end

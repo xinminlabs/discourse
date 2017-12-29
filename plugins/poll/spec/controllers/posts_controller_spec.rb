@@ -10,7 +10,6 @@ describe PostsController do
   end
 
   describe "polls" do
-
     it "works" do
       post :create, params: {
         title: title, raw: "[poll]\n- A\n- B\n[/poll]"
@@ -115,9 +114,7 @@ describe PostsController do
     end
 
     describe "edit window" do
-
       describe "within the first 5 minutes" do
-
         let(:post_id) do
           freeze_time(4.minutes.ago) do
             post :create, params: {
@@ -149,11 +146,9 @@ describe PostsController do
           json = ::JSON.parse(response.body)
           expect(json["post"]["polls_votes"]).to_not be
         end
-
       end
 
       describe "after the poll edit window has expired" do
-
         let(:poll) { "[poll]\n- A\n- B\n[/poll]" }
         let(:new_option) { "[poll]\n- A\n- C\n[/poll]" }
         let(:updated) { "before\n\n[poll]\n- A\n- B\n[/poll]\n\nafter" }
@@ -175,7 +170,6 @@ describe PostsController do
         end
 
         describe "with no vote" do
-
           it "OP can change the options" do
             put :update, params: {
               id: post_id, post: { raw: new_option }
@@ -204,11 +198,9 @@ describe PostsController do
             json = ::JSON.parse(response.body)
             expect(json["post"]["cooked"]).to match("before")
           end
-
         end
 
         describe "with at least one vote" do
-
           before do
             DiscoursePoll::Poll.vote(post_id, "poll", ["5c24fc1df56d764b550ceae1b9319125"], user)
           end
@@ -267,17 +259,12 @@ describe PostsController do
             json = ::JSON.parse(response.body)
             expect(json["post"]["cooked"]).to match("before")
           end
-
         end
-
       end
-
     end
-
   end
 
   describe "named polls" do
-
     it "should have different options" do
       post :create, params: {
         title: title, raw: "[poll name=""foo""]\n- A\n- A\n[/poll]"
@@ -297,11 +284,9 @@ describe PostsController do
       json = ::JSON.parse(response.body)
       expect(json["errors"][0]).to eq(I18n.t("poll.named_poll_must_have_at_least_2_options", name: "foo"))
     end
-
   end
 
   describe "multiple polls" do
-
     it "works" do
       post :create, params: {
         title: title, raw: "[poll]\n- A\n- B\n[/poll]\n[poll name=foo]\n- A\n- B\n[/poll]"
@@ -333,7 +318,6 @@ describe PostsController do
       json = ::JSON.parse(response.body)
       expect(json["errors"][0]).to eq(I18n.t("poll.multiple_polls_with_same_name", name: "foo"))
     end
-
   end
 
   describe "disabled polls" do

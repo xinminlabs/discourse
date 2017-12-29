@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe EmailValidator do
-
   let(:record) {}
   let(:validator) { described_class.new(attributes: :email) }
   subject(:validate) { validator.validate_each(record, :email, record.email) }
@@ -54,5 +53,4 @@ describe EmailValidator do
       end
     end
   end
-
 end

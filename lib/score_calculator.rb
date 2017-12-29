@@ -1,5 +1,4 @@
 class ScoreCalculator
-
   def self.default_score_weights
     {
       reply_count: 5,
@@ -79,7 +78,6 @@ SQL
 
     while builder.exec.cmd_tuples == limit
     end
-
   end
 
   def update_topics_rank(opts)
@@ -115,7 +113,6 @@ SQL
   end
 
   def update_topics_percent_rank(opts)
-
     builder = SqlBuilder.new("UPDATE topics SET percent_rank = x.percent_rank
           FROM (SELECT id, percent_rank()
                 OVER (ORDER BY SCORE DESC) as percent_rank
@@ -143,5 +140,4 @@ SQL
 
     builder
   end
-
 end

@@ -13,7 +13,6 @@ require_dependency 'topic_subtype'
 require_dependency 'discourse'
 
 class GroupMessage
-
   include Rails.application.routes.url_helpers
 
   def self.create(group_name, message_type, opts = {})

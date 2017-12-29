@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'version'
 
 describe Admin::VersionsController do
-
   before do
     Jobs::VersionCheck.any_instance.stubs(:execute).returns(true)
     DiscourseUpdates.stubs(:updated_at).returns(2.hours.ago)

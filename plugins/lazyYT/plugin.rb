@@ -28,11 +28,9 @@ class Onebox::Engine::YoutubeOnebox
       yt_onebox_to_html
     end
   end
-
 end
 
 after_initialize do
-
   Email::Styles.register_plugin_style do |fragment|
     # YouTube onebox can't go in emails, so replace them with clickable links
     fragment.css('.lazyYT').each do |i|

@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'inline_oneboxer'
 
 describe InlineOneboxer do
-
   it "should return nothing with empty input" do
     expect(InlineOneboxer.new([]).process).to be_blank
   end
@@ -99,7 +98,5 @@ describe InlineOneboxer do
       expect(onebox[:url]).to eq("https://eviltrout.com/some-path")
       expect(onebox[:title]).to eq("Evil Trout's Blog")
     end
-
   end
-
 end

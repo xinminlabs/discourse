@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe IncomingLinksReport do
-
   describe 'integration' do
     it 'runs correctly' do
       p1 = create_post
@@ -167,5 +166,4 @@ describe IncomingLinksReport do
       expect(top_referred_topics[:data][1]).to eq(topic_id: topic2.id, topic_title: topic2.title, topic_slug: topic2.slug, num_clicks: 3)
     end
   end
-
 end

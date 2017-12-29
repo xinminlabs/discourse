@@ -43,5 +43,4 @@ HTML
     expect { create_upload_theme_field!("42") }.to raise_error(ActiveRecord::RecordInvalid)
     expect { create_upload_theme_field!("a42") }.not_to raise_error
   end
-
 end
