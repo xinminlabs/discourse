@@ -30,7 +30,7 @@ module Jobs
     def read_csv_file(csv_path)
       CSV.foreach(csv_path, encoding: "bom|utf-8") do |csv_info|
         if csv_info[0]
-          if (EmailValidator.email_regex =~ csv_info[0])
+          if EmailValidator.email_regex =~ csv_info[0]
             # email is valid
             send_invite(csv_info, $INPUT_LINE_NUMBER)
             @sent += 1
@@ -100,7 +100,7 @@ module Jobs
 
     def notify_user
       if @current_user
-        if (@sent > 0 && @failed == 0)
+        if @sent > 0 && @failed == 0
           SystemMessage.create_from_system_user(@current_user, :bulk_invite_succeeded, sent: @sent)
         else
           SystemMessage.create_from_system_user(@current_user, :bulk_invite_failed, sent: @sent, failed: @failed, logs: @logs.join("\n"))

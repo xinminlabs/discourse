@@ -763,7 +763,7 @@ describe UsersController do
         User.any_instance.expects(:enqueue_welcome_message)
         post_user
         expect(JSON.parse(response.body)['message']).to eq(
-          I18n.t 'login.active'
+          I18n.t('login.active')
         )
       end
 

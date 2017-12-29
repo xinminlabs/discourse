@@ -9,7 +9,7 @@ class StaticController < ApplicationController
   PAGES_WITH_EMAIL_PARAM = ['login', 'password_reset', 'signup']
 
   def show
-    return redirect_to(path '/') if current_user && (params[:id] == 'login' || params[:id] == 'signup')
+    return redirect_to(path('/')) if current_user && (params[:id] == 'login' || params[:id] == 'signup')
     return redirect_to path('/login') if SiteSetting.login_required? && current_user.nil? && (params[:id] == 'faq' || params[:id] == 'guidelines')
 
     map = {

@@ -5,14 +5,14 @@ module UserGuardian
   end
 
   def can_edit_username?(user)
-    return false if (SiteSetting.sso_overrides_username? && SiteSetting.enable_sso?)
+    return false if SiteSetting.sso_overrides_username? && SiteSetting.enable_sso?
     return true if is_staff?
     return false if SiteSetting.username_change_period <= 0
     is_me?(user) && ((user.post_count + user.topic_count) == 0 || user.created_at > SiteSetting.username_change_period.days.ago)
   end
 
   def can_edit_email?(user)
-    return false if (SiteSetting.sso_overrides_email? && SiteSetting.enable_sso?)
+    return false if SiteSetting.sso_overrides_email? && SiteSetting.enable_sso?
     return false unless SiteSetting.email_editable?
     return true if is_staff?
     can_edit?(user)
@@ -20,7 +20,7 @@ module UserGuardian
 
   def can_edit_name?(user)
     return false if not(SiteSetting.enable_names?)
-    return false if (SiteSetting.sso_overrides_name? && SiteSetting.enable_sso?)
+    return false if SiteSetting.sso_overrides_name? && SiteSetting.enable_sso?
     return true if is_staff?
     can_edit?(user)
   end

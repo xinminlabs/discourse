@@ -136,10 +136,10 @@ class Middleware::RequestTracker
   end
 
   def rate_limit(env)
-    if (
+    if 
       GlobalSetting.max_requests_per_ip_mode == "block" ||
       GlobalSetting.max_requests_per_ip_mode == "warn"
-    )
+    
 
       ip = Rack::Request.new(env).ip
 

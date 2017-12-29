@@ -71,7 +71,7 @@ class ImportScripts::Nabble < ImportScripts::Base
       SQL
       )
 
-      break if users.ntuples() < 1
+      break if users.ntuples < 1
 
       next if all_records_exist? :users, users.map { |u| u["user_id"].to_i }
 
@@ -93,7 +93,7 @@ class ImportScripts::Nabble < ImportScripts::Base
     filename = 'avatar' + org_id.to_s
     path = File.join('/tmp/nab', filename)
     res = @client.exec("SELECT content FROM file_avatar WHERE name='avatar100.png' AND user_id = #{org_id} LIMIT 1")
-    return if res.ntuples() < 1
+    return if res.ntuples < 1
 
     binary = res[0]['content']
     File.open(path, 'wb') { |f|
@@ -139,7 +139,7 @@ class ImportScripts::Nabble < ImportScripts::Base
         OFFSET #{offset}
       SQL
 
-      break if topics.ntuples() < 1
+      break if topics.ntuples < 1
 
       next if all_records_exist? :posts, topics.map { |t| t['node_id'].to_i }
 
@@ -241,7 +241,7 @@ class ImportScripts::Nabble < ImportScripts::Base
         OFFSET #{offset}
       SQL
 
-      break if posts.ntuples() < 1
+      break if posts.ntuples < 1
 
       next if all_records_exist? :posts, posts.map { |p| p['node_id'].to_i }
 

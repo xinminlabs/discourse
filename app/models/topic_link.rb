@@ -31,7 +31,7 @@ class TopicLink < ActiveRecord::Base
 
   # Make sure a topic can't link to itself
   def link_to_self
-    errors.add(:base, "can't link to the same topic") if (topic_id == link_topic_id)
+    errors.add(:base, "can't link to the same topic") if topic_id == link_topic_id
   end
 
   def self.topic_map(guardian, topic_id)

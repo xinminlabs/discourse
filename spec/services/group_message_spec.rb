@@ -17,9 +17,9 @@ describe GroupMessage do
 
     it 'should send a private message to the given group' do
       PostCreator.expects(:create).with do |from_user, opts|
-        from_user.id == (admin.id) &&
+        from_user.id == admin.id &&
           opts[:target_group_names] && opts[:target_group_names].include?(Group[:moderators].name) &&
-          opts[:archetype] == (Archetype.private_message) &&
+          opts[:archetype] == Archetype.private_message &&
           opts[:title].present? &&
           opts[:raw].present?
       end.returns(stub_everything)

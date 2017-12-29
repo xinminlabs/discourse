@@ -63,7 +63,7 @@ module I18n
       regexp = /#{query}/i
       (overrides_by_locale(locale) || {}).each do |k, v|
         results.delete(k)
-        results[k] = v if (k =~ regexp || v =~ regexp)
+        results[k] = v if k =~ regexp || v =~ regexp
       end
       results
     end

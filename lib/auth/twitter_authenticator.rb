@@ -26,7 +26,7 @@ class Auth::TwitterAuthenticator < Auth::Authenticator
     user_info = TwitterUserInfo.find_by(twitter_user_id: twitter_user_id)
 
     result.user = user_info.try(:user)
-    if (!result.user) && result.email_valid && (result.user = User.find_by_email(result.email))
+    if !result.user && result.email_valid && (result.user = User.find_by_email(result.email))
       TwitterUserInfo.create(
         user_id: result.user.id,
         screen_name: result.username,

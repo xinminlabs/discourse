@@ -396,7 +396,7 @@ class Search
     else
       # try a possible tag match
       tag_id = Tag.where(name: slug[0]).pluck(:id).first
-      if (tag_id)
+      if tag_id
         posts.where("topics.id IN (
           SELECT DISTINCT(tt.topic_id)
           FROM topic_tags tt

@@ -174,11 +174,11 @@ class ImportScripts::DiscuzX < ImportScripts::Base
           last_posted_at: user['last_posted_at'],
           moderator: @moderator_group_id.include?(user['group_id']),
           admin: @admin_group_id.include?(user['group_id']),
-          website: (user['website'] && user['website'].include?('.')) ? user['website'].strip : (user['qq'] && user['qq'].strip == (user['qq'].strip.to_i) && user['qq'].strip.to_i > (10000)) ? 'http://user.qzone.qq.com/' + user['qq'].strip : nil,
+          website: user['website'] && user['website'].include?('.') ? user['website'].strip : user['qq'] && user['qq'].strip == user['qq'].strip.to_i && user['qq'].strip.to_i > 10000 ? 'http://user.qzone.qq.com/' + user['qq'].strip : nil,
           bio_raw: first_exists((user['bio'] && CGI.unescapeHTML(user['bio'])), user['sightml'], user['spacenote']).strip[0, 3000],
           location: first_exists(user['address'], (!user['resideprovince'].blank? ? [user['resideprovince'],  user['residecity'], user['residedist'], user['residecommunity']] : [user['birthprovince'],  user['birthcity'], user['birthdist'], user['birthcommunity']]).reject { |location|location.blank? }.join(' ')),
           post_create_action: lambda do |newmember|
-            if user['avatar_exists'] == (1) && newmember.uploaded_avatar_id.blank?
+            if user['avatar_exists'] == 1 && newmember.uploaded_avatar_id.blank?
               path, filename = discuzx_avatar_fullpath(user['id'])
               if path
                 begin
@@ -232,7 +232,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
 
             # we don't send email to the unconfirmed user
             newmember.update(email_digests: user['email_confirmed'] == 1) if newmember.email_digests
-            newmember.update(name: '') if !newmember.name.blank? && newmember.name == (newmember.username)
+            newmember.update(name: '') if !newmember.name.blank? && newmember.name == newmember.username
           end
         }
       end
@@ -257,7 +257,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
 
     max_position = Category.all.max_by(&:position).position
     create_categories(results) do |row|
-      next if row['type'] == ('group') || row['status'] == (2) # or row['status'].to_i == 3 # 如果不想导入群组，取消注释
+      next if row['type'] == 'group' || row['status'] == 2 # or row['status'].to_i == 3 # 如果不想导入群组，取消注释
       extra = PHP.unserialize(row['extra']) if !row['extra'].blank?
       if extra && !extra["namecolor"].blank?
         color = extra["namecolor"][1, 6]
@@ -271,7 +271,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
         description: row['description'],
         position: row['position'].to_i + max_position,
         color: color,
-        suppress_from_homepage: (row['status'] == (0) || row['status'] == (3)),
+        suppress_from_homepage: (row['status'] == 0 || row['status'] == 3),
         post_create_action: lambda do |category|
           if slug = @category_slug[row['id']]
             category.update(slug: slug)
@@ -572,7 +572,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
     s.gsub!(/\[size=2\]\[color=#999999\].*? 发表于 [\d\-\: ]*\[\/color\] \[url=https?:\/\/#{ORIGINAL_SITE_PREFIX}\/redirect.php\?goto=findpost&pid=\d+&ptid=\d+\].*?\[\/url\]\[\/size\]/i, '')
 
     # convert quote
-    s.gsub!(/\[quote\](.*?)\[\/quote\]/m) { "\n" + ($1.strip).gsub(/^/, '> ') + "\n" }
+    s.gsub!(/\[quote\](.*?)\[\/quote\]/m) { "\n" + $1.strip.gsub(/^/, '> ') + "\n" }
 
     # truncate line space, preventing line starting with many blanks to be parsed as code blocks
     s.gsub!(/^ {4,}/, '   ')

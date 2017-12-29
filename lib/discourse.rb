@@ -235,7 +235,7 @@ module Discourse
   end
 
   def self.route_for(uri)
-    uri = URI(uri) rescue nil unless (uri.is_a?(URI))
+    uri = URI(uri) rescue nil unless uri.is_a?(URI)
     return unless uri
 
     path = uri.path || ""
