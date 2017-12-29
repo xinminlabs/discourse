@@ -177,7 +177,7 @@ module BackupRestore
       port_argument     = "--port=#{db_conf.port}"         if db_conf.port.present?
       username_argument = "--username=#{db_conf.username}" if db_conf.username.present?
 
-      [ password_argument,            # pass the password to pg_dump (if any)
+      [password_argument, # pass the password to pg_dump (if any)
         "pg_dump",                    # the pg_dump command
         "--schema=public",            # only public schema
         "--file='#{@dump_filename}'", # output to the dump.sql file
@@ -189,7 +189,7 @@ module BackupRestore
         port_argument,                # the port to connect to (if any)
         username_argument,            # the username to connect as (if any)
         db_conf.database              # the name of the database to dump
-      ].join(" ")
+].join(" ")
     end
 
     def move_dump_backup

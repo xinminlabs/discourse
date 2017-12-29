@@ -8,10 +8,10 @@ class LikeNotificationFrequencySiteSetting < EnumSiteSetting
 
   def self.values
     @values ||= [
-      { name: 'user.like_notification_frequency.always',  value:  0 },
-      { name: 'user.like_notification_frequency.first_time_and_daily',   value:  1 },
-      { name: 'user.like_notification_frequency.first_time', value:  2 },
-      { name: 'user.like_notification_frequency.never', value:  3 },
+      { name: 'user.like_notification_frequency.always', value: 0 },
+      { name: 'user.like_notification_frequency.first_time_and_daily', value: 1 },
+      { name: 'user.like_notification_frequency.first_time', value: 2 },
+      { name: 'user.like_notification_frequency.never', value: 3 },
     ]
   end
 

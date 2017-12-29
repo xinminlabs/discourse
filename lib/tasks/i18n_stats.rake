@@ -61,7 +61,7 @@ task "i18n:stats" => :environment do
 
           if b[key] != nil && b[key].kind_of?(Hash)
             b[key][:content].each do |pl, val|
-              if ! plural_keys.include?(pl)
+              if !plural_keys.include?(pl)
                 if a[key][:content]["zero"] == nil
                   plus << "#{key}.#{pl}"
                 end

@@ -224,7 +224,7 @@ describe DiscourseSingleSignOn do
   end
 
   it "validates nonce" do
-    _ , payload = DiscourseSingleSignOn.generate_url.split("?")
+    _, payload = DiscourseSingleSignOn.generate_url.split("?")
 
     sso = DiscourseSingleSignOn.parse(payload)
     expect(sso.nonce_valid?).to eq true

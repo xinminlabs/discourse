@@ -10,7 +10,7 @@ describe PostAction do
   let(:admin) { Fabricate(:admin) }
   let(:post) { Fabricate(:post) }
   let(:second_post) { Fabricate(:post, topic_id: post.topic_id) }
-  let(:bookmark) { PostAction.new(user_id: post.user_id, post_action_type_id: PostActionType.types[:bookmark] , post_id: post.id) }
+  let(:bookmark) { PostAction.new(user_id: post.user_id, post_action_type_id: PostActionType.types[:bookmark], post_id: post.id) }
 
   def value_for(user_id, dt)
     GivenDailyLike.find_for(user_id, dt).pluck(:likes_given)[0] || 0

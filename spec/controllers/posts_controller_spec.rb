@@ -346,7 +346,7 @@ describe PostsController do
       end
 
       it "calls revise with valid parameters" do
-        PostRevisor.any_instance.expects(:revise!).with(post.user, { raw: 'edited body' , edit_reason: 'typo' }, anything)
+        PostRevisor.any_instance.expects(:revise!).with(post.user, { raw: 'edited body', edit_reason: 'typo' }, anything)
         put :update, params: update_params, format: :json
       end
 
@@ -950,7 +950,7 @@ describe PostsController do
 
       it "throws an exception when revision is < 2" do
         expect {
-          put :revert, params:  { post_id: post.id, revision: 1 }, format: :json
+          put :revert, params: { post_id: post.id, revision: 1 }, format: :json
         }.to raise_error(Discourse::InvalidParameters)
       end
 

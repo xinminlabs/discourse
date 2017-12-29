@@ -286,14 +286,14 @@ module BackupRestore
       port_argument     = "--port=#{db_conf.port}"         if db_conf.port.present?
       username_argument = "--username=#{db_conf.username}" if db_conf.username.present?
 
-      [ password_argument,                # pass the password to psql (if any)
+      [password_argument, # pass the password to psql (if any)
         "psql",                           # the psql command
         "--dbname='#{db_conf.database}'", # connect to database *dbname*
         "--single-transaction",           # all or nothing (also runs COPY commands faster)
         host_argument,                    # the hostname to connect to (if any)
         port_argument,                    # the port to connect to (if any)
         username_argument                 # the username to connect as (if any)
-      ].join(" ")
+].join(" ")
     end
 
     def sed_command
@@ -307,10 +307,10 @@ module BackupRestore
 
       regexp = "SET search_path = public, pg_catalog;"
 
-      replacement = [ "DROP SCHEMA IF EXISTS restore CASCADE;",
+      replacement = ["DROP SCHEMA IF EXISTS restore CASCADE;",
                       "CREATE SCHEMA restore;",
                       "SET search_path = restore, public, pg_catalog;",
-                    ].join(" ")
+].join(" ")
 
       # we only want to replace the VERY first occurence of the search_path command
       expression = "1,/^#{regexp}$/s/#{regexp}/#{replacement}/"

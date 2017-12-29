@@ -5,7 +5,7 @@ describe PostAnalyzer do
   let(:url) { 'https://twitter.com/evil_trout/status/345954894420787200' }
 
   describe '#cook' do
-    let(:post_analyzer) { PostAnalyzer.new nil, nil  }
+    let(:post_analyzer) { PostAnalyzer.new nil, nil }
 
     let(:raw) { "Here's a tweet:\n#{url}" }
     let(:options) { {} }
