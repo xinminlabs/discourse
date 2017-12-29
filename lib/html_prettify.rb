@@ -109,7 +109,7 @@ class HtmlPrettify < String
       if token.first == :tag
         result << token[1]
         if token[1] =~ %r!<(/?)(?:pre|code|kbd|script|math)[\s>]!
-          in_pre = ($1 != "/")  # Opening or closing tag?
+          in_pre = ($1 != "/") # Opening or closing tag?
         end
       else
         t = token[1]
@@ -128,14 +128,14 @@ class HtmlPrettify < String
             t = educate_dashes_inverted t   if do_dashes == :inverted
           end
 
-          t = educate_ellipses t  if do_ellipses
+          t = educate_ellipses t if do_ellipses
 
           t = educate_fractions t
 
           # Note: backticks need to be processed before quotes.
           if do_backticks
             t = educate_backticks t
-            t = educate_single_backticks t  if do_backticks == :both
+            t = educate_single_backticks t if do_backticks == :both
           end
 
           if do_quotes
@@ -159,7 +159,7 @@ class HtmlPrettify < String
             end
           end
 
-          t = stupefy_entities t  if do_stupefy
+          t = stupefy_entities t if do_stupefy
         end
 
         prev_token_last_char = last_char
@@ -352,7 +352,7 @@ class HtmlPrettify < String
     prev_end = 0
 
     scan(tag_soup) do
-      tokens << [:text, $1]  if $1 != ""
+      tokens << [:text, $1] if $1 != ""
       tokens << [:tag, $2]
       prev_end = $~.end(0)
     end

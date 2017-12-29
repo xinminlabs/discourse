@@ -69,7 +69,7 @@ describe UserSilencer do
   end
 
   describe 'unsilence' do
-    let(:user)             { stub_everything(save: true) }
+    let(:user) { stub_everything(save: true) }
     subject(:unsilence_user) { UserSilencer.unsilence(user, Fabricate.build(:admin)) }
 
     it 'unsilences the user' do

@@ -23,7 +23,7 @@ module RequireProfiler
 
     def start(tmp_options = {})
       @start_time = Time.now
-      [ ::Kernel, (class << ::Kernel; self; end) ].each do |klass|
+      [::Kernel, (class << ::Kernel; self; end)].each do |klass|
         klass.class_eval do
           def require_with_profiling(path, *args)
             RequireProfiler.measure(path, caller, :require) { require_without_profiling(path, *args) }
@@ -45,7 +45,7 @@ module RequireProfiler
 
     def stop
       @stop_time = Time.now
-      [ ::Kernel, (class << ::Kernel; self; end) ].each do |klass|
+      [::Kernel, (class << ::Kernel; self; end)].each do |klass|
         klass.class_eval do
           alias require require_without_profiling
           alias load load_without_profiling
@@ -67,7 +67,7 @@ module RequireProfiler
 
       time = Time.now
       begin
-        output = yield  # do the require or load here
+        output = yield # do the require or load here
       ensure
         delta = Time.now - time
         stat[:time] += delta

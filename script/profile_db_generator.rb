@@ -94,7 +94,7 @@ puts
 puts "Creating 100 topics"
 
 topic_ids = 100.times.map do
-  post = PostCreator.create(users.sample, raw: sentence, title: sentence[0..50].strip, category:  categories.sample.name, skip_validations: true)
+  post = PostCreator.create(users.sample, raw: sentence, title: sentence[0..50].strip, category: categories.sample.name, skip_validations: true)
 
   putc "."
   post.topic_id

@@ -73,7 +73,7 @@ class Category < ActiveRecord::Base
 
   scope :latest, -> { order('topic_count DESC') }
 
-  scope :secured, -> (guardian = nil) {
+  scope :secured, ->(guardian = nil) {
     ids = guardian.secure_category_ids if guardian
 
     if ids.present?
@@ -85,8 +85,8 @@ class Category < ActiveRecord::Base
 
   TOPIC_CREATION_PERMISSIONS ||= [:full]
   POST_CREATION_PERMISSIONS  ||= [:create_post, :full]
-  scope :topic_create_allowed, -> (guardian) { scoped_to_permissions(guardian, TOPIC_CREATION_PERMISSIONS) }
-  scope :post_create_allowed,  -> (guardian) { scoped_to_permissions(guardian, POST_CREATION_PERMISSIONS) }
+  scope :topic_create_allowed, ->(guardian) { scoped_to_permissions(guardian, TOPIC_CREATION_PERMISSIONS) }
+  scope :post_create_allowed,  ->(guardian) { scoped_to_permissions(guardian, POST_CREATION_PERMISSIONS) }
 
   delegate :post_template, to: 'self.class'
 

@@ -31,7 +31,7 @@ gem 'mini_mime'
 gem 'mini_suffix'
 
 gem 'hiredis'
-gem 'redis', require:  ["redis", "redis/connection/hiredis"]
+gem 'redis', require: ["redis", "redis/connection/hiredis"]
 gem 'redis-namespace'
 
 gem 'active_model_serializers', '~> 0.8.3'
