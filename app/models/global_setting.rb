@@ -100,7 +100,7 @@ class GlobalSetting
 
     hash["adapter"] = "postgresql_fallback" if hash["replica_host"]
 
-    hostnames = [ hostname ]
+    hostnames = [hostname]
     hostnames << backup_hostname if backup_hostname.present?
 
     hash["host_names"] = hostnames
@@ -205,7 +205,7 @@ class GlobalSetting
   class EnvProvider < BaseProvider
     def lookup(key, default)
       var = ENV["DISCOURSE_" << key.to_s.upcase]
-      resolve(var , var.nil? ? default : nil)
+      resolve(var, var.nil? ? default : nil)
     end
 
     def keys

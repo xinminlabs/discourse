@@ -22,7 +22,7 @@ describe InlineOneboxController do
       let(:topic) { Fabricate(:topic) }
 
       it "returns information for a valid link" do
-        get :show, params: { urls: [ topic.url ] }, format: :json
+        get :show, params: { urls: [topic.url] }, format: :json
         expect(response).to be_success
         json = JSON.parse(response.body)
         onebox = json['inline-oneboxes'][0]

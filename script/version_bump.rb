@@ -25,7 +25,7 @@ usage = <<-END
 
   END
 
-VERSION_FILE_PATH = File.expand_path('../../lib/version.rb',  __FILE__)
+VERSION_FILE_PATH = File.expand_path('../../lib/version.rb', __FILE__)
 
 if ARGV.length < 1
   puts usage
@@ -62,7 +62,7 @@ if update_version_file
   end
 end
 
-require File.expand_path('../../lib/version',  __FILE__)
+require File.expand_path('../../lib/version', __FILE__)
 
 version = Discourse::VERSION::STRING
 puts "New version is: #{version}"

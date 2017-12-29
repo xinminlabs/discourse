@@ -18,7 +18,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
   DB_TABLE_PREFIX = 'pre_'
   BATCH_SIZE = 1000
   ORIGINAL_SITE_PREFIX = "oldsite.example.com/forums" # without http(s)://
-  NEW_SITE_PREFIX      = "http://discourse.example.com"  # with http:// or https://
+  NEW_SITE_PREFIX      = "http://discourse.example.com" # with http:// or https://
 
   # Set DISCUZX_BASE_DIR to the base directory of your discuz installation.
   DISCUZX_BASE_DIR      = '/var/www/discuz/upload'
@@ -178,7 +178,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
           admin: @admin_group_id.include?(user['group_id']),
           website: (user['website'] && user['website'].include?('.')) ? user['website'].strip : (user['qq'] && user['qq'].strip == (user['qq'].strip.to_i) && user['qq'].strip.to_i > (10000)) ? 'http://user.qzone.qq.com/' + user['qq'].strip : nil,
           bio_raw: first_exists((user['bio'] && CGI.unescapeHTML(user['bio'])), user['sightml'], user['spacenote']).strip[0, 3000],
-          location: first_exists(user['address'], (!user['resideprovince'].blank? ? [user['resideprovince'],  user['residecity'], user['residedist'], user['residecommunity']] : [user['birthprovince'],  user['birthcity'], user['birthdist'], user['birthcommunity']]).reject { |location|location.blank? }.join(' ')),
+          location: first_exists(user['address'], (!user['resideprovince'].blank? ? [user['resideprovince'], user['residecity'], user['residedist'], user['residecommunity']] : [user['birthprovince'], user['birthcity'], user['birthdist'], user['birthcommunity']]).reject { |location| location.blank? }.join(' ')),
           post_create_action: lambda do |newmember|
             if user['avatar_exists'] == (1) && newmember.uploaded_avatar_id.blank?
               path, filename = discuzx_avatar_fullpath(user['id'])
@@ -364,7 +364,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
             if results.empty?
               puts "WARNING: can't find poll options for topic #{m['topic_id']}, skip poll"
             else
-              mapped[:raw].prepend "[poll#{poll['multiple'] ? ' type=multiple' : ''}#{poll['maxchoices'] > 0 ? " max=#{poll['maxchoices']}" : ''}]\n#{results.map { |option|'- ' + option['polloption'] }.join("\n")}\n[/poll]\n"
+              mapped[:raw].prepend "[poll#{poll['multiple'] ? ' type=multiple' : ''}#{poll['maxchoices'] > 0 ? " max=#{poll['maxchoices']}" : ''}]\n#{results.map { |option| '- ' + option['polloption'] }.join("\n")}\n[/poll]\n"
             end
           end
         else
@@ -670,7 +670,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
     # @someone without the url
     s.gsub!(/@\[url=[^\[\]]*?\](\S*)\[\/url\]/i, '@\1')
 
-    s.scan(/http(?:s)?:\/\/#{ORIGINAL_SITE_PREFIX.gsub('.', '\.')}\/[^\[\]\s]*/) { |link|puts "WARNING: post #{import_id} can't replace internal url #{link}" }
+    s.scan(/http(?:s)?:\/\/#{ORIGINAL_SITE_PREFIX.gsub('.', '\.')}\/[^\[\]\s]*/) { |link| puts "WARNING: post #{import_id} can't replace internal url #{link}" }
 
     s.strip
   end
@@ -852,7 +852,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
 
     puts 'Creating inline image'
 
-    encoded_photo = data['data:image/png;base64,'.length .. -1]
+    encoded_photo = data['data:image/png;base64,'.length..-1]
     if encoded_photo
       raw_file = Base64.decode64(encoded_photo)
     else
@@ -944,7 +944,7 @@ class ImportScripts::DiscuzX < ImportScripts::Base
   end
 
   def first_exists(*items)
-    items.find { |item|!item.blank? } || ''
+    items.find { |item| !item.blank? } || ''
   end
 
   def mysql_query(sql)

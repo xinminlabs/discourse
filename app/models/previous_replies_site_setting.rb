@@ -9,9 +9,9 @@ class PreviousRepliesSiteSetting < EnumSiteSetting
 
   def self.values
     @values ||= [
-      { name: 'user.email_previous_replies.always',  value:  0 },
-      { name: 'user.email_previous_replies.unless_emailed',   value:  1 },
-      { name: 'user.email_previous_replies.never', value:  2 },
+      { name: 'user.email_previous_replies.always', value: 0 },
+      { name: 'user.email_previous_replies.unless_emailed', value: 1 },
+      { name: 'user.email_previous_replies.never', value: 2 },
     ]
   end
 

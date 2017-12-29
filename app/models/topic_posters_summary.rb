@@ -72,7 +72,7 @@ class TopicPostersSummary
   end
 
   def user_ids
-    [ topic.user_id, topic.last_post_user_id, *topic.featured_user_ids ]
+    [topic.user_id, topic.last_post_user_id, *topic.featured_user_ids]
   end
 
   def avatar_lookup

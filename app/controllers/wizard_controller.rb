@@ -16,7 +16,7 @@ class WizardController < ApplicationController
         wizard = Wizard::Builder.new(current_user).build
         render_serialized(wizard, WizardSerializer)
       end
-      format.html {}
+      format.html{}
     end
   end
 

@@ -9,9 +9,9 @@ describe UserSearch do
   let(:user1)     { Fabricate :user, username: "mrb", name: "Michael Madsen", last_seen_at: 10.days.ago }
   let(:user2)     { Fabricate :user, username: "mrblue",   name: "Eddie Code", last_seen_at: 9.days.ago }
   let(:user3)     { Fabricate :user, username: "mrorange", name: "Tim Roth", last_seen_at: 8.days.ago }
-  let(:user4)     { Fabricate :user, username: "mrpink",   name: "Steve Buscemi",  last_seen_at: 7.days.ago }
+  let(:user4)     { Fabricate :user, username: "mrpink",   name: "Steve Buscemi", last_seen_at: 7.days.ago }
   let(:user5)     { Fabricate :user, username: "mrbrown",  name: "Quentin Tarantino", last_seen_at: 6.days.ago }
-  let(:user6)     { Fabricate :user, username: "mrwhite",  name: "Harvey Keitel",  last_seen_at: 5.days.ago }
+  let(:user6)     { Fabricate :user, username: "mrwhite",  name: "Harvey Keitel", last_seen_at: 5.days.ago }
   let!(:inactive) { Fabricate :user, username: "Ghost", active: false }
   let(:admin)     { Fabricate :admin, username: "theadmin" }
   let(:moderator) { Fabricate :moderator, username: "themod" }

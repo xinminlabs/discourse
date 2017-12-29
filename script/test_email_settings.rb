@@ -6,8 +6,8 @@ require 'action_mailer'
 YOUR_EMAIL = "nobody@example.com"
 
 # Change these to be the same settings as your Discourse environment
-DISCOURSE_SMTP_ADDRESS = "smtp.example.com"       # (mandatory)
-@DISCOURSE_SMTP_PORT = 587                    # (optional)
+DISCOURSE_SMTP_ADDRESS = "smtp.example.com" # (mandatory)
+@DISCOURSE_SMTP_PORT = 587 # (optional)
 @DISCOURSE_SMTP_USER_NAME = "username"              # (optional)
 @DISCOURSE_SMTP_PASSWORD  = "blah"                  # (optional)
 #@DISCOURSE_SMTP_OPENSSL_VERIFY_MODE = "none"       # (optional) none|peer|client_once|fail_if_no_peer_cert

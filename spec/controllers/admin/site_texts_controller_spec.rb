@@ -13,7 +13,7 @@ describe Admin::SiteTextsController do
 
     context '.index' do
       it 'returns json' do
-        get :index, params: {  q: 'title' }, format: :json
+        get :index, params: { q: 'title' }, format: :json
         expect(response).to be_success
         expect(::JSON.parse(response.body)).to be_present
       end

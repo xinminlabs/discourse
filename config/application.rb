@@ -226,7 +226,7 @@ module Discourse
       ActiveSupport.on_load(:action_view) do
         default_checker = ActionView::Base.precompiled_asset_checker
 
-        ActionView::Base.precompiled_asset_checker = -> logical_path do
+        ActionView::Base.precompiled_asset_checker = ->logical_path do
           default_checker[logical_path] ||
             %w{qunit.js qunit.css test_helper.css test_helper.js wizard/test/test_helper.js}.include?(logical_path)
         end

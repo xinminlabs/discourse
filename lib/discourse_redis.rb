@@ -182,7 +182,7 @@ class DiscourseRedis
    :msetnx, :persist, :pexpire, :pexpireat, :psetex, :pttl, :rename, :renamenx, :rpop, :rpoplpush, :rpush, :rpushx, :sadd, :scard,
    :sdiff, :set, :setbit, :setex, :setnx, :setrange, :sinter, :sismember, :smembers, :sort, :spop, :srandmember, :srem, :strlen,
    :sunion, :ttl, :type, :watch, :zadd, :zcard, :zcount, :zincrby, :zrange, :zrangebyscore, :zrank, :zrem, :zremrangebyrank,
-   :zremrangebyscore, :zrevrange, :zrevrangebyscore, :zrevrank, :zrangebyscore ].each do |m|
+   :zremrangebyscore, :zrevrange, :zrevrangebyscore, :zrevrank, :zrangebyscore].each do |m|
     define_method m do |*args|
       args[0] = "#{namespace}:#{args[0]}" if @namespace
       DiscourseRedis.ignore_readonly { @redis.send(m, *args) }
@@ -190,13 +190,13 @@ class DiscourseRedis
   end
 
   def mget(*args)
-    args.map! { |a| "#{namespace}:#{a}" }  if @namespace
+    args.map! { |a| "#{namespace}:#{a}" } if @namespace
     DiscourseRedis.ignore_readonly { @redis.mget(*args) }
   end
 
   def del(k)
     DiscourseRedis.ignore_readonly do
-      k = "#{namespace}:#{k}"  if @namespace
+      k = "#{namespace}:#{k}" if @namespace
       @redis.del k
     end
   end

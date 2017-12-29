@@ -10,7 +10,7 @@ class Notification < ActiveRecord::Base
 
   scope :unread, lambda { where(read: false) }
   scope :recent, lambda { |n = nil| n ||= 10; order('notifications.created_at desc').limit(n) }
-  scope :visible , lambda { joins('LEFT JOIN topics ON notifications.topic_id = topics.id')
+  scope :visible, lambda { joins('LEFT JOIN topics ON notifications.topic_id = topics.id')
     .where('topics.id IS NULL OR topics.deleted_at IS NULL') }
 
   attr_accessor :skip_send_email

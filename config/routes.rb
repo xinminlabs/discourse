@@ -159,7 +159,7 @@ Discourse::Application.routes.draw do
     end
 
     scope "/logs" do
-      resources :staff_action_logs,     only: [:index]
+      resources :staff_action_logs, only: [:index]
       get 'staff_action_logs/:id/diff' => 'staff_action_logs#diff'
       resources :screened_emails,       only: [:index, :destroy]
       resources :screened_ip_addresses, only: [:index, :create, :update, :destroy] do
@@ -167,14 +167,14 @@ Discourse::Application.routes.draw do
           post "roll_up"
         end
       end
-      resources :screened_urls,         only: [:index]
+      resources :screened_urls, only: [:index]
       resources :watched_words, only: [:index, :create, :update, :destroy] do
         collection do
           get "action/:id" => "watched_words#index"
         end
       end
       post "watched_words/upload" => "watched_words#upload"
-      resources :search_logs,           only: [:index]
+      resources :search_logs, only: [:index]
       get 'search_logs/term/:term' => 'search_logs#term'
     end
 
@@ -649,7 +649,7 @@ Discourse::Application.routes.draw do
   put "t/:topic_id/bookmark" => "topics#bookmark", constraints: { topic_id: /\d+/ }
   put "t/:topic_id/remove_bookmarks" => "topics#remove_bookmarks", constraints: { topic_id: /\d+/ }
 
-  post "t/:topic_id/notifications" => "topics#set_notifications" , constraints: { topic_id: /\d+/ }
+  post "t/:topic_id/notifications" => "topics#set_notifications", constraints: { topic_id: /\d+/ }
 
   get "p/:post_id(/:user_id)" => "posts#short_link"
   get "/posts/:id/cooked" => "posts#cooked"
