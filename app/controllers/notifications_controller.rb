@@ -1,7 +1,6 @@
 require_dependency 'notification_serializer'
 
 class NotificationsController < ApplicationController
-
   before_action :ensure_logged_in
 
   def index
@@ -48,7 +47,6 @@ class NotificationsController < ApplicationController
                        seen_notification_id: user.seen_notification_id,
                        load_more_notifications: notifications_path(username: user.username, offset: offset + 60))
     end
-
   end
 
   def mark_read
@@ -63,5 +61,4 @@ class NotificationsController < ApplicationController
 
     render json: success_json
   end
-
 end

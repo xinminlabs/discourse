@@ -2,9 +2,7 @@ require 'rails_helper'
 require_dependency 'jobs/base'
 
 describe Jobs::EnqueueDigestEmails do
-
   describe '#target_users' do
-
     context 'disabled digests' do
       before { SiteSetting.default_email_digest_frequency = 0 }
       let!(:user_no_digests) { Fabricate(:active_user, last_emailed_at: 8.days.ago, last_seen_at: 10.days.ago) }
@@ -52,7 +50,6 @@ describe Jobs::EnqueueDigestEmails do
       it "doesn't return users who have been emailed recently" do
         expect(Jobs::EnqueueDigestEmails.new.target_user_ids.include?(user_emailed_recently.id)).to eq(false)
       end
-
     end
 
     context "inactive user" do
@@ -105,11 +102,9 @@ describe Jobs::EnqueueDigestEmails do
         expect(Jobs::EnqueueDigestEmails.new.target_user_ids.include?(bounce_user.id)).to eq(false)
       end
     end
-
   end
 
   describe '#execute' do
-
     let(:user) { Fabricate(:user) }
 
     context "digest emails are enabled" do
@@ -146,7 +141,5 @@ describe Jobs::EnqueueDigestEmails do
         Jobs::EnqueueDigestEmails.new.execute({})
       end
     end
-
   end
-
 end

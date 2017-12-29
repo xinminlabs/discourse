@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'jobs/scheduled/grant_new_user_of_the_month_badges'
 
 describe Jobs::GrantNewUserOfTheMonthBadges do
-
   let(:granter) { described_class.new }
 
   it "runs correctly" do
@@ -82,7 +81,6 @@ describe Jobs::GrantNewUserOfTheMonthBadges do
   end
 
   describe '.scores' do
-
     it "doesn't award it to accounts over a month old" do
       user = Fabricate(:user, created_at: 2.months.ago)
       Fabricate(:post, user: user)
@@ -194,7 +192,5 @@ describe Jobs::GrantNewUserOfTheMonthBadges do
 
       expect(granter.scores.keys.size).to eq(2)
     end
-
   end
-
 end

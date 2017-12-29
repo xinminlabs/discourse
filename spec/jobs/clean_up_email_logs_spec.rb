@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Jobs::CleanUpEmailLogs do
-
   before do
     Fabricate(:email_log, created_at: 2.years.ago, reply_key: "something")
     Fabricate(:email_log, created_at: 2.years.ago)
@@ -19,5 +18,4 @@ describe Jobs::CleanUpEmailLogs do
     Jobs::CleanUpEmailLogs.new.execute({})
     expect(EmailLog.count).to eq(4)
   end
-
 end

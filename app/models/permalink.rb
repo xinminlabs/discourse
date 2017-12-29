@@ -39,7 +39,6 @@ class Permalink < ActiveRecord::Base
       if regex.length > 1
         [Regexp.new(regex[1..-1]), sub[1..-1] || ""] rescue nil
       end
-
     end
 
     def normalize(url)
@@ -50,7 +49,6 @@ class Permalink < ActiveRecord::Base
 
       url
     end
-
   end
 
   def self.normalize_url(url)

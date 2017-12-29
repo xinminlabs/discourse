@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'theme_serializer'
 
 describe Admin::ThemesController do
-
   it "is a subclass of AdminController" do
     expect(Admin::UsersController < Admin::AdminController).to eq(true)
   end
@@ -82,7 +81,6 @@ describe Admin::ThemesController do
 
     context ' .index' do
       it 'correctly returns themes' do
-
         ColorScheme.destroy_all
         Theme.destroy_all
 
@@ -192,5 +190,4 @@ describe Admin::ThemesController do
       end
     end
   end
-
 end

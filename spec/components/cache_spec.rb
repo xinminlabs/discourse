@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'cache'
 
 describe Cache do
-
   let :cache do
     Cache.new
   end

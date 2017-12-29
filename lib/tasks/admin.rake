@@ -87,5 +87,4 @@ task "admin:create" => :environment do
 
     say("\nYour account now has Admin privileges!")
   end
-
 end

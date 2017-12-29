@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe AdminDashboardData do
-
   describe "adding new checks" do
     after do
       AdminDashboardData.reset_problem_checks
@@ -124,7 +123,6 @@ describe AdminDashboardData do
   end
 
   describe 'auth_config_checks' do
-
     shared_examples 'problem detection for login providers' do
       context 'when disabled' do
         it 'returns nil' do
@@ -306,5 +304,4 @@ describe AdminDashboardData do
       expect(described_class.problem_message_check(key)).to eq(I18n.t(key))
     end
   end
-
 end

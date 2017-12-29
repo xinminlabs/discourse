@@ -2,7 +2,6 @@ require "rails_helper"
 require_dependency "middleware/request_tracker"
 
 describe Middleware::RequestTracker do
-
   def env(opts = {})
     {
       "HTTP_HOST" => "http://test.com",
@@ -37,7 +36,6 @@ describe Middleware::RequestTracker do
     end
 
     it "can log requests correctly" do
-
       data = Middleware::RequestTracker.get_data(env(
         "HTTP_USER_AGENT" => "AdsBot-Google (+http://www.google.com/adsbot.html)"
       ), ["200", { "Content-Type" => 'text/html' }], 0.1)
@@ -65,11 +63,9 @@ describe Middleware::RequestTracker do
       expect(ApplicationRequest.page_view_crawler.first.count).to eq(1)
       expect(ApplicationRequest.page_view_anon_mobile.first.count).to eq(1)
     end
-
   end
 
   context "rate limiting" do
-
     class TestLogger
       attr_accessor :warnings
 
@@ -137,7 +133,6 @@ describe Middleware::RequestTracker do
 
       status, _ = middleware.call(env2)
       expect(status).to eq(200)
-
     end
   end
 

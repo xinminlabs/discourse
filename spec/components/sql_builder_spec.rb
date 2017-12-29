@@ -3,7 +3,6 @@ require 'rails_helper'
 require_dependency 'sql_builder'
 
 describe SqlBuilder do
-
   describe "attached" do
     before do
       @builder = Post.sql_builder("select * from posts /*where*/ /*limit*/")
@@ -71,5 +70,4 @@ describe SqlBuilder do
         .exec(a: 1, b: 2).values[0][0]).to eq(1)
     end
   end
-
 end

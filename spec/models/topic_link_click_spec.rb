@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TopicLinkClick do
-
   it { is_expected.to belong_to :topic_link }
   it { is_expected.to belong_to :user }
   it { is_expected.to validate_presence_of :topic_link_id }
@@ -38,9 +37,7 @@ describe TopicLinkClick do
     end
 
     context 'create_from' do
-
       it "works correctly" do
-
         # returns nil to prevent exploits
         click = TopicLinkClick.create_from(url: "http://url-that-doesnt-exist.com", post_id: @post.id, ip: '127.0.0.1')
         expect(click).to eq(nil)
@@ -53,7 +50,6 @@ describe TopicLinkClick do
         expect {
           TopicLinkClick.create_from(url: @topic_link.url, post_id: @post.id, ip: '127.0.0.0', user_id: @post.user_id)
         }.not_to change(TopicLinkClick, :count)
-
       end
 
       context 'with a valid url and post_id' do
@@ -70,7 +66,6 @@ describe TopicLinkClick do
           # second click should not record
           expect { TopicLinkClick.create_from(url: @topic_link.url, post_id: @post.id, ip: '127.0.0.1') }.not_to change(TopicLinkClick, :count)
         end
-
       end
 
       context "relative urls" do
@@ -94,7 +89,6 @@ describe TopicLinkClick do
         end
 
         context "cdn links" do
-
           before do
             Rails.configuration.action_controller.asset_host = "https://cdn.discourse.org/stuff"
           end
@@ -104,7 +98,6 @@ describe TopicLinkClick do
           end
 
           it "correctly handles cdn links" do
-
             url = TopicLinkClick.create_from(
               url: 'https://cdn.discourse.org/stuff/my_link',
               topic_id: @topic.id,
@@ -138,11 +131,9 @@ describe TopicLinkClick do
 
             expect(click.topic_link_id).to eq(TopicLink.order('id desc').first.id)
           end
-
         end
 
         context "s3 cdns" do
-
           it "works with s3 urls" do
             SiteSetting.s3_cdn_url = "https://discourse-s3-cdn.global.ssl.fastly.net"
             SiteSetting.s3_access_key_id = 'X'
@@ -159,9 +150,7 @@ describe TopicLinkClick do
 
             expect(url).to be_present
           end
-
         end
-
       end
 
       context 'with a HTTPS version of the same URL' do
@@ -243,11 +232,7 @@ describe TopicLinkClick do
           expect(@click.topic_link).to eq(@topic_link)
           expect(@url).to eq(@topic_link.url)
         end
-
       end
-
     end
-
   end
-
 end

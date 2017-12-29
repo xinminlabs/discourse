@@ -171,7 +171,6 @@ describe UserDestroyer do
           end
 
           context "delete_as_spammer is true" do
-
             before { destroy_opts[:delete_as_spammer] = true }
 
             it "agrees with flags on user's posts" do
@@ -184,7 +183,6 @@ describe UserDestroyer do
               flag.reload
               expect(flag.agreed_at).not_to eq(nil)
             end
-
           end
         end
 
@@ -344,5 +342,4 @@ describe UserDestroyer do
       end
     end
   end
-
 end

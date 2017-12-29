@@ -1,7 +1,6 @@
 require_dependency 'queued_post_serializer'
 
 class QueuedPostsController < ApplicationController
-
   before_action :ensure_staff
 
   def index
@@ -14,7 +13,6 @@ class QueuedPostsController < ApplicationController
                       root: :queued_posts,
                       rest_serializer: true,
                       refresh_queued_posts: "/queued_posts?status=new")
-
   end
 
   def update
@@ -65,5 +63,4 @@ class QueuedPostsController < ApplicationController
 
       base
     end
-
 end

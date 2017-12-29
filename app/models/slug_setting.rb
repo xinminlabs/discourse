@@ -1,7 +1,6 @@
 require_dependency 'enum_site_setting'
 
 class SlugSetting < EnumSiteSetting
-
   VALUES = %w(ascii encoded none)
 
   def self.valid_value?(val)
@@ -13,5 +12,4 @@ class SlugSetting < EnumSiteSetting
       { name: l, value: l }
     end
   end
-
 end

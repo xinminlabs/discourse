@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Users::OmniauthCallbacksController do
-
   context ".find_authenticator" do
     it "fails if a provider is disabled" do
       SiteSetting.enable_twitter_logins = false
@@ -22,5 +21,4 @@ describe Users::OmniauthCallbacksController do
       expect(Users::OmniauthCallbacksController.find_authenticator("twitter")).not_to eq(nil)
     end
   end
-
 end

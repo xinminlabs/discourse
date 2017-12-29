@@ -1,7 +1,6 @@
 require_dependency 'trust_level'
 
 class AdminUserIndexQuery
-
   def initialize(params = {}, klass = User, trust_levels = TrustLevel.levels)
     @params = params
     @query = initialize_query_with_order(klass.joins(:primary_email))
@@ -154,5 +153,4 @@ class AdminUserIndexQuery
     append filter_by_search
     @query
   end
-
 end

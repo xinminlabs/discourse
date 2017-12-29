@@ -1,5 +1,4 @@
 class IncomingEmailSerializer < ApplicationSerializer
-
   attributes :id,
              :created_at,
              :from_address,
@@ -32,5 +31,4 @@ class IncomingEmailSerializer < ApplicationSerializer
   def error
     @object.error.presence || I18n.t("emails.incoming.unrecognized_error")
   end
-
 end

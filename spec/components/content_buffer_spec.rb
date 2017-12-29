@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'content_buffer'
 
 describe ContentBuffer do
-
   it "handles deletion across lines properly" do
     c = ContentBuffer.new("a\nbc\nc")
     c.apply_transform!(start: { row: 0, col: 0 }, finish: { col: 1, row: 1 }, operation: :delete)
@@ -25,5 +24,4 @@ describe ContentBuffer do
     c.apply_transform!(start: { row: 0, col: 5 }, operation: :insert, text: "\nworld")
     expect(c.to_s).to eq("hello\nworld!")
   end
-
 end

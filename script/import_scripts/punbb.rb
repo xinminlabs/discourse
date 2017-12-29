@@ -5,7 +5,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 # Call it like this:
 #   RAILS_ENV=production bundle exec ruby script/import_scripts/punbb.rb
 class ImportScripts::PunBB < ImportScripts::Base
-
   PUNBB_DB = "punbb_db"
   BATCH_SIZE = 1000
 

@@ -21,5 +21,4 @@ class DetailedUserBadgeSerializer < BasicUserBadgeSerializer
   def topic_title
     object.post.topic.title if object.post && object.post.topic
   end
-
 end

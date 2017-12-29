@@ -35,7 +35,6 @@ class StylesheetCache < ActiveRecord::Base
       ActiveRecord::Base.logger = old_logger
     end
   end
-
 end
 
 # == Schema Information

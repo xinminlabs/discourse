@@ -2,7 +2,6 @@ require "rails_helper"
 require_dependency "common_passwords/common_passwords"
 
 describe CommonPasswords do
-
   it "the passwords file should exist" do
     expect(File.exists?(described_class::PASSWORD_FILE)).to eq(true)
   end

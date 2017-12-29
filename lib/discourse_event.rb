@@ -1,7 +1,6 @@
 # This is meant to be used by plugins to trigger and listen to events
 # So we can execute code when things happen.
 class DiscourseEvent
-
   # Defaults to a hash where default values are empty sets.
   def self.events
     @events ||= Hash.new { |hash, key| hash[key] = Set.new }
@@ -20,5 +19,4 @@ class DiscourseEvent
   def self.off(event_name, &block)
     events[event_name].delete(block)
   end
-
 end

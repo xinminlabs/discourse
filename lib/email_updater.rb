@@ -117,5 +117,4 @@ class EmailUpdater
                    user_id: @user.id,
                    email_token: email_token.token
     end
-
 end

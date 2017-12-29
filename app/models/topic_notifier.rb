@@ -11,7 +11,6 @@ class TopicNotifier
     define_method method_name do |user_id|
       change_level user_id, level
     end
-
   end
 
   def watch_topic!(user_id, reason = :created_topic)

@@ -1,5 +1,4 @@
 class ComposerMessagesFinder
-
   def initialize(user, details)
     @user = user
     @details = details
@@ -56,7 +55,6 @@ class ComposerMessagesFinder
 
   # Should a user be contacted to update their avatar?
   def check_avatar_notification
-
     # A user has to be basic at least to be considered for an avatar notification
     return unless @user.has_trust_level?(TrustLevel[1])
 
@@ -208,5 +206,4 @@ class ComposerMessagesFinder
     def replying?
       @details[:composer_action] == "reply"
     end
-
 end

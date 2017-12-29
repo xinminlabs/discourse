@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe StringSettingValidator do
-
   describe '#valid_value?' do
     shared_examples "for all StringSettingValidator opts" do
       it "returns true for blank values" do
@@ -94,7 +93,5 @@ describe StringSettingValidator do
         expect(v.valid_value?('ba')).to eq(false)
       end
     end
-
   end
-
 end

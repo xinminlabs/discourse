@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe Onebox::Engine::WhitelistedGenericOnebox do
-
   describe ".===" do
-
     it "matches any domain" do
       expect(described_class === URI('http://foo.bar/resource')).to be(true)
     end
@@ -12,7 +10,6 @@ describe Onebox::Engine::WhitelistedGenericOnebox do
       expect(described_class === URI('http://1.2.3.4/resource')).to be(false)
       expect(described_class === URI('http://1.2.3.4:1234/resource')).to be(false)
     end
-
   end
 
   it "whitelists iframes" do
@@ -42,5 +39,4 @@ describe Onebox::Engine::WhitelistedGenericOnebox do
     expect(Onebox.preview("https://blacklist.ed/iframes").to_s).to be_empty
     expect(Onebox.preview("https://whitelist.ed/iframes").to_s).to match("iframe src")
   end
-
 end

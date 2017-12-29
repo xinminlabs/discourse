@@ -8,7 +8,6 @@ class GlobalSetting
 end
 
 describe GlobalSetting do
-
   describe '.use_s3_assets?' do
     it 'returns false by default' do
       expect(GlobalSetting.use_s3?).to eq(false)
@@ -26,7 +25,6 @@ describe GlobalSetting do
 
   describe '.safe_secret_key_base' do
     it 'sets redis token if it is somehow flushed after 30 seconds' do
-
       # we have to reset so we reset all times and test runs consistently
       GlobalSetting.reset_secret_key_base!
 
@@ -46,7 +44,6 @@ describe GlobalSetting do
 
       new_token = $redis.without_namespace.get(GlobalSetting::REDIS_SECRET_KEY)
       expect(new_token).to eq(token)
-
     end
   end
 

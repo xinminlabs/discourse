@@ -3,7 +3,6 @@ require_dependency 'wizard'
 require_dependency 'wizard/builder'
 
 class SiteSerializer < ApplicationSerializer
-
   attributes :default_archetype,
              :notification_types,
              :post_types,
@@ -62,7 +61,6 @@ class SiteSerializer < ApplicationSerializer
       types = PostActionType.topic_flag_types.values.map { |id| PostActionType.new(id: id) }
       ActiveModel::ArraySerializer.new(types, each_serializer: TopicFlagTypeSerializer).as_json
     end
-
   end
 
   def default_archetype

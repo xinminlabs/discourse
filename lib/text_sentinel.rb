@@ -6,7 +6,6 @@ require 'active_support/core_ext/string/multibyte'
 # Given a string, tell us whether or not is acceptable.
 #
 class TextSentinel
-
   attr_accessor :text
 
   ENTROPY_SCALE ||= 0.7
@@ -78,5 +77,4 @@ class TextSentinel
     # We don't allow all upper case content
     SiteSetting.allow_uppercase_posts || @text == @text.mb_chars.downcase.to_s || @text != @text.mb_chars.upcase.to_s
   end
-
 end

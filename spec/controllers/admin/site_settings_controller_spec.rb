@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Admin::SiteSettingsController do
-
   it "is a subclass of AdminController" do
     expect(Admin::SiteSettingsController < Admin::AdminController).to eq(true)
   end
@@ -24,7 +23,6 @@ describe Admin::SiteSettingsController do
     end
 
     context 'update' do
-
       before do
         SiteSetting.setting(:test_setting, "default")
         SiteSetting.refresh!
@@ -75,7 +73,5 @@ describe Admin::SiteSettingsController do
         }.to raise_error(ArgumentError)
       end
     end
-
   end
-
 end

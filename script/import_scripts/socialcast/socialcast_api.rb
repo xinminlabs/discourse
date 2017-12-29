@@ -2,7 +2,6 @@ require 'base64'
 require 'json'
 
 class SocialcastApi
-
   attr_accessor :domain, :username, :password
 
   def initialize(domain, username, password)

@@ -109,7 +109,6 @@ class UserProfile < ActiveRecord::Base
     domain = URI.parse(self.website).host
     self.errors.add :base, (I18n.t('user.website.domain_not_allowed', domains: allowed_domains.split('|').join(", "))) unless allowed_domains.split('|').include?(domain)
   end
-
 end
 
 # == Schema Information

@@ -1,7 +1,5 @@
 module Autospec
-
   class BaseRunner
-
     # used when starting the runner - preloading happens here
     def start(opts = {})
     end
@@ -30,7 +28,5 @@ module Autospec
     # used to stop the runner
     def stop
     end
-
   end
-
 end

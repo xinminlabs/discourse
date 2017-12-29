@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe InviteRedeemer do
-
   describe '#create_user_from_invite' do
     it "should be created correctly" do
       user = InviteRedeemer.create_user_from_invite(Fabricate(:invite, email: 'walter.white@email.com'), 'walter', 'Walter White')

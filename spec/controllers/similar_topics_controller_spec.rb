@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe SimilarTopicsController do
   context 'similar_to' do
-
     let(:title) { 'this title is long enough to search for' }
     let(:raw) { 'this body is long enough to search for' }
 
@@ -21,7 +20,6 @@ describe SimilarTopicsController do
     end
 
     describe "minimum_topics_similar" do
-
       before do
         SiteSetting.minimum_topics_similar = 30
       end
@@ -46,16 +44,12 @@ describe SimilarTopicsController do
             Topic.expects(:similar_to).with(title, raw, user).returns([Fabricate(:topic)])
           end
         end
-
       end
 
       it "does not call Topic.similar_to if there are fewer topics than `minimum_topics_similar`" do
         Topic.stubs(:count).returns(10)
         Topic.expects(:similar_to).never
       end
-
     end
-
   end
-
 end

@@ -1,5 +1,4 @@
 class Plugin::AuthProvider
-
   def self.auth_attributes
     [:glyph, :background_color, :title, :message, :frame_width, :frame_height, :authenticator,
      :title_setting, :enabled_setting, :full_screen_login, :custom_url]
@@ -23,5 +22,4 @@ class Plugin::AuthProvider
     result['fullScreenLogin'] = full_screen_login if full_screen_login
     result.to_json
   end
-
 end

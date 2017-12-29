@@ -1,5 +1,4 @@
 class ApiKeySerializer < ApplicationSerializer
-
   attributes :id,
              :key
 
@@ -8,5 +7,4 @@ class ApiKeySerializer < ApplicationSerializer
   def include_user_id?
     !object.user_id.nil?
   end
-
 end

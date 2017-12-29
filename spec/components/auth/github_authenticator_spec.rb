@@ -31,7 +31,6 @@ describe Auth::GithubAuthenticator do
   let(:user) { Fabricate(:user) }
 
   context 'after_authenticate' do
-
     it 'can authenticate and create a user record for already existing users' do
       hash = {
         extra: {
@@ -180,7 +179,6 @@ describe Auth::GithubAuthenticator do
       expect(result.email).to eq("allowed@whitelist.com")
       expect(result.email_valid).to eq(true)
     end
-
   end
 
   describe 'avatar retrieval' do

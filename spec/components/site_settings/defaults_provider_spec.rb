@@ -144,7 +144,6 @@ describe SiteSettings::DefaultsProvider do
         expect(settings.defaults.site_locale).to eq db_val
       end
     end
-
   end
 
   describe '.site_locale=' do
@@ -269,5 +268,4 @@ describe SiteSettings::DefaultsProvider do
       expect(settings.defaults.has_setting?('question')).to be_truthy
     end
   end
-
 end

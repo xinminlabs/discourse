@@ -1,7 +1,6 @@
 require_dependency 'flag_query'
 
 class Admin::FlaggedTopicsController < Admin::AdminController
-
   def index
     result = FlagQuery.flagged_topics
 
@@ -13,5 +12,4 @@ class Admin::FlaggedTopicsController < Admin::AdminController
       rest_serializer: true
     )
   end
-
 end

@@ -90,7 +90,6 @@ module Scheduler
     end
 
     def write!
-
       clear!
       redis.set key, {
         next_run: @next_run,
@@ -129,10 +128,10 @@ module Scheduler
     end
 
     private
+
     def clear!
       redis.del key
       redis.zrem queue_key, @klass
     end
-
   end
 end

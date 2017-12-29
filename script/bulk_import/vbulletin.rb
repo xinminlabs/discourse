@@ -4,7 +4,6 @@ require "mysql2"
 require "htmlentities"
 
 class BulkImport::VBulletin < BulkImport::Base
-
   SUSPENDED_TILL ||= Date.new(3000, 1, 1)
   CHARSET_MAP = {
     "armscii8" => nil,
@@ -525,7 +524,6 @@ class BulkImport::VBulletin < BulkImport::Base
   def mysql_query(sql)
     @client.query(sql)
   end
-
 end
 
 BulkImport::VBulletin.new.run

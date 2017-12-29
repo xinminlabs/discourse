@@ -1,7 +1,6 @@
 require 'flag_query'
 
 class Admin::FlagsController < Admin::AdminController
-
   def self.flags_per_page
     10
   end
@@ -123,5 +122,4 @@ class Admin::FlagsController < Admin::AdminController
 
     render body: nil
   end
-
 end

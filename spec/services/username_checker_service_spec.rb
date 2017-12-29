@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe UsernameCheckerService do
-
   describe 'check_username' do
-
     before do
       @service = UsernameCheckerService.new
       @nil_email = nil
@@ -45,5 +43,4 @@ describe UsernameCheckerService do
       expect(result[:available]).to eq(true)
     end
   end
-
 end

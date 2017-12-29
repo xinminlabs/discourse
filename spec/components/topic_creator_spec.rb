@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TopicCreator do
-
   let(:user)      { Fabricate(:user, trust_level: TrustLevel[2]) }
   let(:moderator) { Fabricate(:moderator) }
   let(:admin)     { Fabricate(:admin) }
@@ -61,7 +60,6 @@ describe TopicCreator do
     end
 
     context 'private message' do
-
       context 'success cases' do
         before do
           TopicCreator.any_instance.expects(:save_topic).returns(true)

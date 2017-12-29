@@ -4,7 +4,6 @@ require "htmlentities"
 require 'ruby-bbcode-to-md'
 
 class BulkImport::PhpBB < BulkImport::Base
-
   SUSPENDED_TILL ||= Date.new(3000, 1, 1)
   TABLE_PREFIX ||= ENV['TABLE_PREFIX'] || "phpbb_"
   CHARSET_MAP = {
@@ -476,7 +475,6 @@ class BulkImport::PhpBB < BulkImport::Base
       smilies.each { |smiley| @smiley_map[smiley] = emoji }
     end
   end
-
 end
 
 BulkImport::PhpBB.new.run

@@ -1,9 +1,7 @@
 require_dependency 'post'
 
 module Jobs
-
   class NotifyMailingListSubscribers < Jobs::Base
-
     sidekiq_options queue: 'low'
 
     def execute(args)
@@ -67,7 +65,6 @@ module Jobs
           end
         end
       end
-
     end
 
     def skip(to_address, user_id, post_id, reason)

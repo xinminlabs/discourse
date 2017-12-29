@@ -145,7 +145,6 @@ class UserOption < ActiveRecord::Base
       return unless saved_change_to_auto_track_topics_after_msecs?
       TrackedTopicsUpdater.new(id, auto_track_topics_after_msecs).call
     end
-
 end
 
 # == Schema Information

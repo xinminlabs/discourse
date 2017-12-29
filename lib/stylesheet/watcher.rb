@@ -2,7 +2,6 @@ require 'listen'
 
 module Stylesheet
   class Watcher
-
     def self.watch(paths = nil)
       watcher = new(paths)
       watcher.start
@@ -25,7 +24,6 @@ module Stylesheet
     end
 
     def start
-
       Thread.new do
         begin
           while true
@@ -81,6 +79,5 @@ module Stylesheet
         end
       end
     end
-
   end
 end

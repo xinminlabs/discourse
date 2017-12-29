@@ -40,7 +40,5 @@ describe 'pool drainer' do
       pool.checkin conn
       pool.drain
     end
-
   end
-
 end

@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe EmailController do
-
   context '.preferences_redirect' do
-
     it 'requires you to be logged in' do
       expect { get :preferences_redirect, format: :json }.to raise_error(Discourse::NotLoggedIn)
     end
@@ -16,7 +14,6 @@ describe EmailController do
         expect(response).to redirect_to("/u/#{user.username}/preferences")
       end
     end
-
   end
 
   context '.perform unsubscribe' do
@@ -46,7 +43,6 @@ describe EmailController do
       expect(user.user_option.email_digests).to eq(false)
       expect(user.user_option.email_direct).to eq(false)
       expect(user.user_option.email_private_messages).to eq(false)
-
     end
 
     it 'can disable mailing list' do
@@ -149,7 +145,6 @@ describe EmailController do
   end
 
   context '.unsubscribe' do
-
     render_views
 
     it 'displays logo ut button if wrong user logged in' do
@@ -169,7 +164,6 @@ describe EmailController do
     end
 
     it 'correctly handles mailing list mode' do
-
       user = Fabricate(:user)
       key = UnsubscribeKey.create_key_for(user, "digest")
 
@@ -188,11 +182,9 @@ describe EmailController do
 
       get :unsubscribe, params: { key: key }
       expect(response.body).not_to include(I18n.t("unsubscribe.mailing_list_mode"))
-
     end
 
     it 'correctly handles digest unsubscribe' do
-
       user = Fabricate(:user)
       user.user_option.update_columns(email_digests: false)
       key = UnsubscribeKey.create_key_for(user, "digest")
@@ -231,7 +223,6 @@ describe EmailController do
 
       get :unsubscribe, params: { key: key }
       expect(response.body).not_to include("unwatch_category")
-
     end
 
     it 'correctly handles watched first post categories' do
@@ -249,8 +240,6 @@ describe EmailController do
 
       get :unsubscribe, params: { key: key }
       expect(response.body).not_to include("unwatch_category")
-
     end
   end
-
 end

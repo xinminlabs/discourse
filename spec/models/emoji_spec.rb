@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Emoji do
-
   it "returns the correct codepoints" do
     expect(Emoji.replacement_code('1f47d').codepoints).to eq([128125])
   end
@@ -41,5 +40,4 @@ describe Emoji do
       expect(Emoji.lookup_unicode("blonde_woman:t6")).to eq("👱🏿‍♀️")
     end
   end
-
 end

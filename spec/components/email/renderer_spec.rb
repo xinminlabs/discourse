@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'email/renderer'
 
 describe Email::Renderer do
-
   let(:message) do
     mail = Mail.new
 
@@ -22,5 +21,4 @@ describe Email::Renderer do
     renderer = Email::Renderer.new(message)
     expect(renderer.text).to eq("Key & Peele")
   end
-
 end

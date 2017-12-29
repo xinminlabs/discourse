@@ -178,5 +178,4 @@ module Oneboxer
       # return a blank hash, so rest of the code works
       blank_onebox
     end
-
 end

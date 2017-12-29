@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe IntegerSettingValidator do
   describe '#valid_value?' do
-
     shared_examples "for all IntegerSettingValidator opts" do
       it "returns false for blank values" do
         expect(validator.valid_value?('')).to eq(false)

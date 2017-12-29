@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UsersEmailController do
-
   describe '.confirm' do
     it 'errors out for invalid tokens' do
       get "/u/authorize-email/asdfasdf"
@@ -175,7 +174,5 @@ describe UsersEmailController do
         end
       end
     end
-
   end
-
 end

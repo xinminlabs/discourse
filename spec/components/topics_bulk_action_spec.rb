@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'topics_bulk_action'
 
 describe TopicsBulkAction do
-
   describe "dismiss_posts" do
     it "dismisses posts" do
       post1 = create_post

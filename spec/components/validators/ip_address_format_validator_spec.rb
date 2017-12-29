@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe IpAddressFormatValidator do
-
   let(:record) { Fabricate.build(:screened_ip_address, ip_address: '99.232.23.123') }
   let(:validator) { described_class.new(attributes: :ip_address) }
   subject(:validate) { validator.validate_each(record, :ip_address, record.ip_address) }

@@ -4,13 +4,11 @@ require 'rails_helper'
 require 'text_sentinel'
 
 describe TextSentinel do
-
   it "allows utf-8 chars" do
     expect(TextSentinel.new("йȝîûηыეமிᚉ⠛").text).to eq("йȝîûηыეமிᚉ⠛")
   end
 
   context "entropy" do
-
     it "returns 0 for an empty string" do
       expect(TextSentinel.new("").entropy).to eq(0)
     end
@@ -42,7 +40,6 @@ describe TextSentinel do
     it "handles repeated foreign characters" do
       expect(TextSentinel.new("又一个测试话题" * 3).entropy).to eq(18)
     end
-
   end
 
   context 'body_sentinel' do
@@ -59,11 +56,9 @@ describe TextSentinel do
         expect(TextSentinel.body_sentinel(valid_body, private_message: false)).to be_valid
       end
     end
-
   end
 
   context "validity" do
-
     let(:valid_string) { "This is a cool topic about Discourse" }
 
     it "allows a valid string" do
@@ -120,21 +115,17 @@ describe TextSentinel do
     it "allows a long string with colons" do
       expect(TextSentinel.new("error in org.gradle.internal.graph.CachingDirectedGraphWalker:colon", max_word_length: 30)).to be_valid
     end
-
   end
 
   context 'title_sentinel' do
-
     it "uses a sensible min entropy value when min title length is less than title_min_entropy" do
       SiteSetting.min_topic_title_length = 3
       SiteSetting.title_min_entropy = 10
       expect(TextSentinel.title_sentinel('Hey')).to be_valid
     end
-
   end
 
   context 'body_sentinel' do
-
     it "uses a sensible min entropy value when min body length is less than min entropy" do
       SiteSetting.min_post_length = 3
       SiteSetting.body_min_entropy = 7
@@ -148,5 +139,4 @@ describe TextSentinel do
       expect(TextSentinel.body_sentinel('Lol', private_message: true)).to be_valid
     end
   end
-
 end

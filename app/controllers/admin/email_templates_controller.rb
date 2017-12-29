@@ -1,5 +1,4 @@
 class Admin::EmailTemplatesController < Admin::AdminController
-
   def self.email_keys
     @email_keys ||= ["invite_forum_mailer", "invite_mailer", "invite_password_instructions",
                      "custom_invite_mailer", "custom_invite_forum_mailer",

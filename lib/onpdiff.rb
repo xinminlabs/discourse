@@ -1,7 +1,6 @@
 # Use "An O(NP) Sequence Comparison Algorithm" as described by Sun Wu, Udi Manber and Gene Myers
 # in http://www.itu.dk/stud/speciale/bepjea/xwebtex/litt/an-onp-sequence-comparison-algorithm.pdf
 class ONPDiff
-
   def initialize(a, b)
     @a, @b = a, b
     @m, @n = a.length, b.length
@@ -48,7 +47,6 @@ class ONPDiff
       end
 
       fp[@delta + @offset] = snake(@delta, fp[@delta - 1 + @offset] + 1, fp[@delta + 1 + @offset])
-
     end until fp[@delta + @offset] == @n
 
     r = @path[@delta + @offset]
@@ -149,5 +147,4 @@ class ONPDiff
     end
     ses
   end
-
 end

@@ -3,7 +3,6 @@ require 'rails_helper'
 require_dependency 'jobs/scheduled/clean_up_uploads'
 
 describe Jobs::CleanUpUploads do
-
   def fabricate_upload
     Fabricate(:upload, created_at: 2.hours.ago)
   end
@@ -166,5 +165,4 @@ describe Jobs::CleanUpUploads do
     expect(Upload.find_by(id: @upload.id)).to eq(nil)
     expect(Upload.find_by(id: upload.id)).to eq(upload)
   end
-
 end

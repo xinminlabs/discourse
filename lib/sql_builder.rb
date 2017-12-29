@@ -1,5 +1,4 @@
 class SqlBuilder
-
   def initialize(template, klass = nil)
     @args = {}
     @sql = template
@@ -116,7 +115,6 @@ class SqlBuilder
       mapped
     end
   end
-
 end
 
 class ActiveRecord::Base

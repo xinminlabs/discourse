@@ -3,7 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + "/base.rb")
 # Edit the constants and initialize method for your import data.
 
 class ImportScripts::DrupalJson < ImportScripts::Base
-
   JSON_FILES_DIR = "/Users/techapj/Documents"
 
   def initialize

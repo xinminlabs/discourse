@@ -46,7 +46,6 @@ class Mapping
   attr_accessor :pss
 
   def initialize(lines)
-
     FIELDS.each do |field|
       self.send("#{field}=", 0)
     end
@@ -99,7 +98,6 @@ mappings = []
 
 begin
   File.open("/proc/#{pid}/smaps") do |smaps|
-
     map_lines = []
 
     loop do

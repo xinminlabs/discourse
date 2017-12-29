@@ -24,7 +24,6 @@ end
 
 module Discourse
   class Application < Rails::Application
-
     def config.database_configuration
       if Rails.env.production?
         GlobalSetting.database_config
@@ -240,7 +239,6 @@ module Discourse
     config.generators do |g|
       g.test_framework :rspec, fixture: false
     end
-
   end
 end
 

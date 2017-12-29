@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TrustLevel3Requirements do
-
   let(:user) { Fabricate.build(:user) }
   subject(:tl3_requirements) { described_class.new(user) }
 
@@ -258,7 +257,6 @@ describe TrustLevel3Requirements do
   end
 
   context "requirements with defaults" do
-
     before do
       tl3_requirements.stubs(:min_days_visited).returns(50)
       tl3_requirements.stubs(:min_topics_replied_to).returns(10)
@@ -376,5 +374,4 @@ describe TrustLevel3Requirements do
       expect(tl3_requirements.requirements_lost?).to eq(true)
     end
   end
-
 end

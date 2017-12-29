@@ -1,5 +1,4 @@
 class UsernameCheckerService
-
   def check_username(username, email)
     if username && username.length > 0
       validator = UsernameValidator.new(username)
@@ -26,5 +25,4 @@ class UsernameCheckerService
   def self.is_developer?(email)
     UsernameCheckerService.new.is_developer?(email)
   end
-
 end

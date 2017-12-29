@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TopicLinkSerializer do
-
   it "correctly serializes the topic link" do
     post = Fabricate(:post, raw: 'https://meta.discourse.org/')
     TopicLink.extract_from(post)

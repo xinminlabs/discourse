@@ -49,7 +49,6 @@ class IncomingLink < ActiveRecord::Base
 
       end
     end
-
   end
 
   def referer=(referer)
@@ -68,7 +67,6 @@ class IncomingLink < ActiveRecord::Base
       referer = IncomingReferer.add!(path: parsed.path, incoming_domain: domain) if domain
       self.incoming_referer_id = referer.id if referer
     end
-
   rescue URI::InvalidURIError
     # ignore
   end

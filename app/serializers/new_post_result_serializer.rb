@@ -53,5 +53,4 @@ class NewPostResultSerializer < ApplicationSerializer
   def include_pending_count?
     pending_count.present?
   end
-
 end

@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'category'
 
 describe CategoryDetailedSerializer do
-
   describe "counts" do
     it "works for categories with no subcategories" do
       no_subcats = Fabricate(:category, topics_year: 10, topics_month: 5, topics_day: 2)
@@ -21,5 +20,4 @@ describe CategoryDetailedSerializer do
       expect(json[:topics_day]).to eq(3)
     end
   end
-
 end

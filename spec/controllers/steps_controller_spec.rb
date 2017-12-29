@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe StepsController do
-
   before do
     SiteSetting.wizard_enabled = true
   end
@@ -54,5 +53,4 @@ describe StepsController do
       expect(response).to_not be_success
     end
   end
-
 end

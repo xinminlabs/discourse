@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe WizardController do
-
   context 'wizard enabled' do
     render_views
 
@@ -41,5 +40,4 @@ describe WizardController do
       expect(::JSON.parse(response.body).has_key?('wizard')).to eq(true)
     end
   end
-
 end

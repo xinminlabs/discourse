@@ -1,5 +1,4 @@
 class UserExport < ActiveRecord::Base
-
   def self.get_download_path(filename)
     path = File.join(UserExport.base_directory, filename)
     File.exists?(path) ? path : nil
@@ -18,7 +17,6 @@ class UserExport < ActiveRecord::Base
   def self.base_directory
     File.join(Rails.root, "public", "uploads", "csv_exports", RailsMultisite::ConnectionManagement.current_db)
   end
-
 end
 
 # == Schema Information

@@ -4,7 +4,6 @@ require 'guardian'
 require_dependency 'post_destroyer'
 
 describe Guardian do
-
   let(:user) { Fabricate(:user) }
   let(:moderator) { Fabricate(:moderator) }
   let(:admin) { Fabricate(:admin) }
@@ -133,7 +132,6 @@ describe Guardian do
     it "returns true when the user is a moderator" do
       expect(Guardian.new(moderator).can_defer_flags?(post)).to be_truthy
     end
-
   end
 
   describe 'can_send_private_message' do
@@ -285,7 +283,6 @@ describe Guardian do
   end
 
   describe 'can_see_post_actors?' do
-
     let(:topic) { Fabricate(:topic, user: coding_horror) }
 
     it 'displays visibility correctly' do
@@ -305,7 +302,6 @@ describe Guardian do
       topic.expects(:has_meta_data_boolean?).with(:private_poll).returns(true)
       expect(Guardian.new(user).can_see_post_actors?(topic, PostActionType.types[:vote])).to be_falsey
     end
-
   end
 
   describe 'can_impersonate?' do
@@ -396,7 +392,6 @@ describe Guardian do
   end
 
   describe 'can_invite_to?' do
-
     describe "regular topics" do
       let(:group) { Fabricate(:group) }
       let(:category) { Fabricate(:category, read_restricted: true) }
@@ -495,13 +490,11 @@ describe Guardian do
   end
 
   describe 'can_see?' do
-
     it 'returns false with a nil object' do
       expect(Guardian.new.can_see?(nil)).to be_falsey
     end
 
     describe 'a Category' do
-
       it 'allows public categories' do
         public_category = build(:category, read_restricted: false)
         expect(Guardian.new.can_see?(public_category)).to be_truthy
@@ -548,7 +541,6 @@ describe Guardian do
 
         expect(Guardian.new(user).can_see?(secure_category)).to be_truthy
       end
-
     end
 
     describe 'a Topic' do
@@ -710,9 +702,7 @@ describe Guardian do
   end
 
   describe 'can_create?' do
-
     describe 'a Category' do
-
       it 'returns false when not logged in' do
         expect(Guardian.new.can_create?(Category)).to be_falsey
       end
@@ -765,7 +755,6 @@ describe Guardian do
     end
 
     describe 'a Post' do
-
       it "is false on readonly categories" do
         category = Fabricate(:category)
         topic.category = category
@@ -883,17 +872,14 @@ describe Guardian do
         end
       end
     end # can_create? a Post
-
   end
 
   describe 'post_can_act?' do
-
     it "isn't allowed on nil" do
       expect(Guardian.new(user).post_can_act?(nil, nil)).to be_falsey
     end
 
     describe 'a Post' do
-
       let (:guardian) do
         Guardian.new(user)
       end
@@ -924,7 +910,6 @@ describe Guardian do
       end
 
       describe 'multiple voting' do
-
         it "isn't allowed if the user voted and the topic doesn't allow multiple votes" do
           Topic.any_instance.expects(:has_meta_data_boolean?).with(:single_vote).returns(true)
           expect(Guardian.new(user).can_vote?(post, voted_in_topic: true)).to be_falsey
@@ -934,12 +919,10 @@ describe Guardian do
           expect(Guardian.new(user).can_vote?(post, voted_in_topic: false)).to be_truthy
         end
       end
-
     end
   end
 
   describe "can_recover_topic?" do
-
     it "returns false for a nil user" do
       expect(Guardian.new(nil).can_recover_topic?(topic)).to be_falsey
     end
@@ -980,7 +963,6 @@ describe Guardian do
   end
 
   describe "can_recover_post?" do
-
     it "returns false for a nil user" do
       expect(Guardian.new(nil).can_recover_post?(post)).to be_falsey
     end
@@ -1020,7 +1002,6 @@ describe Guardian do
         end
       end
     end
-
   end
 
   context 'can_convert_topic?' do
@@ -1052,13 +1033,11 @@ describe Guardian do
   end
 
   describe 'can_edit?' do
-
     it 'returns false with a nil object' do
       expect(Guardian.new(user).can_edit?(nil)).to be_falsey
     end
 
     describe 'a Post' do
-
       it 'returns false when not logged in' do
         expect(Guardian.new.can_edit?(post)).to be_falsey
       end
@@ -1234,7 +1213,6 @@ describe Guardian do
     end
 
     describe 'a Topic' do
-
       it 'returns false when not logged in' do
         expect(Guardian.new.can_edit?(topic)).to be_falsey
       end
@@ -1342,7 +1320,6 @@ describe Guardian do
     end
 
     describe 'a Category' do
-
       let(:category) { Fabricate(:category) }
 
       it 'returns false when not logged in' do
@@ -1363,7 +1340,6 @@ describe Guardian do
     end
 
     describe 'a User' do
-
       it 'returns false when not logged in' do
         expect(Guardian.new.can_edit?(user)).to be_falsey
       end
@@ -1384,11 +1360,9 @@ describe Guardian do
         expect(Guardian.new(admin).can_edit?(user)).to be_truthy
       end
     end
-
   end
 
   context 'can_moderate?' do
-
     it 'returns false with a nil object' do
       expect(Guardian.new(user).can_moderate?(nil)).to be_falsey
     end
@@ -1402,7 +1376,6 @@ describe Guardian do
     end
 
     context 'a Topic' do
-
       it 'returns false when not logged in' do
         expect(Guardian.new.can_moderate?(topic)).to be_falsey
       end
@@ -1422,13 +1395,10 @@ describe Guardian do
       it 'returns true when trust level 4' do
         expect(Guardian.new(trust_level_4).can_moderate?(topic)).to be_truthy
       end
-
     end
-
   end
 
   context 'can_see_flags?' do
-
     it "returns false when there is no post" do
       expect(Guardian.new(moderator).can_see_flags?(nil)).to be_falsey
     end
@@ -1451,13 +1421,11 @@ describe Guardian do
   end
 
   context 'can_move_posts?' do
-
     it 'returns false with a nil object' do
       expect(Guardian.new(user).can_move_posts?(nil)).to be_falsey
     end
 
     context 'a Topic' do
-
       it 'returns false when not logged in' do
         expect(Guardian.new.can_move_posts?(topic)).to be_falsey
       end
@@ -1473,13 +1441,10 @@ describe Guardian do
       it 'returns true when an admin' do
         expect(Guardian.new(admin).can_move_posts?(topic)).to be_truthy
       end
-
     end
-
   end
 
   context 'can_delete?' do
-
     it 'returns false with a nil object' do
       expect(Guardian.new(user).can_delete?(nil)).to be_falsey
     end
@@ -1514,7 +1479,6 @@ describe Guardian do
     end
 
     context 'a Post' do
-
       before do
         post.post_number = 2
       end
@@ -1599,13 +1563,10 @@ describe Guardian do
         it "doesn't allow a regular user to delete it" do
           expect(Guardian.new(post.user).can_delete?(post)).to be_falsey
         end
-
       end
-
     end
 
     context 'a Category' do
-
       let(:category) { build(:category, user: moderator) }
 
       it 'returns false when not logged in' do
@@ -1639,7 +1600,6 @@ describe Guardian do
         category.expects(:has_children?).returns(true)
         expect(Guardian.new(admin).can_delete?(category)).to be_falsey
       end
-
     end
 
     context 'can_suspend?' do
@@ -1687,13 +1647,10 @@ describe Guardian do
       it "returns true if it's yours" do
         expect(Guardian.new(user).can_delete?(post_action)).to be_truthy
       end
-
     end
-
   end
 
   context 'can_approve?' do
-
     it "wont allow a non-logged in user to approve" do
       expect(Guardian.new.can_approve?(user)).to be_falsey
     end
@@ -1719,7 +1676,6 @@ describe Guardian do
     it "allows a moderator to approve a user" do
       expect(Guardian.new(moderator).can_approve?(user)).to be_truthy
     end
-
   end
 
   context 'can_grant_admin?' do
@@ -1777,7 +1733,6 @@ describe Guardian do
   end
 
   context 'can_grant_moderation?' do
-
     it "wont allow a non logged in user to grant an moderator's access" do
       expect(Guardian.new.can_grant_moderation?(user)).to be_falsey
     end
@@ -1840,7 +1795,6 @@ describe Guardian do
   end
 
   context "can_see_invite_details?" do
-
     it 'is false without a logged in user' do
       expect(Guardian.new(nil).can_see_invite_details?(user)).to be_falsey
     end
@@ -1855,7 +1809,6 @@ describe Guardian do
   end
 
   context "can_access_forum?" do
-
     let(:unapproved_user) { Fabricate.build(:user) }
 
     context "when must_approve_users is false" do
@@ -1894,9 +1847,7 @@ describe Guardian do
         unapproved_user.approved = true
         expect(Guardian.new(unapproved_user).can_access_forum?).to be_truthy
       end
-
     end
-
   end
 
   describe "can_delete_user?" do
@@ -2094,7 +2045,6 @@ describe Guardian do
   end
 
   describe 'can_change_trust_level?' do
-
     it 'is false without a logged in user' do
       expect(Guardian.new(nil).can_change_trust_level?(user)).to be_falsey
     end
@@ -2553,7 +2503,6 @@ describe Guardian do
 
       expect(Guardian.new.can_see_group?(group)).to eq(true)
     end
-
   end
 
   context 'topic featured link category restriction' do

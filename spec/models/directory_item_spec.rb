@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe DirectoryItem do
-
   describe '#period_types' do
     context "verify enum sequence" do
       before do
@@ -43,7 +42,6 @@ describe DirectoryItem do
 
       count = DirectoryItem.where(user_id: post.user_id).count
       expect(count).to eq(0)
-
     end
   end
 
@@ -109,6 +107,5 @@ describe DirectoryItem do
         .first
       expect(directory_item.topic_count).to eq(1)
     end
-
   end
 end

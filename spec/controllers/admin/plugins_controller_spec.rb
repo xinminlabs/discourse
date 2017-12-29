@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Admin::PluginsController do
-
   it "is a subclass of AdminController" do
     expect(Admin::PluginsController < Admin::AdminController).to eq(true)
   end
@@ -15,5 +14,4 @@ describe Admin::PluginsController do
       expect(::JSON.parse(response.body).has_key?('plugins')).to eq(true)
     end
   end
-
 end

@@ -4,7 +4,6 @@ require_relative '../socialcast_api.rb'
 require_relative './test_data.rb'
 
 class TestSocialcastApi < Minitest::Test
-
   DEBUG = false
 
   def initialize(args)

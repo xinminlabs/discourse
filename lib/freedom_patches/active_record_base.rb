@@ -1,5 +1,4 @@
 class ActiveRecord::Base
-
   # Execute SQL manually
   def self.exec_sql(*args)
     conn = ActiveRecord::Base.connection
@@ -41,5 +40,4 @@ class ActiveRecord::Base
   def exec_sql_row_count(*args)
     exec_sql(*args).cmd_tuples
   end
-
 end

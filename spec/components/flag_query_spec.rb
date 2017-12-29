@@ -2,7 +2,6 @@ require 'rails_helper'
 require_dependency 'flag_query'
 
 describe FlagQuery do
-
   let(:codinghorror) { Fabricate(:coding_horror) }
 
   describe "flagged_posts_report" do
@@ -69,8 +68,6 @@ describe FlagQuery do
       posts, users = FlagQuery.flagged_posts_report(moderator)
 
       expect(posts.count).to eq(1)
-
     end
-
   end
 end

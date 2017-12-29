@@ -1,5 +1,4 @@
 class WordWatcher
-
   def initialize(raw)
     @raw = raw
   end
@@ -60,5 +59,4 @@ class WordWatcher
     r = self.class.word_matcher_regexp(action)
     r ? r.match(@raw) : false
   end
-
 end

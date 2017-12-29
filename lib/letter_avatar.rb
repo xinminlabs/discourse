@@ -1,5 +1,4 @@
 class LetterAvatar
-
   class Identity
     attr_accessor :color, :letter
 
@@ -21,7 +20,6 @@ class LetterAvatar
   POINTSIZE = 280
 
   class << self
-
     def version
       "#{VERSION}_#{image_magick_version}"
     end

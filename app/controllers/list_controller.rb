@@ -401,5 +401,4 @@ class ListController < ApplicationController
     periods << :yearly        if :yearly  != default_period
     periods
   end
-
 end

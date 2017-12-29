@@ -13,11 +13,9 @@ describe UserApiKey do
 
       expect(key.allow?("action_dispatch.request.path_parameters" => { controller: "user_api_keys", action: "revoke" },
                         "PATH_INFO" => "/xyz", "REQUEST_METHOD" => "POST")).to eq(true)
-
     end
 
     it "can allow blanket read" do
-
       key = UserApiKey.new(scopes: ['read'])
 
       expect(key.allow?("PATH_INFO" => "/random", "REQUEST_METHOD" => "GET")).to eq(true)

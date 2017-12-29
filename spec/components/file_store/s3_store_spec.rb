@@ -3,7 +3,6 @@ require 'file_store/s3_store'
 require 'file_store/local_store'
 
 describe FileStore::S3Store do
-
   let(:store) { FileStore::S3Store.new }
   let(:s3_helper) { store.instance_variable_get(:@s3_helper) }
   let(:upload) { Fabricate(:upload) }
@@ -191,7 +190,6 @@ describe FileStore::S3Store do
   end
 
   describe ".has_been_uploaded?" do
-
     it "identifies S3 uploads" do
       expect(store.has_been_uploaded?("//s3-upload-bucket.s3.amazonaws.com/1337.png")).to eq(true)
     end
@@ -201,7 +199,6 @@ describe FileStore::S3Store do
       expect(store.has_been_uploaded?("//s3.amazonaws.com/s3-upload-bucket/1337.png")).to eq(false)
       expect(store.has_been_uploaded?("//s4_upload_bucket.s3.amazonaws.com/1337.png")).to eq(false)
     end
-
   end
 
   describe ".absolute_base_url" do
@@ -218,9 +215,7 @@ describe FileStore::S3Store do
 
       SiteSetting.s3_region = "cn-north-1"
       expect(FileStore::S3Store.new(s3_helper).absolute_base_url).to eq("//s3-upload-bucket.s3.cn-north-1.amazonaws.com.cn")
-
     end
-
   end
 
   it "is external" do
@@ -229,16 +224,13 @@ describe FileStore::S3Store do
   end
 
   describe ".purge_tombstone" do
-
     it "updates tombstone lifecycle" do
       s3_helper.expects(:update_tombstone_lifecycle)
       store.purge_tombstone(1.day)
     end
-
   end
 
   describe ".path_for" do
-
     def assert_path(path, expected)
       upload = Upload.new(url: path)
 

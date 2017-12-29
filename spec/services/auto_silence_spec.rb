@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe SpamRule::AutoSilence do
-
   before do
     SiteSetting.flags_required_to_hide_post = 0 # never
     SiteSetting.num_spam_flags_to_silence_new_user = 2
@@ -175,7 +174,6 @@ describe SpamRule::AutoSilence do
   end
 
   describe 'silence?' do
-
     context 'never been silenced' do
       shared_examples "can't be silenced" do
         it "returns false" do

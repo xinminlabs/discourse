@@ -2,7 +2,6 @@ require_dependency 'oneboxer'
 require_dependency 'email_cook'
 
 class PostAnalyzer
-
   def initialize(raw, topic_id)
     @raw = raw
     @topic_id = topic_id
@@ -135,5 +134,4 @@ class PostAnalyzer
       href = l['href'].to_s
       html_class.to_s['mention'] && href[/^\/u\//] || href[/^\/users\//]
     end
-
 end

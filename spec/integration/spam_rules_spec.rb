@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe SpamRulesEnforcer do
-
   describe 'auto-silenceing users based on flagging' do
     let!(:admin)     { Fabricate(:admin) } # needed to send a system message
     let!(:moderator) { Fabricate(:moderator) }

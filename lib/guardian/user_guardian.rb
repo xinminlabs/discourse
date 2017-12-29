@@ -1,6 +1,5 @@
 # mixin for all Guardian methods dealing with user permissions
 module UserGuardian
-
   def can_edit_user?(user)
     is_me?(user) || is_staff?
   end
@@ -71,5 +70,4 @@ module UserGuardian
     return true unless SiteSetting.hide_suspension_reasons?
     user == @user || is_staff?
   end
-
 end

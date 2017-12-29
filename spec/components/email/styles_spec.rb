@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'email'
 
 describe Email::Styles do
-
   def basic_fragment(html)
     styler = Email::Styles.new(html)
     styler.format_basic
@@ -17,7 +16,6 @@ describe Email::Styles do
   end
 
   context "basic formatter" do
-
     it "works with an empty string" do
       style = Email::Styles.new("")
       style.format_basic
@@ -50,7 +48,6 @@ describe Email::Styles do
       frag = basic_fragment("<div class='foo' id='bar'><div class='foo' id='bar'></div></div>")
       expect(frag.to_html).to eq("<div><div></div></div>")
     end
-
   end
 
   context "html template formatter" do
@@ -155,7 +152,6 @@ describe Email::Styles do
         expect(frag.at('img')['src']).to eq("https://test.localhost/blah.jpg")
       end
     end
-
   end
 
   context "strip_avatars_and_emojis" do
@@ -187,5 +183,4 @@ describe Email::Styles do
       expect(fragment.to_s.squish).to match(/^<blockquote.+<\/blockquote>$/)
     end
   end
-
 end

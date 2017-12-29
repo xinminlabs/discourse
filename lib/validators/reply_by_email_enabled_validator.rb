@@ -1,5 +1,4 @@
 class ReplyByEmailEnabledValidator
-
   def initialize(opts = {})
     @opts = opts
   end
@@ -19,5 +18,4 @@ class ReplyByEmailEnabledValidator
       I18n.t("site_settings.errors.email_polling_disabled")
     end
   end
-
 end

@@ -9,7 +9,6 @@
 # This patch depends on the convention that locale yml files must be named [locale_name].yml
 
 module I18n
-
   # this accelerates translation a tiny bit (halves the time it takes)
   class << self
     alias_method :translate_no_cache, :translate
@@ -172,6 +171,5 @@ module I18n
       load_locale(locale) unless @loaded_locales.include?(locale)
       exists_no_cache?(key, locale)
     end
-
   end
 end

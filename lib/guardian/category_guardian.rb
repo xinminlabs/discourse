@@ -1,6 +1,5 @@
 #mixin for all guardian methods dealing with category permisions
 module CategoryGuardian
-
   # Creating Method
   def can_create_category?(parent = nil)
     is_admin? ||

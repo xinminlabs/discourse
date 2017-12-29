@@ -3,7 +3,6 @@ require "rspec/core/formatters/base_text_formatter"
 module Autospec; end
 
 class Autospec::Formatter < RSpec::Core::Formatters::BaseTextFormatter
-
   RSpec::Core::Formatters.register self, :example_passed, :example_pending, :example_failed, :start_dump
 
   RSPEC_RESULT = "./tmp/rspec_result"
@@ -41,5 +40,4 @@ class Autospec::Formatter < RSpec::Core::Formatters::BaseTextFormatter
     @fail_file.close
     super(filename)
   end
-
 end
