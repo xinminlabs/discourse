@@ -178,7 +178,7 @@ class ImportScripts::Base
     opts[:name] = UserNameSuggester.suggest(import_name)
 
     existing = Group.where(name: opts[:name]).first
-    return existing if existing && existing.custom_fields["import_id"].to_s == (import_id.to_s)
+    return existing if existing && existing.custom_fields["import_id"].to_s == import_id.to_s
     g = existing || Group.new(opts)
     g.custom_fields["import_id"] = import_id
     g.custom_fields["import_name"] = import_name

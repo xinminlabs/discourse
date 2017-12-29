@@ -150,7 +150,7 @@ describe SpamRule::AutoSilence do
         SiteSetting.notify_mods_when_user_silenced = true
         moderator = Fabricate(:moderator)
         GroupMessage.expects(:create).with do |group, msg_type, params|
-          group == (Group[:moderators].name) && msg_type == (:user_automatically_silenced) && params[:user].id == (user.id)
+          group == Group[:moderators].name && msg_type == :user_automatically_silenced && params[:user].id == user.id
         end
         subject.silence_user
       end

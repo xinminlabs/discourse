@@ -68,7 +68,7 @@ class Admin::GroupsController < Admin::AdminController
     end
 
     grant_trust_level = group_params[:grant_trust_level].to_i
-    group.grant_trust_level = (grant_trust_level > 0 && grant_trust_level <= 4) ? grant_trust_level : nil
+    group.grant_trust_level = grant_trust_level > 0 && grant_trust_level <= 4 ? grant_trust_level : nil
 
     group.automatic_membership_email_domains = group_params[:automatic_membership_email_domains] unless group.automatic
     group.automatic_membership_retroactive = group_params[:automatic_membership_retroactive] == "true" unless group.automatic
